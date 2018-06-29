@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Data Science">
 <meta property="og:description" content="为什么不加截距项时R方反而更大？为什么R方会是负数？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/img/other.jpg">
-<meta property="og:image" content="http://yoursite.com/img/lm.png">
-<meta property="og:updated_time" content="2018-06-03T05:27:26.107Z">
+<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
+<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/lm.png">
+<meta property="og:updated_time" content="2018-06-29T18:31:47.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="奇怪的R方">
 <meta name="twitter:description" content="为什么不加截距项时R方反而更大？为什么R方会是负数？">
-<meta name="twitter:image" content="http://yoursite.com/img/other.jpg">
+<meta name="twitter:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
 
 
 
@@ -367,7 +367,8 @@
       
 
       
-        <p><img src="/img/other.jpg" align="right" style=" width:2000px;height:1000 px"></p>
+        <!-- <img src='/img/other.jpg' align='right' style=' width:2000px;height:1000 px'/> -->
+<img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
 <p>为什么不加截距项时R方反而更大？<br>为什么R方会是负数？</p>
 <a id="more"></a>
 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在多元线性回归模型中，通常使用$R^2$来衡量拟合优度，其公式如下</p>
@@ -389,7 +390,7 @@
 <p>因为合理！一个没有截距项的线性模型其实是受到了一定的限制，该模型拟合的好不好，当然要放在同一个平台上，跟同样没有截距项（受到相同限制）的模型中最朴素的比。也就是要跟$Y=0$比，而不是和$Y=\bar y$比。</p>
 <p>用图形表示如下</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">plot(x, y, pch = <span class="number">16</span>, cex = <span class="number">0.5</span>,</span><br><span class="line">     xlim = c(-<span class="number">1</span>, <span class="number">6</span>), ylim = c(-<span class="number">1</span>, <span class="number">15</span>), </span><br><span class="line">     xlab = <span class="string">'x'</span>, ylab = <span class="string">'y'</span>)</span><br><span class="line">abline(h = <span class="number">0</span>, col = <span class="string">'blue'</span>, lty = <span class="number">2</span>)</span><br><span class="line">abline(h = mean(y), col = <span class="string">'red'</span>, lty = <span class="number">2</span>)</span><br><span class="line">abline(v = <span class="number">0</span>, col = <span class="string">'grey'</span>)</span><br><span class="line">abline(fit, lwd = <span class="number">2</span>, col = <span class="string">'red'</span>)</span><br><span class="line">abline(fit0, lwd = <span class="number">2</span>, col = <span class="string">'blue'</span>)</span><br><span class="line">legend(<span class="string">'topleft'</span>, c(<span class="string">'fit'</span>, <span class="string">'fit0'</span>), </span><br><span class="line">       lty = <span class="number">1</span>, col = c(<span class="string">'red'</span>, <span class="string">'blue'</span>))</span><br></pre></td></tr></table></figure>
-<p><img src="/img/lm.png" alt=""></p>
+<img src="http://pb3j649ib.bkt.clouddn.com/static/images/lm.png">
 <p>红色实线（带截距项模型）和红色虚线比，蓝色实线（不带截距项模型）和蓝色虚线比。</p>
 <h2 id="R-2-为负"><a href="#R-2-为负" class="headerlink" title="$R^2$为负"></a>$R^2$为负</h2><p>如果使用$R^2$的公式，没有截距项的模型有可能还没有$Y=\bar y$拟合的好，这就是$R^2$可能出现负数的一个原因；而和$Y=0$比则不会出现负数的情况。</p>
 <p>下面首先用R语言给出一个$R^2$为负的例子</p>
@@ -534,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -545,7 +546,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -556,7 +557,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

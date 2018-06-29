@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="统计," />
 
 
 
@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="R &amp; python">
-<meta name="keywords" content="数据科学 &amp; 爬虫">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Data Science">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="假设检验的本质">
+<meta name="keywords" content="统计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="假设检验的本质">
+<meta property="og:url" content="http://yoursite.com/2018/06/29/test/index.html">
 <meta property="og:site_name" content="Data Science">
-<meta property="og:description" content="R &amp; python">
+<meta property="og:description" content="假设检验的本质">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/test.jpg">
+<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/distribution.png">
+<meta property="og:updated_time" content="2018-06-29T18:46:32.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Science">
-<meta name="twitter:description" content="R &amp; python">
+<meta name="twitter:title" content="假设检验的本质">
+<meta name="twitter:description" content="假设检验的本质">
+<meta name="twitter:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/test.jpg">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/29/test/"/>
 
 
 
 
 
-  <title>Data Science</title>
+  <title>假设检验的本质 | Data Science</title>
   
 
 
@@ -144,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +241,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/29/test/" itemprop="url">假设检验的本质</a></h1>
+          <h1 class="post-title" itemprop="name headline">假设检验的本质</h1>
         
 
         <div class="post-meta">
@@ -366,17 +367,64 @@
       
 
       
-        
-          <img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/test.jpg">
+        <img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/test.jpg">
 <p>假设检验的本质</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/29/test/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<h2 id="假设检验回顾"><a href="#假设检验回顾" class="headerlink" title="假设检验回顾"></a>假设检验回顾</h2><p>本节我们回顾一下本科数理统计中学习的假设检验。</p>
+<p>举一个例子，我们现在想要知道厦门市市民的平均身高是不是$\mu_0 = 165cm$，我们可以采集一组数据$X_1, X_2, …, X_n$（足够多），计算这组数据的均值$\bar X_n$，看这个均值离$\mu_0$近不近。这是假设检验的基本思想。</p>
+<p>用数学符号表示就是，要检验</p>
+<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu \neq \mu_0$$<br>在大样本的情况下，由中心极限定理可以保证样本均值服从正态分布</p>
+<p>$$\bar X_n \stackrel{d}{\rightarrow} N(\mu, Var)$$<br>此时我们会假设$H_0$成立，则有</p>
+<p>$$\frac{\bar X_n-\mu_0}{\sqrt{Var}} \stackrel{d}{\rightarrow} N(0, 1)$$<br>这里$Var$如果已知就直接使用，如果未知就用样本方差估计，这不是我们关注的重点。总之，将当前样本均值带入，我们可以计算出$\frac{\bar X_n-\mu_0}{\sqrt{Var}}$值。直观上来想，如果这个值非常大或者非常小，则说明出现这个值的概率非常小，我们就不敢相信最初做的假设$H_0$是正确的。为了定义什么时候是“非常大非常小”，我们设置犯第一类错误概率不能超过$\alpha=0.05$，对应标准正态分布$\pm 1.96$作为阈值，超出这个阈值则拒绝原假设。</p>
+<p>如果换一个检验问题</p>
+<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu &gt; \mu_0$$<br>则只有样本均值过大时才拒绝原假设，$\alpha=0.05$的范围也只从右边取。</p>
+<p>再考虑对方差进行检验时，得到的统计量服从的是卡方分布，检验方法如出一辙，从两侧找拒绝域。</p>
+<p>看起来这套理论已经理解通透了，但是不妨考虑这样一个问题：为什么拒绝域要从两侧取，从分布中间任何一个地方都可以取到一块区域概率是0.05，从两侧取的理论依据是什么，换一个分布形式还是从两侧取吗（比如原假设变成均匀分布）？不是的话怎么取？</p>
+<h2 id="UMP-Test"><a href="#UMP-Test" class="headerlink" title="UMP Test"></a>UMP Test</h2><p>首先定义两类错误</p>
+<ul>
+<li>第一类错误：$H_0$真的正确的情况下，我们的判断方法拒绝$H_0$的概率（$H_0$成立时落入拒绝域的概率）</li>
+<li>第二类错误：$H_1$正确的情况下，我们的判断方法却接受了$H_0$的概率</li>
+</ul>
+<p>一个好的检验方法需要使两类错误都尽可能小，但是犯两类错误的概率往往是此消彼长的关系，因此我们采用这样的方法：控制第一类错误概率不超过0.05的情况下，使犯第二类错误的概率尽可能小。这种检验方法称为UMP Test(uniform most powerful test).</p>
+<p>我们平时使用的检验都是基于UMP Test，但是由于符合直觉，本科教学中常常把本质忽略了，把严格证明过程省略了。</p>
+<p>下面我将从简单情况开始推广，理顺假设检验的逻辑。</p>
+<h2 id="简单假设"><a href="#简单假设" class="headerlink" title="简单假设"></a>简单假设</h2><p>首先，要纠正一个误区。我们进行假设检验，看起来在判断一个值是否等于某给定值，但是其本质是在看一个统计量服从哪个分布（服从$H_0$对应分布还是$H_1$）。</p>
+<p>前面我们提到的对$\mu$进行的检验，其实是在对$\bar X_n$的分布进行检验，$\mu$是其正态分布中的一个参数，由于参数可以唯一确定分布，所以这里检验分布就可以当做检验参数了。</p>
+<p>下面，我们来看一个例子，只有一个样本$X$，它服从正态分布$N(\mu, 1)$，使用参数$\mu$检验如下</p>
+<p>$$H_0: \mu = 0 \quad v.s. \quad H_1: \mu = 1$$<br>这是假设检验中最简单的一个例子，前面提到的多个样本、$H_1:\mu \neq 0$、$H_1:\mu &gt; 0$都是它的推广。</p>
+<p>这里我们引入简单假设的概念：包含的分布只有一个的假设</p>
+<ul>
+<li>$H_1:\mu \neq 0$显然不是一个简单假设，因为这个假设的$\mu$的值可以取很多种，分布也可以取很多种</li>
+<li>$H_0: \mu = 0$就是一个简单假设</li>
+</ul>
+<p>下面我们来看一个具体的例子</p>
+<img src="http://pb3j649ib.bkt.clouddn.com/static/images/distribution.png">
+<p>图中红线表示$H_1$的分布，黑线表示$H_0$的分布，现在我们要找到它的检验规则。</p>
+<p>面对这样的问题，我们会发现，之前学过的那种应对正态分布的套路已经没有用了，我们只能从假设检验的本质出发，寻找我们想要的检验方法。</p>
+<p>我们需要在控制第一类错误概率不超过0.05的情况下，使犯第二类错误的概率尽可能小。也就是说，我们要找到一个区间，这个区间对应的$H_1$分布概率不超过0.05，而$H_2$分布概率尽可能大。反映在图中即为找一块区域，区域内黑线所围面积不超过0.05，而红线内面积尽可能大。所以我们就可以找到最中间那块区域，使得区域内黑线面积为0.05。</p>
+<h2 id="NP-Lemma"><a href="#NP-Lemma" class="headerlink" title="NP Lemma"></a>NP Lemma</h2><p>NP Lemma可以说是假设检验的基石，这里不打算写出引理的数学表达式，只是简述其思想。</p>
+<p>NP Lemma证明了在$H_0$和$H_1$都是简单假设的情况下，UMP Test一定存在，而且形式是这样的：</p>
+<p>要找到c，当$\frac{f_1(X)}{f_0(X)}&gt;c$就拒绝原假设，其中$f_1(X)$和$f_0(X)$分别表示$H_1$和$H_0$的分布。</p>
+<p>也就是说，找到$\frac{f_1(X)}{f_0(X)}$比值最大的那5%范围，这个范围内拒绝原假设，这样的检验方法是最好的检验(UMP Test)。</p>
+<p>这个引理其实也非常符合直觉，$f_1$在分母上越大越好(犯第二类错误的概率更小)，$f_0$在分子上，越小越好（犯第一类错误的概率更小)。</p>
+<p>现在回过头来看上一节最后的那个例子，会发现二者是相同的。不仅如此，本科学过的对正态分布和卡方分布的检验也都是基于这个方法，只是经过了一些定理的扩展。扩展我们最后再说，现在先换一个思路，理解一下这个引理。</p>
+<h2 id="似然比检验"><a href="#似然比检验" class="headerlink" title="似然比检验"></a>似然比检验</h2><p>现在忘掉前面所说的假设检验的内容，回想一下参数估计中的MLE(极大似然估计法)方法。</p>
+<p>参数估计是，有一个带有未知参数$\theta$的分布，现在得到一组基于该分布的iid数据$X_1, X_2, …, X_n$，要估计分布的参数。MLE的思想是：计算出现当前这些样本出现的概率，这个概率结果是带有参数$\theta$的一个表达式，通过求解表达式极大值来确定参数$\theta$。</p>
+<p>现在，我们想知道$\theta$等于0还是等于1，按照刚才的思路，只需要分别计算$\theta = 0$和$\theta = 1$时当前样本出现的概率，做个比较就可以知道$\theta$取哪个值比较好。（做检验时，想要拒绝$H_0$需要非常谨慎，要$f_1$比$f_0$大足够多才可以拒绝，因此有了$&gt;c$之说）</p>
+<p>我们来看一下表达式</p>
+<p>$$\frac{f_1(X, \theta)}{f_0(X, \theta)}=\frac{\prod_{i=1}^{n} f_1(X_i,\theta)}{\prod_{i=1}^{n} f_0(X_i, \theta)}$$<br>这种用似然函数作比进行的检验称为似然比检验。这里形式和NP Lemma时一样的，这种情况下，似然比检验是UMP Test。</p>
+<h2 id="扩展延伸"><a href="#扩展延伸" class="headerlink" title="扩展延伸"></a>扩展延伸</h2><p>1.扩展到多样本</p>
+<p>第一种理解：从NP Lemma的角度来看，单个样本直接用这个分布概率来算，多个分布则用联合分布概率来算，因为样本一般都是iid的，所以只是多个概率相乘计算而已。</p>
+<p>那么为什么正态分布检验$\mu$会用$\bar X_n$来算呢？是因为$\frac{f_1(X, \theta)}{f_0(X, \theta)}&gt;c$可以化简成只用$\bar X_n$表示。</p>
+<p>更进一步理解，考虑充分统计量的定义，二者作比得到的一定是关于充分统计量的表达式，所以NP Lemma找到的UMP Test结果总是可以写成对充分统计量的判断，如果分布有一些单调性质，则UMP Test会非常简洁（就像正态分布一样只是$\bar Xn$大于一个数这样）。</p>
+<p>第二种理解：直接考虑$\bar X_n$的分布，这个分布也是带有$\mu$参数的，而这里只获得了一个$\bar X_n$的样本，于是就转化为单样本的情况了。</p>
+<p>2.$H_1$的扩展</p>
+<p>NP Lemma只是帮助我们找到了$H_0$和$H_1$都是简单假设时的UMP Test，但是像我们通常见到的</p>
+<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu &gt; \mu_0$$</p>
+<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu \neq \mu_0$$<br>则需要更多定理来保证，虽然检验方法和</p>
+<p>$$H_0: \mu = \mu_1 \quad v.s. \quad H_1: \mu = \mu_2$$<br>没有什么区别（对正态分布来说都是找$|\bar X_n|&gt;c$这样的方法）。</p>
+<p>由于推广过程过于复杂，这里不展示证明过程。这些复杂的检验只适用于某些特定分布族，他们会有一些单调特性，才可以保证$H_1$无论取什么样的分布，检验方法都和简单假设时相同。</p>
+
       
     </div>
     
@@ -391,354 +439,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/panel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王 智 博">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Data Science">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/29/panel/" itemprop="url">面板数据回归</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T14:33:54+08:00">
-                2018-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/线性回归/" itemprop="url" rel="index">
-                    <span itemprop="name">线性回归</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/统计/" rel="tag"># 统计</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/29/panel/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/29/panel/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/06/29/panel/" class="leancloud_visitors" data-flag-title="面板数据回归">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <!-- <img src='/img/panel.jpg' align='right' style=' width:2000px;height:1000 px'/> -->
-<img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/panel.jpg">
-<p>从计量经济学和统计学两个角度理解面板数据回归</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/29/panel/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/29/panel/" rel="next" title="面板数据回归">
+                <i class="fa fa-chevron-left"></i> 面板数据回归
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/18/奇怪的R方/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王 智 博">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Data Science">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/18/奇怪的R方/" itemprop="url">奇怪的R方</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-18T00:19:22+08:00">
-                2018-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/线性回归/" itemprop="url" rel="index">
-                    <span itemprop="name">线性回归</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/18/奇怪的R方/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/18/奇怪的R方/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/06/18/奇怪的R方/" class="leancloud_visitors" data-flag-title="奇怪的R方">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <!-- <img src='/img/other.jpg' align='right' style=' width:2000px;height:1000 px'/> -->
-<img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
-<p>为什么不加截距项时R方反而更大？<br>为什么R方会是负数？</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/18/奇怪的R方/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -748,10 +478,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -759,6 +490,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -779,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -856,6 +610,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#假设检验回顾"><span class="nav-number">1.</span> <span class="nav-text">假设检验回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UMP-Test"><span class="nav-number">2.</span> <span class="nav-text">UMP Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单假设"><span class="nav-number">3.</span> <span class="nav-text">简单假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP-Lemma"><span class="nav-number">4.</span> <span class="nav-text">NP Lemma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然比检验"><span class="nav-number">5.</span> <span class="nav-text">似然比检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展延伸"><span class="nav-number">6.</span> <span class="nav-text">扩展延伸</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1003,6 +773,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1020,6 +794,18 @@
       <script id="dsq-count-scr" src="https://wzb.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/06/29/test/';
+          this.page.identifier = '2018/06/29/test/';
+          this.page.title = '假设检验的本质';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wzb.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
