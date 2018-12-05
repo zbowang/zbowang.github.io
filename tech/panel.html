@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -53,25 +51,22 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="R语言,线性回归," />
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
 
 
 
+
+
+  <meta name="keywords" content="R语言,计量," />
 
 
 
@@ -79,20 +74,21 @@
 
 
 
-<meta name="description" content="从计量经济学和统计学两个角度理解面板数据回归">
-<meta name="keywords" content="R语言,线性回归">
+
+
+
+<meta name="description" content="遗漏变量偏差遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数">
+<meta name="keywords" content="R语言,计量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面板数据回归">
-<meta property="og:url" content="http://yoursite.com/2018/06/29/panel/index.html">
-<meta property="og:site_name" content="Data Science">
-<meta property="og:description" content="从计量经济学和统计学两个角度理解面板数据回归">
+<meta property="og:url" content="http://yoursite.com/tech/panel.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="遗漏变量偏差遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/panel.jpg">
-<meta property="og:updated_time" content="2018-06-29T18:30:40.858Z">
+<meta property="og:updated_time" content="2018-12-03T13:57:12.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面板数据回归">
-<meta name="twitter:description" content="从计量经济学和统计学两个角度理解面板数据回归">
-<meta name="twitter:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/panel.jpg">
+<meta name="twitter:description" content="遗漏变量偏差遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数">
 
 
 
@@ -102,10 +98,10 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -122,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/29/panel/"/>
+  <link rel="canonical" href="http://yoursite.com/tech/panel.html"/>
 
 
 
 
 
-  <title>面板数据回归 | Data Science</title>
+  <title>面板数据回归 | My World</title>
   
 
 
@@ -158,12 +154,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Data Science</span>
+        <span class="site-title">My World</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Coding & Thinking</p>
+        <p class="site-subtitle">Learning & Thinking</p>
       
   </div>
 
@@ -183,42 +179,62 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
             
-            首页
+            
+              <b>技术分享</b><br/>
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
             
-            标签
+            
+              <b>生活随笔</b><br/>
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+        <li class="menu-item menu-item-摘录">
+          <a href="/tags/excerpt" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
             
-            分类
+            
+              摘录
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+        <li class="menu-item menu-item-整理">
+          <a href="/tags/manual" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
             
-            归档
+            
+              整理
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-收集">
+          <a href="/tags/collections" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              收集
+            
           </a>
         </li>
       
@@ -255,16 +271,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/panel/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/panel.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王 智 博">
+      <meta itemprop="name" content="王智博">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Data Science">
+      <meta itemprop="name" content="My World">
     </span>
 
     
@@ -282,8 +298,6 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
-              
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T14:33:54+08:00">
                 2018-06-29
               </time>
@@ -295,56 +309,12 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/线性回归/" itemprop="url" rel="index">
-                    <span itemprop="name">线性回归</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/29/panel/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/29/panel/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
           
-          
-             <span id="/2018/06/29/panel/" class="leancloud_visitors" data-flag-title="面板数据回归">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -366,11 +336,7 @@
       
 
       
-        <!-- <img src='/img/panel.jpg' align='right' style=' width:2000px;height:1000 px'/> -->
-<img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/panel.jpg">
-<p>从计量经济学和统计学两个角度理解面板数据回归</p>
-<a id="more"></a>
-<h2 id="遗漏变量偏差"><a href="#遗漏变量偏差" class="headerlink" title="遗漏变量偏差"></a>遗漏变量偏差</h2><p>遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。</p>
+        <h2 id="遗漏变量偏差"><a href="#遗漏变量偏差" class="headerlink" title="遗漏变量偏差"></a>遗漏变量偏差</h2><p>遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。</p>
 <p>OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数的估计结果更加准确，需要使用一些方法解决OV bias的问题，面板数据回归就是其中一种方法。</p>
 <p>面板数据回归(panel data regression)专门处理一个个体被多次观测的情况。比如现在有336个observations，分别是美国48个州7年的数据，每个州一年只有一个观测，但是一个州共被观测到7次，类似下面这样</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">city  year  x1   x2   y</span><br><span class="line">A     2000  0.5  0.4  0.3</span><br><span class="line">A     2001</span><br><span class="line">...             .....</span><br><span class="line">A     2006</span><br><span class="line">B     2000</span><br><span class="line">B     2001</span><br><span class="line">...(共336行)</span><br></pre></td></tr></table></figure>
@@ -469,7 +435,7 @@
           
             <a href="/tags/R语言/" rel="tag"># R语言</a>
           
-            <a href="/tags/线性回归/" rel="tag"># 线性回归</a>
+            <a href="/tags/计量/" rel="tag"># 计量</a>
           
         </div>
       
@@ -482,7 +448,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/18/奇怪的R方/" rel="next" title="奇怪的R方">
+              <a href="/tech/Rsquared.html" rel="next" title="奇怪的R方">
                 <i class="fa fa-chevron-left"></i> 奇怪的R方
               </a>
             
@@ -492,7 +458,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/29/test/" rel="prev" title="假设检验的本质">
+              <a href="/tech/test.html" rel="prev" title="假设检验的本质">
                 假设检验的本质 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -524,16 +490,6 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
-  
 
 
 
@@ -551,27 +507,29 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
       
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">王 智 博</p>
-              <p class="site-description motion-element" itemprop="description">R & python</p>
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -579,10 +537,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
             
@@ -603,7 +561,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -617,15 +575,15 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
                       
-                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
                       
-                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
             </div>
@@ -636,9 +594,38 @@
 
           
           
-
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="摘录">摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="整理">整理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="收集">收集</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
+          
         </div>
       </section>
 
@@ -676,13 +663,14 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">王 智 博</span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miitbeian.gov.cn/">&nbsp;闽ICP备18026322号</a>
 
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
 
 
 
@@ -815,26 +803,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://wzb.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/06/29/panel/';
-          this.page.identifier = '2018/06/29/panel/';
-          this.page.title = '面板数据回归';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://wzb.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -850,6 +818,10 @@
 
 
 
+  
+
+
+
 
 
 
@@ -866,113 +838,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("aHbLT7JP7vX6Bf9gEtqHEIuu-gzGzoHsz", "6oP5KTuhNOHV4lgUvBypaE8m");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 

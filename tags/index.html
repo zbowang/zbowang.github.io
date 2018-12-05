@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -53,16 +51,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
 
 
 
@@ -79,18 +77,14 @@
 
 
 
-<meta name="description" content="R &amp; python">
-<meta name="keywords" content="数据科学 &amp; 爬虫">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
-<meta property="og:site_name" content="Data Science">
-<meta property="og:description" content="R &amp; python">
+<meta property="og:site_name" content="My World">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-06-02T15:34:06.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="R &amp; python">
 
 
 
@@ -100,10 +94,10 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -126,7 +120,7 @@
 
 
 
-  <title>tags | Data Science</title>
+  <title>tags | My World</title>
   
 
 
@@ -156,12 +150,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Data Science</span>
+        <span class="site-title">My World</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Coding & Thinking</p>
+        <p class="site-subtitle">Learning & Thinking</p>
       
   </div>
 
@@ -181,42 +175,62 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
             
-            首页
+            
+              <b>技术分享</b><br/>
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
             
-            标签
+            
+              <b>生活随笔</b><br/>
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+        <li class="menu-item menu-item-摘录">
+          <a href="/tags/excerpt" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
             
-            分类
+            
+              摘录
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+        <li class="menu-item menu-item-整理">
+          <a href="/tags/manual" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
             
-            归档
+            
+              整理
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-收集">
+          <a href="/tags/collections" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              收集
+            
           </a>
         </li>
       
@@ -260,10 +274,10 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-                目前共计 3 个标签
+                共 6 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/R语言/" style="font-size: 30px; color: #111">R语言</a> <a href="/tags/线性回归/" style="font-size: 30px; color: #111">线性回归</a> <a href="/tags/统计/" style="font-size: 12px; color: #ccc">统计</a>
+              <a href="/tags/R语言/" style="font-size: 21px; color: #6f6f6f">R语言</a> <a href="/tags/excerpt/" style="font-size: 12px; color: #ccc">摘录</a> <a href="/tags/collections/" style="font-size: 30px; color: #111">收集</a> <a href="/tags/manual/" style="font-size: 12px; color: #ccc">整理</a> <a href="/tags/统计理论/" style="font-size: 21px; color: #6f6f6f">统计理论</a> <a href="/tags/计量/" style="font-size: 21px; color: #6f6f6f">计量</a>
             </div>
           </div>
         
@@ -283,16 +297,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
 
   
 
@@ -312,6 +316,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -322,8 +328,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">王 智 博</p>
-              <p class="site-description motion-element" itemprop="description">R & python</p>
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -331,10 +337,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
             
@@ -355,7 +361,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -369,15 +375,15 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
                       
-                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
                       
-                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
             </div>
@@ -388,9 +394,38 @@
 
           
           
-
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="摘录">摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="整理">整理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="收集">收集</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
+          
         </div>
       </section>
 
@@ -412,13 +447,14 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">王 智 博</span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miitbeian.gov.cn/">&nbsp;闽ICP备18026322号</a>
 
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
 
 
 
@@ -551,26 +587,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://wzb.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/tags/index.html';
-          this.page.identifier = 'tags/index.html';
-          this.page.title = 'tags';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://wzb.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -586,6 +602,10 @@
 
 
 
+  
+
+
+
 
 
 
@@ -602,113 +622,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("aHbLT7JP7vX6Bf9gEtqHEIuu-gzGzoHsz", "6oP5KTuhNOHV4lgUvBypaE8m");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 

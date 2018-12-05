@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="统计理论,整理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\end{align}$$ Binomial-二项分布$$\begin{align}X&amp;a">
+<meta name="keywords" content="统计理论,整理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计分布总结">
+<meta property="og:url" content="http://yoursite.com/tech/distributions.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\end{align}$$ Binomial-二项分布$$\begin{align}X&amp;a">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-05T00:30:34.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计分布总结">
+<meta name="twitter:description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\end{align}$$ Binomial-二项分布$$\begin{align}X&amp;a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/tech/distributions.html"/>
+
+
+
+
+
+  <title>统计分布总结 | My World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning & Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            
+              <b>技术分享</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            
+              <b>生活随笔</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-摘录">
+          <a href="/tags/excerpt" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
+            
+            
+              摘录
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-整理">
+          <a href="/tags/manual" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
+            
+            
+              整理
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-收集">
+          <a href="/tags/collections" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              收集
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/distributions.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王智博">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">统计分布总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T21:57:23+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="离散分布"><a href="#离散分布" class="headerlink" title="离散分布"></a>离散分布</h2><h3 id="Bernoulli-伯努利分布"><a href="#Bernoulli-伯努利分布" class="headerlink" title="Bernoulli-伯努利分布"></a>Bernoulli-伯努利分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Bernoulli(p)\\<br>&amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\<br>&amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\<br>&amp;M_x(t)=pe^t+1-p<br>\end{align}<br>$$</p>
+<h3 id="Binomial-二项分布"><a href="#Binomial-二项分布" class="headerlink" title="Binomial-二项分布"></a>Binomial-二项分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Bin(n,p)\\<br>&amp;P(x)=\bigl( \begin{smallmatrix}n \\ x \end{smallmatrix}\bigr)<br>p^x(1-p)^{n-x},\quad x=0,1,…,n\\<br>&amp;\mu_x=np,\quad \sigma_x^2=np(1-p)\\<br>&amp;M_x(t)=(pe^t+1-p)^n<br>\end{align}<br>$$</p>
+<h3 id="Poisson-泊松分布"><a href="#Poisson-泊松分布" class="headerlink" title="Poisson-泊松分布"></a>Poisson-泊松分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Poisson (\lambda)\\<br>&amp;P(x)=\frac{e^{-\lambda}\lambda^x}{x!},\quad x=0,1,2,…\\<br>&amp;\mu_x=\lambda,\quad \sigma_x^2=\lambda\\<br>&amp;M_x(t)=e^{\lambda(e^t-1)}<br>\end{align}<br>$$</p>
+<h3 id="Negative-Binomial-负二项分布"><a href="#Negative-Binomial-负二项分布" class="headerlink" title="Negative Binomial-负二项分布"></a>Negative Binomial-负二项分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim NB(r,p)\\<br>&amp;P(x)=\bigl( \begin{smallmatrix}x+r-1 \\ r-1 \end{smallmatrix}\bigr)<br>p^r(1-p)^x,\quad x=0,1,2,…\\<br>&amp;\mu_x=\frac{r(1-p)}{p},\quad \sigma_x^2=\frac{r(1-p)}{p^2}\\<br>&amp;M_x(t)=(\frac{p}{1-(1-p)e^t})^r\\<br>\end{align}<br>$$</p>
+<p>成功概率是$p$，$r$次成功会出现多少次失败</p>
+<h3 id="Geometry-几何分布"><a href="#Geometry-几何分布" class="headerlink" title="Geometry-几何分布"></a>Geometry-几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Geometry(p)\\<br>&amp;P(x)=p(1-p)^{x-1},\quad x=1,2,…\\<br>&amp;\mu_x=\frac{1-p}{p},\quad \sigma_x^2=\frac{1-p}{p^2}\\<br>&amp;M_x(t)=\frac{pe^t}{1-(1-p)e^t},\quad t &lt; -\ln(1-p)\\<br>\end{align}<br>$$</p>
+<p>成功概率是$p$，出现一次成功总共要多少次</p>
+<h3 id="Hypergeometric-超几何分布"><a href="#Hypergeometric-超几何分布" class="headerlink" title="Hypergeometric-超几何分布"></a>Hypergeometric-超几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Hyper(M,N,n)\\<br>&amp;P(x)=\frac{<br>    \bigl( \begin{smallmatrix}M \\ x \end{smallmatrix}\bigr)<br>    \bigl( \begin{smallmatrix}N-M \\ n-x \end{smallmatrix}\bigr)<br>}<br>{\bigl( \begin{smallmatrix}N \\ n \end{smallmatrix}\bigr)}\\<br>&amp;\mu_x=\frac{nM}{N},\quad \sigma_x^2=\frac{nM}{N}\frac{N-M}{N}\frac{N-n}{N-1}<br>\end{align}<br>$$</p>
+<p>总共有$N$条鱼，$M$条带标记，某一次捞$n$条，带标记的有几条</p>
+<h3 id="Multinomial-多项分布"><a href="#Multinomial-多项分布" class="headerlink" title="Multinomial-多项分布"></a>Multinomial-多项分布</h3><p>$$<br>\begin{align}<br>X_1,&amp;X_2,…,X_k\sim MultiNomial(p_1,…,p_k,n)\\<br>&amp;P(x)=\frac{n!}{x_1!x_2!…x_k!}p_1^{x_1}p_2^{x_2}…p_k^{x_k}\\<br>&amp;x_i\in{0,…,n},i\in{1,…,k},\sum x_i=n\\<br>&amp;E(X_i)=np_i,\quad Var(X_i)=np_i(1-p_i)<br>\end{align}<br>$$</p>
+<p>$k$种取值，掷n次，$x_i$表示每种发生几次</p>
+<p>$n=1$时，$x$可以取$1,…,k$这几个值，$P(x)$表示取这些值的概率</p>
+<p>$n=1$时,$P(x)=p_1^{1{x=1}}p_2^{1{x=2}}…p_k^{1{x=k}}$</p>
+<h2 id="连续分布"><a href="#连续分布" class="headerlink" title="连续分布"></a>连续分布</h2><h3 id="Uniform分布"><a href="#Uniform分布" class="headerlink" title="Uniform分布"></a>Uniform分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Uniform(a, b)\\<br>&amp;f_x(x)=\frac1{b-a},\quad x\in[a,b]\\<br>&amp;\mu_x=\frac{a+b}{2},\quad \sigma_x^2=\frac{(b-a)^2}{12}\\<br>&amp;M_x(t)=\frac{e^{tb}-e^{ta}}{t(b-a)}\\<br>U(0,1)&amp;\rightarrow a=0,b=1<br>\end{align}<br>$$</p>
+<h3 id="Normal-正态分布"><a href="#Normal-正态分布" class="headerlink" title="Normal-正态分布"></a>Normal-正态分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim N(\mu, \sigma^2)\\<br>&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty&lt; x&lt;+\infty\\<br>&amp;\mu_x=\mu,\quad \sigma_x^2=\sigma^2\\<br>&amp;M_x(t)=e^{\mu t+\frac12\sigma^2t^2}\\<br>\int_{-\infty}^{\infty}&amp;e^{-\frac{x^2}{2}}dx=\sqrt{2\pi}<br>\end{align}<br>$$</p>
+<h3 id="Gamma分布"><a href="#Gamma分布" class="headerlink" title="Gamma分布"></a>Gamma分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Gamma(\alpha, \beta)\\<br>&amp;f_x(x)=\frac{x^{\alpha-1}e^{-\frac{x}{\beta}}}<br>{\Gamma(\alpha)\beta^\alpha}<br>,\quad x&gt;0\\<br>&amp;\mu_x=\alpha\beta,\quad \sigma_x^2=\alpha\beta^2\\<br>&amp;M_x(t)=(1-\beta t)^{-\alpha}, \quad t&lt;\frac1\beta\\<br>\Gamma(\alpha)&amp;=\int_0^\infty t^{\alpha-1}e^{-t}dt=\alpha\Gamma(\alpha-1)=(\alpha-1)!\\<br>\Gamma(\frac12)&amp;=\sqrt{\pi}<br>\end{align}<br>$$</p>
+<h3 id="Chi-square-卡方分布"><a href="#Chi-square-卡方分布" class="headerlink" title="Chi-square-卡方分布"></a>Chi-square-卡方分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim \chi^2_v\\<br>&amp;f_x(x)=\frac{x^{\frac v2-1}e^{-\frac{x}{2}}}<br>{\Gamma(\frac v2)\sqrt{2^v}}<br>,\quad x&gt;0\\<br>&amp;\mu_x=v,\quad \sigma_x^2=2v\\<br>&amp;M_x(t)=(1-2 t)^{-\frac v2}, \quad t&lt;\frac12\\<br>Gamma&amp;特例\rightarrow \alpha=\frac v2,\beta=2<br>\end{align}<br>$$</p>
+<h3 id="Exponential-指数分布"><a href="#Exponential-指数分布" class="headerlink" title="Exponential-指数分布"></a>Exponential-指数分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim exp(\beta)\\<br>&amp;f_x(x)=\frac1\beta e^{-\frac x\beta},\quad x&gt;0\\<br>&amp;\mu_x=\beta,\quad \sigma_x^2=\beta^2\\<br>&amp;M_x(t)=\frac1{1-\beta t},t&lt;\frac1\beta\\<br>Gamma&amp;特例\rightarrow \alpha=1\\<br>Poisson&amp;\rightarrow \lambda=\frac1\beta<br>\end{align}<br>$$</p>
+<h3 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Beta(\alpha,\beta)\\<br>&amp;f_x(x)=\frac1{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}<br>,\quad 0\leq x\leq 1,\alpha&gt;0,\beta&gt;0\\<br>&amp;\mu_x=\frac{\alpha}{\alpha+\beta},\quad \sigma_x^2=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\\<br>&amp;M_x(t)=1+\sum_{j=1}^n(\prod_{i=0}^{j-1}\frac{\alpha+i}{\alpha+\beta+i})\frac{t^j}{j!}, \quad t&lt;\frac12\\<br>B&amp;(\alpha, \beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\\<br>U&amp;(0,1)\rightarrow \alpha=1,\beta=1\\<br>\int_0^1&amp;x^{\alpha-1}(1-x)^{\beta-1}=B(\alpha, \beta)<br>\end{align}<br>$$</p>
+<h3 id="Log-normal分布"><a href="#Log-normal分布" class="headerlink" title="Log-normal分布"></a>Log-normal分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim LogN(\mu,\sigma^2)\\<br>&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}\frac1x exp{-\frac1{2\sigma^2}(\log x-\mu)^2}<br>,\quad x&gt;0\\<br>Normal&amp;\rightarrow Y\sim N(\mu,\sigma^2),\quad X=e^Y\sim LogN(\mu,\sigma^2)\\<br>E(X^k)=&amp;E(e^{kY})=M_Y(k)=exp{\frac{\sigma^2k^2}{2}+\mu k}<br>\end{align}<br>$$</p>
+<h3 id="Double-Laplace-exponential-拉普拉斯分布"><a href="#Double-Laplace-exponential-拉普拉斯分布" class="headerlink" title="Double/Laplace exponential-拉普拉斯分布"></a>Double/Laplace exponential-拉普拉斯分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Laplace(\alpha,\beta)\\<br>&amp;f_x(x)=\frac1{2\beta}exp{-\frac{|x-\alpha|}{\beta}}<br>,\quad -\infty &lt; x &lt; +\infty\\<br>&amp;\mu_x=\alpha,\quad \sigma_x^2=2\beta^2\\<br>&amp;M_x(t)=\frac{e^{\alpha t}}{1-\beta^2 t^2}, \quad |t|&lt;\frac1\beta\\<br>厚尾&amp;，关于\alpha对称<br>\end{align}<br>$$</p>
+<h3 id="Cauchy-柯西分布"><a href="#Cauchy-柯西分布" class="headerlink" title="Cauchy-柯西分布"></a>Cauchy-柯西分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Cauchy(\mu,\sigma)\\<br>&amp;f_x(x)=\frac1{\pi\sigma}\frac1{1+(\frac{x-\mu}{\sigma})^2}<br>,\quad -\infty &lt; x &lt; +\infty\\<br>E(x^k)&amp;不存在,k\geq 1，MGF不存在\\<br>\phi_x(t)&amp;=E(e^{itx})=e^{iut-\sigma|t|},对t不可导<br>\end{align}<br>$$</p>
+<h3 id="IGamma-逆Gamma分布"><a href="#IGamma-逆Gamma分布" class="headerlink" title="IGamma-逆Gamma分布"></a>IGamma-逆Gamma分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim IGamma(\alpha, \beta)\\<br>&amp;f_x(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}(\frac1y)^{\alpha+1}e^{-\frac\beta y},\quad x&gt;0\\<br>Gamma&amp;\rightarrow Y\sim Gamma(\alpha, \beta),\quad X=Y^{-1}\sim IGamma(\alpha, \beta)\\<br>\end{align}<br>$$</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="exponential-family-指数族"><a href="#exponential-family-指数族" class="headerlink" title="exponential family-指数族"></a>exponential family-指数族</h3><p>$$<br>p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))<br>$$</p>
+<h3 id="共轭先验分布"><a href="#共轭先验分布" class="headerlink" title="共轭先验分布"></a>共轭先验分布</h3><ul>
+<li>$Poisson(\lambda)\rightarrow\lambda\Rightarrow Gamma(\alpha, \beta)\rightarrow Gamma(\alpha+n\bar X, \beta+n)$</li>
+<li>$exp(\beta)\rightarrow\lambda\Rightarrow IGamma(\alpha, \beta)\rightarrow Gamma(\alpha+n, \beta+n\bar X)$</li>
+<li>$Bin(n,p)\rightarrow p\Rightarrow Beta$</li>
+<li>$Normal$方差已知时$\mu\Rightarrow Normal$，均值已知时$\sigma^2\Rightarrow IGamma$，都未知$\mu,\sigma^2\Rightarrow N-IGamma$</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/统计理论/" rel="tag"># 统计理论</a>
+          
+            <a href="/tags/manual/" rel="tag"># 整理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/life/tianlong.html" rel="next" title="《天龙八部》回目词">
+                <i class="fa fa-chevron-left"></i> 《天龙八部》回目词
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/life/jilei.html" rel="prev" title="鸡肋网站">
+                鸡肋网站 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">时间轴</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="摘录">摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="整理">整理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="收集">收集</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#离散分布"><span class="nav-number">1.</span> <span class="nav-text">离散分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bernoulli-伯努利分布"><span class="nav-number">1.1.</span> <span class="nav-text">Bernoulli-伯努利分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binomial-二项分布"><span class="nav-number">1.2.</span> <span class="nav-text">Binomial-二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Poisson-泊松分布"><span class="nav-number">1.3.</span> <span class="nav-text">Poisson-泊松分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Negative-Binomial-负二项分布"><span class="nav-number">1.4.</span> <span class="nav-text">Negative Binomial-负二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Geometry-几何分布"><span class="nav-number">1.5.</span> <span class="nav-text">Geometry-几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypergeometric-超几何分布"><span class="nav-number">1.6.</span> <span class="nav-text">Hypergeometric-超几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multinomial-多项分布"><span class="nav-number">1.7.</span> <span class="nav-text">Multinomial-多项分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续分布"><span class="nav-number">2.</span> <span class="nav-text">连续分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform分布"><span class="nav-number">2.1.</span> <span class="nav-text">Uniform分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-正态分布"><span class="nav-number">2.2.</span> <span class="nav-text">Normal-正态分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gamma分布"><span class="nav-number">2.3.</span> <span class="nav-text">Gamma分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chi-square-卡方分布"><span class="nav-number">2.4.</span> <span class="nav-text">Chi-square-卡方分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exponential-指数分布"><span class="nav-number">2.5.</span> <span class="nav-text">Exponential-指数分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Beta分布"><span class="nav-number">2.6.</span> <span class="nav-text">Beta分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-normal分布"><span class="nav-number">2.7.</span> <span class="nav-text">Log-normal分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Double-Laplace-exponential-拉普拉斯分布"><span class="nav-number">2.8.</span> <span class="nav-text">Double/Laplace exponential-拉普拉斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cauchy-柯西分布"><span class="nav-number">2.9.</span> <span class="nav-text">Cauchy-柯西分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IGamma-逆Gamma分布"><span class="nav-number">2.10.</span> <span class="nav-text">IGamma-逆Gamma分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-family-指数族"><span class="nav-number">3.1.</span> <span class="nav-text">exponential family-指数族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭先验分布"><span class="nav-number">3.2.</span> <span class="nav-text">共轭先验分布</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miitbeian.gov.cn/">&nbsp;闽ICP备18026322号</a>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

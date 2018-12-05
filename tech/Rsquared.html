@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -53,25 +51,22 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="R语言,线性回归," />
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
 
 
 
+
+
+  <meta name="keywords" content="R语言,计量," />
 
 
 
@@ -79,21 +74,23 @@
 
 
 
-<meta name="description" content="为什么不加截距项时R方反而更大？为什么R方会是负数？">
-<meta name="keywords" content="R语言,线性回归">
+
+
+
+<meta name="description" content="引言在多元线性回归模型中，通常使用$R^2$来衡量拟合优度，其公式如下 $$R^2 = \frac{\sum_i(\hat y - \bar y)^2}{\sum_i(y_i-\bar y)^2} = 1-\frac{\sum_i (y_i - \hat y_i)^2 }{\sum_i (y_i - \bar y)^2}$$ 线性回归是要找一条直线拟合当前数据，从第二个公式可以看出，如果我们把$Y">
+<meta name="keywords" content="R语言,计量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="奇怪的R方">
-<meta property="og:url" content="http://yoursite.com/2018/06/18/奇怪的R方/index.html">
-<meta property="og:site_name" content="Data Science">
-<meta property="og:description" content="为什么不加截距项时R方反而更大？为什么R方会是负数？">
+<meta property="og:url" content="http://yoursite.com/tech/Rsquared.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="引言在多元线性回归模型中，通常使用$R^2$来衡量拟合优度，其公式如下 $$R^2 = \frac{\sum_i(\hat y - \bar y)^2}{\sum_i(y_i-\bar y)^2} = 1-\frac{\sum_i (y_i - \hat y_i)^2 }{\sum_i (y_i - \bar y)^2}$$ 线性回归是要找一条直线拟合当前数据，从第二个公式可以看出，如果我们把$Y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
-<meta property="og:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/lm.png">
-<meta property="og:updated_time" content="2018-06-29T18:31:47.227Z">
+<meta property="og:image" content="http://static.wzbtech.com/static/images/lm.png">
+<meta property="og:updated_time" content="2018-12-02T13:46:40.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="奇怪的R方">
-<meta name="twitter:description" content="为什么不加截距项时R方反而更大？为什么R方会是负数？">
-<meta name="twitter:image" content="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
+<meta name="twitter:description" content="引言在多元线性回归模型中，通常使用$R^2$来衡量拟合优度，其公式如下 $$R^2 = \frac{\sum_i(\hat y - \bar y)^2}{\sum_i(y_i-\bar y)^2} = 1-\frac{\sum_i (y_i - \hat y_i)^2 }{\sum_i (y_i - \bar y)^2}$$ 线性回归是要找一条直线拟合当前数据，从第二个公式可以看出，如果我们把$Y">
+<meta name="twitter:image" content="http://static.wzbtech.com/static/images/lm.png">
 
 
 
@@ -103,10 +100,10 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/18/奇怪的R方/"/>
+  <link rel="canonical" href="http://yoursite.com/tech/Rsquared.html"/>
 
 
 
 
 
-  <title>奇怪的R方 | Data Science</title>
+  <title>奇怪的R方 | My World</title>
   
 
 
@@ -159,12 +156,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Data Science</span>
+        <span class="site-title">My World</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Coding & Thinking</p>
+        <p class="site-subtitle">Learning & Thinking</p>
       
   </div>
 
@@ -184,42 +181,62 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
             
-            首页
+            
+              <b>技术分享</b><br/>
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
             
-            标签
+            
+              <b>生活随笔</b><br/>
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+        <li class="menu-item menu-item-摘录">
+          <a href="/tags/excerpt" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
             
-            分类
+            
+              摘录
+            
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+        <li class="menu-item menu-item-整理">
+          <a href="/tags/manual" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
             
-            归档
+            
+              整理
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-收集">
+          <a href="/tags/collections" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              收集
+            
           </a>
         </li>
       
@@ -256,16 +273,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/18/奇怪的R方/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/Rsquared.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王 智 博">
+      <meta itemprop="name" content="王智博">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Data Science">
+      <meta itemprop="name" content="My World">
     </span>
 
     
@@ -283,8 +300,6 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
-              
               <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-18T00:19:22+08:00">
                 2018-06-18
               </time>
@@ -296,56 +311,12 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/线性回归/" itemprop="url" rel="index">
-                    <span itemprop="name">线性回归</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/18/奇怪的R方/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/18/奇怪的R方/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
           
-          
-             <span id="/2018/06/18/奇怪的R方/" class="leancloud_visitors" data-flag-title="奇怪的R方">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -367,11 +338,7 @@
       
 
       
-        <!-- <img src='/img/other.jpg' align='right' style=' width:2000px;height:1000 px'/> -->
-<img align="right" width="2000px" height="1000px" src="http://pb3j649ib.bkt.clouddn.com/static/images/r.jpg">
-<p>为什么不加截距项时R方反而更大？<br>为什么R方会是负数？</p>
-<a id="more"></a>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在多元线性回归模型中，通常使用$R^2$来衡量拟合优度，其公式如下</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在多元线性回归模型中，通常使用$R^2$来衡量拟合优度，其公式如下</p>
 <p>$$R^2 = \frac{\sum_i(\hat y - \bar y)^2}{\sum_i(y_i-\bar y)^2} = 1-\frac{\sum_i (y_i - \hat y_i)^2 }{\sum_i (y_i - \bar y)^2}$$</p>
 <p>线性回归是要找一条直线拟合当前数据，从第二个公式可以看出，如果我们把$Y = \bar y$这条水平线看成拟合数据最简单的模型，$R^2$的本质是当前模型比$Y = \bar y$模型好多少的度量。</p>
 <p>从这个角度来看，使用一条带有截距项的直线拟合，一定比用不带截距项的直线拟合效果要好，因为后者是前者的一种特例（截距项为0），但是下面这个R语言中的例子的结果，却与这个认知相悖</p>
@@ -390,7 +357,7 @@
 <p>因为合理！一个没有截距项的线性模型其实是受到了一定的限制，该模型拟合的好不好，当然要放在同一个平台上，跟同样没有截距项（受到相同限制）的模型中最朴素的比。也就是要跟$Y=0$比，而不是和$Y=\bar y$比。</p>
 <p>用图形表示如下</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">plot(x, y, pch = <span class="number">16</span>, cex = <span class="number">0.5</span>,</span><br><span class="line">     xlim = c(-<span class="number">1</span>, <span class="number">6</span>), ylim = c(-<span class="number">1</span>, <span class="number">15</span>), </span><br><span class="line">     xlab = <span class="string">'x'</span>, ylab = <span class="string">'y'</span>)</span><br><span class="line">abline(h = <span class="number">0</span>, col = <span class="string">'blue'</span>, lty = <span class="number">2</span>)</span><br><span class="line">abline(h = mean(y), col = <span class="string">'red'</span>, lty = <span class="number">2</span>)</span><br><span class="line">abline(v = <span class="number">0</span>, col = <span class="string">'grey'</span>)</span><br><span class="line">abline(fit, lwd = <span class="number">2</span>, col = <span class="string">'red'</span>)</span><br><span class="line">abline(fit0, lwd = <span class="number">2</span>, col = <span class="string">'blue'</span>)</span><br><span class="line">legend(<span class="string">'topleft'</span>, c(<span class="string">'fit'</span>, <span class="string">'fit0'</span>), </span><br><span class="line">       lty = <span class="number">1</span>, col = c(<span class="string">'red'</span>, <span class="string">'blue'</span>))</span><br></pre></td></tr></table></figure>
-<img src="http://pb3j649ib.bkt.clouddn.com/static/images/lm.png">
+<img src="http://static.wzbtech.com/static/images/lm.png">
 <p>红色实线（带截距项模型）和红色虚线比，蓝色实线（不带截距项模型）和蓝色虚线比。</p>
 <h2 id="R-2-为负"><a href="#R-2-为负" class="headerlink" title="$R^2$为负"></a>$R^2$为负</h2><p>如果使用$R^2$的公式，没有截距项的模型有可能还没有$Y=\bar y$拟合的好，这就是$R^2$可能出现负数的一个原因；而和$Y=0$比则不会出现负数的情况。</p>
 <p>下面首先用R语言给出一个$R^2$为负的例子</p>
@@ -427,7 +394,7 @@
           
             <a href="/tags/R语言/" rel="tag"># R语言</a>
           
-            <a href="/tags/线性回归/" rel="tag"># 线性回归</a>
+            <a href="/tags/计量/" rel="tag"># 计量</a>
           
         </div>
       
@@ -446,7 +413,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/29/panel/" rel="prev" title="面板数据回归">
+              <a href="/tech/panel.html" rel="prev" title="面板数据回归">
                 面板数据回归 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -478,16 +445,6 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
-  
 
 
 
@@ -505,27 +462,29 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
       
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">王 智 博</p>
-              <p class="site-description motion-element" itemprop="description">R & python</p>
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -533,10 +492,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
             
@@ -557,7 +516,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -571,15 +530,15 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
                       
-                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
                       
-                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
             </div>
@@ -590,9 +549,38 @@
 
           
           
-
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="摘录">摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="整理">整理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="收集">收集</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
+          
         </div>
       </section>
 
@@ -630,13 +618,14 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">王 智 博</span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miitbeian.gov.cn/">&nbsp;闽ICP备18026322号</a>
 
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
 
 
 
@@ -769,26 +758,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://wzb.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/06/18/奇怪的R方/';
-          this.page.identifier = '2018/06/18/奇怪的R方/';
-          this.page.title = '奇怪的R方';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://wzb.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -804,6 +773,10 @@
 
 
 
+  
+
+
+
 
 
 
@@ -820,113 +793,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("aHbLT7JP7vX6Bf9gEtqHEIuu-gzGzoHsz", "6oP5KTuhNOHV4lgUvBypaE8m");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
