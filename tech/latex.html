@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="整理,latex," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="符号参考数学符号 字号参考12345678910\tiny           5pt\scriptsize     7pt\footnotesize   8pt\small          9pt\normalsize     10pt\large          12pt\Large          14.4pt\LARGE          17.28pt\huge">
+<meta name="keywords" content="整理,latex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="latex总结">
+<meta property="og:url" content="http://yoursite.com/tech/latex.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="符号参考数学符号 字号参考12345678910\tiny           5pt\scriptsize     7pt\footnotesize   8pt\small          9pt\normalsize     10pt\large          12pt\Large          14.4pt\LARGE          17.28pt\huge">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-05T02:41:31.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="latex总结">
+<meta name="twitter:description" content="符号参考数学符号 字号参考12345678910\tiny           5pt\scriptsize     7pt\footnotesize   8pt\small          9pt\normalsize     10pt\large          12pt\Large          14.4pt\LARGE          17.28pt\huge">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/tech/latex.html"/>
+
+
+
+
+
+  <title>latex总结 | My World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning & Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            
+              <b>技术分享</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            
+              <b>生活随笔</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-摘录">
+          <a href="/tags/excerpt" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
+            
+            
+              摘录
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-整理">
+          <a href="/tags/manual" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
+            
+            
+              整理
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-收集">
+          <a href="/tags/collections" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              收集
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/latex.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王智博">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">latex总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T10:36:25+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="符号参考"><a href="#符号参考" class="headerlink" title="符号参考"></a>符号参考</h2><p><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">数学符号</a></p>
+<h2 id="字号参考"><a href="#字号参考" class="headerlink" title="字号参考"></a>字号参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\tiny           5pt</span><br><span class="line">\scriptsize     7pt</span><br><span class="line">\footnotesize   8pt</span><br><span class="line">\small          9pt</span><br><span class="line">\normalsize     10pt</span><br><span class="line">\large          12pt</span><br><span class="line">\Large          14.4pt</span><br><span class="line">\LARGE          17.28pt</span><br><span class="line">\huge           20.74pt</span><br><span class="line">\Huge           24.88pt</span><br></pre></td></tr></table></figure>
+<h2 id="字体参考"><a href="#字体参考" class="headerlink" title="字体参考"></a>字体参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\textbf  加粗</span><br><span class="line">\textit  意大利斜体</span><br><span class="line">\textsl  slanted斜体</span><br><span class="line"></span><br><span class="line">\textsf  无衬线</span><br><span class="line">\texttt  等宽</span><br></pre></td></tr></table></figure>
+<p>用法：<code>\textbf{content}</code></p>
+<h2 id="插入公式"><a href="#插入公式" class="headerlink" title="插入公式"></a>插入公式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;align*&#125;</span><br><span class="line">    f(z)&amp;=b\\</span><br><span class="line">    &amp;=c+d</span><br><span class="line">\end&#123;align*&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入列表"><a href="#插入列表" class="headerlink" title="插入列表"></a>插入列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;itemize&#125;</span><br><span class="line">    \item first</span><br><span class="line">    \item second</span><br><span class="line">\end&#123;itemize&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;enumerate&#125;</span><br><span class="line">    \item first</span><br><span class="line">    \item second</span><br><span class="line">\end&#123;enumerate&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;graphicx&#125; </span><br><span class="line"></span><br><span class="line">\begin&#123;figure&#125;[h]</span><br><span class="line">	\centering</span><br><span class="line">	\includegraphics[width=0.5\textwidth]&#123;my.jpg&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入代码"><a href="#插入代码" class="headerlink" title="插入代码"></a>插入代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;listings&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;lstlisting&#125;[language=R]</span><br><span class="line">    a &lt;- c(1, 2)</span><br><span class="line">    b &lt;- a + 1</span><br><span class="line">\end&#123;lstlisting&#125;</span><br></pre></td></tr></table></figure>
+<p>（注意：如果要显示的代码顶格，这段代码不能缩进）</p>
+<p><strong>样式设置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">% 灰色背景</span><br><span class="line">\definecolor&#123;light-gray&#125;&#123;gray&#125;&#123;0.95&#125;</span><br><span class="line">\lstset&#123;columns=fullflexible, basicstyle=\ttfamily,</span><br><span class="line">    backgroundcolor=\color&#123;light-gray&#125;,xleftmargin=0.5cm&#125;</span><br><span class="line"></span><br><span class="line">% 外边框</span><br><span class="line">\lstset&#123;basicstyle=\scriptsize,</span><br><span class="line">    numbers=left, %设置行号位置</span><br><span class="line">    numberstyle=\tiny, %设置行号大小</span><br><span class="line">    keywordstyle=\color&#123;blue!70&#125;, %设置关键字颜色</span><br><span class="line">    commentstyle=\color[cmyk]&#123;1,0,1,0&#125;, %设置注释颜色</span><br><span class="line">    frame=shadowbox, %设置边框格式</span><br><span class="line">    rulesepcolor=\color&#123;red!20!green!20!blue!20&#125;,</span><br><span class="line">    escapeinside=``, %逃逸字符(1左面的键)，用于显示中文</span><br><span class="line">    breaklines, %自动折行</span><br><span class="line">    extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题</span><br><span class="line">    xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距</span><br><span class="line">    %tabsize=4, %设置tab空格数</span><br><span class="line">    %showspaces=false %不显示空格</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><p>三线表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;booktabs&#125;</span><br><span class="line"></span><br><span class="line">\begin&#123;table&#125;  </span><br><span class="line">    \centering</span><br><span class="line">    \setlength&#123;\abovecaptionskip&#125;&#123;0pt&#125;%    </span><br><span class="line">    \setlength&#123;\belowcaptionskip&#125;&#123;7pt&#125;%</span><br><span class="line">    \caption&#123;Three line&#125;</span><br><span class="line">    \begin&#123;tabular&#125;&#123;ccc&#125;  </span><br><span class="line">        \toprule   </span><br><span class="line">        first&amp;second&amp;third\\ </span><br><span class="line">        \midrule       </span><br><span class="line">        1 &amp; 2 &amp; 3 \\ </span><br><span class="line">        4 &amp; 5 &amp; 6 \\ </span><br><span class="line">        7 &amp; 8 &amp; 9 \\</span><br><span class="line">        \bottomrule  </span><br><span class="line">    \end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><ol>
+<li>xelatex编译</li>
+</ol>
+<p>4种方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[12pt]&#123;article&#125;</span><br><span class="line">\usepackage[UTF8]&#123;ctex&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">    中文English</span><br><span class="line">\end&#123;document&#125;</span><br><span class="line"></span><br><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">    \usepackage&#123;xeCJK&#125;</span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">        中文English</span><br><span class="line">    \end&#123;document&#125;</span><br><span class="line"></span><br><span class="line">\documentclass&#123;ctexart&#125;</span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">        中文English</span><br><span class="line">    \end&#123;document&#125;</span><br><span class="line"></span><br><span class="line">\documentclass[12pt]&#123;article&#125;</span><br><span class="line">    \usepackage&#123;CJK&#125;</span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">    \begin&#123;CJK*&#125;&#123;GBK&#125;&#123;song&#125;</span><br><span class="line">    \CJKtilde\CJKindent</span><br><span class="line">        中文English</span><br><span class="line">    \end&#123;CJK*&#125;</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>pdfLatex编译</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">        中文English</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="中文字体设置"><a href="#中文字体设置" class="headerlink" title="中文字体设置"></a>中文字体设置</h2><p>这里只讨论xelatex编译下的中文字体设置，windows10环境。</p>
+<p>这些设置在latex和beamer下都适用，用xelatex编译而不是pdflatex，不会影响英文字体。</p>
+<h3 id="查找可用字体"><a href="#查找可用字体" class="headerlink" title="查找可用字体"></a>查找可用字体</h3><p>查找<a href="http://mirrors.ibiblio.org/CTAN/macros/xetex/latex/xecjk/xeCJK.pdf" target="_blank" rel="noopener">XeCJK宏包手册</a>，搜索<code>fc-list</code>找到这部分内容的说明。</p>
+<p>简单记录如下，命令行中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chcp 65001</span><br><span class="line">fc-list &gt; fontlist.txt</span><br><span class="line">fc-list -f &quot;%&#123;family&#125;\n&quot; :lang=zh &gt; zhfont.txt</span><br></pre></td></tr></table></figure>
+<p>得到<code>fontlist.txt</code>和<code>zhfont.txt</code>两个文件</p>
+<h3 id="全局设置"><a href="#全局设置" class="headerlink" title="全局设置"></a>全局设置</h3><p>本节适用于<code>ctex</code>和<code>XeCJK</code>两个宏包，调用时唯一的区别在于将包名换一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;article&#125;</span><br><span class="line">    \usepackage&#123;ctex&#125;</span><br><span class="line"></span><br><span class="line">    \setCJKmainfont&#123;微软雅黑&#125; </span><br><span class="line"></span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">	    一段文字</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p><code>setCJKmainfont</code>中的<code>微软雅黑</code>可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">微软雅黑 宋体 黑体 仿宋 楷体 等线</span><br></pre></td></tr></table></figure>
+<p>等等，出现在<code>zhfont.txt</code>文件中的名称都可以（对应<code>fontlist.txt</code>文件每一行冒号前面部分，应该只有中文字体有效，即<code>zhfont.txt</code>文件中的名称）。</p>
+<p>也可以直接载入字体文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\setCJKmainfont&#123;simkai.ttf&#125;</span><br></pre></td></tr></table></figure>
+<p>新下载的字体只要拖动到与<code>simkai.ttf</code>这些字体相同的文件夹（Windows下为<code>C:\Windows\Fonts</code>）下，即可直接通过文件名调用。</p>
+<p>还可以设置粗体参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;article&#125;</span><br><span class="line">    \usepackage&#123;ctex&#125;</span><br><span class="line">    \setCJKmainfont[BoldFont=SimHei]&#123;NSimSun&#125;</span><br><span class="line"></span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">	    一段文字\textbf&#123;加粗&#125;</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="局部设置"><a href="#局部设置" class="headerlink" title="局部设置"></a>局部设置</h3><p>本节适用于<code>ctex</code>和<code>XeCJK</code>两个宏包，调用时唯一的区别在于将包名换一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">    \usepackage&#123;xeCJK&#125;</span><br><span class="line">    \setCJKmainfont&#123;simkai.ttf&#125;</span><br><span class="line"></span><br><span class="line">    \setCJKfamilyfont&#123;hei&#125;&#123;SimHei&#125;       </span><br><span class="line">    \newcommand&#123;\hei&#125;&#123;\CJKfamily&#123;hei&#125;&#125; </span><br><span class="line"></span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">        默认字体</span><br><span class="line">        &#123;\hei 这段文字是黑体&#125;    \\</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>这种设置方法可以支持<code>zhfont.txt</code>中的所有字体。</p>
+<h3 id="ctex局部设置"><a href="#ctex局部设置" class="headerlink" title="ctex局部设置"></a>ctex局部设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;article&#125;</span><br><span class="line">    \usepackage&#123;ctex&#125;</span><br><span class="line"></span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">	    一段文字\\</span><br><span class="line">	    &#123;\songti 这段文字是宋体&#125; \\</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p> <code>\songti</code>目前测试只有下面几种可用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;\songti 这段文字是宋体&#125;   \\</span><br><span class="line">&#123;\kaishu 这段文字是楷体&#125;   \\</span><br><span class="line">&#123;\heiti 这段文字是黑体&#125;    \\</span><br><span class="line">&#123;\fangsong 这段文字是仿宋&#125; \\</span><br></pre></td></tr></table></figure>
+<p>这种不需要设置就可以使用，但是字体有所局限</p>
+<h3 id="ctexart字体设置"><a href="#ctexart字体设置" class="headerlink" title="ctexart字体设置"></a>ctexart字体设置</h3><p>以上出现的在<code>ctexart</code>中都适用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;ctexart&#125;</span><br><span class="line">    \setCJKmainfont&#123;simkai.ttf&#125;</span><br><span class="line">    \setCJKfamilyfont&#123;hei&#125;&#123;SimHei&#125;       </span><br><span class="line">    \newcommand&#123;\hei&#125;&#123;\CJKfamily&#123;hei&#125;&#125; </span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">        默认字体</span><br><span class="line">        &#123;\hei 这段文字是黑体&#125;    \\</span><br><span class="line">        &#123;\songti 这段文字是宋体&#125;</span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>ctex宏包完美支持各种情况，包括字体的全局设置、局部设置，以及在article/beamer中的使用。实际使用中只要加载ctex宏包，使用xelatex编译就完美了</li>
+<li>ctexart文档类支持article中的各种设置，但是不能在beamer中使用</li>
+<li>xeCJK宏包多数功能都可以使用，只缺少一种局部设置功能</li>
+</ul>
+<h2 id="简单模板"><a href="#简单模板" class="headerlink" title="简单模板"></a>简单模板</h2><h3 id="英文模板"><a href="#英文模板" class="headerlink" title="英文模板"></a>英文模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[a4paper,12pt]&#123;article&#125; </span><br><span class="line">    \usepackage&#123;amsmath,amssymb,amstext&#125; </span><br><span class="line">    \usepackage&#123;float&#125;</span><br><span class="line">    \usepackage&#123;array&#125;           % 数组和表格制作</span><br><span class="line">    \usepackage&#123;fancyhdr&#125;        % 页眉页脚设置</span><br><span class="line">    \usepackage&#123;graphicx&#125;        % 插图</span><br><span class="line">    \usepackage&#123;tabularx&#125;        % 自动设置表格列宽</span><br><span class="line">    \usepackage&#123;multirow&#125;        % 跨行表格</span><br><span class="line">    \usepackage&#123;multicol&#125;        % 跨列表格</span><br><span class="line">    \usepackage&#123;titlesec&#125;        % 标题设置</span><br><span class="line">    \usepackage&#123;titletoc&#125;        % 目录格式设置</span><br><span class="line">    \usepackage&#123;epstopdf&#125;        % 编译生成pdf时，能够插入eps格式图片</span><br><span class="line">    \usepackage&#123;listings&#125;</span><br><span class="line">    \usepackage&#123;xcolor&#125;</span><br><span class="line">    \usepackage&#123;color&#125;</span><br><span class="line">    \usepackage&#123;booktabs&#125;</span><br><span class="line">    \usepackage[top=2.5cm,bottom=2.0cm,left=2.0cm,right=2.0cm]&#123;geometry&#125; % 页边距%1.5倍行距</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    \lstset&#123;basicstyle=\scriptsize,</span><br><span class="line">        numbers=left, %设置行号位置</span><br><span class="line">        numberstyle=\tiny, %设置行号大小</span><br><span class="line">        keywordstyle=\color&#123;blue!70&#125;, %设置关键字颜色</span><br><span class="line">        commentstyle=\color[cmyk]&#123;1,0,1,0&#125;, %设置注释颜色</span><br><span class="line">        frame=shadowbox, %设置边框格式</span><br><span class="line">        rulesepcolor=\color&#123;red!20!green!20!blue!20&#125;,</span><br><span class="line">        escapeinside=``, %逃逸字符(1左面的键)，用于显示中文</span><br><span class="line">        breaklines, %自动折行</span><br><span class="line">        extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题</span><br><span class="line">        xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距</span><br><span class="line">        %tabsize=4, %设置tab空格数</span><br><span class="line">        %showspaces=false %不显示空格</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">    \begin&#123;center&#125;</span><br><span class="line">        &#123;\Large \textbf&#123;\textsf&#123;title&#125;&#125; \\&#125;</span><br><span class="line">        </span><br><span class="line">        \textsf&#123;Name：  &#125;\qquad</span><br><span class="line">        \textsf&#123;ID： &#125;</span><br><span class="line">    \end&#123;center&#125;</span><br><span class="line"></span><br><span class="line">    text text text</span><br><span class="line"></span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="中文模板"><a href="#中文模板" class="headerlink" title="中文模板"></a>中文模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[a4paper,12pt]&#123;article&#125; </span><br><span class="line">    \usepackage&#123;ctex&#125;</span><br><span class="line">    \usepackage&#123;amsmath,amssymb,amstext&#125; </span><br><span class="line">    \usepackage&#123;float&#125;</span><br><span class="line">    \usepackage&#123;array&#125;           % 数组和表格制作</span><br><span class="line">    \usepackage&#123;fancyhdr&#125;        % 页眉页脚设置</span><br><span class="line">    \usepackage&#123;graphicx&#125;        % 插图</span><br><span class="line">    \usepackage&#123;tabularx&#125;        % 自动设置表格列宽</span><br><span class="line">    \usepackage&#123;multirow&#125;        % 跨行表格</span><br><span class="line">    \usepackage&#123;multicol&#125;        % 跨列表格</span><br><span class="line">    \usepackage&#123;titlesec&#125;        % 标题设置</span><br><span class="line">    \usepackage&#123;titletoc&#125;        % 目录格式设置</span><br><span class="line">    \usepackage&#123;epstopdf&#125;        % 编译生成pdf时，能够插入eps格式图片</span><br><span class="line">    \usepackage&#123;listings&#125;</span><br><span class="line">    \usepackage&#123;xcolor&#125;</span><br><span class="line">    \usepackage&#123;color&#125;</span><br><span class="line">    \usepackage&#123;booktabs&#125;</span><br><span class="line">    \usepackage[top=2.5cm,bottom=2.0cm,left=2.0cm,right=2.0cm]&#123;geometry&#125; % 页边距</span><br><span class="line"></span><br><span class="line">    \setCJKfamilyfont&#123;hei&#125;&#123;SimHei&#125;       </span><br><span class="line">    \newcommand&#123;\hei&#125;&#123;\CJKfamily&#123;hei&#125;&#125; </span><br><span class="line"></span><br><span class="line">    \renewcommand&#123;\figurename&#125;&#123;&#123;图&#125;&#125;</span><br><span class="line">    \linespread&#123;1.7&#125;   %1.5倍行距</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    \lstset&#123;basicstyle=\scriptsize,</span><br><span class="line">        numbers=left, %设置行号位置</span><br><span class="line">        numberstyle=\tiny, %设置行号大小</span><br><span class="line">        keywordstyle=\color&#123;blue!70&#125;, %设置关键字颜色</span><br><span class="line">        commentstyle=\color[cmyk]&#123;1,0,1,0&#125;, %设置注释颜色</span><br><span class="line">        frame=shadowbox, %设置边框格式</span><br><span class="line">        rulesepcolor=\color&#123;red!20!green!20!blue!20&#125;,</span><br><span class="line">        escapeinside=``, %逃逸字符(1左面的键)，用于显示中文</span><br><span class="line">        breaklines, %自动折行</span><br><span class="line">        extendedchars=false, %解决代码跨页时，章节标题，页眉等汉字不显示的问题</span><br><span class="line">        xleftmargin=2em,xrightmargin=2em, aboveskip=1em, %设置边距</span><br><span class="line">        %tabsize=4, %设置tab空格数</span><br><span class="line">        %showspaces=false %不显示空格</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    \begin&#123;document&#125;</span><br><span class="line">    \begin&#123;center&#125;</span><br><span class="line">        &#123;\Large \hei 比较长的标题\\&#125;</span><br><span class="line">        \large</span><br><span class="line">        \hei&#123;姓名： 姓名 \qquad \\&#125;</span><br><span class="line">        \hei&#123;学号： 学号&#125;</span><br><span class="line">    \end&#123;center&#125;</span><br><span class="line"></span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line">    \end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="下载模板"><a href="#下载模板" class="headerlink" title="下载模板"></a>下载模板</h2><h3 id="英文模板-1"><a href="#英文模板-1" class="headerlink" title="英文模板"></a>英文模板</h3><p>导入一些常用包，然后套用<a href="https://www.latextemplates.com/cat/articles" target="_blank" rel="noopener">其他模板</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;amsmath,amssymb,amstext&#125; </span><br><span class="line">\usepackage&#123;float&#125;</span><br><span class="line">\usepackage&#123;array&#125;           % 数组和表格制作</span><br><span class="line">\usepackage&#123;fancyhdr&#125;        % 页眉页脚设置</span><br><span class="line">\usepackage&#123;graphicx&#125;        % 插图</span><br><span class="line">\usepackage&#123;tabularx&#125;        % 自动设置表格列宽</span><br><span class="line">\usepackage&#123;multirow&#125;        % 跨行表格</span><br><span class="line">\usepackage&#123;multicol&#125;        % 跨列表格</span><br><span class="line">\usepackage&#123;titlesec&#125;        % 标题设置</span><br><span class="line">\usepackage&#123;titletoc&#125;        % 目录格式设置</span><br><span class="line">\usepackage&#123;epstopdf&#125;        % 编译生成pdf时，能够插入eps格式图片</span><br><span class="line">\usepackage&#123;listings&#125;        % 插入代码</span><br><span class="line">\usepackage&#123;booktabs&#125;        % 三线表</span><br><span class="line">\usepackage&#123;xcolor&#125;</span><br><span class="line">\usepackage&#123;color&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="中文模板-1"><a href="#中文模板-1" class="headerlink" title="中文模板"></a>中文模板</h3><p>英文导入的包+中文包，配置中文字体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;ctex&#125;</span><br><span class="line"></span><br><span class="line">\setCJKfamilyfont&#123;hei&#125;&#123;SimHei&#125;       </span><br><span class="line">\newcommand&#123;\hei&#125;&#123;\CJKfamily&#123;hei&#125;&#125; </span><br><span class="line"></span><br><span class="line">\renewcommand&#123;\figurename&#125;&#123;&#123;图&#125;&#125;</span><br><span class="line">\linespread&#123;1.5&#125;   %1.5倍行距</span><br></pre></td></tr></table></figure>
+<h2 id="资源搜集"><a href="#资源搜集" class="headerlink" title="资源搜集"></a>资源搜集</h2><ul>
+<li><a href="https://www.ntg.nl/doc/biemesderfer/ltxcrib.pdf" target="_blank" rel="noopener">latex命令汇总</a></li>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX/Command_Glossary" target="_blank" rel="noopener">latex命令汇总更全</a></li>
+<li><a href="http://math.ecnu.edu.cn/~latex/slides/beamer/MathFonts.pdf" target="_blank" rel="noopener">数学公式字体比较</a></li>
+<li><a href="http://www.ctex.org/documents/shredder/src/texbook.pdf" target="_blank" rel="noopener">Tex Book</a></li>
+<li><a href="http://mirror.neu.edu.cn/CTAN/language/chinese/ctex/ctex.pdf" target="_blank" rel="noopener">ctex宏集手册</a></li>
+<li><a href="https://www.latextemplates.com/" target="_blank" rel="noopener">模板</a></li>
+<li><a href="https://github.com/egeerardyn/awesome-LaTeX" target="_blank" rel="noopener">github资源集合</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/manual/" rel="tag"># 整理</a>
+          
+            <a href="/tags/latex/" rel="tag"># latex</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/life/sites.html" rel="next" title="我喜欢的网站">
+                <i class="fa fa-chevron-left"></i> 我喜欢的网站
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tech/beamer.html" rel="prev" title="beamer总结">
+                beamer总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">时间轴</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="摘录">摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="整理">整理</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="收集">收集</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号参考"><span class="nav-number">1.</span> <span class="nav-text">符号参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字号参考"><span class="nav-number">2.</span> <span class="nav-text">字号参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体参考"><span class="nav-number">3.</span> <span class="nav-text">字体参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入公式"><span class="nav-number">4.</span> <span class="nav-text">插入公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入列表"><span class="nav-number">5.</span> <span class="nav-text">插入列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图片"><span class="nav-number">6.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入代码"><span class="nav-number">7.</span> <span class="nav-text">插入代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入表格"><span class="nav-number">8.</span> <span class="nav-text">插入表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文支持"><span class="nav-number">9.</span> <span class="nav-text">中文支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文字体设置"><span class="nav-number">10.</span> <span class="nav-text">中文字体设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找可用字体"><span class="nav-number">10.1.</span> <span class="nav-text">查找可用字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局设置"><span class="nav-number">10.2.</span> <span class="nav-text">全局设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部设置"><span class="nav-number">10.3.</span> <span class="nav-text">局部设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctex局部设置"><span class="nav-number">10.4.</span> <span class="nav-text">ctex局部设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctexart字体设置"><span class="nav-number">10.5.</span> <span class="nav-text">ctexart字体设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">10.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单模板"><span class="nav-number">11.</span> <span class="nav-text">简单模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#英文模板"><span class="nav-number">11.1.</span> <span class="nav-text">英文模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文模板"><span class="nav-number">11.2.</span> <span class="nav-text">中文模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载模板"><span class="nav-number">12.</span> <span class="nav-text">下载模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#英文模板-1"><span class="nav-number">12.1.</span> <span class="nav-text">英文模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文模板-1"><span class="nav-number">12.2.</span> <span class="nav-text">中文模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源搜集"><span class="nav-number">13.</span> <span class="nav-text">资源搜集</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miitbeian.gov.cn/">&nbsp;闽ICP备18026322号</a>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
