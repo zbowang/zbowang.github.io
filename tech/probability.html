@@ -77,19 +77,19 @@
 
 
 
-<meta name="description" content="集合和概率这里以一个抛硬币的试验为例引出基本概念。一个硬币有${ H, T }$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$ 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集$\Omega$，其中每一种称为一个元素$\omega$，这是我们关注">
+<meta name="description" content="集合和概率这里以一个抛硬币的试验为例引出基本概念。一个硬币有$\{ H, T \}$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$ 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集$\Omega$，其中每一种称为一个元素$\omega$，这是我们">
 <meta name="keywords" content="统计理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高等概率论浅记">
 <meta property="og:url" content="http://yoursite.com/tech/probability.html">
 <meta property="og:site_name" content="My World">
-<meta property="og:description" content="集合和概率这里以一个抛硬币的试验为例引出基本概念。一个硬币有${ H, T }$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$ 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集$\Omega$，其中每一种称为一个元素$\omega$，这是我们关注">
+<meta property="og:description" content="集合和概率这里以一个抛硬币的试验为例引出基本概念。一个硬币有$\{ H, T \}$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$ 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集$\Omega$，其中每一种称为一个元素$\omega$，这是我们">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/conditional.PNG">
-<meta property="og:updated_time" content="2019-01-20T06:57:36.454Z">
+<meta property="og:updated_time" content="2019-01-20T07:03:08.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高等概率论浅记">
-<meta name="twitter:description" content="集合和概率这里以一个抛硬币的试验为例引出基本概念。一个硬币有${ H, T }$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$ 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集$\Omega$，其中每一种称为一个元素$\omega$，这是我们关注">
+<meta name="twitter:description" content="集合和概率这里以一个抛硬币的试验为例引出基本概念。一个硬币有$\{ H, T \}$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$ 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集$\Omega$，其中每一种称为一个元素$\omega$，这是我们">
 <meta name="twitter:image" content="http://static.wzbtech.com/static/images/conditional.PNG">
 
 
@@ -338,13 +338,13 @@
       
 
       
-        <h2 id="集合和概率"><a href="#集合和概率" class="headerlink" title="集合和概率"></a>集合和概率</h2><p>这里以一个抛硬币的试验为例引出基本概念。一个硬币有${ H, T }$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$</p>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;H H&#125; &#123;H T&#125; &#123;T H&#125; &#123;T T&#125;</span><br></pre></td></tr></table></figure>
-<p>这四种可能称为<strong>全集</strong>$\Omega$，其中每一种称为一个<strong>元素</strong>$\omega$，这是我们关注的最小单位。${ \omega }$是包含该元素的集合。注意：单独的$H$和$T$只是试验结果，单独出现在这里没有意义。</p>
+        <h2 id="集合和概率"><a href="#集合和概率" class="headerlink" title="集合和概率"></a>集合和概率</h2><p>这里以一个抛硬币的试验为例引出基本概念。一个硬币有$\{ H, T \}$正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为$\frac14$</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;H H&#125; &#123;H <span class="literal">T</span>&#125; &#123;<span class="literal">T</span> H&#125; &#123;<span class="literal">T</span> <span class="literal">T</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>这四种可能称为<strong>全集</strong>$\Omega$，其中每一种称为一个<strong>元素</strong>$\omega$，这是我们关注的最小单位。$\{ \omega \}$是包含该元素的集合。注意：单独的$H$和$T$只是试验结果，单独出现在这里没有意义。</p>
 <p>（为了防止大括号很乱，下文将<code>{H H} {H T} {T H} {T T}</code>分别记为$\omega_1,\omega_2,\omega_3,\omega_4$。）</p>
 <p>假设硬币正面记为1反面记为0，我们要关注两次抛掷得到的数字相加的结果，有三种可能</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;w1&#125;     <span class="number">2</span>  <span class="number">0.25</span> </span><br><span class="line">&#123;w2,w3&#125;  <span class="number">1</span>  <span class="number">0.5</span>  </span><br><span class="line">&#123;w4&#125;     <span class="number">0</span>  <span class="number">0.25</span></span><br></pre></td></tr></table></figure>
-<p>这里每一种可能称为一个<strong>事件</strong>，如$A={ \omega_1 }$；<strong>事件的集合</strong>用花体字母表示，如$\mathcal{A}={ { \omega_1 }, { \omega_2,\omega_3 } }$。</p>
+<p>这里每一种可能称为一个<strong>事件</strong>，如$A=\{ \omega_1 \}$；<strong>事件的集合</strong>用花体字母表示，如$\mathcal{A}=\{ \{ \omega_1 \}, \{ \omega_2,\omega_3 \} \}$。</p>
 <p><code>0 1 2</code>是随机变量$X$的三种取值，随机变量的相关内容下一节再详细说明。</p>
 <p><code>0.25 0.5 0.25</code>分别是三个<strong>事件的概率</strong>，$P(A)=0.25$。概率$P$是定义在事件上而不是元素上的，因为事件是我们要关注的东西。多个不相交事件组合的概率就是单个事件概率相加。 </p>
 <p>概率$P$在定义时，必须保证对所有事件及组合都有效。这时就要引入<strong>域(field)</strong>的概念。域是集合的集合，里面集合的交并补等运算后的集合仍在这个域里。$(\Omega, \mathcal{B}, P)$构成一个概率空间。其中$\mathcal{B}$是$\sigma-field$，表示$\Omega$ 的所有子集组成的集合。以上面的$\Omega$为例，它有$2^4=16$个子集</p>
@@ -356,12 +356,12 @@
 <h2 id="随机变量"><a href="#随机变量" class="headerlink" title="随机变量"></a>随机变量</h2><p>上文提到<code>0 1 2</code>是随机变量$X$的三种取值，而我们关注“数字加和”这样的规则就是<strong>随机变量</strong>。因此随机变量的本质是一个函数，一个映射，将从事件空间映射到实数空间。</p>
 <p>我们通常说的“随机变量的值”，甚至直接用等号$P(X=1)$，常常会让我们误以为随机变量是一个数。但随机变量是一个函数而不是一个数，随机变量取值指的是映射到的实数空间中的取值。就像我们初中学函数时$y = f(x)$，函数$f$的取值是作用在某个$x$之后的$y$的取值。</p>
 <p><strong>随即变量取值的概率</strong>。本来概率只存在于事件空间，有了这种映射，则概率可以作用于实数空间。原来我们会说某一个事件发生的概率是多大，现在我们可以说随机变量取值为$1$的概率是多大。随机变量取值的概率值就是映射回事件空间中对应事件的概率。</p>
-<p>$$P(X\lt2)=P({ \omega_1,\omega_2,\omega_3 })=0.75$$</p>
+<p>$$P(X\lt2)=P(\{ \omega_1,\omega_2,\omega_3 \})=0.75$$</p>
 <p>更严格一点应该这么写</p>
-<p>$$P[X&lt;2]=P[X\in(-\infty, 2)]= P\circ X^{-1}((-\infty, 2))=P({ \omega_1,\omega_2,\omega_3 })=0.75$$</p>
+<p>$$P[X&lt;2]=P[X\in(-\infty, 2)]= P\circ X^{-1}((-\infty, 2))=P(\{ \omega_1,\omega_2,\omega_3 \})=0.75$$</p>
 <p>其中第二个式子表示将$(-\infty, 2)$逆回事件空间，再用$P$进行测量，等价于$P(X^{-1}((-\infty, 2)))$。</p>
 <p>而像$[X=1]$，$[X&lt;2]$这样的符号其实不符合这些字母本身的定义，只是被定义成了这样</p>
-<p>$[X\in A’]:=X^{-1}(A’)={ \omega:X(\omega)\in A’ }$</p>
+<p>$[X\in A’]:=X^{-1}(A’)=\{ \omega:X(\omega)\in A’ \}$</p>
 <p>$P$定义时也只是能对事件进行测量，所以也只有这样逆回去，前面的$P$才符合定义。</p>
 <p>接下来，我们将随机变量与域联系起来。</p>
 <p>首先要明确，随机变量与事件是对应的。随机变量是一个函数，是将集合映射到实数空间的一种规则，确定一种规则，则确定了一组事件。考虑下面两种规则</p>
@@ -413,7 +413,7 @@
 <p>$$\int_{\mathbb{R}} x F(dx)=\int_{\mathbb{R}} xf(x) dx$$</p>
 <p>但是如果提到离散型变量的密度函数，一般会直接用离散形式写出每个取值的概率$P(X=k)$，对于取值区间则会用求和符号表示。如果要写成积分形式，要使用<strong>counting测度</strong>而不是Lebesgue测度。这个原因在于，将连续型变量的密度函数$f(x)$画在坐标系中，它下方的面积表示的就是这个区域内的概率；而离散型变量的分布函数则无法画在这样的坐标系中。举一个简单的例子，一个随机变量在$X=0$时概率为$0.5$，在区间$[1,2]$上类似均匀分布，$f(x)=0.5$，尝试将这个密度函数画在坐标系中，我们会发现，在想要用面积表示概率时，$X=0$这个点没办法处理。所以离散点不能用面积来表示，而Lebesgue测度正是在算面积，因此离散点不能用Lebesgue测度来测量。</p>
 <p>下面举一个例子，一个只在整数上有取值的分布，定义测度$\mu$为counting，$p(x)$就是这个离散变量的密度函数。</p>
-<p>$$\mu(A)=\sum_{k\in\mathbb{Z^d}}1_A(k), \quad p(x)=\sum_{k\in\mathbb{Z^d}} P(X=k)1_(x)$$</p>
+<p>$$\mu(A)=\sum_{k\in\mathbb{Z^d}}1_A(k), \quad p(x)=\sum_{k\in\mathbb{Z^d}} P(X=k)1_{\{ k \}}(x)$$</p>
 <p>$$F(A)=P(X\in A)=\sum_{k\in\mathbb{A}}P(X=k)=\int_A p(x)\mu(dx)$$</p>
 <h2 id="条件期望"><a href="#条件期望" class="headerlink" title="条件期望"></a>条件期望</h2><p>条件期望的定义是，$X\in L_1(\Omega, \mathcal{B}, P), \mathcal{G}\subset \mathcal{B}$，则存在随机变量$E(X|\mathcal{G})$是$\mathcal{G}$ measurable and integrable，且对任意$G\in \mathcal{G}$都有下面式子成立</p>
 <p>$$\int_G XdP=\int_G E(X|\mathcal{G})dP$$</p>
