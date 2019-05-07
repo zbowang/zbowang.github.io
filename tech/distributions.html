@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="统计理论,速查手册," />
+  <meta name="keywords" content="速查手册,统计理论," />
 
 
 
@@ -78,14 +78,14 @@
 
 
 <meta name="description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\\&amp;amp;\phi_x(t)=pe^{it}+1-p\end{align}$$ Bin">
-<meta name="keywords" content="统计理论,速查手册">
+<meta name="keywords" content="速查手册,统计理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计分布总结">
 <meta property="og:url" content="http://yoursite.com/tech/distributions.html">
 <meta property="og:site_name" content="My World">
 <meta property="og:description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\\&amp;amp;\phi_x(t)=pe^{it}+1-p\end{align}$$ Bin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-20T07:43:15.643Z">
+<meta property="og:updated_time" content="2019-02-28T11:18:54.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计分布总结">
 <meta name="twitter:description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\\&amp;amp;\phi_x(t)=pe^{it}+1-p\end{align}$$ Bin">
@@ -204,7 +204,7 @@
       
         
         <li class="menu-item menu-item-诗文摘录">
-          <a href="/tags/excerpt" rel="section">
+          <a href="/tags/excerpt/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
             
@@ -216,7 +216,7 @@
       
         
         <li class="menu-item menu-item-速查手册">
-          <a href="/tags/manual" rel="section">
+          <a href="/tags/manual/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
             
@@ -228,7 +228,7 @@
       
         
         <li class="menu-item menu-item-资源收集">
-          <a href="/tags/collections" rel="section">
+          <a href="/tags/collections/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
             
@@ -342,7 +342,7 @@
 <p>一段时间内出现的次数</p>
 <h3 id="Negative-Binomial-负二项分布"><a href="#Negative-Binomial-负二项分布" class="headerlink" title="Negative Binomial-负二项分布"></a>Negative Binomial-负二项分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim NB(r,p)\\<br>&amp;P(x)=\bigl( \begin{smallmatrix}x+r-1 \\ r-1 \end{smallmatrix}\bigr)<br>p^r(1-p)^x,\quad x=0,1,2,…\\<br>&amp;\mu_x=\frac{r(1-p)}{p},\quad \sigma_x^2=\frac{r(1-p)}{p^2}\\<br>&amp;M_x(t)=(\frac{p}{1-(1-p)e^t})^r\\<br>\end{align}<br>$$</p>
 <p>成功概率是$p$，$r$次成功会出现多少次失败</p>
-<h3 id="Geometry-几何分布"><a href="#Geometry-几何分布" class="headerlink" title="Geometry-几何分布"></a>Geometry-几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Geometry(p)\\<br>&amp;P(x)=p(1-p)^{x-1},\quad x=1,2,…\\<br>&amp;\mu_x=\frac{1-p}{p},\quad \sigma_x^2=\frac{1-p}{p^2}\\<br>&amp;M_x(t)=\frac{pe^t}{1-(1-p)e^t},\quad t &lt; -\ln(1-p)\\<br>\end{align}<br>$$</p>
+<h3 id="Geometry-几何分布"><a href="#Geometry-几何分布" class="headerlink" title="Geometry-几何分布"></a>Geometry-几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Geometry(p)\\<br>&amp;P(x)=p(1-p)^{x-1},\quad x=1,2,…\\<br>&amp;\mu_x=\frac1{p},\quad \sigma_x^2=\frac{1-p}{p^2}\\<br>&amp;M_x(t)=\frac{pe^t}{1-(1-p)e^t},\quad t &lt; -\ln(1-p)\\<br>\end{align}<br>$$</p>
 <p>成功概率是$p$，出现一次成功总共要多少次</p>
 <h3 id="Hypergeometric-超几何分布"><a href="#Hypergeometric-超几何分布" class="headerlink" title="Hypergeometric-超几何分布"></a>Hypergeometric-超几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Hyper(M,N,n)\\<br>&amp;P(x)=\frac{<br>    \bigl( \begin{smallmatrix}M \\ x \end{smallmatrix}\bigr)<br>    \bigl( \begin{smallmatrix}N-M \\ n-x \end{smallmatrix}\bigr)<br>}<br>{\bigl( \begin{smallmatrix}N \\ n \end{smallmatrix}\bigr)}\\<br>&amp;\mu_x=\frac{nM}{N},\quad \sigma_x^2=\frac{nM}{N}\frac{N-M}{N}\frac{N-n}{N-1}<br>\end{align}<br>$$</p>
 <p>总共有$N$条鱼，$M$条带标记，某一次捞$n$条，带标记的有几条</p>
@@ -387,9 +387,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/统计理论/" rel="tag"># 统计理论</a>
-          
             <a href="/tags/manual/" rel="tag"># 速查手册</a>
+          
+            <a href="/tags/统计理论/" rel="tag"># 统计理论</a>
           
         </div>
       
@@ -493,7 +493,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
