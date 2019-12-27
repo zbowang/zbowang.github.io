@@ -340,7 +340,7 @@
       
         <h2 id="集合和概率">集合和概率</h2>
 <p>这里以一个抛硬币的试验为例引出基本概念。一个硬币有<span class="math inline">\(\\{ H, T \\}\)</span>正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为<span class="math inline">\(\frac14\)</span></p>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;H H&#125; &#123;H T&#125; &#123;T H&#125; &#123;T T&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;H H&#125; &#123;H <span class="literal">T</span>&#125; &#123;<span class="literal">T</span> H&#125; &#123;<span class="literal">T</span> <span class="literal">T</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>这四种可能称为<strong>全集</strong><span class="math inline">\(\Omega\)</span>，其中每一种称为一个<strong>元素</strong><span class="math inline">\(\omega\)</span>，这是我们关注的最小单位。<span class="math inline">\(\\{ \omega \\}\)</span>是包含该元素的集合。注意：单独的<span class="math inline">\(H\)</span>和<span class="math inline">\(T\)</span>只是试验结果，单独出现在这里没有意义。</p>
 <p>（为了防止大括号很乱，下文将<code>{H H} {H T} {T H} {T T}</code>分别记为<span class="math inline">\(\omega_1,\omega_2,\omega_3,\omega_4\)</span>。）</p>
 <p>假设硬币正面记为1反面记为0，我们要关注两次抛掷得到的数字相加的结果，有三种可能</p>
