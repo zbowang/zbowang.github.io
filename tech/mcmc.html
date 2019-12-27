@@ -87,7 +87,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/mcmc.jpg">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/reject.png">
-<meta property="og:updated_time" content="2019-06-11T00:41:00.804Z">
+<meta property="og:updated_time" content="2019-12-27T13:33:54.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCMC采样算法">
 <meta name="twitter:description" content="介绍MCMC采样算法的中文博客中，LDA数学八卦-3：MCMC 和 Gibbs Sampling堪称经典，这篇文章包括它的转载引用，相信引导了无数读者入门，包括我自己在内。但此文并非完美，文中有一处错误困扰我很久，对算法设计的动机方面也没有详细说明，本人经过查阅思考总结出这篇文章，算是对上面博客的补充，希望读者阅读之前先对上面文章内容有所了解，本文将不会对基础概念多加说明。下面如果提到这篇博客，将">
@@ -480,8 +480,8 @@
 \]</span></p>
 <p>同样，考虑将<span class="math inline">\(\alpha\)</span>扩大，此处我们不会将<span class="math inline">\(\alpha\)</span>矩阵所有值扩大相同倍数，而是对称位置扩大相同倍数。观察上述公式，只要<span class="math inline">\(\alpha_{ij}\)</span>与<span class="math inline">\(\alpha_{ji}\)</span>扩大相同倍数，细致平稳条件就仍然成立。而<span class="math inline">\(\alpha\)</span>作为接受率，不能超过1，因此就对每一个对称位置都分别扩大到其中一个为1，另一个不超过1。这就是MH算法。用公式表示如下</p>
 <p><span class="math display">\[ 
-\alpha&#39;_ {ij}=\min \left\\{\frac{\alpha_{ij}}{\alpha_{ji}}, 1\right\\}
-=\min \left\\{\frac{\pi(j) Q_{ji}}{\pi(i) Q_{ij}}, 1\right\\}
+\alpha&#39;_ {ij}=\min \left\{\frac{\alpha_{ij}}{\alpha_{ji}}, 1\right\}
+=\min \left\{\frac{\pi(j) Q_{ji}}{\pi(i) Q_{ij}}, 1\right\}
 \]</span></p>
 <p>迭代过程与MCMC采样算法相同，只是<span class="math inline">\(\alpha\)</span>的计算不同而已</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标分布pi</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"></span><br><span class="line">alpha &lt;- t(p * q)</span><br><span class="line">alpha2 &lt;- pmin(alpha / t(alpha), <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
@@ -520,7 +520,7 @@ Q&#39;_ {ij} = Q_{ij} \alpha_{ij}
 \text{MCMC:}\quad \alpha(x, y)=\pi(y) q(x|y)
 \]</span></p>
 <p><span class="math display">\[
-\text{MH:}\quad \alpha(x, y)=\min \left\\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\\} 
+\text{MH:}\quad \alpha(x, y)=\min \left\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\} 
 \]</span></p>
 <p>细致平稳条件</p>
 <p><span class="math display">\[ 
@@ -590,14 +590,14 @@ q&#39;(y|x) = q(y|x)\alpha(x,y)
 <p><strong>特殊工具分布</strong></p>
 <p>如果MH算法的工具分布<span class="math inline">\(q(y|x)\)</span>特殊，则接受率可以简化</p>
 <p><span class="math display">\[
-\alpha(x, y)=\min \left\\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\\} 
+\alpha(x, y)=\min \left\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\} 
 \]</span></p>
 <ol type="1">
 <li>独立</li>
 </ol>
 <p>即工具分布是独立于<span class="math inline">\(x\)</span>的，<span class="math inline">\(q(y|x)=q(y)\)</span>，接受率公式如下</p>
 <p><span class="math display">\[
-\alpha(x, y)=\min \left\\{1, \frac{\pi(y) q(x)}{\pi(x) q(y)}\right\\} 
+\alpha(x, y)=\min \left\{1, \frac{\pi(y) q(x)}{\pi(x) q(y)}\right\} 
 \]</span></p>
 <p>此时，所有候选样本都是从同一个分布生成，更加类似Rejection Sampling，因为它的接受率可以写成这种形式</p>
 <p><span class="math display">\[
@@ -609,7 +609,7 @@ q&#39;(y|x) = q(y|x)\alpha(x,y)
 </ol>
 <p>即<span class="math inline">\(q(y|x)=q(x|y)\)</span>，则</p>
 <p><span class="math display">\[
-\alpha(x, y)=\min \left\\{1, \frac{\pi(y) }{\pi(x) }\right\\} 
+\alpha(x, y)=\min \left\{1, \frac{\pi(y) }{\pi(x) }\right\} 
 \]</span></p>
 <p>一个对称分布的例子：<span class="math inline">\(y|x\sim N(x, 1)\)</span>，则对已知的<span class="math inline">\(x,y\)</span>有<span class="math inline">\(q(y|x)=q(x|y)\)</span></p>
 <p><strong>全局与局部</strong></p>
