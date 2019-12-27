@@ -77,19 +77,19 @@
 
 
 
-<meta name="description" content="假设检验回顾本节我们回顾一下本科数理统计中学习的假设检验。 举一个例子，我们现在想要知道厦门市市民的平均身高是不是$\mu_0 = 165cm$，我们可以采集一组数据$X_1, X_2, …, X_n$（足够多），计算这组数据的均值$\bar X_n$，看这个均值离$\mu_0$近不近。这是假设检验的基本思想。 用数学符号表示就是，要检验 $$H_0: \mu = \mu_0 \quad v.s.">
+<meta name="description" content="假设检验回顾 本节我们回顾一下本科数理统计中学习的假设检验。 举一个例子，我们现在想要知道厦门市市民的平均身高是不是\(\mu_0 = 165cm\)，我们可以采集一组数据\(X_1, X_2, ..., X_n\)（足够多），计算这组数据的均值\(\bar X_n\)，看这个均值离\(\mu_0\)近不近。这是假设检验的基本思想。 用数学符号表示就是，要检验 \[H_0: \mu = \">
 <meta name="keywords" content="统计理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="假设检验的本质">
 <meta property="og:url" content="http://yoursite.com/tech/test.html">
 <meta property="og:site_name" content="My World">
-<meta property="og:description" content="假设检验回顾本节我们回顾一下本科数理统计中学习的假设检验。 举一个例子，我们现在想要知道厦门市市民的平均身高是不是$\mu_0 = 165cm$，我们可以采集一组数据$X_1, X_2, …, X_n$（足够多），计算这组数据的均值$\bar X_n$，看这个均值离$\mu_0$近不近。这是假设检验的基本思想。 用数学符号表示就是，要检验 $$H_0: \mu = \mu_0 \quad v.s.">
+<meta property="og:description" content="假设检验回顾 本节我们回顾一下本科数理统计中学习的假设检验。 举一个例子，我们现在想要知道厦门市市民的平均身高是不是\(\mu_0 = 165cm\)，我们可以采集一组数据\(X_1, X_2, ..., X_n\)（足够多），计算这组数据的均值\(\bar X_n\)，看这个均值离\(\mu_0\)近不近。这是假设检验的基本思想。 用数学符号表示就是，要检验 \[H_0: \mu = \">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/distribution.png">
 <meta property="og:updated_time" content="2019-01-13T01:15:00.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="假设检验的本质">
-<meta name="twitter:description" content="假设检验回顾本节我们回顾一下本科数理统计中学习的假设检验。 举一个例子，我们现在想要知道厦门市市民的平均身高是不是$\mu_0 = 165cm$，我们可以采集一组数据$X_1, X_2, …, X_n$（足够多），计算这组数据的均值$\bar X_n$，看这个均值离$\mu_0$近不近。这是假设检验的基本思想。 用数学符号表示就是，要检验 $$H_0: \mu = \mu_0 \quad v.s.">
+<meta name="twitter:description" content="假设检验回顾 本节我们回顾一下本科数理统计中学习的假设检验。 举一个例子，我们现在想要知道厦门市市民的平均身高是不是\(\mu_0 = 165cm\)，我们可以采集一组数据\(X_1, X_2, ..., X_n\)（足够多），计算这组数据的均值\(\bar X_n\)，看这个均值离\(\mu_0\)近不近。这是假设检验的基本思想。 用数学符号表示就是，要检验 \[H_0: \mu = \">
 <meta name="twitter:image" content="http://static.wzbtech.com/static/images/distribution.png">
 
 
@@ -338,65 +338,71 @@
       
 
       
-        <h2 id="假设检验回顾"><a href="#假设检验回顾" class="headerlink" title="假设检验回顾"></a>假设检验回顾</h2><p>本节我们回顾一下本科数理统计中学习的假设检验。</p>
-<p>举一个例子，我们现在想要知道厦门市市民的平均身高是不是$\mu_0 = 165cm$，我们可以采集一组数据$X_1, X_2, …, X_n$（足够多），计算这组数据的均值$\bar X_n$，看这个均值离$\mu_0$近不近。这是假设检验的基本思想。</p>
+        <h2 id="假设检验回顾">假设检验回顾</h2>
+<p>本节我们回顾一下本科数理统计中学习的假设检验。</p>
+<p>举一个例子，我们现在想要知道厦门市市民的平均身高是不是<span class="math inline">\(\mu_0 = 165cm\)</span>，我们可以采集一组数据<span class="math inline">\(X_1, X_2, ..., X_n\)</span>（足够多），计算这组数据的均值<span class="math inline">\(\bar X_n\)</span>，看这个均值离<span class="math inline">\(\mu_0\)</span>近不近。这是假设检验的基本思想。</p>
 <p>用数学符号表示就是，要检验</p>
-<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu \neq \mu_0$$<br>在大样本的情况下，由中心极限定理可以保证样本均值服从正态分布</p>
-<p>$$\bar X_n \stackrel{d}{\rightarrow} N(\mu, Var)$$<br>此时我们会假设$H_0$成立，则有</p>
-<p>$$\frac{\bar X_n-\mu_0}{\sqrt{Var}} \stackrel{d}{\rightarrow} N(0, 1)$$<br>这里$Var$如果已知就直接使用，如果未知就用样本方差估计，这不是我们关注的重点。总之，将当前样本均值带入，我们可以计算出$\frac{\bar X_n-\mu_0}{\sqrt{Var}}$值。直观上来想，如果这个值非常大或者非常小，则说明出现这个$\bar X_n$的概率非常小（处于正态分布的尾端），我们就不敢相信最初假设的$H_0$是正确的。为了定义什么时候是“非常大非常小”，我们设置犯第一类错误概率不能超过$\alpha=0.05$，对应标准正态分布$\pm 1.96$作为阈值，超出这个阈值则拒绝原假设。</p>
+<p><span class="math display">\[H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu \neq \mu_0\]</span> 在大样本的情况下，由中心极限定理可以保证样本均值服从正态分布</p>
+<p><span class="math display">\[\bar X_n \stackrel{d}{\rightarrow} N(\mu, Var)\]</span> 此时我们会假设<span class="math inline">\(H_0\)</span>成立，则有</p>
+<p><span class="math display">\[\frac{\bar X_n-\mu_0}{\sqrt{Var}} \stackrel{d}{\rightarrow} N(0, 1)\]</span> 这里<span class="math inline">\(Var\)</span>如果已知就直接使用，如果未知就用样本方差估计，这不是我们关注的重点。总之，将当前样本均值带入，我们可以计算出<span class="math inline">\(\frac{\bar X_n-\mu_0}{\sqrt{Var}}\)</span>值。直观上来想，如果这个值非常大或者非常小，则说明出现这个<span class="math inline">\(\bar X_n\)</span>的概率非常小（处于正态分布的尾端），我们就不敢相信最初假设的<span class="math inline">\(H_0\)</span>是正确的。为了定义什么时候是“非常大非常小”，我们设置犯第一类错误概率不能超过<span class="math inline">\(\alpha=0.05\)</span>，对应标准正态分布<span class="math inline">\(\pm 1.96\)</span>作为阈值，超出这个阈值则拒绝原假设。</p>
 <p>如果换一个检验问题</p>
-<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu &gt; \mu_0$$<br>则只有样本均值过大时才拒绝原假设，$\alpha=0.05$的范围也只从右边取。</p>
+<p><span class="math display">\[H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu &gt; \mu_0\]</span> 则只有样本均值过大时才拒绝原假设，<span class="math inline">\(\alpha=0.05\)</span>的范围也只从右边取。</p>
 <p>再考虑对方差进行检验时，得到的统计量服从的是卡方分布，检验方法如出一辙，从两侧找拒绝域。</p>
 <p>看起来这套理论已经理解通透了，但是不妨考虑这样一个问题：为什么拒绝域要从两侧取，从分布中间任何一个地方都可以取到一块区域概率是0.05，从两侧取的理论依据是什么，换一个分布形式还是从两侧取吗（比如原假设变成均匀分布）？不是的话怎么取？</p>
-<h2 id="UMP-Test"><a href="#UMP-Test" class="headerlink" title="UMP Test"></a>UMP Test</h2><p>首先定义两类错误</p>
+<h2 id="ump-test">UMP Test</h2>
+<p>首先定义两类错误</p>
 <ul>
-<li>第一类错误：$H_0$真的正确的情况下，我们的判断方法拒绝$H_0$的概率（$H_0$成立时落入拒绝域的概率）</li>
-<li>第二类错误：$H_1$正确的情况下，我们的判断方法却接受了$H_0$的概率</li>
+<li>第一类错误：<span class="math inline">\(H_0\)</span>真的正确的情况下，我们的判断方法拒绝<span class="math inline">\(H_0\)</span>的概率（<span class="math inline">\(H_0\)</span>成立时落入拒绝域的概率）</li>
+<li>第二类错误：<span class="math inline">\(H_1\)</span>正确的情况下，我们的判断方法却接受了<span class="math inline">\(H_0\)</span>的概率</li>
 </ul>
 <p>一个好的检验方法需要使两类错误都尽可能小，但是犯两类错误的概率往往是此消彼长的关系，因此我们采用这样的方法：控制第一类错误概率不超过0.05的情况下，使犯第二类错误的概率尽可能小。这种检验方法称为UMP Test(uniform most powerful test).</p>
 <p>我们平时使用的检验都是基于UMP Test，但是由于符合直觉，使用时常常会忽略其本质。</p>
 <p>下面我将从简单情况开始推广，理顺假设检验的逻辑。</p>
-<h2 id="简单假设"><a href="#简单假设" class="headerlink" title="简单假设"></a>简单假设</h2><p>首先，要纠正一个误区。我们进行假设检验，看起来在判断一个值是否等于某给定值，但是其本质是在看一个统计量服从哪个分布（服从$H_0$对应分布还是$H_1$）。</p>
-<p>前面我们提到的对$\mu$进行的检验，其实是在对$\bar X_n$的分布进行检验，$\mu$是其正态分布中的一个参数，由于参数可以唯一确定分布，所以这里检验分布就可以当做检验参数了。</p>
-<p>下面，我们来看一个例子，只有一个样本$X$，它服从正态分布$N(\mu, 1)$，使用参数$\mu$检验如下</p>
-<p>$$H_0: \mu = 0 \quad v.s. \quad H_1: \mu = 1$$<br>这是假设检验中最简单的一个例子，前面提到的多个样本、$H_1:\mu \neq 0$、$H_1:\mu &gt; 0$都是它的推广。</p>
-<p>这里我们引入简单假设的概念：$H_0/H_1$中包含的分布只有一个的假设</p>
+<h2 id="简单假设">简单假设</h2>
+<p>首先，要纠正一个误区。我们进行假设检验，看起来在判断一个值是否等于某给定值，但是其本质是在看一个统计量服从哪个分布（服从<span class="math inline">\(H_0\)</span>对应分布还是<span class="math inline">\(H_1\)</span>）。</p>
+<p>前面我们提到的对<span class="math inline">\(\mu\)</span>进行的检验，其实是在对<span class="math inline">\(\bar X_n\)</span>的分布进行检验，<span class="math inline">\(\mu\)</span>是其正态分布中的一个参数，由于参数可以唯一确定分布，所以这里检验分布就可以当做检验参数了。</p>
+<p>下面，我们来看一个例子，只有一个样本<span class="math inline">\(X\)</span>，它服从正态分布<span class="math inline">\(N(\mu, 1)\)</span>，使用参数<span class="math inline">\(\mu\)</span>检验如下</p>
+<p><span class="math display">\[H_0: \mu = 0 \quad v.s. \quad H_1: \mu = 1\]</span> 这是假设检验中最简单的一个例子，前面提到的多个样本、<span class="math inline">\(H_1:\mu \neq 0\)</span>、<span class="math inline">\(H_1:\mu &gt; 0\)</span>都是它的推广。</p>
+<p>这里我们引入简单假设的概念：<span class="math inline">\(H_0/H_1\)</span>中包含的分布只有一个的假设</p>
 <ul>
-<li>$H_1:\mu \neq 0$显然不是一个简单假设，因为这个假设的$\mu$的值可以取很多种，也就对应着很多个分布</li>
-<li>$H_0: \mu = 0$就是一个简单假设</li>
+<li><span class="math inline">\(H_1:\mu \neq 0\)</span>显然不是一个简单假设，因为这个假设的<span class="math inline">\(\mu\)</span>的值可以取很多种，也就对应着很多个分布</li>
+<li><span class="math inline">\(H_0: \mu = 0\)</span>就是一个简单假设</li>
 </ul>
 <p>我们再来看另一个例子，这是两个概率密度函数曲线</p>
 <img src="http://static.wzbtech.com/static/images/distribution.png">
-<p>图中黑线表示$H_0$的分布，红线表示$H_1$的分布。现在我们要找到它的检验规则，及判断一个样本服从黑线分布还是服从红线分布。</p>
+<p>图中黑线表示<span class="math inline">\(H_0\)</span>的分布，红线表示<span class="math inline">\(H_1\)</span>的分布。现在我们要找到它的检验规则，及判断一个样本服从黑线分布还是服从红线分布。</p>
 <p>面对这样的问题会发现，之前学过的那种应对正态分布的套路已经没有用了，我们不能再随意地取两端的区域作为拒绝域，只能从假设检验的本质出发，寻找有效的检验方法。</p>
-<p>我们需要在控制第一类错误概率不超过0.05的情况下，使犯第二类错误的概率尽可能小。也就是说，我们要找到一个区间，这个区间对应的$H_0$分布概率不超过0.05，而$H_1$分布概率尽可能大。反映在图中即为找一块区域，区域内黑线所围面积不超过0.05，而红线内面积尽可能大。所以最中间那块使黑线面积为0.05的区间就是我们要找的拒绝域，这个结果显然和正态分布情况下取两端作为拒绝域不同。这里是通过直观理解找到的这块区域，下面我们会为这个方法提供理论支撑和计算方式。</p>
-<h2 id="NP-Lemma"><a href="#NP-Lemma" class="headerlink" title="NP Lemma"></a>NP Lemma</h2><p>NP Lemma可以说是假设检验的基石，这里不打算写出引理的数学表达式，只是简述其思想。</p>
-<p>NP Lemma证明了在$H_0$和$H_1$都是简单假设的情况下，UMP Test一定存在，而且形式是这样的：</p>
-<p>要找到c，当$\frac{f_1(X)}{f_0(X)}&gt;c$就拒绝原假设，其中$f_1(X)$和$f_0(X)$分别表示$H_1$和$H_0$的概率密度函数。</p>
-<p>（就像正态分布时$X_n&gt;c$拒绝原假设一样）</p>
-<p>也就是说，找到$\frac{f_1(X)}{f_0(X)}$比值最大的那5%范围，这个范围内拒绝原假设，这样的检验方法是最好的检验(UMP Test)。</p>
-<p>这个引理其实也非常符合直觉，$f_1$在分母上越大越好(犯第二类错误的概率更小)，$f_0$在分子上，越小越好（犯第一类错误的概率更小)。</p>
-<p>现在回过头来看上一节最后的那个例子，会发现用现在这种计算方式就会得到中间的那片区域。即$\frac{6(x-x^2)}{1}&gt;c$再加上黑线围成面积是0.05的条件，就可以解出$c$和$x$的范围。</p>
+<p>我们需要在控制第一类错误概率不超过0.05的情况下，使犯第二类错误的概率尽可能小。也就是说，我们要找到一个区间，这个区间对应的<span class="math inline">\(H_0\)</span>分布概率不超过0.05，而<span class="math inline">\(H_1\)</span>分布概率尽可能大。反映在图中即为找一块区域，区域内黑线所围面积不超过0.05，而红线内面积尽可能大。所以最中间那块使黑线面积为0.05的区间就是我们要找的拒绝域，这个结果显然和正态分布情况下取两端作为拒绝域不同。这里是通过直观理解找到的这块区域，下面我们会为这个方法提供理论支撑和计算方式。</p>
+<h2 id="np-lemma">NP Lemma</h2>
+<p>NP Lemma可以说是假设检验的基石，这里不打算写出引理的数学表达式，只是简述其思想。</p>
+<p>NP Lemma证明了在<span class="math inline">\(H_0\)</span>和<span class="math inline">\(H_1\)</span>都是简单假设的情况下，UMP Test一定存在，而且形式是这样的：</p>
+<p>要找到c，当<span class="math inline">\(\frac{f_1(X)}{f_0(X)}&gt;c\)</span>就拒绝原假设，其中<span class="math inline">\(f_1(X)\)</span>和<span class="math inline">\(f_0(X)\)</span>分别表示<span class="math inline">\(H_1\)</span>和<span class="math inline">\(H_0\)</span>的概率密度函数。</p>
+<p>（就像正态分布时<span class="math inline">\(X_n&gt;c\)</span>拒绝原假设一样）</p>
+<p>也就是说，找到<span class="math inline">\(\frac{f_1(X)}{f_0(X)}\)</span>比值最大的那5%范围，这个范围内拒绝原假设，这样的检验方法是最好的检验(UMP Test)。</p>
+<p>这个引理其实也非常符合直觉，<span class="math inline">\(f_1\)</span>在分母上越大越好(犯第二类错误的概率更小)，<span class="math inline">\(f_0\)</span>在分子上，越小越好（犯第一类错误的概率更小)。</p>
+<p>现在回过头来看上一节最后的那个例子，会发现用现在这种计算方式就会得到中间的那片区域。即<span class="math inline">\(\frac{6(x-x^2)}{1}&gt;c\)</span>再加上黑线围成面积是0.05的条件，就可以解出<span class="math inline">\(c\)</span>和<span class="math inline">\(x\)</span>的范围。</p>
 <p>不仅如此，本科学过的对正态分布和卡方分布的检验也都是基于这个方法，只是经过了一些定理的扩展。扩展我们最后再说，现在先换一个思路，理解一下这个引理。</p>
-<h2 id="似然比检验"><a href="#似然比检验" class="headerlink" title="似然比检验"></a>似然比检验</h2><p>现在忘掉前面所说的假设检验的内容，回想一下参数估计中的MLE(极大似然估计法)方法。</p>
-<p>参数估计是，有一个带有未知参数$\theta$的分布，现在得到一组基于该分布的iid数据$X_1, X_2, …, X_n$，要估计分布的参数。MLE的思想是：计算出现当前这些样本出现的概率，这个概率结果是带有参数$\theta$的一个表达式，通过求解表达式极大值来确定参数$\theta$。</p>
-<p>现在，我们想知道$\theta$等于0还是等于1，按照刚才的思路，只需要分别计算$\theta = 0$和$\theta = 1$时当前样本出现的概率，做个比较就可以知道$\theta$取哪个值比较好。（做检验时，想要拒绝$H_0$需要非常谨慎，要$f_1$比$f_0$大足够多才可以拒绝，因此有了$&gt;c$之说）</p>
+<h2 id="似然比检验">似然比检验</h2>
+<p>现在忘掉前面所说的假设检验的内容，回想一下参数估计中的MLE(极大似然估计法)方法。</p>
+<p>参数估计是，有一个带有未知参数<span class="math inline">\(\theta\)</span>的分布，现在得到一组基于该分布的iid数据<span class="math inline">\(X_1, X_2, ..., X_n\)</span>，要估计分布的参数。MLE的思想是：计算出现当前这些样本出现的概率，这个概率结果是带有参数<span class="math inline">\(\theta\)</span>的一个表达式，通过求解表达式极大值来确定参数<span class="math inline">\(\theta\)</span>。</p>
+<p>现在，我们想知道<span class="math inline">\(\theta\)</span>等于0还是等于1，按照刚才的思路，只需要分别计算<span class="math inline">\(\theta = 0\)</span>和<span class="math inline">\(\theta = 1\)</span>时当前样本出现的概率，做个比较就可以知道<span class="math inline">\(\theta\)</span>取哪个值比较好。（做检验时，想要拒绝<span class="math inline">\(H_0\)</span>需要非常谨慎，要<span class="math inline">\(f_1\)</span>比<span class="math inline">\(f_0\)</span>大足够多才可以拒绝，因此有了<span class="math inline">\(&gt;c\)</span>之说）</p>
 <p>我们来看一下拒绝域的表达式</p>
-<p>$$\frac{f_1(X, \theta)}{f_0(X, \theta)}=\frac{\prod_{i=1}^{n} f_1(X_i,\theta)}{\prod_{i=1}^{n} f_0(X_i, \theta)} &gt; c$$</p>
+<p><span class="math display">\[\frac{f_1(X, \theta)}{f_0(X, \theta)}=\frac{\prod_{i=1}^{n} f_1(X_i,\theta)}{\prod_{i=1}^{n} f_0(X_i, \theta)} &gt; c\]</span></p>
 <p>这种用似然函数作比进行的检验称为似然比检验。这里形式和NP Lemma时一样的，这种情况下，似然比检验是UMP Test。</p>
-<h2 id="扩展延伸"><a href="#扩展延伸" class="headerlink" title="扩展延伸"></a>扩展延伸</h2><p>1.扩展到多样本</p>
+<h2 id="扩展延伸">扩展延伸</h2>
+<p>1.扩展到多样本</p>
 <p>第一种理解：从NP Lemma的角度来看，单个样本直接用这个分布概率来算，多个分布则用联合分布概率来算，因为样本一般都是iid的，所以只是多个概率相乘计算而已。</p>
-<p>那么为什么正态分布检验$\mu$会用$\bar X_n$来算呢？是因为$\frac{f_1(X, \theta)}{f_0(X, \theta)}&gt;c$把正态分布形式带入可以化简成只用$\bar X_n$表示。</p>
-<p>更进一步理解，考虑充分统计量的定义，二者作比得到的一定是关于充分统计量的表达式，所以NP Lemma找到的UMP Test结果总是可以写成对充分统计量的判断，如果分布有一些单调性质，则UMP Test会非常简洁（就像正态分布一样只是$\bar X_n$大于一个数这样）。</p>
-<p>第二种理解：直接考虑$\bar X_n$的分布，这个分布也是带有$\mu$参数的，而这里只获得了一个$\bar X_n$的样本，于是就转化为单样本的情况了。</p>
-<p>2.$H_1$的扩展</p>
-<p>NP Lemma只是帮助我们找到了$H_0$和$H_1$都是简单假设时的UMP Test，但是像我们通常见到的</p>
-<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu &gt; \mu_0$$</p>
-<p>$$H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu \neq \mu_0$$</p>
+<p>那么为什么正态分布检验<span class="math inline">\(\mu\)</span>会用<span class="math inline">\(\bar X_n\)</span>来算呢？是因为<span class="math inline">\(\frac{f_1(X, \theta)}{f_0(X, \theta)}&gt;c\)</span>把正态分布形式带入可以化简成只用<span class="math inline">\(\bar X_n\)</span>表示。</p>
+<p>更进一步理解，考虑充分统计量的定义，二者作比得到的一定是关于充分统计量的表达式，所以NP Lemma找到的UMP Test结果总是可以写成对充分统计量的判断，如果分布有一些单调性质，则UMP Test会非常简洁（就像正态分布一样只是<span class="math inline">\(\bar X_n\)</span>大于一个数这样）。</p>
+<p>第二种理解：直接考虑<span class="math inline">\(\bar X_n\)</span>的分布，这个分布也是带有<span class="math inline">\(\mu\)</span>参数的，而这里只获得了一个<span class="math inline">\(\bar X_n\)</span>的样本，于是就转化为单样本的情况了。</p>
+<p>2.<span class="math inline">\(H_1\)</span>的扩展</p>
+<p>NP Lemma只是帮助我们找到了<span class="math inline">\(H_0\)</span>和<span class="math inline">\(H_1\)</span>都是简单假设时的UMP Test，但是像我们通常见到的</p>
+<p><span class="math display">\[H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu &gt; \mu_0\]</span></p>
+<p><span class="math display">\[H_0: \mu = \mu_0 \quad v.s. \quad H_1: \mu \neq \mu_0\]</span></p>
 <p>则需要更多定理来保证，虽然最后可以证明检验方法和</p>
-<p>$$H_0: \mu = \mu_1 \quad v.s. \quad H_1: \mu = \mu_2$$</p>
-<p>没有什么区别（对正态分布来说都是找$|\bar X_n|&gt;c$这样的区域）。</p>
-<p>由于推广过程过于复杂，这里不展示证明过程。这些复杂的检验只适用于某些特定分布族，他们会有一些单调特性，才可以保证$H_1$无论取什么样的分布，检验方法都和简单假设时相同。</p>
+<p><span class="math display">\[H_0: \mu = \mu_1 \quad v.s. \quad H_1: \mu = \mu_2\]</span></p>
+<p>没有什么区别（对正态分布来说都是找<span class="math inline">\(|\bar X_n|&gt;c\)</span>这样的区域）。</p>
+<p>由于推广过程过于复杂，这里不展示证明过程。这些复杂的检验只适用于某些特定分布族，他们会有一些单调特性，才可以保证<span class="math inline">\(H_1\)</span>无论取什么样的分布，检验方法都和简单假设时相同。</p>
 
       
     </div>
@@ -618,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#假设检验回顾"><span class="nav-number">1.</span> <span class="nav-text">假设检验回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UMP-Test"><span class="nav-number">2.</span> <span class="nav-text">UMP Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单假设"><span class="nav-number">3.</span> <span class="nav-text">简单假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP-Lemma"><span class="nav-number">4.</span> <span class="nav-text">NP Lemma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然比检验"><span class="nav-number">5.</span> <span class="nav-text">似然比检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展延伸"><span class="nav-number">6.</span> <span class="nav-text">扩展延伸</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#假设检验回顾"><span class="nav-number">1.</span> <span class="nav-text">假设检验回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ump-test"><span class="nav-number">2.</span> <span class="nav-text">UMP Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单假设"><span class="nav-number">3.</span> <span class="nav-text">简单假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-lemma"><span class="nav-number">4.</span> <span class="nav-text">NP Lemma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然比检验"><span class="nav-number">5.</span> <span class="nav-text">似然比检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展延伸"><span class="nav-number">6.</span> <span class="nav-text">扩展延伸</span></a></li></ol></div>
             
 
           </div>

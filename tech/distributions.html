@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\\&amp;amp;\phi_x(t)=pe^{it}+1-p\end{align}$$ Bin">
+<meta name="description" content="离散分布 Bernoulli-伯努利分布 \[ \begin{align} X&amp;amp;\sim Bernoulli(p)\\ &amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\ &amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\ &amp;amp;M_x(t)=pe^t+1-p\\ &amp;amp;\phi_x(t)=pe^{it}+1-p">
 <meta name="keywords" content="速查手册,统计理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计分布总结">
 <meta property="og:url" content="http://yoursite.com/tech/distributions.html">
 <meta property="og:site_name" content="My World">
-<meta property="og:description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\\&amp;amp;\phi_x(t)=pe^{it}+1-p\end{align}$$ Bin">
+<meta property="og:description" content="离散分布 Bernoulli-伯努利分布 \[ \begin{align} X&amp;amp;\sim Bernoulli(p)\\ &amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\ &amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\ &amp;amp;M_x(t)=pe^t+1-p\\ &amp;amp;\phi_x(t)=pe^{it}+1-p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T11:18:54.547Z">
+<meta property="og:updated_time" content="2019-11-12T02:26:25.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计分布总结">
-<meta name="twitter:description" content="离散分布Bernoulli-伯努利分布$$\begin{align}X&amp;amp;\sim Bernoulli(p)\\&amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\&amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\&amp;amp;M_x(t)=pe^t+1-p\\&amp;amp;\phi_x(t)=pe^{it}+1-p\end{align}$$ Bin">
+<meta name="twitter:description" content="离散分布 Bernoulli-伯努利分布 \[ \begin{align} X&amp;amp;\sim Bernoulli(p)\\ &amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\ &amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\ &amp;amp;M_x(t)=pe^t+1-p\\ &amp;amp;\phi_x(t)=pe^{it}+1-p">
 
 
 
@@ -336,39 +336,213 @@
       
 
       
-        <h2 id="离散分布"><a href="#离散分布" class="headerlink" title="离散分布"></a>离散分布</h2><h3 id="Bernoulli-伯努利分布"><a href="#Bernoulli-伯努利分布" class="headerlink" title="Bernoulli-伯努利分布"></a>Bernoulli-伯努利分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Bernoulli(p)\\<br>&amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\<br>&amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\<br>&amp;M_x(t)=pe^t+1-p\\<br>&amp;\phi_x(t)=pe^{it}+1-p<br>\end{align}<br>$$</p>
-<h3 id="Binomial-二项分布"><a href="#Binomial-二项分布" class="headerlink" title="Binomial-二项分布"></a>Binomial-二项分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Bin(n,p)\\<br>&amp;P(x)=\bigl( \begin{smallmatrix}n \\ x \end{smallmatrix}\bigr)<br>p^x(1-p)^{n-x},\quad x=0,1,…,n\\<br>&amp;\mu_x=np,\quad \sigma_x^2=np(1-p)\\<br>&amp;M_x(t)=(pe^t+1-p)^n\\<br>&amp;\phi_x(t)=(pe^{it}+1-p)^n<br>\end{align}<br>$$</p>
-<h3 id="Poisson-泊松分布"><a href="#Poisson-泊松分布" class="headerlink" title="Poisson-泊松分布"></a>Poisson-泊松分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Poisson (\lambda)\\<br>&amp;P(x)=\frac{e^{-\lambda}\lambda^x}{x!},\quad x=0,1,2,…\\<br>&amp;\mu_x=\lambda,\quad \sigma_x^2=\lambda\\<br>&amp;M_x(t)=e^{\lambda(e^t-1)}\\<br>&amp;\phi_x(t)=e^{\lambda(e^{it}-1)}<br>\end{align}<br>$$</p>
+        <h2 id="离散分布">离散分布</h2>
+<h3 id="bernoulli-伯努利分布">Bernoulli-伯努利分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Bernoulli(p)\\
+&amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\
+&amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\
+&amp;M_x(t)=pe^t+1-p\\
+&amp;\phi_x(t)=pe^{it}+1-p
+\end{align}
+\]</span></p>
+<h3 id="binomial-二项分布">Binomial-二项分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Bin(n,p)\\
+&amp;P(x)=\bigl( \begin{smallmatrix}n \\ x \end{smallmatrix}\bigr)
+p^x(1-p)^{n-x},\quad x=0,1,...,n\\
+&amp;\mu_x=np,\quad \sigma_x^2=np(1-p)\\
+&amp;M_x(t)=(pe^t+1-p)^n\\
+&amp;\phi_x(t)=(pe^{it}+1-p)^n
+\end{align}
+\]</span></p>
+<h3 id="poisson-泊松分布">Poisson-泊松分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Poisson (\lambda)\\
+&amp;P(x)=\frac{e^{-\lambda}\lambda^x}{x!},\quad x=0,1,2,...\\
+&amp;\mu_x=\lambda,\quad \sigma_x^2=\lambda\\
+&amp;M_x(t)=e^{\lambda(e^t-1)}\\
+&amp;\phi_x(t)=e^{\lambda(e^{it}-1)}
+\end{align}
+\]</span></p>
 <p>一段时间内出现的次数</p>
-<h3 id="Negative-Binomial-负二项分布"><a href="#Negative-Binomial-负二项分布" class="headerlink" title="Negative Binomial-负二项分布"></a>Negative Binomial-负二项分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim NB(r,p)\\<br>&amp;P(x)=\bigl( \begin{smallmatrix}x+r-1 \\ r-1 \end{smallmatrix}\bigr)<br>p^r(1-p)^x,\quad x=0,1,2,…\\<br>&amp;\mu_x=\frac{r(1-p)}{p},\quad \sigma_x^2=\frac{r(1-p)}{p^2}\\<br>&amp;M_x(t)=(\frac{p}{1-(1-p)e^t})^r\\<br>\end{align}<br>$$</p>
-<p>成功概率是$p$，$r$次成功会出现多少次失败</p>
-<h3 id="Geometry-几何分布"><a href="#Geometry-几何分布" class="headerlink" title="Geometry-几何分布"></a>Geometry-几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Geometry(p)\\<br>&amp;P(x)=p(1-p)^{x-1},\quad x=1,2,…\\<br>&amp;\mu_x=\frac1{p},\quad \sigma_x^2=\frac{1-p}{p^2}\\<br>&amp;M_x(t)=\frac{pe^t}{1-(1-p)e^t},\quad t &lt; -\ln(1-p)\\<br>\end{align}<br>$$</p>
-<p>成功概率是$p$，出现一次成功总共要多少次</p>
-<h3 id="Hypergeometric-超几何分布"><a href="#Hypergeometric-超几何分布" class="headerlink" title="Hypergeometric-超几何分布"></a>Hypergeometric-超几何分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Hyper(M,N,n)\\<br>&amp;P(x)=\frac{<br>    \bigl( \begin{smallmatrix}M \\ x \end{smallmatrix}\bigr)<br>    \bigl( \begin{smallmatrix}N-M \\ n-x \end{smallmatrix}\bigr)<br>}<br>{\bigl( \begin{smallmatrix}N \\ n \end{smallmatrix}\bigr)}\\<br>&amp;\mu_x=\frac{nM}{N},\quad \sigma_x^2=\frac{nM}{N}\frac{N-M}{N}\frac{N-n}{N-1}<br>\end{align}<br>$$</p>
-<p>总共有$N$条鱼，$M$条带标记，某一次捞$n$条，带标记的有几条</p>
-<h3 id="Multinomial-多项分布"><a href="#Multinomial-多项分布" class="headerlink" title="Multinomial-多项分布"></a>Multinomial-多项分布</h3><p>$$<br>\begin{align}<br>X_1,&amp;X_2,…,X_k\sim MultiNomial(p_1,…,p_k,n)\\<br>&amp;P(x)=\frac{n!}{x_1!x_2!…x_k!}p_1^{x_1}p_2^{x_2}…p_k^{x_k}\\<br>&amp;x_i\in\{0,…,n\},i\in\{1,…,k\},\sum x_i=n\\<br>&amp;E(X_i)=np_i,\quad Var(X_i)=np_i(1-p_i)<br>\end{align}<br>$$</p>
-<p>$k$种取值，掷n次，$x_i$表示每种发生几次</p>
-<p>$n=1$时，$x$可以取$1,…,k$这几个值，$P(x)$表示取这些值的概率</p>
-<p>$n=1$时,$P(x)=p_1^{1\{x=1\}}p_2^{1\{x=2\}}…p_k^{1\{x=k\}}$</p>
-<h2 id="连续分布"><a href="#连续分布" class="headerlink" title="连续分布"></a>连续分布</h2><h3 id="Uniform分布"><a href="#Uniform分布" class="headerlink" title="Uniform分布"></a>Uniform分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Uniform(a, b)\\<br>&amp;f_x(x)=\frac1{b-a},\quad x\in[a,b]\\<br>&amp;\mu_x=\frac{a+b}{2},\quad \sigma_x^2=\frac{(b-a)^2}{12}\\<br>&amp;M_x(t)=\frac{e^{tb}-e^{ta}}{t(b-a)}\\<br>&amp;\phi_x(t)=\frac{e^{itb}-e^{ita}}{it(b-a)}\\<br>U(0,1)&amp;\rightarrow a=0,b=1<br>\end{align}<br>$$</p>
-<h3 id="Normal-正态分布"><a href="#Normal-正态分布" class="headerlink" title="Normal-正态分布"></a>Normal-正态分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim N(\mu, \sigma^2)\\<br>&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty&lt; x&lt;+\infty\\<br>&amp;\mu_x=\mu,\quad \sigma_x^2=\sigma^2\\<br>&amp;M_x(t)=e^{\mu t+\frac12\sigma^2t^2}\\<br>&amp;\phi_x(t)=e^{i\mu t-\frac12\sigma^2t^2}\\<br>\int_{-\infty}^{\infty}&amp;e^{-\frac{x^2}{2}}dx=\sqrt{2\pi}<br>\end{align}<br>$$</p>
-<h3 id="Gamma分布"><a href="#Gamma分布" class="headerlink" title="Gamma分布"></a>Gamma分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Gamma(\alpha, \beta)\\<br>&amp;f_x(x)=\frac{x^{\alpha-1}e^{-\frac{x}{\beta}}}<br>{\Gamma(\alpha)\beta^\alpha}<br>,\quad x&gt;0\\<br>&amp;\mu_x=\alpha\beta,\quad \sigma_x^2=\alpha\beta^2\\<br>&amp;M_x(t)=(1-\beta t)^{-\alpha}, \quad t&lt;\frac1\beta\\<br>&amp;\phi_x(t)=(1-\beta it)^{-\alpha}\\<br>\Gamma(\alpha)&amp;=\int_0^\infty t^{\alpha-1}e^{-t}dt=\alpha\Gamma(\alpha-1)=(\alpha-1)!\\<br>\Gamma(\frac12)&amp;=\sqrt{\pi}<br>\end{align}<br>$$</p>
-<p>再出现$\alpha$个要等多久。</p>
-<h3 id="Chi-square-卡方分布"><a href="#Chi-square-卡方分布" class="headerlink" title="Chi-square-卡方分布"></a>Chi-square-卡方分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim \chi^2_v\\<br>&amp;f_x(x)=\frac{x^{\frac v2-1}e^{-\frac{x}{2}}}<br>{\Gamma(\frac v2)\sqrt{2^v}}<br>,\quad x&gt;0\\<br>&amp;\mu_x=v,\quad \sigma_x^2=2v\\<br>&amp;M_x(t)=(1-2 t)^{-\frac v2}, \quad t&lt;\frac12\\<br>&amp;\phi_x(t)=(1-2 it)^{-\frac v2}\\<br>Gamma&amp;特例\rightarrow \alpha=\frac v2,\beta=2<br>\end{align}<br>$$</p>
-<h3 id="Exponential-指数分布"><a href="#Exponential-指数分布" class="headerlink" title="Exponential-指数分布"></a>Exponential-指数分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim exp(\beta)\\<br>&amp;f_x(x)=\frac1\beta e^{-\frac x\beta},\quad x&gt;0\\<br>&amp;\mu_x=\beta,\quad \sigma_x^2=\beta^2\\<br>&amp;M_x(t)=\frac1{1-\beta t},t&lt;\frac1\beta\\<br>&amp;\phi_x(t)=\frac1{1-\beta it}\\<br>Gamma&amp;特例\rightarrow \alpha=1\\<br>Poisson&amp;\rightarrow \lambda=\frac1\beta<br>\end{align}<br>$$</p>
+<h3 id="negative-binomial-负二项分布">Negative Binomial-负二项分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim NB(r,p)\\
+&amp;P(x)=\bigl( \begin{smallmatrix}x+r-1 \\ r-1 \end{smallmatrix}\bigr)
+p^r(1-p)^x,\quad x=0,1,2,...\\
+&amp;\mu_x=\frac{r(1-p)}{p},\quad \sigma_x^2=\frac{r(1-p)}{p^2}\\
+&amp;M_x(t)=(\frac{p}{1-(1-p)e^t})^r\\
+\end{align}
+\]</span></p>
+<p>成功概率是<span class="math inline">\(p\)</span>，<span class="math inline">\(r\)</span>次成功会出现多少次失败</p>
+<h3 id="geometry-几何分布">Geometry-几何分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Geometry(p)\\
+&amp;P(x)=p(1-p)^{x-1},\quad x=1,2,...\\
+&amp;\mu_x=\frac1{p},\quad \sigma_x^2=\frac{1-p}{p^2}\\
+&amp;M_x(t)=\frac{pe^t}{1-(1-p)e^t},\quad t &lt; -\ln(1-p)\\
+\end{align}
+\]</span></p>
+<p>成功概率是<span class="math inline">\(p\)</span>，出现一次成功总共要多少次</p>
+<h3 id="hypergeometric-超几何分布">Hypergeometric-超几何分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Hyper(M,N,n)\\
+&amp;P(x)=\frac{
+    \bigl( \begin{smallmatrix}M \\ x \end{smallmatrix}\bigr)
+    \bigl( \begin{smallmatrix}N-M \\ n-x \end{smallmatrix}\bigr)
+}
+{\bigl( \begin{smallmatrix}N \\ n \end{smallmatrix}\bigr)}\\
+&amp;\mu_x=\frac{nM}{N},\quad \sigma_x^2=\frac{nM}{N}\frac{N-M}{N}\frac{N-n}{N-1}
+\end{align}
+\]</span></p>
+<p>总共有<span class="math inline">\(N\)</span>条鱼，<span class="math inline">\(M\)</span>条带标记，某一次捞<span class="math inline">\(n\)</span>条，带标记的有几条</p>
+<h3 id="multinomial-多项分布">Multinomial-多项分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X_1,&amp;X_2,...,X_k\sim MultiNomial(p_1,...,p_k,n)\\
+&amp;P(x)=\frac{n!}{x_1!x_2!...x_k!}p_1^{x_1}p_2^{x_2}...p_k^{x_k}\\
+&amp;x_i\in\{0,...,n\},i\in\{1,...,k\},\sum x_i=n\\
+&amp;E(X_i)=np_i,\quad Var(X_i)=np_i(1-p_i)
+\end{align}
+\]</span></p>
+<p><span class="math inline">\(k\)</span>种取值，掷n次，<span class="math inline">\(x_i\)</span>表示每种发生几次</p>
+<p><span class="math inline">\(n=1\)</span>时，<span class="math inline">\(x\)</span>可以取<span class="math inline">\(1,...,k\)</span>这几个值，<span class="math inline">\(P(x)\)</span>表示取这些值的概率</p>
+<p><span class="math inline">\(n=1\)</span>时,<span class="math inline">\(P(x)=p_1^{1\{x=1\}}p_2^{1\{x=2\}}...p_k^{1\{x=k\}}\)</span></p>
+<h2 id="连续分布">连续分布</h2>
+<h3 id="uniform分布">Uniform分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Uniform(a, b)\\
+&amp;f_x(x)=\frac1{b-a},\quad x\in[a,b]\\
+&amp;\mu_x=\frac{a+b}{2},\quad \sigma_x^2=\frac{(b-a)^2}{12}\\
+&amp;M_x(t)=\frac{e^{tb}-e^{ta}}{t(b-a)}\\
+&amp;\phi_x(t)=\frac{e^{itb}-e^{ita}}{it(b-a)}\\
+U(0,1)&amp;\rightarrow a=0,b=1
+\end{align}
+\]</span></p>
+<h3 id="normal-正态分布">Normal-正态分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim N(\mu, \sigma^2)\\
+&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty&lt; x&lt;+\infty\\
+&amp;\mu_x=\mu,\quad \sigma_x^2=\sigma^2\\
+&amp;M_x(t)=e^{\mu t+\frac12\sigma^2t^2}\\
+&amp;\phi_x(t)=e^{i\mu t-\frac12\sigma^2t^2}\\
+\int_{-\infty}^{\infty}&amp;e^{-\frac{x^2}{2}}dx=\sqrt{2\pi}
+\end{align}
+\]</span></p>
+<h3 id="gamma分布">Gamma分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Gamma(\alpha, \beta)\\
+&amp;f_x(x)=\frac{x^{\alpha-1}e^{-\frac{x}{\beta}}}
+{\Gamma(\alpha)\beta^\alpha}
+,\quad x&gt;0\\
+&amp;\mu_x=\alpha\beta,\quad \sigma_x^2=\alpha\beta^2\\
+&amp;M_x(t)=(1-\beta t)^{-\alpha}, \quad t&lt;\frac1\beta\\
+&amp;\phi_x(t)=(1-\beta it)^{-\alpha}\\
+\Gamma(\alpha)&amp;=\int_0^\infty t^{\alpha-1}e^{-t}dt=\alpha\Gamma(\alpha-1)=(\alpha-1)!\\
+\Gamma(\frac12)&amp;=\sqrt{\pi}
+\end{align}
+\]</span></p>
+<p>再出现<span class="math inline">\(\alpha\)</span>个要等多久。</p>
+<h3 id="chi-square-卡方分布">Chi-square-卡方分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim \chi^2_v\\
+&amp;f_x(x)=\frac{x^{\frac v2-1}e^{-\frac{x}{2}}}
+{\Gamma(\frac v2)\sqrt{2^v}}
+,\quad x&gt;0\\
+&amp;\mu_x=v,\quad \sigma_x^2=2v\\
+&amp;M_x(t)=(1-2 t)^{-\frac v2}, \quad t&lt;\frac12\\
+&amp;\phi_x(t)=(1-2 it)^{-\frac v2}\\
+Gamma&amp;特例\rightarrow \alpha=\frac v2,\beta=2
+\end{align}
+\]</span></p>
+<h3 id="exponential-指数分布">Exponential-指数分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim exp(\beta)\\
+&amp;f_x(x)=\frac1\beta e^{-\frac x\beta},\quad x&gt;0\\
+&amp;\mu_x=\beta,\quad \sigma_x^2=\beta^2\\
+&amp;M_x(t)=\frac1{1-\beta t},t&lt;\frac1\beta\\
+&amp;\phi_x(t)=\frac1{1-\beta it}\\
+Gamma&amp;特例\rightarrow \alpha=1\\
+Poisson&amp;\rightarrow \lambda=\frac1\beta
+\end{align}
+\]</span></p>
 <p>出现下一个要等多久。</p>
-<h3 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Beta(\alpha,\beta)\\<br>&amp;f_x(x)=\frac1{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}<br>,\quad 0\leq x\leq 1,\alpha&gt;0,\beta&gt;0\\<br>&amp;\mu_x=\frac{\alpha}{\alpha+\beta},\quad \sigma_x^2=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\\<br>&amp;M_x(t)=1+\sum_{j=1}^n(\prod_{i=0}^{j-1}\frac{\alpha+i}{\alpha+\beta+i})\frac{t^j}{j!}, \quad t&lt;\frac12\\<br>B&amp;(\alpha, \beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\\<br>U&amp;(0,1)\rightarrow \alpha=1,\beta=1\\<br>\int_0^1&amp;x^{\alpha-1}(1-x)^{\beta-1}=B(\alpha, \beta)<br>\end{align}<br>$$</p>
-<p>$X_1, X_2, …, X_n$是均匀分布$U(0,1)$产生的随机数，其中第$k$小的数$X^{(k)}$服从$Beta(k, n-k+1)$的Beta分布。</p>
-<h3 id="Log-normal分布"><a href="#Log-normal分布" class="headerlink" title="Log-normal分布"></a>Log-normal分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim LogN(\mu,\sigma^2)\\<br>&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}\frac1x exp\{-\frac1{2\sigma^2}(\log x-\mu)^2\}<br>,\quad x&gt;0\\<br>Normal&amp;\rightarrow Y\sim N(\mu,\sigma^2),\quad X=e^Y\sim LogN(\mu,\sigma^2)\\<br>E(X^k)=&amp;E(e^{kY})=M_Y(k)=exp\{\frac{\sigma^2k^2}{2}+\mu k\}<br>\end{align}<br>$$</p>
-<h3 id="Double-Laplace-exponential-拉普拉斯分布"><a href="#Double-Laplace-exponential-拉普拉斯分布" class="headerlink" title="Double/Laplace exponential-拉普拉斯分布"></a>Double/Laplace exponential-拉普拉斯分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Laplace(\alpha,\beta)\\<br>&amp;f_x(x)=\frac1{2\beta}exp\{-\frac{|x-\alpha|}{\beta}\}<br>,\quad -\infty &lt; x &lt; +\infty\\<br>&amp;\mu_x=\alpha,\quad \sigma_x^2=2\beta^2\\<br>&amp;M_x(t)=\frac{e^{\alpha t}}{1-\beta^2 t^2}, \quad |t|&lt;\frac1\beta\\<br>厚尾&amp;，关于\alpha对称<br>\end{align}<br>$$</p>
-<h3 id="Cauchy-柯西分布"><a href="#Cauchy-柯西分布" class="headerlink" title="Cauchy-柯西分布"></a>Cauchy-柯西分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim Cauchy(\mu,\sigma)\\<br>&amp;f_x(x)=\frac1{\pi\sigma}\frac1{1+(\frac{x-\mu}{\sigma})^2}<br>,\quad -\infty &lt; x &lt; +\infty\\<br>E(x^k)&amp;不存在,k\geq 1，MGF不存在\\<br>\phi_x(t)&amp;=e^{iut-\sigma|t|},对t不可导<br>\end{align}<br>$$</p>
-<h3 id="IGamma-逆Gamma分布"><a href="#IGamma-逆Gamma分布" class="headerlink" title="IGamma-逆Gamma分布"></a>IGamma-逆Gamma分布</h3><p>$$<br>\begin{align}<br>X&amp;\sim IGamma(\alpha, \beta)\\<br>&amp;f_x(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}(\frac1y)^{\alpha+1}e^{-\frac\beta y},\quad x&gt;0\\<br>Gamma&amp;\rightarrow Y\sim Gamma(\alpha, \beta),\quad X=Y^{-1}\sim IGamma(\alpha, \beta)\\<br>\end{align}<br>$$</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="exponential-family-指数族"><a href="#exponential-family-指数族" class="headerlink" title="exponential family-指数族"></a>exponential family-指数族</h3><p>$$<br>p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))<br>$$</p>
-<h3 id="共轭先验分布"><a href="#共轭先验分布" class="headerlink" title="共轭先验分布"></a>共轭先验分布</h3><ul>
-<li>$Poisson(\lambda)\rightarrow\lambda\Rightarrow Gamma(\alpha, \beta)\rightarrow Gamma(\alpha+n\bar X, \beta+n)$</li>
-<li>$exp(\beta)\rightarrow\lambda\Rightarrow IGamma(\alpha, \beta)\rightarrow Gamma(\alpha+n, \beta+n\bar X)$</li>
-<li>$Bin(n,p)\rightarrow p\Rightarrow Beta$</li>
-<li>$Normal$方差已知时$\mu\Rightarrow Normal$，均值已知时$\sigma^2\Rightarrow IGamma$，都未知$\mu,\sigma^2\Rightarrow N-IGamma$</li>
+<h3 id="beta分布">Beta分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Beta(\alpha,\beta)\\
+&amp;f_x(x)=\frac1{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}
+,\quad 0\leq x\leq 1,\alpha&gt;0,\beta&gt;0\\
+&amp;\mu_x=\frac{\alpha}{\alpha+\beta},\quad \sigma_x^2=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\\
+&amp;M_x(t)=1+\sum_{j=1}^n(\prod_{i=0}^{j-1}\frac{\alpha+i}{\alpha+\beta+i})\frac{t^j}{j!}, \quad t&lt;\frac12\\
+B&amp;(\alpha, \beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\\
+U&amp;(0,1)\rightarrow \alpha=1,\beta=1\\
+\int_0^1&amp;x^{\alpha-1}(1-x)^{\beta-1}=B(\alpha, \beta)
+\end{align}
+\]</span></p>
+<p><span class="math inline">\(X_1, X_2, ..., X_n\)</span>是均匀分布<span class="math inline">\(U(0,1)\)</span>产生的随机数，其中第<span class="math inline">\(k\)</span>小的数<span class="math inline">\(X^{(k)}\)</span>服从<span class="math inline">\(Beta(k, n-k+1)\)</span>的Beta分布。</p>
+<h3 id="log-normal分布">Log-normal分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim LogN(\mu,\sigma^2)\\
+&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}\frac1x exp\{-\frac1{2\sigma^2}(\log x-\mu)^2\}
+,\quad x&gt;0\\
+Normal&amp;\rightarrow Y\sim N(\mu,\sigma^2),\quad X=e^Y\sim LogN(\mu,\sigma^2)\\
+E(X^k)=&amp;E(e^{kY})=M_Y(k)=exp\{\frac{\sigma^2k^2}{2}+\mu k\}
+\end{align}
+\]</span></p>
+<h3 id="doublelaplace-exponential-拉普拉斯分布">Double/Laplace exponential-拉普拉斯分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Laplace(\alpha,\beta)\\
+&amp;f_x(x)=\frac1{2\beta}exp\{-\frac{|x-\alpha|}{\beta}\}
+,\quad -\infty &lt; x &lt; +\infty\\
+&amp;\mu_x=\alpha,\quad \sigma_x^2=2\beta^2\\
+&amp;M_x(t)=\frac{e^{\alpha t}}{1-\beta^2 t^2}, \quad |t|&lt;\frac1\beta\\
+厚尾&amp;，关于\alpha对称
+\end{align}
+\]</span></p>
+<h3 id="cauchy-柯西分布">Cauchy-柯西分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim Cauchy(\mu,\sigma)\\
+&amp;f_x(x)=\frac1{\pi\sigma}\frac1{1+(\frac{x-\mu}{\sigma})^2}
+,\quad -\infty &lt; x &lt; +\infty\\
+E(x^k)&amp;不存在,k\geq 1，MGF不存在\\
+\phi_x(t)&amp;=e^{iut-\sigma|t|},对t不可导
+\end{align}
+\]</span></p>
+<h3 id="igamma-逆gamma分布">IGamma-逆Gamma分布</h3>
+<p><span class="math display">\[
+\begin{align}
+X&amp;\sim IGamma(\alpha, \beta)\\
+&amp;f_x(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}(\frac1y)^{\alpha+1}e^{-\frac\beta y},\quad x&gt;0\\
+Gamma&amp;\rightarrow Y\sim Gamma(\alpha, \beta),\quad X=Y^{-1}\sim IGamma(\alpha, \beta)\\
+\end{align}
+\]</span></p>
+<h2 id="其他">其他</h2>
+<h3 id="exponential-family-指数族">exponential family-指数族</h3>
+<p><span class="math display">\[
+p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
+\]</span></p>
+<h3 id="共轭先验分布">共轭先验分布</h3>
+<ul>
+<li><span class="math inline">\(Poisson(\lambda)\rightarrow\lambda\Rightarrow Gamma(\alpha, \beta)\rightarrow Gamma(\alpha+n\bar X, \beta+n)\)</span></li>
+<li><span class="math inline">\(exp(\beta)\rightarrow\lambda\Rightarrow IGamma(\alpha, \beta)\rightarrow Gamma(\alpha+n, \beta+n\bar X)\)</span></li>
+<li><span class="math inline">\(Bin(n,p)\rightarrow p\Rightarrow Beta\)</span></li>
+<li><span class="math inline">\(Normal\)</span>方差已知时<span class="math inline">\(\mu\Rightarrow Normal\)</span>，均值已知时<span class="math inline">\(\sigma^2\Rightarrow IGamma\)</span>，都未知<span class="math inline">\(\mu,\sigma^2\Rightarrow N-IGamma\)</span></li>
 </ul>
 
       
@@ -593,7 +767,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#离散分布"><span class="nav-number">1.</span> <span class="nav-text">离散分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bernoulli-伯努利分布"><span class="nav-number">1.1.</span> <span class="nav-text">Bernoulli-伯努利分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binomial-二项分布"><span class="nav-number">1.2.</span> <span class="nav-text">Binomial-二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Poisson-泊松分布"><span class="nav-number">1.3.</span> <span class="nav-text">Poisson-泊松分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Negative-Binomial-负二项分布"><span class="nav-number">1.4.</span> <span class="nav-text">Negative Binomial-负二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Geometry-几何分布"><span class="nav-number">1.5.</span> <span class="nav-text">Geometry-几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypergeometric-超几何分布"><span class="nav-number">1.6.</span> <span class="nav-text">Hypergeometric-超几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multinomial-多项分布"><span class="nav-number">1.7.</span> <span class="nav-text">Multinomial-多项分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续分布"><span class="nav-number">2.</span> <span class="nav-text">连续分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform分布"><span class="nav-number">2.1.</span> <span class="nav-text">Uniform分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-正态分布"><span class="nav-number">2.2.</span> <span class="nav-text">Normal-正态分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gamma分布"><span class="nav-number">2.3.</span> <span class="nav-text">Gamma分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chi-square-卡方分布"><span class="nav-number">2.4.</span> <span class="nav-text">Chi-square-卡方分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exponential-指数分布"><span class="nav-number">2.5.</span> <span class="nav-text">Exponential-指数分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Beta分布"><span class="nav-number">2.6.</span> <span class="nav-text">Beta分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-normal分布"><span class="nav-number">2.7.</span> <span class="nav-text">Log-normal分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Double-Laplace-exponential-拉普拉斯分布"><span class="nav-number">2.8.</span> <span class="nav-text">Double/Laplace exponential-拉普拉斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cauchy-柯西分布"><span class="nav-number">2.9.</span> <span class="nav-text">Cauchy-柯西分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IGamma-逆Gamma分布"><span class="nav-number">2.10.</span> <span class="nav-text">IGamma-逆Gamma分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-family-指数族"><span class="nav-number">3.1.</span> <span class="nav-text">exponential family-指数族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭先验分布"><span class="nav-number">3.2.</span> <span class="nav-text">共轭先验分布</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#离散分布"><span class="nav-number">1.</span> <span class="nav-text">离散分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-伯努利分布"><span class="nav-number">1.1.</span> <span class="nav-text">Bernoulli-伯努利分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binomial-二项分布"><span class="nav-number">1.2.</span> <span class="nav-text">Binomial-二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-泊松分布"><span class="nav-number">1.3.</span> <span class="nav-text">Poisson-泊松分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negative-binomial-负二项分布"><span class="nav-number">1.4.</span> <span class="nav-text">Negative Binomial-负二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometry-几何分布"><span class="nav-number">1.5.</span> <span class="nav-text">Geometry-几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypergeometric-超几何分布"><span class="nav-number">1.6.</span> <span class="nav-text">Hypergeometric-超几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multinomial-多项分布"><span class="nav-number">1.7.</span> <span class="nav-text">Multinomial-多项分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续分布"><span class="nav-number">2.</span> <span class="nav-text">连续分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform分布"><span class="nav-number">2.1.</span> <span class="nav-text">Uniform分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-正态分布"><span class="nav-number">2.2.</span> <span class="nav-text">Normal-正态分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gamma分布"><span class="nav-number">2.3.</span> <span class="nav-text">Gamma分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-卡方分布"><span class="nav-number">2.4.</span> <span class="nav-text">Chi-square-卡方分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-指数分布"><span class="nav-number">2.5.</span> <span class="nav-text">Exponential-指数分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beta分布"><span class="nav-number">2.6.</span> <span class="nav-text">Beta分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-normal分布"><span class="nav-number">2.7.</span> <span class="nav-text">Log-normal分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doublelaplace-exponential-拉普拉斯分布"><span class="nav-number">2.8.</span> <span class="nav-text">Double/Laplace exponential-拉普拉斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cauchy-柯西分布"><span class="nav-number">2.9.</span> <span class="nav-text">Cauchy-柯西分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#igamma-逆gamma分布"><span class="nav-number">2.10.</span> <span class="nav-text">IGamma-逆Gamma分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-family-指数族"><span class="nav-number">3.1.</span> <span class="nav-text">exponential family-指数族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭先验分布"><span class="nav-number">3.2.</span> <span class="nav-text">共轭先验分布</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -347,174 +347,230 @@
 <li>从算法设计者的角度出发来理解这些算法</li>
 <li>开脑洞，做实验，解决疑惑</li>
 </ul>
-<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><h3 id="马尔科夫链采样"><a href="#马尔科夫链采样" class="headerlink" title="马尔科夫链采样"></a>马尔科夫链采样</h3><p>要生成服从目标分布的样本，如果知道它对应的状态转移矩阵，可以利用这个矩阵完成：随机确定一个初始值，根据状态转移矩阵随机转移，每次转移的结果记录下来，得到一组样本，从一个阈值往后截取，这部分样本就会服从目标分布。</p>
+<h2 id="基本介绍">基本介绍</h2>
+<h3 id="马尔科夫链采样">马尔科夫链采样</h3>
+<p>要生成服从目标分布的样本，如果知道它对应的状态转移矩阵，可以利用这个矩阵完成：随机确定一个初始值，根据状态转移矩阵随机转移，每次转移的结果记录下来，得到一组样本，从一个阈值往后截取，这部分样本就会服从目标分布。</p>
 <p>由<strong>马氏链定理</strong>可知，一个状态转移矩阵多次转移可以收敛于一个特定分布；所以对任意初始点，经过足够多次转移后的每个状态，都会服从这个特定分布；因此这个过程截掉前半部分没有收敛时的样本，留下的就是服从这个分布的样本。</p>
-<p>上面的过程中，我们已知状态转移矩阵$P$，通过$P$的乘方可以计算出，通过这个状态转移矩阵生成的样本是服从什么样的分布。但是现实的问题往往是反过来，已知一个分布，要获得服从该分布的样本，我们如何找到这样一个$P$进行转移。</p>
-<h3 id="细致平稳条件"><a href="#细致平稳条件" class="headerlink" title="细致平稳条件"></a>细致平稳条件</h3><p>我们可以通过细致平稳条件来找这个$P$。</p>
-<p><strong>细致平稳条件</strong>是说：如果非周期马氏链的转移矩阵$P$和分布$\pi(x)$ 满足</p>
-<p>$$<br>\pi(i) P_{i j}=\pi(j) P_{j i} \quad \text { for all }  i, j<br>$$</p>
-<p>则$\pi(x)$是马氏链的平稳分布。这是平稳分布的充分条件而非必要条件，即这是一个更强的条件。直观理解如下</p>
+<p>上面的过程中，我们已知状态转移矩阵<span class="math inline">\(P\)</span>，通过<span class="math inline">\(P\)</span>的乘方可以计算出，通过这个状态转移矩阵生成的样本是服从什么样的分布。但是现实的问题往往是反过来，已知一个分布，要获得服从该分布的样本，我们如何找到这样一个<span class="math inline">\(P\)</span>进行转移。</p>
+<h3 id="细致平稳条件">细致平稳条件</h3>
+<p>我们可以通过细致平稳条件来找这个<span class="math inline">\(P\)</span>。</p>
+<p><strong>细致平稳条件</strong>是说：如果非周期马氏链的转移矩阵<span class="math inline">\(P\)</span>和分布<span class="math inline">\(\pi(x)\)</span> 满足</p>
+<p><span class="math display">\[ 
+\pi(i) P_{i j}=\pi(j) P_{j i} \quad \text { for all }  i, j
+\]</span></p>
+<p>则<span class="math inline">\(\pi(x)\)</span>是马氏链的平稳分布。这是平稳分布的充分条件而非必要条件，即这是一个更强的条件。直观理解如下</p>
 <ul>
-<li>平稳分布指对任意一个状态，从这个状态转移出去的概率质量等于转移进来的概率质量，所以$\pi(x)$经过$P$转移后，每个状态的概率都没有变。</li>
-<li>细致平稳条件指对任意两个状态$i$和$j$，每一次转移$i$转移给$j$的概率质量等于$j$转移给$i$的概率质量；因此细致平稳条件更细节，它满足则平稳分布一定满足。</li>
+<li>平稳分布指对任意一个状态，从这个状态转移出去的概率质量等于转移进来的概率质量，所以<span class="math inline">\(\pi(x)\)</span>经过<span class="math inline">\(P\)</span>转移后，每个状态的概率都没有变。</li>
+<li>细致平稳条件指对任意两个状态<span class="math inline">\(i\)</span>和<span class="math inline">\(j\)</span>，每一次转移<span class="math inline">\(i\)</span>转移给<span class="math inline">\(j\)</span>的概率质量等于<span class="math inline">\(j\)</span>转移给<span class="math inline">\(i\)</span>的概率质量；因此细致平稳条件更细节，它满足则平稳分布一定满足。</li>
 </ul>
-<p>证明：我们想证满足细致平稳条件的$\pi$，可以使$\pi P=\pi$成立（因为满足这个式子的$\pi$是唯一的，所以只要这个式子成立就是平稳分布）；只需要证对每个$j$，都有</p>
-<p>$$<br>\sum_{i=1}^{\infty} \pi(i) P_{i j}=\pi(j)<br>$$</p>
+<p>证明：我们想证满足细致平稳条件的<span class="math inline">\(\pi\)</span>，可以使<span class="math inline">\(\pi P=\pi\)</span>成立（因为满足这个式子的<span class="math inline">\(\pi\)</span>是唯一的，所以只要这个式子成立就是平稳分布）；只需要证对每个<span class="math inline">\(j\)</span>，都有</p>
+<p><span class="math display">\[
+\sum_{i=1}^{\infty} \pi(i) P_{i j}=\pi(j)
+\]</span></p>
 <p>成立。证明如下</p>
-<p>$$<br>\sum_{i=1}^{\infty} \pi(i) P_{i j}=\sum_{i=1}^{\infty} \pi(j) P_{j i}=\pi(j) \sum_{i=1}^{\infty} P_{j i}=\pi(j) \tag{1}<br>$$</p>
-<p>现在，回到找$P$的问题上来，我们原来是要找到一个$P$，满足$\pi$是这个$P$对应马氏链的平稳分布；现在我们只需要找到一个$P$满足细致平稳条件。</p>
-<h2 id="MCMC采样算法"><a href="#MCMC采样算法" class="headerlink" title="MCMC采样算法"></a>MCMC采样算法</h2><p>我们要找一个$P$满足这个公式</p>
-<p>$$<br>\pi(i) P_{i j}=\pi(j) P_{j i} \quad \text { for all } \quad i, j<br>$$</p>
-<p>先随便找一个转移矩阵$Q$，一般$Q$不满足细致平稳条件，即</p>
-<p>$$<br>\pi(i) Q_{ij} \neq \pi(j) Q_{ji}<br>$$</p>
-<p>但我们可以乘一个数令它满足，令$\alpha_{ij}=\pi(j) Q_{ji}$，则</p>
-<p>$$<br>\pi(i) Q_{ij} \alpha_{ij} = \pi(i) Q_{ij}\pi(j) Q_{ji}=<br>\pi(j) Q_{ji}\pi(i) Q_{ij}=\pi(j) Q_{ji} \alpha_{ji}<br>$$</p>
-<p>令$Q’_ {ij} = Q_{ij} \alpha_{ij}$，则满足</p>
-<p>$$<br>\pi(i) Q’_ {ij} = \pi(j) Q’_{ji}<br>$$</p>
-<p>但是要注意，$Q’$仍然不是我们要找的$P$，因为<strong>它不是一个概率转移矩阵</strong>，它的每一行加起来不是1，也更谈不上它满足细致平稳条件。如果用这个矩阵去转移，最后不会收敛到一个分布（乘方趋于0）。而且MCMC算法也不是这样做的。</p>
+<p><span class="math display">\[ 
+\sum_{i=1}^{\infty} \pi(i) P_{i j}=\sum_{i=1}^{\infty} \pi(j) P_{j i}=\pi(j) \sum_{i=1}^{\infty} P_{j i}=\pi(j) \tag{1}
+\]</span></p>
+<p>现在，回到找<span class="math inline">\(P\)</span>的问题上来，我们原来是要找到一个<span class="math inline">\(P\)</span>，满足<span class="math inline">\(\pi\)</span>是这个<span class="math inline">\(P\)</span>对应马氏链的平稳分布；现在我们只需要找到一个<span class="math inline">\(P\)</span>满足细致平稳条件。</p>
+<h2 id="mcmc采样算法">MCMC采样算法</h2>
+<p>我们要找一个<span class="math inline">\(P\)</span>满足这个公式</p>
+<p><span class="math display">\[ 
+\pi(i) P_{i j}=\pi(j) P_{j i} \quad \text { for all } \quad i, j
+\]</span></p>
+<p>先随便找一个转移矩阵<span class="math inline">\(Q\)</span>，一般<span class="math inline">\(Q\)</span>不满足细致平稳条件，即</p>
+<p><span class="math display">\[ 
+\pi(i) Q_{ij} \neq \pi(j) Q_{ji}
+\]</span></p>
+<p>但我们可以乘一个数令它满足，令<span class="math inline">\(\alpha_{ij}=\pi(j) Q_{ji}\)</span>，则</p>
+<p><span class="math display">\[ 
+\pi(i) Q_{ij} \alpha_{ij} = \pi(i) Q_{ij}\pi(j) Q_{ji}= 
+\pi(j) Q_{ji}\pi(i) Q_{ij}=\pi(j) Q_{ji} \alpha_{ji} 
+\]</span></p>
+<p>令<span class="math inline">\(Q&#39;_ {ij} = Q_{ij} \alpha_{ij}\)</span>，则满足</p>
+<p><span class="math display">\[
+\pi(i) Q&#39;_ {ij} = \pi(j) Q&#39;_{ji}
+\]</span></p>
+<p>但是要注意，<span class="math inline">\(Q&#39;\)</span>仍然不是我们要找的<span class="math inline">\(P\)</span>，因为<strong>它不是一个概率转移矩阵</strong>，它的每一行加起来不是1，也更谈不上它满足细致平稳条件。如果用这个矩阵去转移，最后不会收敛到一个分布（乘方趋于0）。而且MCMC算法也不是这样做的。</p>
 <p>这里我们也把MCMC算法的截图放上来</p>
 <img src="http://static.wzbtech.com/static/images/mcmc.jpg">
-<p>算法中不是将$Q’$当做一个整体来看待，而是拆分成转移概率$Q$和接受率$\alpha$，假设从$i$转移到$j$的过程中</p>
+<p>算法中不是将<span class="math inline">\(Q&#39;\)</span>当做一个整体来看待，而是拆分成转移概率<span class="math inline">\(Q\)</span>和接受率<span class="math inline">\(\alpha\)</span>，假设从<span class="math inline">\(i\)</span>转移到<span class="math inline">\(j\)</span>的过程中</p>
 <ul>
-<li>从$Q$中选到状态$j$，同时还被接受了，才真正完成转移，概率其实就等于$Q_{ij}\alpha_{ij}=Q’_{ij}$</li>
-<li>如果没被接受，则相当于转移到了$i$自身</li>
-<li>可以看到，算法中从$i$转移到$\forall j\neq i$时，是按照$Q’_ {ij}$的概率；但从$i$转移到$i$时的概率不止是$Q’_{ij}$的概率，而且加上了剩余的所有概率（因为$Q’$每一行加起来不足1）</li>
+<li>从<span class="math inline">\(Q\)</span>中选到状态<span class="math inline">\(j\)</span>，同时还被接受了，才真正完成转移，概率其实就等于<span class="math inline">\(Q_{ij}\alpha_{ij}=Q&#39;_{ij}\)</span></li>
+<li>如果没被接受，则相当于转移到了<span class="math inline">\(i\)</span>自身</li>
+<li>可以看到，算法中从<span class="math inline">\(i\)</span>转移到<span class="math inline">\(\forall j\neq i\)</span>时，是按照<span class="math inline">\(Q&#39;_ {ij}\)</span>的概率；但从<span class="math inline">\(i\)</span>转移到<span class="math inline">\(i\)</span>时的概率不止是<span class="math inline">\(Q&#39;_{ij}\)</span>的概率，而且加上了剩余的所有概率（因为<span class="math inline">\(Q&#39;\)</span>每一行加起来不足1）</li>
 </ul>
-<p>因此我们要找的$P$就浮出水面了，即把$Q’$每一行不足1的那部分概率全加到对角线上，得到的新矩阵$Q^*$就是我们要找的$P$。</p>
-<p>MCMC算法的过程，就等价于拿这个$Q^*$直接转移。</p>
+<p>因此我们要找的<span class="math inline">\(P\)</span>就浮出水面了，即把<span class="math inline">\(Q&#39;\)</span>每一行不足1的那部分概率全加到对角线上，得到的新矩阵<span class="math inline">\(Q^*\)</span>就是我们要找的<span class="math inline">\(P\)</span>。</p>
+<p>MCMC算法的过程，就等价于拿这个<span class="math inline">\(Q^*\)</span>直接转移。</p>
 <p>这样做确实满足每一行概率和是1了，但是它是否仍然满足细致平稳条件呢？</p>
 <p>仍然满足！</p>
 <ul>
-<li>对于$i\neq j$的情形，数字没有变化，因此公式依然成立</li>
-<li>对$i=j$的情形，对角线数值改变，等式两边会同时改变，所以式子依然成立</li>
+<li>对于<span class="math inline">\(i\neq j\)</span>的情形，数字没有变化，因此公式依然成立</li>
+<li>对<span class="math inline">\(i=j\)</span>的情形，对角线数值改变，等式两边会同时改变，所以式子依然成立</li>
 </ul>
-<p>因此$Q^*$就是我们要找的转移矩阵。</p>
+<p>因此<span class="math inline">\(Q^*\)</span>就是我们要找的转移矩阵。</p>
 <p>补充说明</p>
 <ul>
-<li>$Q’$不是转移矩阵这一点就是引用博客以及几乎所有中文博客的误区。</li>
-<li>我们说$Q’$不是转移矩阵，但它仍满足细致平稳条件的那个公式，会不会从这个公式依然可以推出平稳分布呢（关注式子$(1)$）？不会。看式子$(1)$的最后一步，因为$P$加和不是1，所以最后一步不成立。</li>
-<li>看过引用博客的读者可能会有这样的疑问：为什么在被$\alpha$拒绝之后要令$X_{t+1}=x_t$，而不是忽视此轮重新抽样？希望能从$Q^*$的构造中得到解答。</li>
-<li>我们虽然能理解为什么$X_{t+1}=x_t$，但“忽视此轮重新抽样”的方式真的不能达到目标吗？不能。因为这相当于将停留在原地的很多样本去掉，虽然样本停留在原地这种情况在每一个状态中都会发生，但量不一样，这就要看$Q’$每行不足1的概率大小了。这一点会在下一节的最后一部分代码中得到检验。</li>
-<li>按照构造$Q^*$的思路，剩余的概率只有加到对角线上才行吗？是的，如果加到其他位置将违反细致平稳条件。</li>
-<li>为什么MCMC算法要有接受率$\alpha$这个说法，直接说$Q^*$不就好了？因为后者只是在这个例子中有效，这一点会在后文详细说明。</li>
+<li><span class="math inline">\(Q&#39;\)</span>不是转移矩阵这一点就是引用博客以及几乎所有中文博客的误区。</li>
+<li>我们说<span class="math inline">\(Q&#39;\)</span>不是转移矩阵，但它仍满足细致平稳条件的那个公式，会不会从这个公式依然可以推出平稳分布呢（关注式子<span class="math inline">\((1)\)</span>）？不会。看式子<span class="math inline">\((1)\)</span>的最后一步，因为<span class="math inline">\(P\)</span>加和不是1，所以最后一步不成立。</li>
+<li>看过引用博客的读者可能会有这样的疑问：为什么在被<span class="math inline">\(\alpha\)</span>拒绝之后要令<span class="math inline">\(X_{t+1}=x_t\)</span>，而不是忽视此轮重新抽样？希望能从<span class="math inline">\(Q^*\)</span>的构造中得到解答。</li>
+<li>我们虽然能理解为什么<span class="math inline">\(X_{t+1}=x_t\)</span>，但“忽视此轮重新抽样”的方式真的不能达到目标吗？不能。因为这相当于将停留在原地的很多样本去掉，虽然样本停留在原地这种情况在每一个状态中都会发生，但量不一样，这就要看<span class="math inline">\(Q&#39;\)</span>每行不足1的概率大小了。这一点会在下一节的最后一部分代码中得到检验。</li>
+<li>按照构造<span class="math inline">\(Q^*\)</span>的思路，剩余的概率只有加到对角线上才行吗？是的，如果加到其他位置将违反细致平稳条件。</li>
+<li>为什么MCMC算法要有接受率<span class="math inline">\(\alpha\)</span>这个说法，直接说<span class="math inline">\(Q^*\)</span>不就好了？因为后者只是在这个例子中有效，这一点会在后文详细说明。</li>
 </ul>
-<h2 id="MCMC采样算法实现"><a href="#MCMC采样算法实现" class="headerlink" title="MCMC采样算法实现"></a>MCMC采样算法实现</h2><p>下面我们用一个简单的例子验证上述的说法，使用R语言</p>
-<h3 id="Q’-说明"><a href="#Q’-说明" class="headerlink" title="$Q’$说明"></a>$Q’$说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(expm) <span class="comment"># 矩阵乘方 %^%</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标分布</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"><span class="comment"># 计算alpha</span></span><br><span class="line">alpha &lt;- t(p * q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算Q'</span></span><br><span class="line">q1 &lt;- alpha * q</span><br></pre></td></tr></table></figure>
+<h2 id="mcmc采样算法实现">MCMC采样算法实现</h2>
+<p>下面我们用一个简单的例子验证上述的说法，使用R语言</p>
+<h3 id="q说明"><span class="math inline">\(Q&#39;\)</span>说明</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(expm) <span class="comment"># 矩阵乘方 %^%</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标分布</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"><span class="comment"># 计算alpha</span></span><br><span class="line">alpha &lt;- t(p * q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算Q'</span></span><br><span class="line">q1 &lt;- alpha * q</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; alpha</span><br><span class="line">     [,<span class="number">1</span>]  [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.30</span> <span class="number">0.075</span> <span class="number">0.01</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.18</span> <span class="number">0.015</span> <span class="number">0.08</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.12</span> <span class="number">0.210</span> <span class="number">0.01</span></span><br><span class="line">&gt; q1</span><br><span class="line">      [,<span class="number">1</span>]    [,<span class="number">2</span>]  [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.150</span> <span class="number">0.02250</span> <span class="number">0.002</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.045</span> <span class="number">0.00075</span> <span class="number">0.056</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.012</span> <span class="number">0.16800</span> <span class="number">0.001</span></span><br><span class="line">&gt; q1 %^% <span class="number">5</span></span><br><span class="line">             [,<span class="number">1</span>]         [,<span class="number">2</span>]         [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">9.582256e-05</span> <span class="number">2.228407e-05</span> <span class="number">8.383348e-06</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">4.456814e-05</span> <span class="number">8.422126e-06</span> <span class="number">8.169187e-06</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">5.030009e-05</span> <span class="number">2.450756e-05</span> <span class="number">3.313696e-06</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，$Q’$每一行加总不足1，用$Q’$来转移，概率会越来越小。</p>
-<h3 id="Q-说明"><a href="#Q-说明" class="headerlink" title="$Q^*$说明"></a>$Q^*$说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将剩余的概率加到对角线上</span></span><br><span class="line">add_diag &lt;- <span class="keyword">function</span>(q)&#123;</span><br><span class="line">  diag(q) &lt;- diag(q) + (<span class="number">1</span> - apply(q, <span class="number">1</span>, sum))</span><br><span class="line">  q</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算Q'</span></span><br><span class="line">q1 &lt;- alpha * q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算Q*</span></span><br><span class="line">q2 &lt;- add_diag(q1)</span><br></pre></td></tr></table></figure>
+<p>可以看到，<span class="math inline">\(Q&#39;\)</span>每一行加总不足1，用<span class="math inline">\(Q&#39;\)</span>来转移，概率会越来越小。</p>
+<h3 id="q说明-1"><span class="math inline">\(Q^*\)</span>说明</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将剩余的概率加到对角线上</span></span><br><span class="line">add_diag &lt;- <span class="keyword">function</span>(q)&#123;</span><br><span class="line">  diag(q) &lt;- diag(q) + (<span class="number">1</span> - apply(q, <span class="number">1</span>, sum))</span><br><span class="line">  q</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算Q'</span></span><br><span class="line">q1 &lt;- alpha * q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算Q*</span></span><br><span class="line">q2 &lt;- add_diag(q1)</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; q2</span><br><span class="line">       [,<span class="number">1</span>]   [,<span class="number">2</span>]  [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.9755</span> <span class="number">0.0225</span> <span class="number">0.002</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.0450</span> <span class="number">0.8990</span> <span class="number">0.056</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.0120</span> <span class="number">0.1680</span> <span class="number">0.820</span></span><br><span class="line">&gt; q2 %^% <span class="number">100</span></span><br><span class="line">          [,<span class="number">1</span>]      [,<span class="number">2</span>]       [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.6008666</span> <span class="number">0.2993984</span> <span class="number">0.09973499</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.5987967</span> <span class="number">0.3008353</span> <span class="number">0.10036795</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.5984099</span> <span class="number">0.3011038</span> <span class="number">0.10048623</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，$Q^*$迭代多次可以趋近于目标分布$\pi$</p>
-<h3 id="MCMC算法采样"><a href="#MCMC算法采样" class="headerlink" title="MCMC算法采样"></a>MCMC算法采样</h3><p>这里我们用标准的MCMC算法进行采样，使用转移矩阵$Q$生成目标分布$\pi$</p>
+<p>可以看到，<span class="math inline">\(Q^*\)</span>迭代多次可以趋近于目标分布<span class="math inline">\(\pi\)</span></p>
+<h3 id="mcmc算法采样">MCMC算法采样</h3>
+<p>这里我们用标准的MCMC算法进行采样，使用转移矩阵<span class="math inline">\(Q\)</span>生成目标分布<span class="math inline">\(\pi\)</span></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标分布pi</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机初始点</span></span><br><span class="line">x &lt;- c(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转移迭代</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">2</span>:<span class="number">100000</span>)&#123;</span><br><span class="line">  xt &lt;- x[i-<span class="number">1</span>]</span><br><span class="line">  y &lt;- sample(<span class="number">1</span>:<span class="number">3</span>, <span class="number">1</span>, prob=q[xt, ])</span><br><span class="line">  alpha &lt;- p[y] * q[y, xt]</span><br><span class="line">  x[i] &lt;- ifelse(runif(<span class="number">1</span>) &lt; alpha, y, xt)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; freq &lt;- table(x)</span><br><span class="line">&gt; freq / sum(freq)</span><br><span class="line">x</span><br><span class="line">      <span class="number">1</span>       <span class="number">2</span>       <span class="number">3</span> </span><br><span class="line"><span class="number">0.60126</span> <span class="number">0.30301</span> <span class="number">0.09573</span></span><br></pre></td></tr></table></figure>
 <p>可以看到样本基本服从目标分布</p>
-<h3 id="转移矩阵采样"><a href="#转移矩阵采样" class="headerlink" title="转移矩阵采样"></a>转移矩阵采样</h3><p>这里我们直接构造转移矩阵$Q^*$进行采样，本质上和MCMC采样相同</p>
+<h3 id="转移矩阵采样">转移矩阵采样</h3>
+<p>这里我们直接构造转移矩阵<span class="math inline">\(Q^*\)</span>进行采样，本质上和MCMC采样相同</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 目标分布pi</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算转移矩阵</span></span><br><span class="line">alpha &lt;- t(p * q)</span><br><span class="line">q1 &lt;- alpha * q</span><br><span class="line">q2 &lt;- add_diag(q1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机初始点</span></span><br><span class="line">x &lt;- c(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转移迭代</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">2</span>:<span class="number">100000</span>)&#123;</span><br><span class="line">  x[i] &lt;- sample(<span class="number">1</span>:<span class="number">3</span>, <span class="number">1</span>, prob=q2[x[i-<span class="number">1</span>], ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; freq &lt;- table(x)</span><br><span class="line">&gt; freq / sum(freq)</span><br><span class="line">x</span><br><span class="line">      <span class="number">1</span>       <span class="number">2</span>       <span class="number">3</span> </span><br><span class="line"><span class="number">0.60221</span> <span class="number">0.29875</span> <span class="number">0.09904</span></span><br></pre></td></tr></table></figure>
-<h3 id="错误采样方式"><a href="#错误采样方式" class="headerlink" title="错误采样方式"></a>错误采样方式</h3><p>下面展示按照“忽视此轮重新抽样”的方式采样，得到的样本分布无法保证是目标分布</p>
+<h3 id="错误采样方式">错误采样方式</h3>
+<p>下面展示按照“忽视此轮重新抽样”的方式采样，得到的样本分布无法保证是目标分布</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标分布pi</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机初始点</span></span><br><span class="line">x &lt;- c(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转移迭代</span></span><br><span class="line">i &lt;- <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span>(i &lt;= <span class="number">10000</span>)&#123;</span><br><span class="line">  xt &lt;- x[i-<span class="number">1</span>]</span><br><span class="line">  y &lt;- sample(<span class="number">1</span>:<span class="number">3</span>, <span class="number">1</span>, prob=q[xt, ])</span><br><span class="line">  alpha &lt;- p[y] * q[y, xt]</span><br><span class="line">  <span class="keyword">if</span>(runif(<span class="number">1</span>) &lt; alpha)&#123;</span><br><span class="line">    x[i] &lt;- y</span><br><span class="line">    i &lt;- i + <span class="number">1</span></span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; freq &lt;- table(x)</span><br><span class="line">&gt; freq / sum(freq)</span><br><span class="line">x</span><br><span class="line">     <span class="number">1</span>      <span class="number">2</span>      <span class="number">3</span> </span><br><span class="line"><span class="number">0.6799</span> <span class="number">0.2015</span> <span class="number">0.1186</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 对比Q'每一行概率不足1的部分</span></span><br><span class="line">&gt; <span class="number">1</span> - apply(q1, <span class="number">1</span>, sum)</span><br><span class="line">[<span class="number">1</span>] <span class="number">0.82550</span> <span class="number">0.89825</span> <span class="number">0.81900</span></span><br></pre></td></tr></table></figure>
-<p>可以看出，$Q’$中第二行有更多概率会被归入对角线中，而“忽视此轮重新抽样”的方式会将这部分概率抹去。因此得到的样本中，状态2的概率下降0.1左右，是第二行不足1的部分比其他两行多0.1左右造成的。</p>
-<h2 id="MCMC采样算法改进"><a href="#MCMC采样算法改进" class="headerlink" title="MCMC采样算法改进"></a>MCMC采样算法改进</h2><p>上述MCMC算法采样代码中显示，需要100000次迭代才能产生较满意的结果，这是接受率$\alpha$太低、导致太多原地踏步造成的。如果能把接受率调高一些，状态之间的转移会更加灵活，需要的迭代次数也可大大降低。</p>
+<p>可以看出，<span class="math inline">\(Q&#39;\)</span>中第二行有更多概率会被归入对角线中，而“忽视此轮重新抽样”的方式会将这部分概率抹去。因此得到的样本中，状态2的概率下降0.1左右，是第二行不足1的部分比其他两行多0.1左右造成的。</p>
+<h2 id="mcmc采样算法改进">MCMC采样算法改进</h2>
+<p>上述MCMC算法采样代码中显示，需要100000次迭代才能产生较满意的结果，这是接受率<span class="math inline">\(\alpha\)</span>太低、导致太多原地踏步造成的。如果能把接受率调高一些，状态之间的转移会更加灵活，需要的迭代次数也可大大降低。</p>
 <p>我们先来回顾一下细致平稳条件</p>
-<p>$$<br>\alpha_{ij}=\pi(j) Q_{ji}<br>$$</p>
-<p>$$<br>\pi(i) Q_{ij} \alpha_{ij} =\pi(j) Q_{ji} \alpha_{ji}<br>$$</p>
-<p>如果我们将$\alpha$整体扩大$k$倍，显然细致平稳条件仍然成立，则</p>
-<p>$$Q’_ {ij}=kQ_{ij}\alpha_{ij}$$</p>
-<p>这个$Q’$的每一行加和也不能保证等于1；同时我们在扩大$\alpha$时，需要保证$Q’$的每一行不超过1，因此扩大的最大程度只能是：使$Q’$的某一行加和为1，同时其他行加和不超过1。这样扩大后，可以再将每一行不足1的部分补到对角线上。这个改进效果非常好，我们来看代码</p>
+<p><span class="math display">\[
+\alpha_{ij}=\pi(j) Q_{ji}
+\]</span></p>
+<p><span class="math display">\[ 
+\pi(i) Q_{ij} \alpha_{ij} =\pi(j) Q_{ji} \alpha_{ji} 
+\]</span></p>
+<p>如果我们将<span class="math inline">\(\alpha\)</span>整体扩大<span class="math inline">\(k\)</span>倍，显然细致平稳条件仍然成立，则</p>
+<p><span class="math display">\[Q&#39;_ {ij}=kQ_{ij}\alpha_{ij}\]</span></p>
+<p>这个<span class="math inline">\(Q&#39;\)</span>的每一行加和也不能保证等于1；同时我们在扩大<span class="math inline">\(\alpha\)</span>时，需要保证<span class="math inline">\(Q&#39;\)</span>的每一行不超过1，因此扩大的最大程度只能是：使<span class="math inline">\(Q&#39;\)</span>的某一行加和为1，同时其他行加和不超过1。这样扩大后，可以再将每一行不足1的部分补到对角线上。这个改进效果非常好，我们来看代码</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标分布pi</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"><span class="comment"># 计算新的q</span></span><br><span class="line">alpha &lt;- t(p * q)</span><br><span class="line">q1 &lt;- alpha * q</span><br><span class="line">q3_temp &lt;- <span class="number">1</span>/max(apply(q1, <span class="number">1</span>, sum)) * q1</span><br><span class="line">q3 &lt;- add_diag(q3_temp)</span><br></pre></td></tr></table></figure>
-<p>先来看看新的转移矩阵$Q^*$如何收敛到目标分布</p>
+<p>先来看看新的转移矩阵<span class="math inline">\(Q^*\)</span>如何收敛到目标分布</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 现在的方式迭代20次效果已经很好</span></span><br><span class="line">&gt; q3 %^% <span class="number">20</span></span><br><span class="line">          [,<span class="number">1</span>]      [,<span class="number">2</span>]       [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.6001387</span> <span class="number">0.2999037</span> <span class="number">0.09995757</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.5998074</span> <span class="number">0.3001337</span> <span class="number">0.10005891</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.5997454</span> <span class="number">0.3001767</span> <span class="number">0.10007784</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 之前的方式迭代50次效果仍不好</span></span><br><span class="line">&gt; q2 %^% <span class="number">50</span></span><br><span class="line">          [,<span class="number">1</span>]      [,<span class="number">2</span>]      [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.6185267</span> <span class="number">0.2871386</span> <span class="number">0.0943347</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.5742771</span> <span class="number">0.3178573</span> <span class="number">0.1078656</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.5660082</span> <span class="number">0.3235969</span> <span class="number">0.1103949</span></span><br></pre></td></tr></table></figure>
-<p>新的$Q^*$只需要20次就可以达到很好的效果，之前则需要上百次。</p>
+<p>新的<span class="math inline">\(Q^*\)</span>只需要20次就可以达到很好的效果，之前则需要上百次。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; q2</span><br><span class="line">       [,<span class="number">1</span>]   [,<span class="number">2</span>]  [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.9755</span> <span class="number">0.0225</span> <span class="number">0.002</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.0450</span> <span class="number">0.8990</span> <span class="number">0.056</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.0120</span> <span class="number">0.1680</span> <span class="number">0.820</span></span><br><span class="line"></span><br><span class="line">&gt; q3</span><br><span class="line">           [,<span class="number">1</span>]      [,<span class="number">2</span>]        [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,] <span class="number">0.86464088</span> <span class="number">0.1243094</span> <span class="number">0.011049724</span></span><br><span class="line">[<span class="number">2</span>,] <span class="number">0.24861878</span> <span class="number">0.4419890</span> <span class="number">0.309392265</span></span><br><span class="line">[<span class="number">3</span>,] <span class="number">0.06629834</span> <span class="number">0.9281768</span> <span class="number">0.005524862</span></span><br></pre></td></tr></table></figure>
-<p>对比两个$Q^*$可以发现，之前的有太大概率集中在对角线上，而改进后的方案则均匀很多。</p>
+<p>对比两个<span class="math inline">\(Q^*\)</span>可以发现，之前的有太大概率集中在对角线上，而改进后的方案则均匀很多。</p>
 <p>采样</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 随机初始点</span></span><br><span class="line">x &lt;- c(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转移迭代</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">2</span>:<span class="number">10000</span>)&#123;</span><br><span class="line">  x[i] &lt;- sample(<span class="number">1</span>:<span class="number">3</span>, <span class="number">1</span>, prob=q3[x[i-<span class="number">1</span>], ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; freq &lt;- table(x)</span><br><span class="line">&gt; freq / sum(freq)</span><br><span class="line">x</span><br><span class="line">     <span class="number">1</span>      <span class="number">2</span>      <span class="number">3</span> </span><br><span class="line"><span class="number">0.5958</span> <span class="number">0.3009</span> <span class="number">0.1033</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，使用新的$Q^*$可以用更少的迭代次数达到差不多的精度。</p>
+<p>可以看到，使用新的<span class="math inline">\(Q^*\)</span>可以用更少的迭代次数达到差不多的精度。</p>
 <p>从本节的改进可以看出，虽然给定一个转移矩阵会对应唯一个平稳分布，但是给定一个平稳分布会对应无数转移矩阵，因此要高效生成平稳分布的样本，选择一个好的转移矩阵至关重要。</p>
-<h2 id="MH算法"><a href="#MH算法" class="headerlink" title="MH算法"></a>MH算法</h2><p>Metropolis-Hastings 算法也是MCMC采样算法的改进，思路和上一节类似，但做法不同。还是回顾细致平稳条件</p>
-<p>$$<br>\alpha_{ij}=\pi(j) Q_{ji}<br>$$</p>
-<p>$$<br>\pi(i) Q_{ij} \alpha_{ij} =\pi(j) Q_{ji} \alpha_{ji}<br>$$</p>
-<p>同样，考虑将$\alpha$扩大，此处我们不会将$\alpha$矩阵所有值扩大相同倍数，而是对称位置扩大相同倍数。观察上述公式，只要$\alpha_{ij}$与$\alpha_{ji}$扩大相同倍数，细致平稳条件就仍然成立。而$\alpha$作为接受率，不能超过1，因此就对每一个对称位置都分别扩大到其中一个为1，另一个不超过1。这就是MH算法。用公式表示如下</p>
-<p>$$<br>\alpha’_ {ij}=\min \left\{\frac{\alpha_{ij}}{\alpha_{ji}}, 1\right\}<br>=\min \left\{\frac{\pi(j) Q_{ji}}{\pi(i) Q_{ij}}, 1\right\}<br>$$</p>
-<p>迭代过程与MCMC采样算法相同，只是$\alpha$的计算不同而已</p>
+<h2 id="mh算法">MH算法</h2>
+<p>Metropolis-Hastings 算法也是MCMC采样算法的改进，思路和上一节类似，但做法不同。还是回顾细致平稳条件</p>
+<p><span class="math display">\[
+\alpha_{ij}=\pi(j) Q_{ji}
+\]</span></p>
+<p><span class="math display">\[ 
+\pi(i) Q_{ij} \alpha_{ij} =\pi(j) Q_{ji} \alpha_{ji} 
+\]</span></p>
+<p>同样，考虑将<span class="math inline">\(\alpha\)</span>扩大，此处我们不会将<span class="math inline">\(\alpha\)</span>矩阵所有值扩大相同倍数，而是对称位置扩大相同倍数。观察上述公式，只要<span class="math inline">\(\alpha_{ij}\)</span>与<span class="math inline">\(\alpha_{ji}\)</span>扩大相同倍数，细致平稳条件就仍然成立。而<span class="math inline">\(\alpha\)</span>作为接受率，不能超过1，因此就对每一个对称位置都分别扩大到其中一个为1，另一个不超过1。这就是MH算法。用公式表示如下</p>
+<p><span class="math display">\[ 
+\alpha&#39;_ {ij}=\min \left\\{\frac{\alpha_{ij}}{\alpha_{ji}}, 1\right\\}
+=\min \left\\{\frac{\pi(j) Q_{ji}}{\pi(i) Q_{ij}}, 1\right\\}
+\]</span></p>
+<p>迭代过程与MCMC采样算法相同，只是<span class="math inline">\(\alpha\)</span>的计算不同而已</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标分布pi</span></span><br><span class="line">p &lt;- c(<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随便取一个Q</span></span><br><span class="line">q &lt;- matrix(c(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.2</span>,</span><br><span class="line">              <span class="number">0.25</span>, <span class="number">0.05</span>, <span class="number">0.7</span>,</span><br><span class="line">              <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.1</span>), ncol=<span class="number">3</span>, byrow=<span class="literal">T</span>)</span><br><span class="line"></span><br><span class="line">alpha &lt;- t(p * q)</span><br><span class="line">alpha2 &lt;- pmin(alpha / t(alpha), <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>查看$\alpha’$结果</p>
+<p>查看<span class="math inline">\(\alpha&#39;\)</span>结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; alpha2</span><br><span class="line">     [,<span class="number">1</span>]      [,<span class="number">2</span>]       [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span> <span class="number">0.4166667</span> <span class="number">0.08333333</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">1</span> <span class="number">1.0000000</span> <span class="number">0.38095238</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">1</span> <span class="number">1.0000000</span> <span class="number">1.00000000</span></span><br></pre></td></tr></table></figure>
 <p>采样</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 随机初始点</span></span><br><span class="line">x &lt;- c(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转移迭代</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">2</span>:<span class="number">10000</span>)&#123;</span><br><span class="line">  xt &lt;- x[i-<span class="number">1</span>]</span><br><span class="line">  y &lt;- sample(<span class="number">1</span>:<span class="number">3</span>, <span class="number">1</span>, prob=q[xt, ])</span><br><span class="line">  alpha_ij &lt;- alpha2[xt, y]</span><br><span class="line">  x[i] &lt;- ifelse(runif(<span class="number">1</span>) &lt; alpha_ij, y, xt)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; freq &lt;- table(x)</span><br><span class="line">&gt; freq / sum(freq)</span><br><span class="line">x</span><br><span class="line">     <span class="number">1</span>      <span class="number">2</span>      <span class="number">3</span> </span><br><span class="line"><span class="number">0.5950</span> <span class="number">0.3054</span> <span class="number">0.0996</span></span><br></pre></td></tr></table></figure>
 <p>可以发现，MH算法相比于MCMC采样算法，效率上有很大的提升，与上一节的改进算法差不多。</p>
-<h2 id="两种改进算法对比"><a href="#两种改进算法对比" class="headerlink" title="两种改进算法对比"></a>两种改进算法对比</h2><h3 id="效果对比"><a href="#效果对比" class="headerlink" title="效果对比"></a>效果对比</h3><p>前面两节我们使用了两种方式对MCMC采样算法进行改进，效果差不多，但是只有MH算法留在了教科书中，这是为什么呢？</p>
-<p>它们的唯一差别在于$\alpha$扩大时的不同</p>
+<h2 id="两种改进算法对比">两种改进算法对比</h2>
+<h3 id="效果对比">效果对比</h3>
+<p>前面两节我们使用了两种方式对MCMC采样算法进行改进，效果差不多，但是只有MH算法留在了教科书中，这是为什么呢？</p>
+<p>它们的唯一差别在于<span class="math inline">\(\alpha\)</span>扩大时的不同</p>
 <ul>
-<li>第一种：全局扩大相同比例，限制是$Q’$每行加和不能超过1</li>
-<li>MH：对称位置扩大相同比例，限制是$\alpha$值不能超过1</li>
+<li>第一种：全局扩大相同比例，限制是<span class="math inline">\(Q&#39;\)</span>每行加和不能超过1</li>
+<li>MH：对称位置扩大相同比例，限制是<span class="math inline">\(\alpha\)</span>值不能超过1</li>
 </ul>
 <p>还是把细致平稳条件公式放上来</p>
-<p>$$<br>\alpha_{ij}=\pi(j) Q_{ji}<br>$$</p>
-<p>$$<br>\pi(i) Q_{ij} \alpha_{ij} =\pi(j) Q_{ji} \alpha_{ji}<br>$$</p>
-<p>$$<br>Q’_ {ij} = Q_{ij} \alpha_{ij}<br>$$</p>
-<p>按照第一种扩大方式，$\alpha$值是可以超过1的；按照第二种扩大方式，$Q’$每行加和仍然不会超过1。所以说第一种方式扩大的程度更大，效果可能也会更好，而实际上流传下来的是第二种方法。</p>
-<p>这就涉及一个问题：为什么要提出“接受率”这个概念？MCMC算法中不定义接受率也可以转移，思路更清晰、代码更简洁，但它却从“接受率”的角度来写；以MH算法中为了保证接受率有意义，而限制了$\alpha$的放大。为什么接受率这么重要？</p>
+<p><span class="math display">\[
+\alpha_{ij}=\pi(j) Q_{ji}
+\]</span></p>
+<p><span class="math display">\[ 
+\pi(i) Q_{ij} \alpha_{ij} =\pi(j) Q_{ji} \alpha_{ji} 
+\]</span></p>
+<p><span class="math display">\[
+Q&#39;_ {ij} = Q_{ij} \alpha_{ij}
+\]</span></p>
+<p>按照第一种扩大方式，<span class="math inline">\(\alpha\)</span>值是可以超过1的；按照第二种扩大方式，<span class="math inline">\(Q&#39;\)</span>每行加和仍然不会超过1。所以说第一种方式扩大的程度更大，效果可能也会更好，而实际上流传下来的是第二种方法。</p>
+<p>这就涉及一个问题：为什么要提出“接受率”这个概念？MCMC算法中不定义接受率也可以转移，思路更清晰、代码更简洁，但它却从“接受率”的角度来写；以MH算法中为了保证接受率有意义，而限制了<span class="math inline">\(\alpha\)</span>的放大。为什么接受率这么重要？</p>
 <p><strong>因为不用接受率的版本无法应用到实际问题之中。</strong></p>
-<h3 id="连续情形"><a href="#连续情形" class="headerlink" title="连续情形"></a>连续情形</h3><p>为了说明马尔科夫的收敛性，我们引入转移矩阵，一直用这个离散的例子进行说明，而MCMC算法创造时要解决的问题显然不是生成一个简单的离散分布。MCMC算法以及改进的MH算法是用于生成一些非常见分布的随机样本，这些分布可以是离散的也可以是连续的，可以有无穷多取值。我们来看看连续版本的公式</p>
-<p>目标：生成分布$\pi(x)$的样本，使用工具分布$q(y|x)$，计算接受率如下</p>
-<p>$$<br>\text{MCMC:}\quad \alpha(x, y)=\pi(y) q(x|y)<br>$$</p>
-<p>$$<br>\text{MH:}\quad \alpha(x, y)=\min \left\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\}<br>$$</p>
+<h3 id="连续情形">连续情形</h3>
+<p>为了说明马尔科夫的收敛性，我们引入转移矩阵，一直用这个离散的例子进行说明，而MCMC算法创造时要解决的问题显然不是生成一个简单的离散分布。MCMC算法以及改进的MH算法是用于生成一些非常见分布的随机样本，这些分布可以是离散的也可以是连续的，可以有无穷多取值。我们来看看连续版本的公式</p>
+<p>目标：生成分布<span class="math inline">\(\pi(x)\)</span>的样本，使用工具分布<span class="math inline">\(q(y|x)\)</span>，计算接受率如下</p>
+<p><span class="math display">\[
+\text{MCMC:}\quad \alpha(x, y)=\pi(y) q(x|y)
+\]</span></p>
+<p><span class="math display">\[
+\text{MH:}\quad \alpha(x, y)=\min \left\\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\\} 
+\]</span></p>
 <p>细致平稳条件</p>
-<p>$$<br>\pi(x) q(y|x) \alpha(x,y) =\pi(y) q(x|y) \alpha(y, x)<br>$$</p>
-<p>这里的工具分布(proposal)就是原来的转移矩阵，从状态$i$到状态$j$转移一次的过程，就相当于从条件分布$q(y|x=i)$中生成一个样本$j$。下面对比两种改进方式</p>
+<p><span class="math display">\[ 
+\pi(x) q(y|x) \alpha(x,y) =\pi(y) q(x|y) \alpha(y, x)
+\]</span></p>
+<p>这里的工具分布(proposal)就是原来的转移矩阵，从状态<span class="math inline">\(i\)</span>到状态<span class="math inline">\(j\)</span>转移一次的过程，就相当于从条件分布<span class="math inline">\(q(y|x=i)\)</span>中生成一个样本<span class="math inline">\(j\)</span>。下面对比两种改进方式</p>
 <p><strong>MCMC及MH算法过程</strong></p>
-<p>MCMC及MH算法的思想就是，直接从目标分布$\pi(x)$中生成样本非常困难，于是我们找来一个条件分布$q(y|x)$，从这个分布中生成样本比较容易，但这个条件分布是随便找的，不可能用它转移得到的样本都满足要求，所以要通过接受率进行筛选。</p>
-<p>这个过程中，每一次迭代都有一个初始值$i$，从工具分布$q(y=j|x=i)$中抽取样本$j$，有了$i,j$和$\pi$与$q$的公式形式后$\alpha(i,j)$显然可以算出，整个生成过程可以实现。</p>
+<p>MCMC及MH算法的思想就是，直接从目标分布<span class="math inline">\(\pi(x)\)</span>中生成样本非常困难，于是我们找来一个条件分布<span class="math inline">\(q(y|x)\)</span>，从这个分布中生成样本比较容易，但这个条件分布是随便找的，不可能用它转移得到的样本都满足要求，所以要通过接受率进行筛选。</p>
+<p>这个过程中，每一次迭代都有一个初始值<span class="math inline">\(i\)</span>，从工具分布<span class="math inline">\(q(y=j|x=i)\)</span>中抽取样本<span class="math inline">\(j\)</span>，有了<span class="math inline">\(i,j\)</span>和<span class="math inline">\(\pi\)</span>与<span class="math inline">\(q\)</span>的公式形式后<span class="math inline">\(\alpha(i,j)\)</span>显然可以算出，整个生成过程可以实现。</p>
 <p><strong>第一种改进的方法</strong></p>
 <p>第一步：计算</p>
-<p>$$<br>q’(y|x) = q(y|x)\alpha(x,y)<br>$$</p>
-<p>第二步：从$q’$计算$q^*$。要对任意的$i$，将$q’(y|x=i)$不足1的部分补到$q’(y=i|x=i)$上。</p>
+<p><span class="math display">\[
+q&#39;(y|x) = q(y|x)\alpha(x,y)
+\]</span></p>
+<p>第二步：从<span class="math inline">\(q&#39;\)</span>计算<span class="math inline">\(q^*\)</span>。要对任意的<span class="math inline">\(i\)</span>，将<span class="math inline">\(q&#39;(y|x=i)\)</span>不足1的部分补到<span class="math inline">\(q&#39;(y=i|x=i)\)</span>上。</p>
 <p>这两步都存在问题</p>
 <ul>
 <li>第二步中要算出不足1的部分需要对这个函数积分，这个积分过程繁琐不说，还不一定能实现</li>
-<li>第一步中计算的$q’$是多个式子相乘后的结果，形式可能非常复杂，导致无法从这个分布中抽样，违背了引入$q$的初衷</li>
+<li>第一步中计算的<span class="math inline">\(q&#39;\)</span>是多个式子相乘后的结果，形式可能非常复杂，导致无法从这个分布中抽样，违背了引入<span class="math inline">\(q\)</span>的初衷</li>
 </ul>
 <p>因此在连续问题中，第一种改进方案几乎不可行，这就是接受率重要的原因。细想一下，两种做法的区别在于</p>
 <ul>
 <li>第一种是事先把原材料都准备好，在迭代过程中只要带入表达式计算，这在一般问题中是不现实的</li>
 <li>MH算法的思想是遇到了再现算</li>
 </ul>
-<h2 id="MH算法与Rejection-Sampling的关系"><a href="#MH算法与Rejection-Sampling的关系" class="headerlink" title="MH算法与Rejection Sampling的关系"></a>MH算法与Rejection Sampling的关系</h2><p>如果对Rejection Sampling不了解可以先参考<a href="https://theclevermachine.wordpress.com/2012/09/10/rejection-sampling/" target="_blank" rel="noopener">这篇文章</a>。</p>
+<h2 id="mh算法与rejection-sampling的关系">MH算法与Rejection Sampling的关系</h2>
+<p>如果对Rejection Sampling不了解可以先参考<a href="https://theclevermachine.wordpress.com/2012/09/10/rejection-sampling/" target="_blank" rel="noopener">这篇文章</a>。</p>
 <p><strong>回顾Rejection Sampling</strong></p>
-<p>要生成目标分布$p(x)$的样本，直接生成非常困难，我们可以从一个简单的分布$q(x)$中不断生成样本，再设置一个接受率对每次生成的样本进行筛选。</p>
+<p>要生成目标分布<span class="math inline">\(p(x)\)</span>的样本，直接生成非常困难，我们可以从一个简单的分布<span class="math inline">\(q(x)\)</span>中不断生成样本，再设置一个接受率对每次生成的样本进行筛选。</p>
 <p>算法步骤</p>
 <ul>
-<li>用一个合适的分布$q(x)$，找到一个数$k$，使对所有$x$值，$kq(x)$都比$p(x)$大</li>
-<li>下面过程迭代，直到获得n个样本<ul>
-<li>从$q(x)$中生成一个样本$z$</li>
-<li>从$0-kq(z)$的均匀分布生成$u$</li>
-<li>如果$u &lt; p(z)$则接受样本$z$</li>
-<li>如果$u &gt; p(z)$则拒绝样本$z$，即忽视此轮迭代</li>
-</ul>
-</li>
+<li>用一个合适的分布<span class="math inline">\(q(x)\)</span>，找到一个数<span class="math inline">\(k\)</span>，使对所有<span class="math inline">\(x\)</span>值，<span class="math inline">\(kq(x)\)</span>都比<span class="math inline">\(p(x)\)</span>大</li>
+<li>下面过程迭代，直到获得n个样本
+<ul>
+<li>从<span class="math inline">\(q(x)\)</span>中生成一个样本<span class="math inline">\(z\)</span></li>
+<li>从<span class="math inline">\(0-kq(z)\)</span>的均匀分布生成<span class="math inline">\(u\)</span></li>
+<li>如果<span class="math inline">\(u &lt; p(z)\)</span>则接受样本<span class="math inline">\(z\)</span></li>
+<li>如果<span class="math inline">\(u &gt; p(z)\)</span>则拒绝样本<span class="math inline">\(z\)</span>，即忽视此轮迭代</li>
+</ul></li>
 </ul>
 <img src="http://static.wzbtech.com/static/images/reject.png">
 <p>在这张图中即筛选时落入灰色区域则拒绝，落入白色区域则接受。Rejection Sampling非常符合直觉。</p>
 <p>补充</p>
 <ul>
-<li>什么样的$q$是合适的？只要能找到这么一个$k$，使$kq(x)$总比$p(x)$大就行</li>
-<li>那么什么时候会找不到呢？比如目标分布是$t$分布，而你如果想让$q$服从正态分布，则无法找到这个$k$；因为$t$分布厚尾，在$|x|$很大时正态分布下降的速度太快，无论用多大的$k$都没办法让它在$t$分布上方。</li>
-<li>即使是合适的$q$也有好坏之分，评定原则是与目标分布越相近的越好，因为拒绝区域越少，算法效率越高</li>
+<li>什么样的<span class="math inline">\(q\)</span>是合适的？只要能找到这么一个<span class="math inline">\(k\)</span>，使<span class="math inline">\(kq(x)\)</span>总比<span class="math inline">\(p(x)\)</span>大就行</li>
+<li>那么什么时候会找不到呢？比如目标分布是<span class="math inline">\(t\)</span>分布，而你如果想让<span class="math inline">\(q\)</span>服从正态分布，则无法找到这个<span class="math inline">\(k\)</span>；因为<span class="math inline">\(t\)</span>分布厚尾，在<span class="math inline">\(|x|\)</span>很大时正态分布下降的速度太快，无论用多大的<span class="math inline">\(k\)</span>都没办法让它在<span class="math inline">\(t\)</span>分布上方。</li>
+<li>即使是合适的<span class="math inline">\(q\)</span>也有好坏之分，评定原则是与目标分布越相近的越好，因为拒绝区域越少，算法效率越高</li>
 </ul>
 <p><strong>MH算法与Rejection Sampling的类似点</strong></p>
-<ol>
+<ol type="1">
 <li>二者的抽样过程类似</li>
 </ol>
 <ul>
@@ -522,54 +578,74 @@
 <li>但不同的是前者拒绝后会使用上一轮的值，而后者会忽视此轮，因此二者无法等价</li>
 <li>也不能说哪个的效率更高，因为废弃样本和停滞在原地都不利于抽样</li>
 </ul>
-<ol start="2">
+<ol start="2" type="1">
 <li>二者要解决的问题类似</li>
 </ol>
 <p>它们都用于对不常见分布进行抽样</p>
 <ul>
-<li>可以是那些已知$p(x)$函数形式，但难以建立与均匀分布之间联系的分布</li>
-<li>也可以是$p(z)=\frac{1}{Z_{p}} \widetilde{p}(z)$这种形式，即我们知道$\widetilde{p}(z)$的形式，但是不知道$Z_p$的值（$Z_p$是一个常数，用于将概率加总归一化到1），所以无法知道确切的分布。贝叶斯统计中的后验分布一般都是这种形式，如果$\widetilde{p}(z)$的积分难求，则$Z_p$无法计算。从两个方法的过程来看，我们不需要知道$Z_p$的值即可对这个分布进行采样</li>
+<li>可以是那些已知<span class="math inline">\(p(x)\)</span>函数形式，但难以建立与均匀分布之间联系的分布</li>
+<li>也可以是<span class="math inline">\(p(z)=\frac{1}{Z_{p}} \widetilde{p}(z)\)</span>这种形式，即我们知道<span class="math inline">\(\widetilde{p}(z)\)</span>的形式，但是不知道<span class="math inline">\(Z_p\)</span>的值（<span class="math inline">\(Z_p\)</span>是一个常数，用于将概率加总归一化到1），所以无法知道确切的分布。贝叶斯统计中的后验分布一般都是这种形式，如果<span class="math inline">\(\widetilde{p}(z)\)</span>的积分难求，则<span class="math inline">\(Z_p\)</span>无法计算。从两个方法的过程来看，我们不需要知道<span class="math inline">\(Z_p\)</span>的值即可对这个分布进行采样</li>
 </ul>
-<p>举例：已知先验分布$\theta \sim Gamma(\alpha, \beta)$，$Y_1,…,Y_n$样本来自$N(\theta,1)$，要生成服从后验分布的样本。</p>
+<p>举例：已知先验分布<span class="math inline">\(\theta \sim Gamma(\alpha, \beta)\)</span>，<span class="math inline">\(Y_1,...,Y_n\)</span>样本来自<span class="math inline">\(N(\theta,1)\)</span>，要生成服从后验分布的样本。</p>
 <p><strong>特殊工具分布</strong></p>
-<p>如果MH算法的工具分布$q(y|x)$特殊，则接受率可以简化</p>
-<p>$$<br>\alpha(x, y)=\min \left\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\}<br>$$</p>
-<ol>
+<p>如果MH算法的工具分布<span class="math inline">\(q(y|x)\)</span>特殊，则接受率可以简化</p>
+<p><span class="math display">\[
+\alpha(x, y)=\min \left\\{1, \frac{\pi(y) q(x | y)}{\pi(x) q(y | x)}\right\\} 
+\]</span></p>
+<ol type="1">
 <li>独立</li>
 </ol>
-<p>即工具分布是独立于$x$的，$q(y|x)=q(y)$，接受率公式如下</p>
-<p>$$<br>\alpha(x, y)=\min \left\{1, \frac{\pi(y) q(x)}{\pi(x) q(y)}\right\}<br>$$</p>
+<p>即工具分布是独立于<span class="math inline">\(x\)</span>的，<span class="math inline">\(q(y|x)=q(y)\)</span>，接受率公式如下</p>
+<p><span class="math display">\[
+\alpha(x, y)=\min \left\\{1, \frac{\pi(y) q(x)}{\pi(x) q(y)}\right\\} 
+\]</span></p>
 <p>此时，所有候选样本都是从同一个分布生成，更加类似Rejection Sampling，因为它的接受率可以写成这种形式</p>
-<p>$$<br>\alpha(y) = \frac{\pi(y)}{k q(y)}, \quad\text{其中}  k = \max_y \frac{\pi(y)}{q(y)}<br>$$</p>
+<p><span class="math display">\[
+\alpha(y) = \frac{\pi(y)}{k q(y)}, \quad\text{其中}  k = \max_y \frac{\pi(y)}{q(y)}
+\]</span></p>
 <p>但是二者依然不同。</p>
-<ol start="2">
+<ol start="2" type="1">
 <li>对称（这部分与对比无关，只是补充这种特殊情况）</li>
 </ol>
-<p>即$q(y|x)=q(x|y)$，则</p>
-<p>$$<br>\alpha(x, y)=\min \left\{1, \frac{\pi(y) }{\pi(x) }\right\}<br>$$</p>
-<p>一个对称分布的例子：$y|x\sim N(x, 1)$，则对已知的$x,y$有$q(y|x)=q(x|y)$</p>
+<p>即<span class="math inline">\(q(y|x)=q(x|y)\)</span>，则</p>
+<p><span class="math display">\[
+\alpha(x, y)=\min \left\\{1, \frac{\pi(y) }{\pi(x) }\right\\} 
+\]</span></p>
+<p>一个对称分布的例子：<span class="math inline">\(y|x\sim N(x, 1)\)</span>，则对已知的<span class="math inline">\(x,y\)</span>有<span class="math inline">\(q(y|x)=q(x|y)\)</span></p>
 <p><strong>全局与局部</strong></p>
 <ul>
 <li>Rejection Sampling是从全局找目标分布的近似，用其密度函数的包络线生成样本再筛选，但是全局近似可能在很多位置与目标相差太远，而且工具分布选择要考虑所有取值来确定</li>
-<li>而MH算法每次使用的工具分布不同，相当于是在局部找近似，在每一步确定工具分布时不需要考虑目标整体，顾虑较少；同时也不需要考虑$k$能否计算</li>
+<li>而MH算法每次使用的工具分布不同，相当于是在局部找近似，在每一步确定工具分布时不需要考虑目标整体，顾虑较少；同时也不需要考虑<span class="math inline">\(k\)</span>能否计算</li>
 </ul>
 <p><strong>高维情况</strong></p>
 <p>二者都可以直接应用到多元分布采样上，只是一般此时接受率都非常低，算法效率不高。MH算法的一个优势在于Gibbs采样的扩展，可以对一些多元分布高效采样。</p>
 <p>回到最初的话题，已知目标分布，我们希望找到一个转移矩阵（条件概率）满足细致平稳条件。在之前的问题中，这个转移矩阵需要各种构造，但是在多元分布采样中，它是现成的，完美满足细致平稳条件，是以算法中甚至没有“接受率”的存在。</p>
 <p><strong>Gibbs采样</strong>的细致平稳条件公式如下</p>
-<p>$$<br>\begin{array}{l}<br>{p(x_{1}, y_{1}) p(y_{2} | x_{1})=<br>p(x_{1}) p(y_{1} | x_{1}) p(y_{2} | x_{1})} \<br>{p(x_{1}, y_{2}) p(y_{1} | x_{1})=<br>p(x_{1}) p(y_{2} | x_{1}) p(y_{1} | x_{1})}<br>\end{array}<br>$$</p>
+<p><span class="math display">\[ 
+\begin{array}{l}
+{p(x_{1}, y_{1}) p(y_{2} | x_{1})=
+p(x_{1}) p(y_{1} | x_{1}) p(y_{2} | x_{1})} \\
+{p(x_{1}, y_{2}) p(y_{1} | x_{1})=
+p(x_{1}) p(y_{2} | x_{1}) p(y_{1} | x_{1})}
+\end{array}
+\]</span></p>
 <p>所以</p>
-<p>$$<br>p(x_{1}, y_{1}) p(y_{2} | x_{1})=p(x_{1}, y_{2}) p(y_{1} | x_{1})<br>$$</p>
-<p>工具分布用的是$p(y_2|x_1)$，而不是$p(x_2,y_2|x_1, y_1)$，是因为要沿着与轴平行方向转移，固定其他轴的值不变。只要每次沿着与轴平行方向转移，都满足细致平稳条件，得到的样本是服从目标分布。</p>
+<p><span class="math display">\[
+p(x_{1}, y_{1}) p(y_{2} | x_{1})=p(x_{1}, y_{2}) p(y_{1} | x_{1})
+\]</span></p>
+<p>工具分布用的是<span class="math inline">\(p(y_2|x_1)\)</span>，而不是<span class="math inline">\(p(x_2,y_2|x_1, y_1)\)</span>，是因为要沿着与轴平行方向转移，固定其他轴的值不变。只要每次沿着与轴平行方向转移，都满足细致平稳条件，得到的样本是服从目标分布。</p>
 <p>gibbs采样适用于多元分布较难抽样，但容易从条件分布中抽样的情况。举例如下</p>
 <p>要生成这个分布的样本</p>
-<p>$$<br>p(x, y)=\frac{n !}{(n-x) ! x !} y^{(x+\alpha-1)}(1-y)^{(n-x+\beta-1)}, \quad x \in{0, \ldots, n}, y \in[0,1]<br>$$</p>
+<p><span class="math display">\[ 
+p(x, y)=\frac{n !}{(n-x) ! x !} y^{(x+\alpha-1)}(1-y)^{(n-x+\beta-1)}, \quad x \in\{0, \ldots, n\}, y \in[0,1]
+\]</span></p>
 <p>这不是常见分布，难以直接抽样，但是它的条件分布都是常见分布</p>
 <ul>
-<li>$p(x | y) \equiv \operatorname{Bin}(n, y)$</li>
-<li>$p(y | x) \equiv \operatorname{Beta}(x+\alpha, n-x+\beta)$</li>
+<li><span class="math inline">\(p(x | y) \equiv \operatorname{Bin}(n, y)\)</span></li>
+<li><span class="math inline">\(p(y | x) \equiv \operatorname{Beta}(x+\alpha, n-x+\beta)\)</span></li>
 </ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>参考资料</p>
+<h2 id="参考资料">参考资料</h2>
+<p>参考资料</p>
 <ul>
 <li><a href="http://www.flickering.cn/%E6%95%B0%E5%AD%A6%E4%B9%8B%E7%BE%8E/2014/06/lda%E6%95%B0%E5%AD%A6%E5%85%AB%E5%8D%A6mcmc-%E5%92%8C-gibbs-sampling/" target="_blank" rel="noopener">LDA数学八卦</a></li>
 <li>贝叶斯统计及其R实现，作者黄长全老师</li>
@@ -813,7 +889,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫链采样"><span class="nav-number">1.1.</span> <span class="nav-text">马尔科夫链采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细致平稳条件"><span class="nav-number">1.2.</span> <span class="nav-text">细致平稳条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCMC采样算法"><span class="nav-number">2.</span> <span class="nav-text">MCMC采样算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCMC采样算法实现"><span class="nav-number">3.</span> <span class="nav-text">MCMC采样算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q’-说明"><span class="nav-number">3.1.</span> <span class="nav-text">$Q’$说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-说明"><span class="nav-number">3.2.</span> <span class="nav-text">$Q^*$说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MCMC算法采样"><span class="nav-number">3.3.</span> <span class="nav-text">MCMC算法采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转移矩阵采样"><span class="nav-number">3.4.</span> <span class="nav-text">转移矩阵采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误采样方式"><span class="nav-number">3.5.</span> <span class="nav-text">错误采样方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCMC采样算法改进"><span class="nav-number">4.</span> <span class="nav-text">MCMC采样算法改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MH算法"><span class="nav-number">5.</span> <span class="nav-text">MH算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两种改进算法对比"><span class="nav-number">6.</span> <span class="nav-text">两种改进算法对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果对比"><span class="nav-number">6.1.</span> <span class="nav-text">效果对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续情形"><span class="nav-number">6.2.</span> <span class="nav-text">连续情形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MH算法与Rejection-Sampling的关系"><span class="nav-number">7.</span> <span class="nav-text">MH算法与Rejection Sampling的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫链采样"><span class="nav-number">1.1.</span> <span class="nav-text">马尔科夫链采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细致平稳条件"><span class="nav-number">1.2.</span> <span class="nav-text">细致平稳条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mcmc采样算法"><span class="nav-number">2.</span> <span class="nav-text">MCMC采样算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mcmc采样算法实现"><span class="nav-number">3.</span> <span class="nav-text">MCMC采样算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#q说明"><span class="nav-number">3.1.</span> <span class="nav-text">\(Q&#39;\)说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q说明-1"><span class="nav-number">3.2.</span> <span class="nav-text">\(Q^*\)说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mcmc算法采样"><span class="nav-number">3.3.</span> <span class="nav-text">MCMC算法采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转移矩阵采样"><span class="nav-number">3.4.</span> <span class="nav-text">转移矩阵采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误采样方式"><span class="nav-number">3.5.</span> <span class="nav-text">错误采样方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mcmc采样算法改进"><span class="nav-number">4.</span> <span class="nav-text">MCMC采样算法改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mh算法"><span class="nav-number">5.</span> <span class="nav-text">MH算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两种改进算法对比"><span class="nav-number">6.</span> <span class="nav-text">两种改进算法对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果对比"><span class="nav-number">6.1.</span> <span class="nav-text">效果对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续情形"><span class="nav-number">6.2.</span> <span class="nav-text">连续情形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mh算法与rejection-sampling的关系"><span class="nav-number">7.</span> <span class="nav-text">MH算法与Rejection Sampling的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

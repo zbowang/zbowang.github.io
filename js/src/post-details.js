@@ -1,5 +1,27 @@
 /* global NexT: true */
 
+// $(document).ready(function(){
+//     $(document).on('click', '.fold_hider', function(){
+//         $('>.fold', this.parentNode).slideToggle('fast');
+//         $('>:first', this).toggleClass('open');
+//     });
+//     //默认情况下展开
+//     // $("div.fold").css("display","close");
+// });
+
+$(document).ready(function(){
+    $(document).on('click', '.fold_hider', function(){
+      var attr_tag = $(this).attr('data-tag');
+      if (typeof attr_tag !== typeof undefined && attr_tag !== false) {
+        $(`#${attr_tag}`).slideToggle('fast');
+      } else{
+        $('>.fold', this.parentNode).slideToggle('fast');
+      }
+      $('>:first', this).toggleClass('open');
+        
+    });
+});
+
 $(document).ready(function () {
 
   initScrollSpy();

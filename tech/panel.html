@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="遗漏变量偏差遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数">
+<meta name="description" content="遗漏变量偏差 遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设\(E(u|X)=0\)不成立，从而使\(\beta\)的估计结果不一致(not consistent)，也就是说，\(\beta\)的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在">
 <meta name="keywords" content="R语言,计量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面板数据回归">
 <meta property="og:url" content="http://yoursite.com/tech/panel.html">
 <meta property="og:site_name" content="My World">
-<meta property="og:description" content="遗漏变量偏差遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数">
+<meta property="og:description" content="遗漏变量偏差 遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设\(E(u|X)=0\)不成立，从而使\(\beta\)的估计结果不一致(not consistent)，也就是说，\(\beta\)的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-12-03T13:57:12.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面板数据回归">
-<meta name="twitter:description" content="遗漏变量偏差遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数">
+<meta name="twitter:description" content="遗漏变量偏差 遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设\(E(u|X)=0\)不成立，从而使\(\beta\)的估计结果不一致(not consistent)，也就是说，\(\beta\)的估计结果是不准确的。 OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在">
 
 
 
@@ -336,7 +336,8 @@
       
 
       
-        <h2 id="遗漏变量偏差"><a href="#遗漏变量偏差" class="headerlink" title="遗漏变量偏差"></a>遗漏变量偏差</h2><p>遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设$E(u|X)=0$不成立，从而使$\beta$的估计结果不一致(not consistent)，也就是说，$\beta$的估计结果是不准确的。</p>
+        <h2 id="遗漏变量偏差">遗漏变量偏差</h2>
+<p>遗漏变量偏差(Omitted variable bias，简称OV bias)表示还有模型遗漏的变量和XY同时相关。OV bias会导致回归假设<span class="math inline">\(E(u|X)=0\)</span>不成立，从而使<span class="math inline">\(\beta\)</span>的估计结果不一致(not consistent)，也就是说，<span class="math inline">\(\beta\)</span>的估计结果是不准确的。</p>
 <p>OV bias非常常见，因为现实中的问题涉及的因素非常多，很难把所有因素都考虑在内。为了使回归系数的估计结果更加准确，需要使用一些方法解决OV bias的问题，面板数据回归就是其中一种方法。</p>
 <p>面板数据回归(panel data regression)专门处理一个个体被多次观测的情况。比如现在有336个observations，分别是美国48个州7年的数据，每个州一年只有一个观测，但是一个州共被观测到7次，类似下面这样</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">city  year  x1   x2   y</span><br><span class="line">A     <span class="number">2000</span>  <span class="number">0.5</span>  <span class="number">0.4</span>  <span class="number">0.3</span></span><br><span class="line">A     <span class="number">2001</span></span><br><span class="line">...             .....</span><br><span class="line">A     <span class="number">2006</span></span><br><span class="line">B     <span class="number">2000</span></span><br><span class="line">B     <span class="number">2001</span></span><br><span class="line">...(共<span class="number">336</span>行)</span><br></pre></td></tr></table></figure>
@@ -355,25 +356,27 @@
 </ul>
 <p>那么“交通拥堵情况”这个指标就会产生OV bias。类似的变量可能还有“对驾车和喝酒的态度”、“道路质量”等等因素。</p>
 <p>对于这种不随时间变化但又同时影响XY的变量，我们没有办法全部找出来，但是可以用一个指标来表示每一个州的“特质”，这个指标就可以控制住这类的变量。控制时间因素的指标也是一样。这就是面板数据回归的思想。</p>
-<h2 id="固定效应"><a href="#固定效应" class="headerlink" title="固定效应"></a>固定效应</h2><p>这里考虑固定个体效应和固定时间效应。在只考虑一个X的情况下，固定个体效应的回归方程有两种形式（公式字母含义大同小异，请读者自行参考计量教材）</p>
-<p>$$Y_{it} = \beta_1X_{it}+\alpha_i + u_{it}$$<br>和</p>
-<p>$$Y_{it} = \beta_0 + \beta_1X_{it}+\gamma_2D2_i+…+\gamma_nDn_i + u_{it}$$<br>首先要说明，上面两个公式的本质是一样的。</p>
+<h2 id="固定效应">固定效应</h2>
+<p>这里考虑固定个体效应和固定时间效应。在只考虑一个X的情况下，固定个体效应的回归方程有两种形式（公式字母含义大同小异，请读者自行参考计量教材）</p>
+<p><span class="math display">\[Y_{it} = \beta_1X_{it}+\alpha_i + u_{it}\]</span> 和</p>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1X_{it}+\gamma_2D2_i+...+\gamma_nDn_i + u_{it}\]</span> 首先要说明，上面两个公式的本质是一样的。</p>
 <ul>
 <li>两式需要估计的参数数量是一样的</li>
-<li>两个公式对每一个州来说，都是$X_{it}$加对应州的一个截距（相同州的样本截距项相同，不同州不同，即用每个州自己的截距项固定住州的特征）</li>
+<li>两个公式对每一个州来说，都是<span class="math inline">\(X_{it}\)</span>加对应州的一个截距（相同州的样本截距项相同，不同州不同，即用每个州自己的截距项固定住州的特征）</li>
 </ul>
 <p><strong>求解出这些系数有两种方法</strong></p>
 <p>第一种直接把固定效应当做k-1个0-1变量进行OLS回归</p>
-<p>$$Y_{it} = \beta_0 + \beta_1X_{it}+\gamma_2D2_i+…+\gamma_nDn_i + u_{it}$$</p>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1X_{it}+\gamma_2D2_i+...+\gamma_nDn_i + u_{it}\]</span></p>
 <p>第二种是先对所有样本按照州分组，每组内计算Y和X的均值，每个样本减去对应组均值，拿新数据进行回归。</p>
-<p>$$Y_{it} = \alpha_i +\beta_1X_{it}+u_{it}$$<br>回归结果必满足</p>
-<p>$$\frac1T\sum_{t=1}^TY_{it}=\alpha_i + \beta_1\frac1T\sum_{t=1}^TX_{it}+\frac1T\sum_{t=1}^Tu_{it}$$<br>经过变换</p>
-<p>$$Y_{it}-\frac1T\sum_{t=1}^TY_{it}= \beta_1(X_{it}-\frac1T\sum_{t=1}^TX_{it})+(u_{it}-\frac1T\sum_{t=1}^Tu_{it})$$<br>得到新数据</p>
-<p>$$\tilde Y_{it}=\beta_1\tilde X_{it}+\tilde u_{it}$$<br>第二种形式的理解：将各自州的特性减掉，得到“纯净”的数据放在一起进行回归。</p>
+<p><span class="math display">\[Y_{it} = \alpha_i +\beta_1X_{it}+u_{it}\]</span> 回归结果必满足</p>
+<p><span class="math display">\[\frac1T\sum_{t=1}^TY_{it}=\alpha_i + \beta_1\frac1T\sum_{t=1}^TX_{it}+\frac1T\sum_{t=1}^Tu_{it}\]</span> 经过变换</p>
+<p><span class="math display">\[Y_{it}-\frac1T\sum_{t=1}^TY_{it}= \beta_1(X_{it}-\frac1T\sum_{t=1}^TX_{it})+(u_{it}-\frac1T\sum_{t=1}^Tu_{it})\]</span> 得到新数据</p>
+<p><span class="math display">\[\tilde Y_{it}=\beta_1\tilde X_{it}+\tilde u_{it}\]</span> 第二种形式的理解：将各自州的特性减掉，得到“纯净”的数据放在一起进行回归。</p>
 <p>时间效应同理，这里不再赘述。</p>
-<h2 id="R语言面板数据回归"><a href="#R语言面板数据回归" class="headerlink" title="R语言面板数据回归"></a>R语言面板数据回归</h2><p>R语言中进行面板数据回归使用plm包，安装后导入</p>
+<h2 id="r语言面板数据回归">R语言面板数据回归</h2>
+<p>R语言中进行面板数据回归使用plm包，安装后导入</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(plm)                      <span class="comment"># 导入包</span></span><br><span class="line">data(<span class="string">"Grunfeld"</span>, package = <span class="string">"plm"</span>) <span class="comment"># 导入数据</span></span><br></pre></td></tr></table></figure>
-<p>数据形式如下<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; head(Grunfeld)</span><br><span class="line">  firm year   inv  value capital</span><br><span class="line"><span class="number">1</span>    <span class="number">1</span> <span class="number">1935</span> <span class="number">317.6</span> <span class="number">3078.5</span>     <span class="number">2.8</span></span><br><span class="line"><span class="number">2</span>    <span class="number">1</span> <span class="number">1936</span> <span class="number">391.8</span> <span class="number">4661.7</span>    <span class="number">52.6</span></span><br><span class="line"><span class="number">3</span>    <span class="number">1</span> <span class="number">1937</span> <span class="number">410.6</span> <span class="number">5387.1</span>   <span class="number">156.9</span></span><br><span class="line"><span class="number">4</span>    <span class="number">1</span> <span class="number">1938</span> <span class="number">257.7</span> <span class="number">2792.2</span>   <span class="number">209.2</span></span><br><span class="line"><span class="number">5</span>    <span class="number">1</span> <span class="number">1939</span> <span class="number">330.8</span> <span class="number">4313.2</span>   <span class="number">203.4</span></span><br><span class="line"><span class="number">6</span>    <span class="number">1</span> <span class="number">1940</span> <span class="number">461.2</span> <span class="number">4643.9</span>   <span class="number">207.2</span></span><br></pre></td></tr></table></figure></p>
+<p>数据形式如下 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; head(Grunfeld)</span><br><span class="line">  firm year   inv  value capital</span><br><span class="line"><span class="number">1</span>    <span class="number">1</span> <span class="number">1935</span> <span class="number">317.6</span> <span class="number">3078.5</span>     <span class="number">2.8</span></span><br><span class="line"><span class="number">2</span>    <span class="number">1</span> <span class="number">1936</span> <span class="number">391.8</span> <span class="number">4661.7</span>    <span class="number">52.6</span></span><br><span class="line"><span class="number">3</span>    <span class="number">1</span> <span class="number">1937</span> <span class="number">410.6</span> <span class="number">5387.1</span>   <span class="number">156.9</span></span><br><span class="line"><span class="number">4</span>    <span class="number">1</span> <span class="number">1938</span> <span class="number">257.7</span> <span class="number">2792.2</span>   <span class="number">209.2</span></span><br><span class="line"><span class="number">5</span>    <span class="number">1</span> <span class="number">1939</span> <span class="number">330.8</span> <span class="number">4313.2</span>   <span class="number">203.4</span></span><br><span class="line"><span class="number">6</span>    <span class="number">1</span> <span class="number">1940</span> <span class="number">461.2</span> <span class="number">4643.9</span>   <span class="number">207.2</span></span><br></pre></td></tr></table></figure></p>
 <p>不考虑个体效应和时间效应的情况下，进行OLS回归（结果和<code>lm</code>函数回归相同）</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fit_lr &lt;- plm(inv ~ value + capital,</span><br><span class="line">              data = Grunfeld, model = <span class="string">"pooling"</span>)</span><br></pre></td></tr></table></figure>
 <p>结果</p>
@@ -386,7 +389,8 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fit_both &lt;- plm(inv ~ value + capital, data = Grunfeld,       </span><br><span class="line">                model = <span class="string">"within"</span>, effect = <span class="string">"twoways"</span>)</span><br></pre></td></tr></table></figure>
 <p>结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; coef(fit_both)</span><br><span class="line">    value   capital </span><br><span class="line"><span class="number">0.1177159</span> <span class="number">0.3579163</span></span><br></pre></td></tr></table></figure>
-<h2 id="随机效应"><a href="#随机效应" class="headerlink" title="随机效应"></a>随机效应</h2><p>在接触panel data的时候，经常会在软件中见到fixed effect和random effect，前者就是我们所说的固定效应，而后者称为随机效应。</p>
+<h2 id="随机效应">随机效应</h2>
+<p>在接触panel data的时候，经常会在软件中见到fixed effect和random effect，前者就是我们所说的固定效应，而后者称为随机效应。</p>
 <p>随机效应不是本文讨论的重点，但是这是一个曾经困扰我很久的点，所以我希望在这里留下一些关于随机效应的学习资料。</p>
 <p>随机效应是多阶段回归模型，只在特定条件下才需要使用。随机效应的形式不是唯一的，在plm包的plm函数中，当参数为<code>model = &quot;random&quot;</code>时，指定了随机效应。同时，还需要指定另一个参数</p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">random</span>.<span class="built_in">method</span> = c(<span class="string">"swar"</span>, <span class="string">"walhus"</span>, <span class="string">"amemiya"</span>, <span class="string">"nerlove"</span>, <span class="string">"kinla"</span>)</span><br></pre></td></tr></table></figure>
@@ -394,22 +398,24 @@
 <p>这里的每一种方法都有一篇论文做支撑，如果想要真正了解每一种随机效应是怎么做的，需要阅读这些论文。论文可以到<code>plm</code>帮助文档中的Details部分查看。</p>
 <p>了解随机效应理论的另外一种好办法是直接看实现它们的源代码，通过查看<code>plm</code>函数源代码，看参数是如何调用的，抽丝剥茧即可找到函数定义位置。最后找到函数定义位置只要在R语言控制台输入<code>getAnywhere(ercomp.formula)</code>即可查看。</p>
 <p>除此之外，plm包的学习除了看帮助文档中的参数解释和代码示例，还可以看plm包的<a href="https://cran.r-project.org/web/packages/plm/vignettes/plm.pdf" target="_blank" rel="noopener">论文</a>，这个其实在包的User guides, package vignettes and other documentation.部分可以找到。</p>
-<h2 id="固定效应代码实现验证"><a href="#固定效应代码实现验证" class="headerlink" title="固定效应代码实现验证"></a>固定效应代码实现验证</h2><p>上文提到，面板数据回归系数估计有两种形式，一种是多个0-1变量的OLS回归，一种是通过减去均值变换后进行回归。下面我们来分别使用这两种方法与plm包结果进行对比。以固定个体效应为例</p>
+<h2 id="固定效应代码实现验证">固定效应代码实现验证</h2>
+<p>上文提到，面板数据回归系数估计有两种形式，一种是多个0-1变量的OLS回归，一种是通过减去均值变换后进行回归。下面我们来分别使用这两种方法与plm包结果进行对比。以固定个体效应为例</p>
 <p>首先贴出plm包的结果</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; fit_individual1 &lt;- plm(inv ~ value + capital, data = Grunfeld, </span><br><span class="line">+                        model = <span class="string">"within"</span>, effect = <span class="string">"individual"</span>)</span><br><span class="line">&gt; coef(fit_individual1)</span><br><span class="line">    value   capital </span><br><span class="line"><span class="number">0.1101238</span> <span class="number">0.3100653</span></span><br></pre></td></tr></table></figure>
 <p>1.用多个0-1变量的OLS回归</p>
-<p>$$Y_{it} = \beta_0 + \beta_1X_{it}+\gamma_2D2_i+…+\gamma_nDn_i + u_{it}$$</p>
+<p><span class="math display">\[Y_{it} = \beta_0 + \beta_1X_{it}+\gamma_2D2_i+...+\gamma_nDn_i + u_{it}\]</span></p>
 <p>其实相当于在最简单OLS回归的基础上，加了一个离散变量firm，离散变量加入回归中，R语言会自动转化为多个0-1变量</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fit_01 &lt;- lm(inv ~ value + capital + factor(firm),</span><br><span class="line">             data = Grunfeld)</span><br></pre></td></tr></table></figure>
-<p>得到结果如下<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; coef(fit_01)</span><br><span class="line">   (Intercept)          value        capital  factor(firm)<span class="number">2</span>  factor(firm)<span class="number">3</span></span><br><span class="line">   -<span class="number">70.2967175</span>      <span class="number">0.1101238</span>      <span class="number">0.3100653</span>    <span class="number">172.2025312</span>   -<span class="number">165.2751236</span></span><br><span class="line"> factor(firm)<span class="number">4</span>  factor(firm)<span class="number">5</span>  factor(firm)<span class="number">6</span>  factor(firm)<span class="number">7</span>  factor(firm)<span class="number">8</span></span><br><span class="line">    <span class="number">42.4874229</span>    -<span class="number">44.3200953</span>     <span class="number">47.1354223</span>      <span class="number">3.7432439</span>     <span class="number">12.7510602</span></span><br><span class="line"> factor(firm)<span class="number">9</span> factor(firm)<span class="number">10</span> </span><br><span class="line">   -<span class="number">16.9255550</span>     <span class="number">63.7288739</span></span><br></pre></td></tr></table></figure></p>
+<p>得到结果如下 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; coef(fit_01)</span><br><span class="line">   (Intercept)          value        capital  factor(firm)<span class="number">2</span>  factor(firm)<span class="number">3</span></span><br><span class="line">   -<span class="number">70.2967175</span>      <span class="number">0.1101238</span>      <span class="number">0.3100653</span>    <span class="number">172.2025312</span>   -<span class="number">165.2751236</span></span><br><span class="line"> factor(firm)<span class="number">4</span>  factor(firm)<span class="number">5</span>  factor(firm)<span class="number">6</span>  factor(firm)<span class="number">7</span>  factor(firm)<span class="number">8</span></span><br><span class="line">    <span class="number">42.4874229</span>    -<span class="number">44.3200953</span>     <span class="number">47.1354223</span>      <span class="number">3.7432439</span>     <span class="number">12.7510602</span></span><br><span class="line"> factor(firm)<span class="number">9</span> factor(firm)<span class="number">10</span> </span><br><span class="line">   -<span class="number">16.9255550</span>     <span class="number">63.7288739</span></span><br></pre></td></tr></table></figure></p>
 <p>我们只要关心value和capital两个变量的系数即可，发现它们和plm包给出的结果是一样的。</p>
 <p>2.通过减去均值变换后进行回归</p>
-<p>$$Y_{it}-\frac1T\sum_{t=1}^TY_{it}= \beta_1(X_{it}-\frac1T\sum_{t=1}^TX_{it})+(u_{it}-\frac1T\sum_{t=1}^Tu_{it})$$</p>
+<p><span class="math display">\[Y_{it}-\frac1T\sum_{t=1}^TY_{it}= \beta_1(X_{it}-\frac1T\sum_{t=1}^TX_{it})+(u_{it}-\frac1T\sum_{t=1}^Tu_{it})\]</span></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(dplyr)</span><br><span class="line"><span class="comment"># 定义变换函数</span></span><br><span class="line">get_new &lt;- <span class="keyword">function</span>(x) x - mean(x) </span><br><span class="line"><span class="comment"># 数据变换（分组减去个体均值）</span></span><br><span class="line">new_Grunfeld &lt;- Grunfeld %&gt;% group_by(firm) %&gt;% </span><br><span class="line">  mutate_at(vars(inv:capital), get_new)</span><br><span class="line">  </span><br><span class="line">fit_mean &lt;- lm(inv ~ <span class="number">0</span> + value + capital, <span class="comment"># 加0表示不含有截距项</span></span><br><span class="line">               data = new_Grunfeld)</span><br></pre></td></tr></table></figure>
 <p>得到结果如下</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-tag">coef</span>(<span class="selector-tag">fit_mean</span>)</span><br><span class="line">    <span class="selector-tag">value</span>   <span class="selector-tag">capital</span> </span><br><span class="line">0<span class="selector-class">.1101238</span> 0<span class="selector-class">.3100653</span></span><br></pre></td></tr></table></figure>
 <p>结果也和plm包相同。</p>
-<h2 id="面板回归的统计理解"><a href="#面板回归的统计理解" class="headerlink" title="面板回归的统计理解"></a>面板回归的统计理解</h2><p>从上面的实现代码可以看出，从统计的角度来看，固定个体效应，就是把表示个体的那个变量加入回归模型之中，如果考虑时间效应，则再把离散的时间变量加入进来。</p>
+<h2 id="面板回归的统计理解">面板回归的统计理解</h2>
+<p>从上面的实现代码可以看出，从统计的角度来看，固定个体效应，就是把表示个体的那个变量加入回归模型之中，如果考虑时间效应，则再把离散的时间变量加入进来。</p>
 <p>这个过程非常简单，也很符合直觉。拿到一个5列的数据，当然是把5列数据都加进去跑模型。离散变量和连续变量没有本质区别，都是变量，都是信息，没有理由放着不用。只不过离散型变量需要转化为多个变量进行回归而已。</p>
 <p>但是这个问题到了计量经济学里面，却变复杂了许多。不仅新定义了“面板数据回归”、“固定效应”这些概念；增加了公式的推导；而且非常注重解释这样做的经济学含义，力图说清楚这样做是如何消除了OV bias的影响，如何使回归结果更可靠。统计人学了半天，拨开云雾，才发现原来这就是加了一个离散型变量。</p>
 <p>这个现象让我开始思考统计学与计量经济学的区别。</p>
@@ -639,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遗漏变量偏差"><span class="nav-number">1.</span> <span class="nav-text">遗漏变量偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定效应"><span class="nav-number">2.</span> <span class="nav-text">固定效应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R语言面板数据回归"><span class="nav-number">3.</span> <span class="nav-text">R语言面板数据回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机效应"><span class="nav-number">4.</span> <span class="nav-text">随机效应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定效应代码实现验证"><span class="nav-number">5.</span> <span class="nav-text">固定效应代码实现验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面板回归的统计理解"><span class="nav-number">6.</span> <span class="nav-text">面板回归的统计理解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遗漏变量偏差"><span class="nav-number">1.</span> <span class="nav-text">遗漏变量偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定效应"><span class="nav-number">2.</span> <span class="nav-text">固定效应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#r语言面板数据回归"><span class="nav-number">3.</span> <span class="nav-text">R语言面板数据回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机效应"><span class="nav-number">4.</span> <span class="nav-text">随机效应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定效应代码实现验证"><span class="nav-number">5.</span> <span class="nav-text">固定效应代码实现验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面板回归的统计理解"><span class="nav-number">6.</span> <span class="nav-text">面板回归的统计理解</span></a></li></ol></div>
             
 
           </div>

@@ -1432,7 +1432,7 @@ pre .javascript .function {
   display: none;
 }
 .posts-collapse .post-title {
-  margin-left: 60px;
+  margin-left: 65px;
   font-size: 16px;
   font-weight: normal;
   line-height: inherit;
@@ -1444,6 +1444,9 @@ pre .javascript .function {
 .posts-collapse .post-title a {
   color: #666;
   border-bottom: none;
+}
+.posts-collapse #has-year {
+  margin-left: 100px;
 }
 .page-home .post-type-quote .post-header,
 .page-post-detail .post-type-quote .post-header,
@@ -1813,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff47;
+  background: #91c665;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3159,4 +3162,28 @@ pre .javascript .function {
 }
 .site-overview p a {
   border-bottom: none;
+}
+.open {
+  border-color: #222;
+  color: #fff;
+  background: #222;
+}
+.hider_title {
+  font-family: "Microsoft Yahei";
+  cursor: pointer;
+}
+.close:after {
+  content: "▼";
+}
+.open:after {
+  content: "▲";
+}
+.feed-link a {
+  display: inline-block;
+}
+.fold {
+  display: none;
+  border: 2px solid #23363a;
+  margin: 20px 30px;
+  padding: 25px;
 }
