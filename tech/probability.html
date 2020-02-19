@@ -77,19 +77,19 @@
 
 
 
-<meta name="description" content="集合和概率 这里以一个抛硬币的试验为例引出基本概念。一个硬币有\(\\{ H, T \\}\)正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为\(\frac14\) 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集\(\Omega\)，其中每一种称为一个元素\">
+<meta name="description" content="集合和概率 这里以一个抛硬币的试验为例引出基本概念。一个硬币有\(\{ H, T \}\)正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为\(\frac14\) 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集\(\Omega\)，其中每一种称为一个元素\(\">
 <meta name="keywords" content="统计理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高等概率论浅记">
 <meta property="og:url" content="http://yoursite.com/tech/probability.html">
 <meta property="og:site_name" content="My World">
-<meta property="og:description" content="集合和概率 这里以一个抛硬币的试验为例引出基本概念。一个硬币有\(\\{ H, T \\}\)正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为\(\frac14\) 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集\(\Omega\)，其中每一种称为一个元素\">
+<meta property="og:description" content="集合和概率 这里以一个抛硬币的试验为例引出基本概念。一个硬币有\(\{ H, T \}\)正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为\(\frac14\) 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集\(\Omega\)，其中每一种称为一个元素\(\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/conditional.PNG">
-<meta property="og:updated_time" content="2019-12-27T13:31:42.667Z">
+<meta property="og:updated_time" content="2020-02-17T02:45:36.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高等概率论浅记">
-<meta name="twitter:description" content="集合和概率 这里以一个抛硬币的试验为例引出基本概念。一个硬币有\(\\{ H, T \\}\)正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为\(\frac14\) 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集\(\Omega\)，其中每一种称为一个元素\">
+<meta name="twitter:description" content="集合和概率 这里以一个抛硬币的试验为例引出基本概念。一个硬币有\(\{ H, T \}\)正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为\(\frac14\) 1&amp;#123;H H&amp;#125; &amp;#123;H T&amp;#125; &amp;#123;T H&amp;#125; &amp;#123;T T&amp;#125; 这四种可能称为全集\(\Omega\)，其中每一种称为一个元素\(\">
 <meta name="twitter:image" content="http://static.wzbtech.com/static/images/conditional.PNG">
 
 
@@ -339,16 +339,20 @@
 
       
         <h2 id="集合和概率">集合和概率</h2>
-<p>这里以一个抛硬币的试验为例引出基本概念。一个硬币有<span class="math inline">\(\\{ H, T \\}\)</span>正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为<span class="math inline">\(\frac14\)</span></p>
+<p>这里以一个抛硬币的试验为例引出基本概念。一个硬币有<span class="math inline">\(\{ H, T \}\)</span>正反两面，每次得到正面的概率为0.5。共抛2次，会出现如下4种可能结果，每种概率为<span class="math inline">\(\frac14\)</span></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;H H&#125; &#123;H <span class="literal">T</span>&#125; &#123;<span class="literal">T</span> H&#125; &#123;<span class="literal">T</span> <span class="literal">T</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>这四种可能称为<strong>全集</strong><span class="math inline">\(\Omega\)</span>，其中每一种称为一个<strong>元素</strong><span class="math inline">\(\omega\)</span>，这是我们关注的最小单位。<span class="math inline">\(\\{ \omega \\}\)</span>是包含该元素的集合。注意：单独的<span class="math inline">\(H\)</span>和<span class="math inline">\(T\)</span>只是试验结果，单独出现在这里没有意义。</p>
+<p>这四种可能称为<strong>全集</strong><span class="math inline">\(\Omega\)</span>，其中每一种称为一个<strong>元素</strong><span class="math inline">\(\omega\)</span>，这是我们关注的最小单位。<span class="math inline">\(\{ \omega \}\)</span>是包含该元素的集合。注意：单独的<span class="math inline">\(H\)</span>和<span class="math inline">\(T\)</span>只是试验结果，单独出现在这里没有意义。</p>
 <p>（为了防止大括号很乱，下文将<code>{H H} {H T} {T H} {T T}</code>分别记为<span class="math inline">\(\omega_1,\omega_2,\omega_3,\omega_4\)</span>。）</p>
 <p>假设硬币正面记为1反面记为0，我们要关注两次抛掷得到的数字相加的结果，有三种可能</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;w1&#125;     <span class="number">2</span>  <span class="number">0.25</span> </span><br><span class="line">&#123;w2,w3&#125;  <span class="number">1</span>  <span class="number">0.5</span>  </span><br><span class="line">&#123;w4&#125;     <span class="number">0</span>  <span class="number">0.25</span></span><br></pre></td></tr></table></figure>
-<p>这里每一种可能称为一个<strong>事件</strong>，如<span class="math inline">\(A=\\{ \omega_1 \\}\)</span>；<strong>事件的集合</strong>用花体字母表示，如<span class="math inline">\(\mathcal{A}=\\{ \\{ \omega_1 \\}, \\{ \omega_2,\omega_3 \\} \\}\)</span>。</p>
+<p>这里每一种可能称为一个<strong>事件</strong>，如<span class="math inline">\(A=\{ \omega_1 \}\)</span>；<strong>事件的集合</strong>用花体字母表示，如<span class="math inline">\(\mathcal{A}=\{ \{ \omega_1 \}, \{ \omega_2,\omega_3 \} \}\)</span>。</p>
 <p><code>0 1 2</code>是随机变量<span class="math inline">\(X\)</span>的三种取值，随机变量的相关内容下一节再详细说明。</p>
 <p><code>0.25 0.5 0.25</code>分别是三个<strong>事件的概率</strong>，<span class="math inline">\(P(A)=0.25\)</span>。概率<span class="math inline">\(P\)</span>是定义在事件上而不是元素上的，因为事件是我们要关注的东西。多个不相交事件组合的概率就是单个事件概率相加。</p>
-<p>概率<span class="math inline">\(P\)</span>在定义时，必须保证对所有事件及组合都有效。这时就要引入<strong>域(field)</strong>的概念。域是集合的集合，里面集合的交并补等运算后的集合仍在这个域里。<span class="math inline">\((\Omega, \mathcal{B}, P)\)</span>构成一个概率空间。其中<span class="math inline">\(\mathcal{B}\)</span>是<span class="math inline">\(\sigma-field\)</span>，表示<span class="math inline">\(\Omega\)</span> 的所有子集组成的集合。以上面的<span class="math inline">\(\Omega\)</span>为例，它有<span class="math inline">\(2^4=16\)</span>个子集</p>
+<p>概率<span class="math inline">\(P\)</span>在定义时，必须保证对所有事件及组合都有效。这时就要引入<strong>域(field)</strong>的概念。域是集合的集合，里面集合的交并补等运算后的集合仍在这个域里。<span class="math inline">\((\Omega, \mathcal{B}, P)\)</span>构成一个概率空间。其中</p>
+<ul>
+<li><span class="math inline">\(\Omega\)</span>就是全集<span class="math inline">\(\{\omega_1,\omega_2,\omega_3,\omega_4\}\)</span>，表示试验所有可能结果的集合，每个结果之间互斥</li>
+<li><span class="math inline">\(\mathcal{B}\)</span>是<span class="math inline">\(\sigma-field\)</span>，表示<span class="math inline">\(\Omega\)</span> 的所有子集组成的集合。以上面的<span class="math inline">\(\Omega\)</span>为例，它有<span class="math inline">\(2^4=16\)</span>个子集</li>
+</ul>
 <figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-variable">&#123;&#125;</span><span class="xml">                             1     </span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;w1&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w2&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w3&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w4&#125;</span><span class="xml">         4     </span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;w1, w2&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w1, w3&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w1, w4&#125;</span><span class="xml">   3     </span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;w2, w3&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w2, w4&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w3, w4&#125;</span><span class="xml">   3     </span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;w1, w2, w3&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w1, w2, w4&#125;</span><span class="xml">     2     </span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;w1, w3, w4&#125;</span><span class="xml">, </span><span class="template-variable">&#123;w2, w3, w4&#125;</span><span class="xml">     2     </span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;w1, w2, w3, w4&#125;</span><span class="xml">               1</span></span><br></pre></td></tr></table></figure>
 <p>由这些子集构成的集合就是<span class="math inline">\(\mathcal{B}\)</span>。<span class="math inline">\(P\)</span>要对<span class="math inline">\(\mathcal{B}\)</span>中的所有集合都有效，则由域的封闭性可知，这些集合的各种运算也都可以用<span class="math inline">\(P\)</span>来测量。</p>
 <p>域是可以通过更小的集合，结合交并补的运算生成的，比如通过<code>{ {w1}, {w2}, {w3}, {w4} }</code>就可以生成上面的所有16个集合。而如果以这个事件集合<code>{ {w1}, {w2,w3}, {w4} }</code>来生成域，得到的会是<span class="math inline">\(2^3=8\)</span>种。</p>
@@ -358,12 +362,18 @@
 <p>上文提到<code>0 1 2</code>是随机变量<span class="math inline">\(X\)</span>的三种取值，而我们关注“数字加和”这样的规则就是<strong>随机变量</strong>。因此随机变量的本质是一个函数，一个映射，将从事件空间映射到实数空间。</p>
 <p>我们通常说的“随机变量的值”，甚至直接用等号<span class="math inline">\(P(X=1)\)</span>，常常会让我们误以为随机变量是一个数。但随机变量是一个函数而不是一个数，随机变量取值指的是映射到的实数空间中的取值。就像我们初中学函数时<span class="math inline">\(y = f(x)\)</span>，函数<span class="math inline">\(f\)</span>的取值是作用在某个<span class="math inline">\(x\)</span>之后的<span class="math inline">\(y\)</span>的取值。</p>
 <p><strong>随即变量取值的概率</strong>。本来概率只存在于事件空间，有了这种映射，则概率可以作用于实数空间。原来我们会说某一个事件发生的概率是多大，现在我们可以说随机变量取值为<span class="math inline">\(1\)</span>的概率是多大。随机变量取值的概率值就是映射回事件空间中对应事件的概率。</p>
-<p><span class="math display">\[P(X\lt2)=P(\\{ \omega_1,\omega_2,\omega_3 \\})=0.75\]</span></p>
+<p><span class="math display">\[
+P(X\lt2)=P(\{ \omega_1,\omega_2,\omega_3 \})=0.75
+\]</span></p>
 <p>更严格一点应该这么写</p>
-<p><span class="math display">\[P[X&lt;2]=P[X\in(-\infty, 2)]= P\circ X^{-1}((-\infty, 2))=P(\\{ \omega_1,\omega_2,\omega_3 \\})=0.75\]</span></p>
+<p><span class="math display">\[
+P[X&lt;2]=P[X\in(-\infty, 2)]= P\circ X^{-1}((-\infty, 2))=P(\{ \omega_1,\omega_2,\omega_3 \})=0.75
+\]</span></p>
 <p>其中第二个式子表示将<span class="math inline">\((-\infty, 2)\)</span>逆回事件空间，再用<span class="math inline">\(P\)</span>进行测量，等价于<span class="math inline">\(P(X^{-1}((-\infty, 2)))\)</span>。</p>
 <p>而像<span class="math inline">\([X=1]\)</span>，<span class="math inline">\([X&lt;2]\)</span>这样的符号其实不符合这些字母本身的定义，只是被定义成了这样</p>
-<p><span class="math inline">\([X\in A&#39;]:=X^{-1}(A&#39;)=\\{ \omega:X(\omega)\in A&#39; \\}\)</span></p>
+<p><span class="math display">\[
+[X\in A&#39;]:=X^{-1}(A&#39;)=\{ \omega:X(\omega)\in A&#39; \}
+\]</span></p>
 <p><span class="math inline">\(P\)</span>定义时也只是能对事件进行测量，所以也只有这样逆回去，前面的<span class="math inline">\(P\)</span>才符合定义。</p>
 <p>接下来，我们将随机变量与域联系起来。</p>
 <p>首先要明确，随机变量与事件是对应的。随机变量是一个函数，是将集合映射到实数空间的一种规则，确定一种规则，则确定了一组事件。考虑下面两种规则</p>
@@ -373,19 +383,29 @@
 </ul>
 <p>两种规则会得到不一样的事件</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">相加                 | 相减</span><br><span class="line">&#123;w1&#125;     <span class="number">2</span>  <span class="number">0.25</span>    | &#123;w2&#125;     <span class="number">-1</span>   <span class="number">0.25</span>                </span><br><span class="line">&#123;w2,w3&#125;  <span class="number">1</span>  <span class="number">0.5</span>     | &#123;w1,w4&#125;   <span class="number">0</span>   <span class="number">0.5</span>                </span><br><span class="line">&#123;w4&#125;     <span class="number">0</span>  <span class="number">0.25</span>    | &#123;w3&#125;      <span class="number">1</span>   <span class="number">0.25</span></span><br></pre></td></tr></table></figure>
-<p>这里定义了两个相互独立的随机变量。随机变量其实就是对全集内的元素划分组别的方式。划分出来的每一个组构成一个事件，将概率测度<span class="math inline">\(P\)</span>定义在这些事件上，则由这些事件生成的<span class="math inline">\(\sigma-field\)</span>中的集合都可以用<span class="math inline">\(P\)</span>来测量。两种事件生成的域都是由全集<span class="math inline">\(\Omega\)</span>生成的域的子集。可以看出，事件就像将几个元素分组捆绑在一起，要进行任何操作都只能针对整个组，而不能处理更细节的单个元素。</p>
+<p>这里定义了两个相互独立的随机变量。随机变量其实就是对全集内的元素划分组别的方式。划分出来的每一个组构成一个事件，将概率测度<span class="math inline">\(P\)</span>定义在这些事件上，则由这些事件生成的<span class="math inline">\(\sigma-field\)</span>中的集合都可以用<span class="math inline">\(P\)</span>来测量。两种事件生成的域都是由全集<span class="math inline">\(\Omega\)</span>生成的域的子集。可以看出，事件就像将几个元素分组捆绑在一起，要进行任何操作都只能针对整个组，而不能处理更细节的单个元素。举个例子，相加情况下可以测量<span class="math inline">\(\{ \omega_1,\omega_2,\omega_3 \}\)</span>的概率；而相减情况下就不能，因为相减情况下<span class="math inline">\(\omega_1\)</span>和<span class="math inline">\(\omega_4\)</span>必须一起算入或排除。</p>
 <h2 id="期望">期望</h2>
 <p>上面我们对随机变量的解读，只是关注它如何对全集进行划分，并没有关注划分之后的每个事件映射到实数空间中的取值。其实相同的划分可以有不同的取值，这样也对应了不同的随机变量。对这些取值以概率进行加权平均，可以得到期望。有限离散情形下定义如下</p>
-<p><span class="math display">\[E(X)=\int Xd P:=\sum_{i=1}^k a_iP(A_i)\]</span></p>
+<p><span class="math display">\[
+E(X)=\int Xd P:=\sum_{i=1}^k a_iP(A_i)
+\]</span></p>
 <p>对于更一般的形式，则是通过极限逼近、正部负部来定义</p>
-<p><span class="math display">\[E(X):=\lim_{n\rightarrow\infty} E(X_n)\]</span></p>
-<p><span class="math display">\[E(X):=E(X^+)+E(X^-)\]</span></p>
+<p><span class="math display">\[
+E(X):=\lim_{n\rightarrow\infty} E(X_n)
+\]</span></p>
+<p><span class="math display">\[
+E(X):=E(X^+)+E(X^-)
+\]</span></p>
 <p>需要注意的是，这里都是<span class="math inline">\(:=\)</span>定义符号，不是说左边可以被证明等于右边，而是左边原本是没有定义的，它的定义就是通过右边进行的逼近或计算。只是后来又证明了用右边的逼近方法算和我们日常使用的积分等方法得到的结果相等，所以我们才会直接使用积分的工具计算结果，忽略它是如何被定义来的。用积分计算的方式会在下一节进行说明。</p>
 <h3 id="分布函数">分布函数</h3>
 <p>分布函数的定义</p>
-<p><span class="math display">\[F(x):=F((-\infty, x])=P[X\leq x], x\in \mathbb{R}\]</span></p>
+<p><span class="math display">\[
+F(x):=F((-\infty, x])=P[X\leq x], x\in \mathbb{R}
+\]</span></p>
 <p>如此一来，期望可以写成另一种形式</p>
-<p><span class="math display">\[E(X)=\int_\Omega X dP=\int_\Omega X(\omega) P(d\omega)=\int_{\mathbb{R}} x F(dx)\]</span></p>
+<p><span class="math display">\[
+E(X)=\int_\Omega X dP=\int_\Omega X(\omega) P(d\omega)=\int_{\mathbb{R}} x F(dx)
+\]</span></p>
 <p>其中<span class="math inline">\(F=P\circ X^{-1}\)</span></p>
 <h3 id="积分说明">积分说明</h3>
 <p>在这里需要说明一下，看到<span class="math inline">\(\int_\Omega f(\omega)\mu(d\omega)\)</span>这种形式该如何理解，这个公式是按照下面几个步骤进行计算的</p>
@@ -394,7 +414,7 @@
 <li>对每一种取值，都用<span class="math inline">\(\mu\)</span>测度测量一下该取值对应<span class="math inline">\(\Omega\)</span>中集合的大小，将结果与<span class="math inline">\(f(\omega)\)</span>相乘</li>
 <li>对所有<span class="math inline">\(f(\omega)\)</span>取值计算出的结果求和</li>
 </ul>
-<p>举一个最简单的例子：<span class="math inline">\(\int_\Omega \sum_{i=1}^n a_i 1_{A_i}dP​\)</span>的计算过程</p>
+<p>举一个最简单的例子：<span class="math inline">\(\int_\Omega \sum_{i=1}^n a_i 1_{A_i}dP\)</span>的计算过程</p>
 <ul>
 <li>共有<span class="math inline">\(a_1\)</span>到<span class="math inline">\(a_n\)</span>共<span class="math inline">\(n\)</span>种取值</li>
 <li>以<span class="math inline">\(a_1\)</span>为例，它对应的集合是<span class="math inline">\(A_1\)</span>，用<span class="math inline">\(P\)</span>测量<span class="math inline">\(A_1\)</span>大小，得到<span class="math inline">\(P(A_1)\)</span>，相乘得到<span class="math inline">\(a_1P(A_1)\)</span></li>
@@ -404,29 +424,45 @@
 <p>这样来看上面的期望形式就很好理解了，只是从原来的关注事件空间，转化成了关注实数空间。</p>
 <h3 id="transformation">Transformation</h3>
 <p>在平常的计算中，有一个公式非常有趣：现有<span class="math inline">\(X, Y\)</span>两个随机变量，它们之间的关系是<span class="math inline">\(Y=g\circ X\)</span>，则有<span class="math inline">\(E(Y)=E(g(X))\)</span>，展开成计算形式</p>
-<p><span class="math display">\[\int y F_Y(dy)=E(Y)=E(g(X))=\int g(x) F_X(dx)\]</span></p>
+<p><span class="math display">\[
+\int y F_Y(dy)=E(Y)=E(g(X))=\int g(x) F_X(dx)
+\]</span></p>
 <p>也就是说我们要算<span class="math inline">\(Y\)</span>的期望时其实不需要知道<span class="math inline">\(Y\)</span>的分布，只需要用<span class="math inline">\(X\)</span>的信息来算即可。</p>
 <p>第一个等号已由上文说明，其中<span class="math inline">\(F_Y=P\circ Y^{-1}=P\circ (g\circ X)^{-1}=P\circ X^{-1}\circ g^{-1}\)</span>。</p>
 <p>第二个等号换一种形式来写会更清楚</p>
-<p><span class="math display">\[\int_\Omega Y(\omega) P(d\omega)=\int_\Omega g(X(\omega)) P(d\omega)\]</span></p>
+<p><span class="math display">\[
+\int_\Omega Y(\omega) P(d\omega)=\int_\Omega g(X(\omega)) P(d\omega)
+\]</span></p>
 <p>可以看出二者显然相等。</p>
 <p>对于第三个等号，<span class="math inline">\(F_X=P\circ X^{-1}\)</span>。</p>
 <p>直观理解：如果认为映射空间分为三层，第一层是<span class="math inline">\(\Omega\)</span>，第二层是<span class="math inline">\(X\)</span>作用后的<span class="math inline">\(\mathbb{R_1}\)</span>，第三层是再由<span class="math inline">\(g\)</span>作用后的<span class="math inline">\(\mathbb{R_2}\)</span>。目标都是要算第三层的值和对应概率。值都是第三层的值，<span class="math inline">\(\int g\circ X P(d\omega)\)</span>是使用第一层的概率测度，<span class="math inline">\(\int y F_Y(dy)\)</span>用的是第三层的概率测度，<span class="math inline">\(\int g(x) F_X(dx)\)</span>则用的是第二层的概率测度。像<span class="math inline">\(\int g\circ X P(d\omega)\)</span>用低层次的测度，就要用<span class="math inline">\(g\circ X\)</span>计算出第三层的值。</p>
 <h3 id="密度函数">密度函数</h3>
 <p>对于连续型变量来说，会存在一个<span class="math inline">\(f\)</span>使得下面等式成立</p>
-<p><span class="math display">\[\int_A F(dx)=F(A)=\int_Af(x)dx\]</span></p>
+<p><span class="math display">\[
+\int_A F(dx)=F(A)=\int_Af(x)dx
+\]</span></p>
 <p>其中<span class="math inline">\(A\)</span>是实数集合，<span class="math inline">\(dx\)</span>表示<strong>Lebesgue测度</strong>，这是一个Lebesgue积分。此时<span class="math inline">\(f\)</span>就是随机变量<span class="math inline">\(X\)</span>的密度函数.</p>
 <p>期望可以写成下面这种形式</p>
-<p><span class="math display">\[\int_{\mathbb{R}} x F(dx)=\int_{\mathbb{R}} xf(x) dx\]</span></p>
+<p><span class="math display">\[
+\int_{\mathbb{R}} x F(dx)=\int_{\mathbb{R}} xf(x) dx
+\]</span></p>
 <p>但是如果提到离散型变量的密度函数，一般会直接用离散形式写出每个取值的概率<span class="math inline">\(P(X=k)\)</span>，对于取值区间则会用求和符号表示。如果要写成积分形式，要使用<strong>counting测度</strong>而不是Lebesgue测度。这个原因在于，将连续型变量的密度函数<span class="math inline">\(f(x)\)</span>画在坐标系中，它下方的面积表示的就是这个区域内的概率；而离散型变量的分布函数则无法画在这样的坐标系中。举一个简单的例子，一个随机变量在<span class="math inline">\(X=0\)</span>时概率为<span class="math inline">\(0.5\)</span>，在区间<span class="math inline">\([1,2]\)</span>上类似均匀分布，<span class="math inline">\(f(x)=0.5\)</span>，尝试将这个密度函数画在坐标系中，我们会发现，在想要用面积表示概率时，<span class="math inline">\(X=0\)</span>这个点没办法处理。所以离散点不能用面积来表示，而Lebesgue测度正是在算面积，因此离散点不能用Lebesgue测度来测量。</p>
 <p>下面举一个例子，一个只在整数上有取值的分布，定义测度<span class="math inline">\(\mu\)</span>为counting，<span class="math inline">\(p(x)\)</span>就是这个离散变量的密度函数。</p>
-<p><span class="math display">\[\mu(A)=\sum_{k\in\mathbb{Z^d}}1_A(k), \quad p(x)=\sum_{k\in\mathbb{Z^d}} P(X=k)1_{\\{ k \\}}(x)\]</span></p>
-<p><span class="math display">\[F(A)=P(X\in A)=\sum_{k\in\mathbb{A}}P(X=k)=\int_A p(x)\mu(dx)\]</span></p>
+<p><span class="math display">\[
+\mu(A)=\sum_{k\in\mathbb{Z^d}}1_A(k), \quad p(x)=\sum_{k\in\mathbb{Z^d}} P(X=k)1_{\{ k \}}(x)
+\]</span></p>
+<p><span class="math display">\[
+F(A)=P(X\in A)=\sum_{k\in\mathbb{A}}P(X=k)=\int_A p(x)\mu(dx)
+\]</span></p>
 <h2 id="条件期望">条件期望</h2>
 <p>条件期望的定义是，<span class="math inline">\(X\in L_1(\Omega, \mathcal{B}, P), \mathcal{G}\subset \mathcal{B}\)</span>，则存在随机变量<span class="math inline">\(E(X|\mathcal{G})\)</span>是<span class="math inline">\(\mathcal{G}\)</span> measurable and integrable，且对任意<span class="math inline">\(G\in \mathcal{G}\)</span>都有下面式子成立</p>
-<p><span class="math display">\[\int_G XdP=\int_G E(X|\mathcal{G})dP\]</span></p>
+<p><span class="math display">\[
+\int_G XdP=\int_G E(X|\mathcal{G})dP
+\]</span></p>
 <p>定义的的<span class="math inline">\(E(X|\mathcal{G})\)</span>其实只是一个符号，它还有其他的写法</p>
-<p><span class="math display">\[E(X|\mathcal{G})=E(X|\sigma(Y))=E(X|Y)\]</span></p>
+<p><span class="math display">\[
+E(X|\mathcal{G})=E(X|\sigma(Y))=E(X|Y)
+\]</span></p>
 <p>这些都只是符号，而这个符号的本质含义是上面的那个积分。在初等概率论中，我们都知道一些条件期望的计算方式，其实只是从这个定义可以推导出那些性质，于是我们就只关注如何计算，而忽视了它本身的定义。</p>
 <p>而看到这个定义，我们肯定想知道为什么满足这个式子就可以达到条件期望的效果，达到初等概率论中那些符合直觉的计算效果，这个式子到底是在算什么，是在让什么东西相等，这是我们接下来主要讨论的问题。</p>
 <p>关于这个定义还有一点需要说明，<span class="math inline">\(\mathcal{G}\)</span> measurable and integrable的意思是，<span class="math inline">\(E(X|\mathcal{G})\)</span>这个随机变量映射回事件空间后涉及的集合，都要属于<span class="math inline">\(\mathcal{G}\)</span>。这个条件有什么用？就是限制了要找的随机变量在子空间<span class="math inline">\(\mathcal{G}\)</span>中，比如将<span class="math inline">\(X\)</span>本身替换<span class="math inline">\(E(X|\mathcal{G})\)</span>显然是满足积分那个等式的，但是因为<span class="math inline">\(X\)</span>是定义在<span class="math inline">\(\mathcal{B}\)</span>空间中，超出了<span class="math inline">\(\mathcal{G}\)</span>空间的范围，所以<span class="math inline">\(X\)</span>本身不是条件期望（只有在特定情况下是）。</p>
@@ -437,33 +473,59 @@
 <ol type="1">
 <li>计算<span class="math inline">\(E(X_1|Y)\)</span></li>
 </ol>
-<p><span class="math display">\[E(X_1|Y=1)=\frac13\times(0+1+2)=1\]</span></p>
-<p><span class="math display">\[E(X_1|Y=2)=\frac13\times(0+1+2)=1\]</span></p>
-<p><span class="math display">\[E(X_1|Y)=E(X_1)=\frac13\times(0+1+2)=1\]</span></p>
+<p><span class="math display">\[
+E(X_1|Y=1)=\frac13\times(0+1+2)=1
+\]</span></p>
+<p><span class="math display">\[
+E(X_1|Y=2)=\frac13\times(0+1+2)=1
+\]</span></p>
+<p><span class="math display">\[
+E(X_1|Y)=E(X_1)=\frac13\times(0+1+2)=1
+\]</span></p>
 <p>出现这样的结果是因为<span class="math inline">\(X_1\)</span>与<span class="math inline">\(Y\)</span>独立。</p>
 <p>因此<span class="math inline">\(E(X_1|Y)\)</span>是这样一个随机变量（即常数<span class="math inline">\(E(X_1)\)</span>）：可以取一个值<span class="math inline">\(1\)</span>，概率为<span class="math inline">\(1\)</span>.</p>
 <ol start="2" type="1">
 <li>计算<span class="math inline">\(E(X_1|X_2)\)</span></li>
 </ol>
-<p><span class="math display">\[E(X_1|X_2=1)=\frac12\times(0+1)=\frac12\]</span></p>
-<p><span class="math display">\[E(X_1|X_2=2)=1\times 2=2\]</span></p>
-<p><span class="math display">\[P(X_2=1)=\frac23,\quad P(X_2=2)=\frac13\]</span></p>
+<p><span class="math display">\[
+E(X_1|X_2=1)=\frac12\times(0+1)=\frac12
+\]</span></p>
+<p><span class="math display">\[
+E(X_1|X_2=2)=1\times 2=2
+\]</span></p>
+<p><span class="math display">\[
+P(X_2=1)=\frac23,\quad P(X_2=2)=\frac13
+\]</span></p>
 <p>因此<span class="math inline">\(E(X_1|X_2)\)</span>是这样一个随机变量：可以取两个值<span class="math inline">\(\frac12\)</span>和<span class="math inline">\(2\)</span>，概率分别为<span class="math inline">\(\frac23\)</span>和<span class="math inline">\(\frac13\)</span>.</p>
 <p>所以<span class="math inline">\(E(E(X_1|X_2))=E(X_1)=1\)</span></p>
 <ol start="3" type="1">
 <li>计算<span class="math inline">\(E(X_1|X_2, Y)\)</span></li>
 </ol>
-<p><span class="math display">\[E(X_1|X_2=1, Y=1)=\frac12\times(0+1)=\frac12\]</span></p>
-<p><span class="math display">\[E(X_1|X_2=2, Y=1)=1\times 2=2\]</span></p>
-<p><span class="math display">\[E(X_1|X_2=1, Y=2)=\frac12\times(0+1)=\frac12\]</span></p>
-<p><span class="math display">\[E(X_1|X_2=2, Y=2)=1\times 2=2\]</span></p>
-<p><span class="math display">\[P(X_2=1, Y=1)=\frac13,\quad P(X_2=2, Y=1)=\frac16\]</span></p>
-<p><span class="math display">\[P(X_2=1, Y=2)=\frac13,\quad P(X_2=2, Y=2)=\frac16\]</span></p>
+<p><span class="math display">\[
+E(X_1|X_2=1, Y=1)=\frac12\times(0+1)=\frac12
+\]</span></p>
+<p><span class="math display">\[
+E(X_1|X_2=2, Y=1)=1\times 2=2
+\]</span></p>
+<p><span class="math display">\[
+E(X_1|X_2=1, Y=2)=\frac12\times(0+1)=\frac12
+\]</span></p>
+<p><span class="math display">\[
+E(X_1|X_2=2, Y=2)=1\times 2=2
+\]</span></p>
+<p><span class="math display">\[
+P(X_2=1, Y=1)=\frac13,\quad P(X_2=2, Y=1)=\frac16
+\]</span></p>
+<p><span class="math display">\[
+P(X_2=1, Y=2)=\frac13,\quad P(X_2=2, Y=2)=\frac16
+\]</span></p>
 <p>可以看到<span class="math inline">\(E(X_1|X_2, Y)\)</span>的取值可以合并，最后结果和<span class="math inline">\(E(X_1|X_2)\)</span>相同，即<span class="math inline">\(E(X_1|X_2, Y)=E(X_1|X_2)\)</span>。</p>
 <p>这里可以对独立在条件期望中的作用有一个直观的感受，因为<span class="math inline">\(Y\)</span>与<span class="math inline">\(X_1\)</span>独立，因此无论<span class="math inline">\(Y\)</span>取什么值都不影响<span class="math inline">\(X_1\)</span>的取值。</p>
 <h3 id="理解定义">理解定义</h3>
 <p>下面我们关注这个式子</p>
-<p><span class="math display">\[\int_G X_1dP=\int_G E(X_1|X_2)dP\]</span></p>
+<p><span class="math display">\[
+\int_G X_1dP=\int_G E(X_1|X_2)dP
+\]</span></p>
 <p>将具体数值带进去，假设<span class="math inline">\(G\)</span>指<span class="math inline">\(X_2=1\)</span>，应用上一章中对积分的解读计算这两个积分</p>
 <ul>
 <li>对于<span class="math inline">\(\int_G E(X_1|X_2)dP\)</span>，在<span class="math inline">\(G\)</span>这个区域内，<span class="math inline">\(E(X_1|X_2)\)</span>只取一个值<span class="math inline">\(\frac12=\frac12\times(0+1)\)</span>，乘以<span class="math inline">\(G\)</span>发生的概率<span class="math inline">\(\frac23\)</span>，得到结果为<span class="math inline">\(\frac13\)</span></li>
@@ -716,7 +778,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
