@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学,线性代数,速查手册," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 标量对向量或矩阵求导 基本方法 \(y\)是一个标量，\(\mathbf{x}\)是向量，\(A\)是矩阵。标量对向量或矩阵求导，即对逐个元素的求导  \(\frac{\partial y}{\partial \mathbf{x}}\)结果是一个与\(\mathbf{x}\)维度相同的向量 \(\frac{\partial y}{\partia">
+<meta name="keywords" content="数学,线性代数,速查手册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矩阵求导总结（一）">
+<meta property="og:url" content="http://yoursite.com/tech/matrix-derivatives1.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 标量对向量或矩阵求导 基本方法 \(y\)是一个标量，\(\mathbf{x}\)是向量，\(A\)是矩阵。标量对向量或矩阵求导，即对逐个元素的求导  \(\frac{\partial y}{\partial \mathbf{x}}\)结果是一个与\(\mathbf{x}\)维度相同的向量 \(\frac{\partial y}{\partia">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-03T15:41:11.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矩阵求导总结（一）">
+<meta name="twitter:description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 标量对向量或矩阵求导 基本方法 \(y\)是一个标量，\(\mathbf{x}\)是向量，\(A\)是矩阵。标量对向量或矩阵求导，即对逐个元素的求导  \(\frac{\partial y}{\partial \mathbf{x}}\)结果是一个与\(\mathbf{x}\)维度相同的向量 \(\frac{\partial y}{\partia">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/tech/matrix-derivatives1.html"/>
+
+
+
+
+
+  <title>矩阵求导总结（一） | My World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning & Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            
+              <b>技术分享</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            
+              <b>生活随笔</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-诗文摘录">
+          <a href="/tags/excerpt/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
+            
+            
+              诗文摘录
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-速查手册">
+          <a href="/tags/manual/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
+            
+            
+              速查手册
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-资源收集">
+          <a href="/tags/collections/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              资源收集
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/matrix-derivatives1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王智博">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">矩阵求导总结（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T00:00:00+08:00">
+                2020-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文由于篇幅原因拆成两篇，下一篇见<a href="/tech/matrix-derivatives2.html">这里</a>。</p>
+<h2 id="标量对向量或矩阵求导">标量对向量或矩阵求导</h2>
+<h3 id="基本方法">基本方法</h3>
+<p><span class="math inline">\(y\)</span>是一个标量，<span class="math inline">\(\mathbf{x}\)</span>是向量，<span class="math inline">\(A\)</span>是矩阵。标量对向量或矩阵求导，即对逐个元素的求导</p>
+<ul>
+<li><span class="math inline">\(\frac{\partial y}{\partial \mathbf{x}}\)</span>结果是一个与<span class="math inline">\(\mathbf{x}\)</span>维度相同的向量</li>
+<li><span class="math inline">\(\frac{\partial y}{\partial A}\)</span>结果是一个与<span class="math inline">\(A\)</span>维度相同的矩阵</li>
+</ul>
+<p>实际应用中，一个类似这样的公式<span class="math inline">\(l=(\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})\)</span>，求<span class="math inline">\(\frac{\partial l}{\partial \boldsymbol{\beta}}\)</span>，两种思路</p>
+<ul>
+<li>将矩阵写开，变成标量形式，加各种<span class="math inline">\(\sum_{i=1}^n\)</span>，用<span class="math inline">\(l\)</span>对每个<span class="math inline">\(\beta_i\)</span>求导后，按照求导后应该有的维度，把结果拼起来
+<ul>
+<li>当<span class="math inline">\(l\)</span>形式比较简单时适用，复杂形式请用微分法</li>
+</ul></li>
+<li><strong>微分法</strong>：右边套一个迹，等式两端同时取微分，目标是写成这种形式<span class="math inline">\(\mathrm{d}l=\operatorname{tr}(\mathbf{b}^T\mathrm{d}\boldsymbol{\beta})\)</span>，则可得<span class="math inline">\(\frac{\partial l}{\partial \boldsymbol{\beta}}=\mathbf{b}\)</span>
+<ul>
+<li>如果是标量对矩阵求导也一样，写成这种形式<span class="math inline">\(\mathrm{d}l=\operatorname{tr}(A^T\mathrm{d}X)\)</span>，则<span class="math inline">\(\frac{\partial l}{\partial X}=A\)</span></li>
+<li>套迹取微分后的推导，主要用到<strong>微分运算法则</strong>和<strong>迹的性质</strong>，二者都会列在下面。其他说明：
+<ul>
+<li>右边可以套一个迹，是因为等式左右两边都是标量；取迹的目的是方便右侧变形，而迹保持不变，举例如下
+<ul>
+<li>比如最后推出这种形式：<span class="math inline">\(\mathrm{d}l=\operatorname{tr}(\mathbf{b}\mathrm{d}\boldsymbol{\beta}^T)\)</span>，则<span class="math inline">\(\frac{\partial l}{\partial \boldsymbol{\beta}}=\mathbf{b}\)</span>。这是用到了迹内转置、交换位置的性质</li>
+<li>经常等式右侧的<span class="math inline">\(\mathrm{d}\boldsymbol{\beta}\)</span>都不在最后，要用迹内交换位置的性质，交换位置的原则是保持矩阵相乘有意义，这也是减少计算错误的有效手段。经常是<span class="math inline">\(\mathrm{d}\boldsymbol{\beta}\)</span>后面的一整块直接移到最前面。</li>
+</ul></li>
+<li>微分<span class="math inline">\(\mathrm{d}X\)</span>与<span class="math inline">\(X\)</span>维度相同，这个性质可以帮助判断是否保持了矩阵相乘有意义</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>微分运算法则</strong></p>
+<ul>
+<li>常数微分：<span class="math inline">\(\mathrm{d}X=\mathrm{O}\)</span>，如果<span class="math inline">\(X\)</span>由常数组成，<span class="math inline">\(\mathrm{O}\)</span>与<span class="math inline">\(X\)</span>维度相同</li>
+<li>微分加减法：<span class="math inline">\(\mathrm{d}(X+Y)=\mathrm{d}X+\mathrm{d}Y\)</span>， <span class="math inline">\(\mathrm{d}(X-Y)=\mathrm{d}X-\mathrm{d}Y\)</span></li>
+<li>微分乘法：<span class="math inline">\(\mathrm{d}(XY)=(\mathrm{d}X)Y+X(\mathrm{d}Y)\)</span></li>
+<li>微分转置：<span class="math inline">\(\mathrm{d}(X^T)=(\mathrm{d} X)^T\)</span></li>
+<li>微分的迹：<span class="math inline">\(\mathrm{d}\operatorname{tr}(X)=\operatorname{tr}(\mathrm{d}X)\)</span></li>
+<li>微分哈达马乘积：<span class="math inline">\(\mathrm{d}(X \odot Y)=X \odot \mathrm{d} Y+\mathrm{d} X \odot Y\)</span></li>
+<li>逐元素函数微分：<span class="math inline">\(\mathrm{d}\sigma(X)=\sigma&#39;(X)\odot \mathrm{d}X\)</span>，其中<span class="math inline">\(\sigma\)</span>是对<span class="math inline">\(X\)</span>中每个元素进行函数变换，结果与<span class="math inline">\(X\)</span>维度相同；求导结果的矩阵每个元素为<span class="math inline">\(\sigma&#39;(x_{ij})\mathrm{d}x_{ij}\)</span></li>
+<li>逆矩阵微分：<span class="math inline">\(\mathrm{d} X^{-1}=-X^{-1}\mathrm{d}X X^{-1}\)</span>。此式可通过<span class="math inline">\(XX^{-1}=\mathrm{I}\)</span>左右两侧求微分推得。</li>
+<li>行列式微分：<span class="math inline">\(\mathrm{d}|X|=|X|\operatorname{tr}(X^{-1}\mathrm{d}X)\)</span>，这里默认<span class="math inline">\(X\)</span>可逆，因为如果不可逆<span class="math inline">\(|X|\)</span>就是0了。更一般的表示是<span class="math inline">\(\mathrm{d}|X|=\operatorname{tr}(X^\#\mathrm{d}X)\)</span>，其中<span class="math inline">\(X^\#\)</span>是<span class="math inline">\(X\)</span>的伴随矩阵。
+<ul>
+<li>直观理解：<span class="math inline">\(|X|=\sum_{j=1}^n x_{ij}X^\#_{ji}\)</span>，这对任意<span class="math inline">\(i\)</span>都成立，所以<span class="math inline">\(|X|\)</span>对<span class="math inline">\(x_{ij}\)</span>的导数就应该是<span class="math inline">\(X^\#_{ji}\)</span>，因此<span class="math inline">\(\frac{\partial |X|}{\partial X}=X^{\#\mathrm{T}}\)</span>，所以微分形式就是<span class="math inline">\(\mathrm{d}|X|=\operatorname{tr}(X^\#\mathrm{d}X)\)</span></li>
+<li>注：如果这样写，<span class="math inline">\(n|X|=\sum_{i=1}^n\sum_{j=1}^n x_{ij}X^\#_{ji}\)</span>，那岂不是<span class="math inline">\(\frac{\partial |X|}{\partial X}=\frac{1}{n}X^{\#\mathrm{T}}\)</span>？这个式子不对，因为<span class="math inline">\(X^\#_{mn}\)</span>里也会含有一些<span class="math inline">\(x_{ij}\)</span>的项，所以没有那么简单（而上面<span class="math inline">\(X^\#_{ji}\)</span>中确实不含<span class="math inline">\(x_{ij}\)</span>的项）。</li>
+</ul></li>
+</ul>
+<p><strong>迹的性质</strong></p>
+<ul>
+<li>标量的迹等于自身：<span class="math inline">\(\operatorname{tr}(a)=a\)</span></li>
+<li>转置：<span class="math inline">\(\operatorname{tr}(A^T)=\operatorname{tr}(A)\)</span></li>
+<li>线性：<span class="math inline">\(\operatorname{tr}(A\pm B)=\operatorname{tr}(A)\pm \operatorname{tr}(B)\)</span></li>
+<li>交换：<span class="math inline">\(\operatorname{tr}(A^TB)=\operatorname{tr}(B^TA)\)</span>，其中<span class="math inline">\(A\)</span>与<span class="math inline">\(B\)</span>维度相同，迹结果等于<span class="math inline">\(\sum_{i, j} A_{ij}B_{ij}\)</span>
+<ul>
+<li>类似地有：<span class="math inline">\(\operatorname{tr}\left(A^{T}(B \odot C)\right)=\operatorname{tr}\left((A \odot B)^{T} C\right)\)</span>，其中<span class="math inline">\(A, B, C\)</span>维度相同，迹结果为<span class="math inline">\(\sum_{i, j} A_{ij}B_{ij}C_{ij}\)</span></li>
+</ul></li>
+</ul>
+<h3 id="微分法的背后原理">微分法的背后原理</h3>
+<p>为什么标量对向量求导，写成<span class="math inline">\(\mathrm{d}l=\operatorname{tr}(\mathbf{b}^T\mathrm{d}\boldsymbol{\beta})\)</span>，则<span class="math inline">\(\frac{\partial l}{\partial \boldsymbol{\beta}}=\mathbf{b}\)</span>；标量对矩阵求导，写成<span class="math inline">\(\mathrm{d}l=\operatorname{tr}(A^T\mathrm{d}X)\)</span>，则<span class="math inline">\(\frac{\partial l}{\partial X}=A\)</span>？</p>
+<ul>
+<li>标量对向量求导：等式右侧其实是<span class="math inline">\(\sum_i b_i \mathrm{d}\beta_i\)</span>，那么<span class="math inline">\(\frac{\partial l}{\partial \beta_i}=b_i\)</span>，自然可得<span class="math inline">\(\frac{\partial l}{\partial \boldsymbol{\beta}}=\mathbf{b}\)</span></li>
+<li>标量对矩阵求导同理，等式右侧是<span class="math inline">\(\sum_{ij} a_{ij} \mathrm{d}X_{ij}\)</span>，那么<span class="math inline">\(\frac{\partial l}{\partial X_{ij}}=a_{ij}\)</span>，自然可得<span class="math inline">\(\frac{\partial l}{\partial X}=A\)</span></li>
+</ul>
+<p>这借鉴了多元情形下的全微分公式，全微分是梯度向量与微分向量的内积 <span class="math display">\[
+\mathrm{d}f = \sum_i \frac{\partial f}{\partial x_i}\mathrm{d}x_i =
+\left[\frac{\partial f}{\partial \mathbf{x}}\right]^T\mathrm{d}\mathbf{x}
+\]</span></p>
+<p>了解这个原理后，我们可以发现写成其他形式也是可以的，比如<strong>内积</strong></p>
+<ul>
+<li>标量对向量求导，写成<span class="math inline">\(\mathrm{d}l=\langle \mathbf{b},\mathrm{d}\boldsymbol{\beta}\rangle\)</span>，则<span class="math inline">\(\frac{\partial l}{\partial \boldsymbol{\beta}}=\mathbf{b}\)</span></li>
+<li>标量对矩阵求导，写成<span class="math inline">\(\mathrm{d}l=\langle A,\mathrm{d}X\rangle\)</span>，则<span class="math inline">\(\frac{\partial l}{\partial X}=A\)</span>
+<ul>
+<li>注：矩阵的内积是，对应位置相乘，再将所有数相加</li>
+</ul></li>
+</ul>
+<p>内积形式的应用可以参见下一节：<strong>哈达马乘积的处理</strong>。</p>
+<h3 id="哈达马乘积的处理">哈达马乘积的处理</h3>
+<p>遇到<span class="math inline">\(\odot \mathrm{d}\mathbf{y}\)</span>这种情况，还是要努力转化成我们熟知的形式。这里举一个例子，提供三种方法</p>
+<p>题目：<span class="math inline">\(l=\mathbf{x}^T \exp(\mathbf{y})\)</span>，求<span class="math inline">\(\frac{\partial l}{\partial \mathbf{y}}\)</span>。</p>
+<p><strong>1、内积方法</strong></p>
+<p><span class="math display">\[
+\begin{align}
+\mathrm{d}l
+&amp;=\mathbf{x}^T [\exp(\mathbf{y}) \odot \mathrm{d}\mathbf{y}]\\
+&amp;= \langle \mathbf{x}, \exp(\mathbf{y}) \odot \mathrm{d}\mathbf{y} \rangle\\
+&amp;= \langle \mathbf{x} \odot \exp(\mathbf{y}), \mathrm{d}\mathbf{y} \rangle\\
+\end{align}
+\]</span></p>
+<p>所以<span class="math inline">\(\frac{\partial l}{\partial \mathbf{y}}= \mathbf{x} \odot \exp(\mathbf{y})\)</span>。</p>
+<p>上面最后一个等式是一个性质，也很好理解，只要写成<span class="math inline">\(\sum_i x_i \exp(y_i) y_i\)</span>即可；当三者都是矩阵时，这条性质也成立。</p>
+<p><strong>2、迹的性质</strong></p>
+<p>对哈达马乘积，迹也有和上面内积类似的性质：<span class="math inline">\(A, B, C\)</span>同维度时，<span class="math inline">\(\mathrm{tr}((A\odot B)^T C)=\mathrm{tr}(A^T(B\odot C))\)</span>。</p>
+<p>如果用这条性质来做的话，就可以直接写出</p>
+<p><span class="math display">\[
+\mathrm{d}l=\mathrm{tr}\left([\mathbf{x} \odot \exp(\mathbf{y})]^T \mathrm{d}\mathbf{y}\right)
+\]</span></p>
+<p><strong>3、矩阵相乘</strong></p>
+<p>当出现的是向量的哈达马乘积时，还有第三种做法。令<span class="math inline">\(Z=\mathrm{diag}(\mathbf{y})\)</span>，则</p>
+<p><span class="math display">\[
+\mathrm{d}l=\mathbf{x}^T [\exp(\mathbf{y}) \odot \mathrm{d}\mathbf{y}]=\mathbf{x}^T Z \mathrm{d}\mathbf{y}
+\]</span></p>
+<p>这就是我们熟知的形式了。</p>
+<h3 id="例题">例题</h3>
+<p><strong>1、标量对向量求导。</strong>已知<span class="math inline">\(l=\mathbf{x}^T A \mathbf{x}\)</span>，求<span class="math inline">\(\frac{\partial l}{\partial \mathbf{x}}\)</span>。</p>
+<ul>
+<li><p>解法1：右侧写成标量形式 <span class="math display">\[
+l=\sum_{ij} x_i a_{ij}x_j
+\]</span> 对向量中元素逐个求导如下 <span class="math display">\[
+\begin{align}
+\frac{\partial l}{\partial x_k} &amp;= \sum_{j\neq k}a_{kj}x_j + \sum_{i\neq k}x_ia_{ik} + 2a_{kk}x_k\\
+&amp;= \sum_{j}a_{kj}x_j + \sum_{i}x_ia_{ik}\\ 
+&amp;= A_{k,:} \mathbf{x} + \mathbf{x}^T A_{:,k}\\
+&amp;= A_{k,:} \mathbf{x} + A^T_{k,:} \mathbf{x}\\
+\end{align}
+\]</span> 拼合可得 <span class="math display">\[
+\frac{\partial l}{\partial \mathbf{x}} = (A+A^T)\mathbf{x}
+\]</span></p></li>
+<li><p>解法2：微分法 <span class="math display">\[
+\begin{align}
+\mathrm{d}l 
+&amp;= \mathrm{d}\left[\mathrm{tr}(\mathbf{x}^T A \mathbf{x})\right]
+= \mathrm{tr}\left[\mathrm{d}(\mathbf{x}^T A \mathbf{x})\right]\\
+&amp;=\mathrm{tr}\left[
+\mathrm{d}(\mathbf{x}^T A)\mathbf{x} + \mathbf{x}^T A\mathrm{d}\mathbf{x}
+\right]\\
+&amp;=\mathrm{tr}\left[
+\mathrm{d}\mathbf{x}^T A\mathbf{x} + \mathbf{x}^T A\mathrm{d}\mathbf{x}
+\right] \\
+&amp;=\mathrm{tr}\left[
+\mathbf{x}^T A^T\mathrm{d}\mathbf{x} + \mathbf{x}^T A\mathrm{d}\mathbf{x}
+\right]  
+= \mathrm{tr}\left[
+\mathbf{x}^T (A^T+A)\mathrm{d}\mathbf{x}
+\right]  
+\end{align}
+\]</span> 因此<span class="math inline">\(\frac{\partial l}{\partial \mathbf{x}} = (A+A^T)\mathbf{x}\)</span>。</p></li>
+</ul>
+<hr>
+<p><strong>2、标量对矩阵求导。</strong>已知<span class="math inline">\(l=\mathbf{a}^T X \mathbf{b}\)</span>，求<span class="math inline">\(\frac{\partial l}{\partial X}\)</span>。</p>
+<ul>
+<li><p>解法1：右侧写成标量形式 <span class="math display">\[
+l=\sum_{ij} a_i x_{ij}b_j
+\]</span> 对向量中元素逐个求导可得<span class="math inline">\(\frac{\partial l}{\partial X_{ij}}=a_ib_j\)</span>。所以<span class="math inline">\(\frac{\partial l}{\partial X}=\mathbf{a}\mathbf{b}^T\)</span></p></li>
+<li><p>解法2：微分法</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\mathrm{d}l 
+&amp;=\mathrm{d}\left[\mathrm{tr}(\mathbf{a}^T X \mathbf{b})\right] 
+=\mathrm{tr}\left[\mathrm{d}(\mathbf{a}^T X \mathbf{b})\right] \\
+&amp;=\mathrm{tr}\left[\mathbf{a}^T \mathrm{d}(X \mathbf{b})\right] 
+=\mathrm{tr}\left[\mathbf{a}^T \mathrm{d}X \mathbf{b}\right] \\
+&amp;= \mathrm{tr}\left[\mathbf{b}\mathbf{a}^T \mathrm{d}X \right]\\
+\end{align}
+\]</span></p>
+<p>因此<span class="math inline">\(\frac{\partial l}{\partial \mathbf{x}} = \mathbf{a}\mathbf{b}^T\)</span>。</p>
+<hr>
+<p><strong>3、多元正态分布<span class="math inline">\(\Sigma\)</span>的极大似然估计</strong>，需要计算对数似然对<span class="math inline">\(\Sigma\)</span>的导数 <span class="math display">\[
+l=\log |\Sigma|+\frac{1}{N} \sum_{i=1}^{N}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)^T \Sigma^{-1}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)
+\]</span> 使用微分法 <span class="math display">\[
+\begin{align}
+\mathrm{d}l
+&amp;= \frac{1}{|\Sigma|}\mathrm{d}|\Sigma| +
+\frac{1}{N} \sum_{i=1}^{N}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)^T \mathrm{d}(\Sigma^{-1})\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)\\
+&amp;= \mathrm{tr}(\Sigma^{-1}\mathrm{d}\Sigma) -
+\frac{1}{N} \sum_{i=1}^{N}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)^T 
+\Sigma^{-1} \mathrm{d}\Sigma\Sigma^{-1}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)\\
+&amp;= \mathrm{tr}(\Sigma^{-1}\mathrm{d}\Sigma) -
+\frac{1}{N} \sum_{i=1}^{N}\Sigma^{-1}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)^T 
+\Sigma^{-1} \mathrm{d}\Sigma\\
+&amp;= \mathrm{tr}\left(\left[\Sigma^{-1}-
+\frac{1}{N} \sum_{i=1}^{N}\Sigma^{-1}\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)\left(\mathbf{x}_{i}-\overline{\mathbf{x}}\right)^T 
+\Sigma^{-1} \right]\mathrm{d}\Sigma\right)\\
+&amp;= \mathrm{tr}\left(\left[\Sigma^{-1}-
+\Sigma^{-1}S \Sigma^{-1} \right]\mathrm{d}\Sigma\right)\\
+\end{align}
+\]</span> 所以<span class="math inline">\(\frac{\partial l}{\partial \Sigma}=(\Sigma^{-1}-\Sigma^{-1}S \Sigma^{-1})^T\)</span>。</p>
+<h2 id="向量矩阵间求导">向量矩阵间求导</h2>
+<p>机器学习中常见的是标量对向量或矩阵求导，但如果涉及求二阶导，或者使用链式法则，则需要向量对向量求导，或者矩阵对矩阵求导。</p>
+<h3 id="向量对向量求导">向量对向量求导</h3>
+<p>向量<span class="math inline">\(\mathbf{y}\)</span>长度为<span class="math inline">\(m\)</span>，向量<span class="math inline">\(\mathbf{x}\)</span>长度为<span class="math inline">\(n\)</span>，<span class="math inline">\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\)</span>结果有两种写法</p>
+<ul>
+<li>分子布局：得到一个<span class="math inline">\(m\times n\)</span>的矩阵，一般叫雅克比矩阵</li>
+<li>分母布局：得到一个<span class="math inline">\(n\times m\)</span>的矩阵，一般叫梯度矩阵</li>
+</ul>
+<p>这两者本质相同，只是写法不同，互为转置。上文标量对向量、矩阵求导中使用的是分母布局，因此下文统一也都用分母布局方式，此时 <span class="math display">\[
+\frac{\partial \mathbf{y}}{\partial \mathbf{x}}=\left(\begin{array}{cccc}
+\frac{\partial y_{1}}{\partial x_{1}} &amp; \frac{\partial y_{2}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{1}} \\
+\frac{\partial y_{1}}{\partial x_{2}} &amp; \frac{\partial y_{2}}{\partial x_{2}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{2}} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial y_{1}}{\partial x_{n}} &amp; \frac{\partial y_{2}}{\partial x_{n}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{n}}
+\end{array}\right)
+\]</span> 向量对向量求导，只要写成这种形式 <span class="math display">\[
+\mathrm{d}\mathbf{y} = \left[\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right]^T\mathrm{d}\mathbf{x}
+\]</span> 这与之前标量求导相比，只是少了一个迹。</p>
+<h3 id="矩阵对矩阵求导">矩阵对矩阵求导</h3>
+<p>矩阵<span class="math inline">\(Y_{p\times q}\)</span>对矩阵<span class="math inline">\(X_{m\times n}\)</span>求导，需要产生出<span class="math inline">\(pq\times mn\)</span>个值，为了不产生太高维的数组，我们可以将<span class="math inline">\(X, Y\)</span>矩阵都拉成向量，把各列堆起来即可，如下所示 <span class="math display">\[
+\operatorname{vec}(X)=\left[X_{11}, \ldots, X_{m 1}, X_{12}, \ldots, X_{m 2}, \ldots, X_{1 n}, \ldots, X_{m n}\right]^{T}(\operatorname{mn} \times 1)
+\]</span> 则矩阵对矩阵求导，可转化为向量对向量求导，<span class="math inline">\(\frac{\partial Y}{\partial X}=\frac{\partial \mathrm{vec}(Y)}{\partial \mathrm{vec}(X)} (mn\times pq)\)</span>，导数与微分的关系如下 <span class="math display">\[
+\mathrm{vec}(\mathrm{d}Y) =\left[\frac{\partial Y}{\partial X}\right]^T \mathrm{vec}(\mathrm{d}X)
+\]</span> 所以矩阵对矩阵求导的步骤为，先两侧取微分，然后两侧取<span class="math inline">\(\mathrm{vec}\)</span>，再将<span class="math inline">\(\mathrm{vec}(\mathrm{d}X)\)</span>放到最右边即可。这个过程需要用到向量化的性质，以及Kronecker积和交换矩阵相关的恒等式</p>
+<p><strong>向量化</strong></p>
+<ul>
+<li>线性：<span class="math inline">\(\mathrm{vec}(A+B)=\mathrm{vec}(A)+\mathrm{vec}(B)\)</span></li>
+<li>矩阵乘法：<span class="math inline">\(\mathrm{vec}(AXB)=(B^T \otimes A)\mathrm{vec}(X)\)</span>
+<ul>
+<li><span class="math inline">\(\mathrm{vec}(AX)=\mathrm{vec}(AXI)=(I \otimes A)\mathrm{vec}(X)\)</span></li>
+<li><span class="math inline">\(\otimes\)</span>表示Kronecker积，<span class="math inline">\(A_{m\times n}\otimes B_{p\times q}=[A_{ij}B]_{mp\times nq}\)</span></li>
+</ul></li>
+<li>转置：<span class="math inline">\(\mathrm{vec}(A^T)=K_{mn}\mathrm{vec}(A_{m\times n})\)</span>
+<ul>
+<li>其中<span class="math inline">\(K_{mn}\)</span>是交换矩阵，维度为<span class="math inline">\(mn\times mn\)</span>，将按列有限的向量化变成按行优先的向量化</li>
+</ul></li>
+<li>逐元素乘法：<span class="math inline">\(\mathrm{vec}(A\odot X)=\mathrm{diag}(A)\mathrm{vec}(X)\)</span>
+<ul>
+<li>其中<span class="math inline">\(\mathrm{diag}(A)\)</span>维度为<span class="math inline">\(mn\times mn\)</span>，是<span class="math inline">\(A\)</span>中元素按列优先排成的对角阵</li>
+</ul></li>
+</ul>
+<p><strong>Kronecker积和交换矩阵相关的恒等式</strong></p>
+<ul>
+<li><span class="math inline">\((A \otimes B)^T=A^T \otimes B^T\)</span></li>
+<li><span class="math inline">\(\mathrm{vec}(\mathbf{a}\mathbf{b}^T)=\mathbf{b} \otimes \mathbf{a}\)</span></li>
+<li><span class="math inline">\((A \otimes B)(C \otimes D)=(A C) \otimes(B D)\)</span></li>
+<li><span class="math inline">\(K_{mn}=K^T_{nm},\quad K_{mn}K_{nm}=I\)</span></li>
+<li><span class="math inline">\(K_{pm}(A\otimes B)K_{nq}=B\otimes A\)</span>，其中<span class="math inline">\(A\)</span>的维度为<span class="math inline">\(m\times n\)</span>，<span class="math inline">\(B\)</span>的维度是<span class="math inline">\(p\times q\)</span></li>
+</ul>
+<p>向量对矩阵求导，或者矩阵对向量求导，都是按照矩阵对矩阵求导的方式来做，只不过向量取<span class="math inline">\(\mathrm{vec}\)</span>是它本身而已。</p>
+<h3 id="例题-1">例题</h3>
+<p><strong>1、向量对向量求导。</strong><span class="math inline">\(\mathbf{y}=A\mathbf{x}\)</span>，求<span class="math inline">\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\)</span></p>
+<p>解：<span class="math inline">\(\mathrm{d}\mathbf{y} = A\mathrm{d}\mathbf{x}\)</span>，所以<span class="math inline">\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}}=A^T\)</span></p>
+<p><strong>2、矩阵对矩阵求导。</strong><span class="math inline">\(Y=AX\)</span>，求<span class="math inline">\(\frac{\partial Y}{\partial X}\)</span></p>
+<p>解：<span class="math inline">\(\mathrm{d}Y = A\mathrm{d}X\)</span>，向量化如下</p>
+<p><span class="math display">\[
+\mathrm{vec}(\mathrm{d}Y)=\mathrm{vec}(A\mathrm{d}X)=(I\otimes A)\mathrm{vec}(\mathrm{d}X)
+\]</span></p>
+<p>所以<span class="math inline">\(\frac{\partial Y}{\partial X}=I\otimes A^T\)</span></p>
+<p><strong>3、二阶导。</strong><span class="math inline">\(f=\log |X|\)</span>，<span class="math inline">\(X\)</span>维度为<span class="math inline">\(n\times n\)</span>，求<span class="math inline">\(\nabla_X f\)</span>和<span class="math inline">\(\nabla_X^2 f\)</span>。</p>
+<p>解：易知<span class="math inline">\(\nabla_X f=X^{-1\mathrm{T}}\)</span>，等式两端同时取微分并向量化可得 <span class="math display">\[
+\begin{align}
+\mathrm{vec}(\mathrm{d}\nabla_X f)
+&amp;=\mathrm{vec}(\mathrm{d}X^{-1\mathrm{T}})\\
+&amp;=-\mathrm{vec}([X^{-1}\mathrm{d}X X^{-1}]^T)\\
+&amp;=-K_{nn}\mathrm{vec}(X^{-1}\mathrm{d}X X^{-1})\\
+&amp;=-K_{nn}(X^{-1\mathrm{T}}\otimes X^{-1})\mathrm{vec}(\mathrm{d}X)\\
+\end{align}
+\]</span> 因此<span class="math inline">\(\nabla_X^2 f=-K_{nn}(X^{-1\mathrm{T}}\otimes X^{-1})\)</span>，这是个对称矩阵。当<span class="math inline">\(X\)</span>是对称矩阵时，<span class="math inline">\(\nabla_X^2 f=X^{-1}\otimes X^{-1}\)</span>。</p>
+<p><strong>4、逐元素函数。</strong><span class="math inline">\(F=A \exp(XB)\)</span>，各矩阵维度分别为<span class="math inline">\(A_{l\times m}, X_{m\times n}, B_{n\times p}\)</span>，求<span class="math inline">\(\frac{\partial F}{\partial X}\)</span>。</p>
+<p>解：等式两端同时取微分并向量化可得 <span class="math display">\[
+\begin{align}
+\mathrm{vec}(\mathrm{d}F)
+&amp;=\mathrm{vec}(\mathrm{d}A \exp(XB))\\
+&amp;=\mathrm{vec}(A \left[\exp(XB) \odot \mathrm{d}X B\right])\\
+&amp;=(I_p\otimes A)\mathrm{vec}(\left[\exp(XB) \odot \mathrm{d}X B\right])\\
+&amp;=(I_p\otimes A)\mathrm{diag}(\exp(XB))\mathrm{vec}( \mathrm{d}X B)\\
+&amp;=(I_p\otimes A)\mathrm{diag}(\exp(XB))(B^T\otimes I_m)\mathrm{vec}(\mathrm{d}X)\\
+\end{align}
+\]</span></p>
+<p>因此<span class="math inline">\(\frac{\partial F}{\partial X}=(B\otimes I_m)\mathrm{diag}(\exp(XB))(I_p\otimes A^T)\)</span></p>
+<p>链式法则和更多例题请见<a href="/tech/matrix-derivatives2.html">下一篇</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/线性代数/" rel="tag"># 线性代数</a>
+          
+            <a href="/tags/manual/" rel="tag"># 速查手册</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/tech/Linear-algebra.html" rel="next" title="线性代数总结">
+                <i class="fa fa-chevron-left"></i> 线性代数总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tech/matrix-derivatives2.html" rel="prev" title="矩阵求导总结（二）">
+                矩阵求导总结（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">时间轴</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="诗文摘录">诗文摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="速查手册">速查手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="资源收集">资源收集</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标量对向量或矩阵求导"><span class="nav-number">1.</span> <span class="nav-text">标量对向量或矩阵求导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本方法"><span class="nav-number">1.1.</span> <span class="nav-text">基本方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微分法的背后原理"><span class="nav-number">1.2.</span> <span class="nav-text">微分法的背后原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈达马乘积的处理"><span class="nav-number">1.3.</span> <span class="nav-text">哈达马乘积的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">1.4.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向量矩阵间求导"><span class="nav-number">2.</span> <span class="nav-text">向量矩阵间求导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量对向量求导"><span class="nav-number">2.1.</span> <span class="nav-text">向量对向量求导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵对矩阵求导"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵对矩阵求导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题-1"><span class="nav-number">2.3.</span> <span class="nav-text">例题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miit.gov.cn/">&nbsp;闽ICP备18026322号-1</a>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

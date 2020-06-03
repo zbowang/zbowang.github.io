@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学,速查手册,傅里叶分析," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 傅里叶级数 在一定条件下，任意周期为\(T=\frac{2\pi}{w}\)的函数\(f(t)\)都可以用一系列正弦函数展开，此时需要满足\(T\)也要是这些正弦函数的周期（不要求正弦函数周期是\(T\)，只要能被\(T\)整除就行了），如下所示 一定条件 \[ f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\">
+<meta name="keywords" content="数学,速查手册,傅里叶分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="傅里叶级数与傅里叶变换（一）">
+<meta property="og:url" content="http://yoursite.com/tech/fourier1.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 傅里叶级数 在一定条件下，任意周期为\(T=\frac{2\pi}{w}\)的函数\(f(t)\)都可以用一系列正弦函数展开，此时需要满足\(T\)也要是这些正弦函数的周期（不要求正弦函数周期是\(T\)，只要能被\(T\)整除就行了），如下所示 一定条件 \[ f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.wzbtech.com/static/images/fourier_rect.png">
+<meta property="og:image" content="http://static.wzbtech.com/static/images/Fourier_series_square_wave_circles_animation.gif">
+<meta property="og:image" content="http://static.wzbtech.com/static/images/fourier_euler.gif">
+<meta property="og:image" content="http://static.wzbtech.com/static/images/freq.png">
+<meta property="og:updated_time" content="2020-06-03T15:30:08.685Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="傅里叶级数与傅里叶变换（一）">
+<meta name="twitter:description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 傅里叶级数 在一定条件下，任意周期为\(T=\frac{2\pi}{w}\)的函数\(f(t)\)都可以用一系列正弦函数展开，此时需要满足\(T\)也要是这些正弦函数的周期（不要求正弦函数周期是\(T\)，只要能被\(T\)整除就行了），如下所示 一定条件 \[ f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\">
+<meta name="twitter:image" content="http://static.wzbtech.com/static/images/fourier_rect.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/tech/fourier1.html"/>
+
+
+
+
+
+  <title>傅里叶级数与傅里叶变换（一） | My World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning & Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            
+              <b>技术分享</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            
+              <b>生活随笔</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-诗文摘录">
+          <a href="/tags/excerpt/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
+            
+            
+              诗文摘录
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-速查手册">
+          <a href="/tags/manual/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
+            
+            
+              速查手册
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-资源收集">
+          <a href="/tags/collections/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              资源收集
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/fourier1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王智博">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">傅里叶级数与傅里叶变换（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-20T00:00:00+08:00">
+                2020-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文由于篇幅原因拆成两篇，下一篇见<a href="/tech/fourier2.html">这里</a>。</p>
+<h2 id="傅里叶级数">傅里叶级数</h2>
+<p>在一定条件下，任意周期为<span class="math inline">\(T=\frac{2\pi}{w}\)</span>的函数<span class="math inline">\(f(t)\)</span>都可以用一系列正弦函数展开，此时需要满足<span class="math inline">\(T\)</span>也要是这些正弦函数的周期（不要求正弦函数周期是<span class="math inline">\(T\)</span>，只要能被<span class="math inline">\(T\)</span>整除就行了），如下所示 <span class="fold_hider" data-tag="fold_condition"><span class="close btn hider_title">一定条件</span></span></p>
+<p><span class="math display">\[
+f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\varphi_n) \tag{1}
+\]</span></p>
+<div class="fold" id="fold_condition">
+<p>（当<span class="math inline">\(f(x)\)</span>满足这个条件时，它的傅里叶级数收敛到<span class="math inline">\(f(x)\)</span>，也就是说在这个条件满足的情况下，<span class="math inline">\(f(x)\)</span>可以写成傅里叶级数形式。）</p>
+<p><strong>收敛定理-狄利克雷充分条件</strong></p>
+<p>设周期函数<span class="math inline">\(f(x)\)</span>的周期为<span class="math inline">\(T\)</span>，如果<span class="math inline">\(f(x)\)</span>满足在一个周期内连续或只有有限个第一类间断点，并且至多只有有限个极值点，则<span class="math inline">\(f(x)\)</span>的傅里叶级数收敛，且有</p>
+<ul>
+<li>当<span class="math inline">\(x\)</span>是<span class="math inline">\(f(x)\)</span>的连续点时，级数收敛于<span class="math inline">\(f(x)\)</span></li>
+<li>当<span class="math inline">\(x\)</span>是<span class="math inline">\(f(x)\)</span>的间断点时，收敛于</li>
+</ul>
+<p><span class="math display">\[
+\frac{f(x-0)+f(x+0)}{2}
+\]</span></p>
+<p>这表示，只要<span class="math inline">\(f(x)\)</span>在区间<span class="math inline">\([-\frac T2, \frac T2]\)</span>上至多只有有限个第一类间断点，并且不作无限次振动即可。我们通常见到的函数都满足这个条件，所以可以直接用公式计算系数，将函数写成傅里叶级数形式。</p>
+<p>注：第一类间断点表示间断点处左右极限都存在，包括可去间断点和跳跃间断点。</p>
+
+</div>
+<p>这表示即使是方波也可以通过弯曲的正弦函数逼近，如下图所示（图片来自<a href="%5Bhttps://zh.wikipedia.org/wiki/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%5D(https://zh.wikipedia.org/wiki/傅里叶变换)">wiki</a>）</p>
+<img src="http://static.wzbtech.com/static/images/fourier_rect.png">
+<p>上式说明，如果我们知道等式右侧的所有三角函数信息，就可以知道<span class="math inline">\(f(t)\)</span>的的全部信息。如果我们想将<span class="math inline">\(f(t)\)</span>分解成这种加和的形式，就是想求每个三角函数的三个部分信息：振幅<span class="math inline">\(A_n\)</span>，频率<span class="math inline">\(\frac{n}{T}\)</span>，初相<span class="math inline">\(\varphi_n\)</span>。<span class="math inline">\(f(t)\)</span>周期已知则每个三角函数的频率已知，而振幅<span class="math inline">\(A_n\)</span>和初相<span class="math inline">\(\varphi_n\)</span>不好算，我们可以对右式加以变形转化问题。由和角公式可知 <span class="math display">\[
+A_n\sin(nwt+\varphi_n)=a_n\cos(nwt)+b_n\sin(nwt) \tag{2}
+\]</span> 其中<span class="math inline">\(a_n=A_n\sin\varphi_n\)</span>，<span class="math inline">\(b_n=A_n \cos\varphi_n\)</span>。这样初相<span class="math inline">\(\varphi_n\)</span>的信息就被移到了系数之中。</p>
+<p>再记<span class="math inline">\(A_0=\frac{a_0}{2}\)</span>，则<span class="math inline">\(f(t)\)</span>的展开公式可以写成 <span class="math display">\[
+\begin{align}
+f(t)&amp;=\frac{a_0}{2}+
+\sum_{n=1}^\infty \left[a_n \cos(nwt)+b_n \sin(nwt)\right]\\
+&amp;=\frac{a_0}{2}+
+\sum_{n=1}^\infty \left[a_n \cos \frac{2\pi nt}{T}+b_n \sin\frac{2\pi nt}{T}\right] 
+\tag{3}
+\end{align}
+\]</span> 问题就转化为求<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>，利用三角函数系正交的性质，可以通过积分计算出<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>。 <span class="fold_hider" data-tag="fold_Trigonometric"><span class="close btn hider_title">三角函数系</span></span> <span class="fold_hider" data-tag="fold_solution"><span class="close btn hider_title">求解</span></span></p>
+<p><span class="math display">\[
+\begin{align}
+a_n = \frac{2}{T} \int_{-\frac T2}^{\frac T2} f(t) \cos \frac{2n\pi t}{T}\mathrm{d}t, \quad n=0, 1, 2, \cdots\\
+b_n = \frac{2}{T} \int_{-\frac T2}^{\frac T2} f(t) \sin \frac{2n\pi t}{T}\mathrm{d}t, \quad n=1, 2,3, \cdots\\
+\end{align}
+\]</span></p>
+<div class="fold" id="fold_Trigonometric">
+<p><strong>三角函数系</strong></p>
+<p><span class="math display">\[
+1, \cos x, \sin x, \cos 2x, \sin 2x, \cdots, \cos nx, \sin nx, \cdots 
+\]</span> 在区间<span class="math inline">\([-\pi, \pi]\)</span>上正交，即两两乘积在这个区间内积分为0。具体如下 <span class="math display">\[
+\begin{align}
+&amp;\int_{-\pi}^\pi \cos nx \mathrm{d}x = 0, \quad  n=1,2,3,\cdots\\
+&amp;\int_{-\pi}^\pi \sin nx \mathrm{d}x = 0, \quad  n=1,2,3,\cdots\\
+&amp;\int_{-\pi}^\pi \cos mx \cos nx \mathrm{d}x = 0, \quad  m\neq n,  m, n=1,2,3,\cdots\\
+&amp;\int_{-\pi}^\pi \sin mx \sin nx \mathrm{d}x = 0, \quad  m\neq n, m, n=1,2,3,\cdots\\
+&amp;\int_{-\pi}^\pi \sin mx \cos nx \mathrm{d}x = 0, \quad  m, n=1,2,3,\cdots\\
+\end{align}
+\]</span> 证明示例：通过积化和差公式，有 <span class="math display">\[
+\int_{-\pi}^\pi \cos mx \cos nx \mathrm{d}x = \frac12 
+\int_{-\pi}^\pi [\cos (m+n)x +\cos (m-n)x] \mathrm{d}x = 0
+\]</span> 除了上述公式外，还有下面两个公式 <span class="math display">\[
+\begin{align}
+&amp;\int_{-\pi}^\pi \cos^2 nx \mathrm{d}x = \pi, \quad  n=0,1,2,3,\cdots\\
+&amp;\int_{-\pi}^\pi \sin^2 nx \mathrm{d}x = \pi, \quad  n=1,2,3,\cdots\\
+\end{align}
+\]</span></p>
+
+</div>
+<div class="fold" id="fold_solution">
+<p><strong>傅里叶级数系数求解</strong></p>
+<p>对于周期为<span class="math inline">\(T\)</span>的函数<span class="math inline">\(f(t)\)</span>，首先进行一步变换，将周期变成<span class="math inline">\(2\pi\)</span>。令<span class="math inline">\(z=\frac{2\pi t}{T}\)</span>，则<span class="math inline">\(f(t)\)</span>可写成 <span class="math display">\[
+F(z)=\frac{a_0}{2}+
+\sum_{n=1}^\infty (a_n \cos nz+b_n \sin nz )
+\]</span> （其实就是将<span class="math inline">\(f(t)\)</span>公式中<span class="math inline">\(\frac{2\pi t}{T}\)</span>统一写成<span class="math inline">\(z\)</span>，这时式子是关于<span class="math inline">\(z\)</span>的函数，所以写成<span class="math inline">\(F(z)\)</span>，实际上<span class="math inline">\(F(\frac{2\pi t}{T})=f(t)\)</span>。）</p>
+<p>第一步，两侧同时在<span class="math inline">\([-\pi, \pi]\)</span>区间上积分，由三角函数系正交性质可消去0项，得到<span class="math inline">\(a_0\)</span> <span class="math display">\[
+a_0=\frac1\pi \int_{-\pi}^\pi F(z)\mathrm{d}z
+\]</span> 第二步，两侧同时乘<span class="math inline">\(\cos nz\)</span>，再积分可得 <span class="math display">\[
+a_n=\frac1\pi \int_{-\pi}^\pi F(z)\cos nz \mathrm{d}z
+\]</span> 第三步，两侧同时乘<span class="math inline">\(\sin nz\)</span>，再积分可得 <span class="math display">\[
+b_n=\frac1\pi \int_{-\pi}^\pi F(z)\sin nz \mathrm{d}z
+\]</span></p>
+<p>其中第一步可以统一到第二步里，再将<span class="math inline">\(z\)</span>换成<span class="math inline">\(\frac{2\pi t}{T}\)</span>可得</p>
+<p><span class="math display">\[
+\begin{align}
+a_n = \frac{2}{T} \int_{-\frac T2}^{\frac T2} f(t) \cos \frac{2n\pi t}{T}\mathrm{d}t, \quad n=0, 1, 2, \cdots\\
+b_n = \frac{2}{T} \int_{-\frac T2}^{\frac T2} f(t) \sin \frac{2n\pi t}{T}\mathrm{d}t, \quad n=1, 2, 3,\cdots\\
+\end{align}
+\]</span></p>
+
+</div>
+<p>有了<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>，就可以计算振幅<span class="math inline">\(A_n\)</span>和初相<span class="math inline">\(\varphi_n\)</span>，我们就完成了<span class="math inline">\(f(t)\)</span>的分解。</p>
+<p>补充说明</p>
+<ul>
+<li>直观理解<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>的计算过程：将三角函数系看做基，要求的是<span class="math inline">\(f(t)\)</span>的坐标，即<span class="math inline">\(f(t)\)</span>在各个基上的投影，用<span class="math inline">\(f(t)\)</span>和基做内积来计算，积分相当于内积运算。</li>
+<li>当<span class="math inline">\(f(t)\)</span>为奇函数时，傅里叶系数<span class="math inline">\(a_n=0, n=0,1,\cdots\)</span>，此时傅里叶级数展开全由<span class="math inline">\(\sin\)</span>构成，且没有常数项</li>
+<li>当<span class="math inline">\(f(t)\)</span>为偶函数时，傅里叶系数<span class="math inline">\(b_n=0, n=1,2,\cdots\)</span>，此时傅里叶级数展开全由<span class="math inline">\(\cos\)</span>构成</li>
+<li>有时会看到计算<span class="math inline">\(a_n,b_n\)</span>时积分范围是<span class="math inline">\([0,T]\)</span>，这也是一样的，都是在一个周期内积分，三角函数系正交性在<span class="math inline">\([0,T]\)</span>下也是成立的</li>
+<li>有时会看到一种写法：<span class="math inline">\(a_n, b_n\)</span>表达式前没有<span class="math inline">\(\frac{2}{T}\)</span>项。这时会发现<span class="math inline">\((3)\)</span>式中有一个<span class="math inline">\(\frac2T\)</span>被提到最前面了，所以<span class="math inline">\(a_n, b_n\)</span>就是未被scaled的项</li>
+<li>连续函数<span class="math inline">\(f(t)\)</span>展开后是离散的加和；如果将<span class="math inline">\(a(\frac{n}{T})\)</span>看做一个函数（系数-频率函数），自变量只取离散的值；可以发现当<span class="math inline">\(T\)</span>逐渐增大时，这个函数的定义域会越来越密集，极限下覆盖整个坐标轴。也就是说，当<span class="math inline">\(T\rightarrow \infty\)</span>时，<span class="math inline">\(f(t)\)</span>是非周期函数，系数-频率函数是连续的
+<ul>
+<li>频率的解释：展开每一项的周期是<span class="math inline">\(2\pi / \frac{2n\pi}{T}=\frac{T}{n}\)</span>，频率是周期的倒数，即<span class="math inline">\(\nu=\frac{n}{T}\)</span>，所以上面的系数-频率函数应写成<span class="math inline">\(a(\nu)\)</span></li>
+<li>频率的含义：比如周期是<span class="math inline">\(T\)</span>，说明经过<span class="math inline">\(T\)</span>这么长时间能转一圈；频率就是<span class="math inline">\(1\)</span>这么长时间能转多少圈</li>
+<li>有的资料里自变量用的是角频率。角频率是频率乘<span class="math inline">\(2\pi\)</span>，上面公式中的<span class="math inline">\(w\)</span>就是角频率；考虑角度，<span class="math inline">\(T\)</span>这么长时间能转<span class="math inline">\(2\pi\)</span>角度，角频率就表示<span class="math inline">\(1\)</span>这么长时间能转多大角度。</li>
+</ul></li>
+<li>对于非周期函数
+<ul>
+<li>如果定义在有限区间，则可以通过周期延拓（复制这段到无穷区间）变成周期函数，得到傅里叶级数后再对定义域进行限制。此时展开式仍是在用级数表示。
+<ul>
+<li>此处要注意，定义在有限区间，表示区间以外无定义；如果是区间以外都为0则是定义在无限区间上的非周期函数</li>
+</ul></li>
+<li>如果定义在无限区间，则展开用积分表示（傅里叶积分）</li>
+</ul></li>
+<li>本文偏重直观理解，若有证明也只是为了加深理解；对于一些极限收敛、间断点等理论方面内容读者可自行参考教材</li>
+</ul>
+<h2 id="傅里叶级数的复数形式">傅里叶级数的复数形式</h2>
+<p>如果有两个周期函数<span class="math inline">\(f(t)\)</span>和<span class="math inline">\(g(t)\)</span>，要在傅里叶级数下计算二者的乘积，上面的展开方式就比较难算，要用各种积化和差公式推导，此时我们可以将傅里叶级数写成复数形式，利用欧拉公式 <span class="math display">\[
+e^{ix}=\cos x+i \sin x
+\]</span> 我们的目的是将式<span class="math inline">\((3)\)</span>中的正弦余弦项都换成<span class="math inline">\(e^{ix}\)</span>形式。由欧拉公式可知 <span class="math display">\[
+\begin{align}
+\cos x &amp;= \frac{e^{ix} + e^{-ix}}{2}\\
+\sin x &amp;= \frac{e^{ix} - e^{-ix}}{2i}=-\frac{i}{2}(e^{ix} - e^{-ix})
+\end{align}
+\]</span> 因此式<span class="math inline">\((3)\)</span>可写成 <span class="math display">\[
+\begin{align}
+f(t)&amp;=\frac{a_0}{2}+
+\sum_{n=1}^\infty \left[a_n \cos \frac{2\pi nt}{T}+b_n \sin\frac{2\pi nt}{T}\right] \\
+&amp;=\frac{a_0}{2}+\sum_{n=1}^\infty \left[ 
+\frac{a_n}{2} (e^{i\frac{2\pi nt}{T}}+e^{-i\frac{2\pi nt}{T}})
+-\frac{ib_n}{2} (e^{i\frac{2\pi nt}{T}}-e^{-i\frac{2\pi nt}{T}})
+\right]\\
+&amp;=\frac{a_0}{2}+\sum_{n=1}^\infty \left[ 
+(\frac{a_n}{2}-\frac{b_n}{2}i) e^{i\frac{2\pi nt}{T}}
++(\frac{a_n}{2}+\frac{b_n}{2}i) e^{-i\frac{2\pi nt}{T}}
+\right]\\
+&amp;=c_0 +\sum_{n=1}^\infty \left[ 
+c_n e^{i\frac{2\pi nt}{T}}
++c_{-n} e^{-i\frac{2\pi nt}{T}}
+\right]\tag{4}\\
+\end{align}
+\]</span> 其中 <span class="math display">\[
+\begin{align}
+&amp;c_0=\frac{a_0}{2}=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) \mathrm{d}t\\
+&amp;\begin{split}
+c_n=\frac{a_n-i b_n}{2}&amp;=
+\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) 
+\left( \cos \frac{2n\pi t}{T} -i\sin \frac{2n\pi t}{T}\right) \mathrm{d}t\\
+&amp;=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{-i\frac{2n\pi t}{T}} \mathrm{d}t
+, \quad n=1, 2, 3, \cdots
+\end{split}\\
+&amp;\begin{split}
+c_{-n}=\frac{a_n+i b_n}{2}&amp;=
+\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) 
+\left( \cos \frac{2n\pi t}{T} +i\sin \frac{2n\pi t}{T}\right) \mathrm{d}t\\
+&amp;=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{i\frac{2n\pi t}{T}} \mathrm{d}t
+, \quad n=1, 2, 3, \cdots
+\end{split}\\\tag{5}
+\end{align}
+\]</span> 进一步统一、简化 <span class="math display">\[
+f(t)=\sum_{n=-\infty}^\infty c_n e^{i\frac{2n\pi t}{T}} \tag{6}
+\]</span> 其中 <span class="math display">\[
+c_n=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{-i\frac{2n\pi t}{T}} \mathrm{d}t
+, \quad n=0, \pm 1, \pm 2, \cdots \tag{7}
+\]</span> 现在，满足一定条件的周期函数<span class="math inline">\(f(t)\)</span>都可以表示成<span class="math inline">\((6)\)</span>式形式。回到本节最开始的问题，如果两个函数相乘，用级数来计算，则<span class="math inline">\((6)\)</span>式这种形式用指数来成显然方便得多。</p>
+<p>如果直接看<span class="math inline">\((6)\)</span>式可能会有疑惑，<span class="math inline">\(e\)</span>项展开后是复数形式，<span class="math inline">\(c_n\)</span>也是复数，而<span class="math inline">\(f(t)\)</span>是实数，这说明相乘相加后虚部全都消掉了。确实如此，推导的话其实就是<span class="math inline">\((4)\)</span>式的逆过程；关键点在于，<span class="math inline">\(n\)</span>取正负对称位置放在一起，可以将虚部消掉。</p>
+<p>同时<span class="math inline">\((6)\)</span>式表明，在周期<span class="math inline">\(T\)</span>已知的情况下，<span class="math inline">\(e^{i\frac{2n\pi t}{T}}\)</span>的形式固定，则<span class="math inline">\(f(t)\)</span>中全部的信息可以由序列<span class="math inline">\(\{c_n\}\)</span>表示。<span class="math inline">\(f(t)\)</span>和<span class="math inline">\(\{c_n\}\)</span>的信息等同</p>
+<ul>
+<li>已知<span class="math inline">\(\{c_n\}\)</span>时可以通过<span class="math inline">\((6)\)</span>式计算<span class="math inline">\(f(t)\)</span></li>
+<li>已知<span class="math inline">\(f(t)\)</span>时可以通过<span class="math inline">\((7)\)</span>式计算<span class="math inline">\(\{c_n\}\)</span></li>
+</ul>
+<p>上面是从代数推导的角度看待等同性，下面我们通过波的叠加来看待<span class="math inline">\(\{c_n\}\)</span>对<span class="math inline">\(f(t)\)</span>的表示。此处为了方便理解，暂且将一对<span class="math inline">\((e^{i\frac{2n\pi t}{T}},e^{-i\frac{2n\pi t}{T}})\)</span>看做一个周期为<span class="math inline">\(\frac{T}{n}\)</span>的波，要确定这个波的具体形态，还需要振幅<span class="math inline">\(A_n\)</span>和初相<span class="math inline">\(\varphi_n\)</span>两个要素，这两个要素可以由<span class="math inline">\(\{c_n,c_{-n}\}\)</span>计算得到。先说结论（注意到<span class="math inline">\(c_n\)</span>是复数，且<span class="math inline">\(c_n\)</span>与<span class="math inline">\(c_{-n}\)</span>共轭，即模长相等，关于实轴对称）</p>
+<ul>
+<li>振幅<span class="math inline">\(A_n\)</span>等于<span class="math inline">\(c_n\)</span>的模长的两倍</li>
+<li><span class="math inline">\(c_{-n}\)</span>对应复平面上一个点，这个点偏离实轴的角度就是初相<span class="math inline">\(\frac \pi 2-\varphi_n\)</span></li>
+</ul>
+<p>证明之前将<span class="math inline">\((2)\)</span>式列在这里 <span class="math display">\[
+\begin{align}
+A_n&amp;\sin(nwt+\varphi_n)=a_n\cos(nwt)+b_n\sin(nwt) \tag{2}\\
+&amp;a_n=A_n\sin\varphi_n \qquad b_n=A_n \cos\varphi_n \tag{8}
+\end{align}
+\]</span> 振幅的证明</p>
+<ul>
+<li>由<span class="math inline">\((5)\)</span>式可知，<span class="math inline">\(c_n\)</span>的模长为<span class="math inline">\(\frac{\sqrt{a_n^2+b_n^2}}{2}\)</span></li>
+<li>由<span class="math inline">\((8)\)</span>式可知，<span class="math inline">\(A_n^2=a_n^2+b_n^2\)</span></li>
+</ul>
+<p>初相的证明</p>
+<ul>
+<li><span class="math inline">\(c_{-n}=\frac{a_n+i b_n}{2}\)</span>，偏离实轴角度<span class="math inline">\(\theta\)</span>有<span class="math inline">\(\tan \theta=\frac{b_n}{a_n}\)</span></li>
+<li>由<span class="math inline">\((8)\)</span>式可知<span class="math inline">\(\tan \varphi_n=\frac{a_n}{b_n}\)</span></li>
+</ul>
+<p>这里证明可能不够严谨，下一节可以看到更合适的解释。这里只是想大概建立起<span class="math inline">\(c_n\)</span>与振幅初相之间的关系，这样就可以通过复数形式的傅里叶级数确定一系列正弦波，这些正弦波的叠加就是原函数。</p>
+<h2 id="傅里叶级数与圆周运动">傅里叶级数与圆周运动</h2>
+<p>正弦波<span class="math inline">\(f(t)=\sin t\)</span>可以看做，圆周运动随着时间的流逝，记录下纵轴的值；多个正弦波的叠加则可以看做大圆套小圆转动，如下图所示，图片来自<a href="https://en.wikipedia.org/wiki/File:Fourier_series_square_wave_circles_animation.gif" target="_blank" rel="noopener">wiki</a>，此外还有一个类似的<a href="https://en.wikipedia.org/wiki/File:Fourier_series_sawtooth_wave_circles_animation.gif" target="_blank" rel="noopener">动图</a></p>
+<img src="http://static.wzbtech.com/static/images/Fourier_series_square_wave_circles_animation.gif">
+<p>同样的信息，在时域上表现为右侧的周期函数，在频域上表现为左侧固定的圆周运动。</p>
+<ul>
+<li>在圆周运动中，初相对应初始点，频率对应转动的速度，振幅对应圆的大小。我们只要确定了这三个要素，就可以勾勒出时域中的图像，这是频域向时域的转化。</li>
+<li>时域向频域转化，就好像对一个复杂的<span class="math inline">\(f(t)\)</span>，你很难预计下一个时间它会如何变动，但如果告诉你它是由一些确定的圆套在一起运动而形成的，就感觉触及到了本质，事情变得可控。在时域中难以做到的事情，可能在频域中非常简单，这也是傅里叶级数展开的意义所在。</li>
+</ul>
+<p>我们经常看到画频谱图的，其实就是振幅-频率图；相位图就是初相-频率图。</p>
+<p>上面介绍了<span class="math inline">\(A_n\sin(nwt+\varphi_n)\)</span>这种形式的波如何通过圆周运动勾勒出<span class="math inline">\(f(t)\)</span>，下面我们要基于复数形式的傅里叶级数来勾勒<span class="math inline">\(f(t)\)</span>。首先从欧拉公式说起 <span class="math display">\[
+e^{it}=\cos t+i \sin t
+\]</span> 将<span class="math inline">\(e^{it}\)</span>的值看做在复平面上描点，横轴是实数轴，坐标为<span class="math inline">\(\cos t\)</span>；纵轴是虚数轴，坐标为<span class="math inline">\(\sin t\)</span>。则随着时间<span class="math inline">\(t\)</span>的增大，描点轨迹就是在做逆时针圆周运动，而<span class="math inline">\(e^{-it}\)</span>则是在做顺时针圆周运动。把<span class="math inline">\((4)\)</span>式搬过来 <span class="math display">\[
+f(t)=c_0 +\sum_{n=1}^\infty \left[ 
+c_n e^{i\frac{2\pi nt}{T}}
++c_{-n} e^{-i\frac{2\pi nt}{T}}
+\right]
+\]</span> 对每个<span class="math inline">\(n\)</span>来说，两部分在复平面上做圆周运动，<span class="math inline">\(c_n\)</span>是个复数可以画在复平面内，则<span class="math inline">\(c_n e^{i\frac{2\pi nt}{T}}+c_{-n} e^{-i\frac{2\pi nt}{T}}\)</span>表示</p>
+<ul>
+<li>一个点初始在<span class="math inline">\(c_n\)</span>处，逆时针做圆周运动，角速度是<span class="math inline">\(\omega=\frac{2\pi n}{T}\)</span>，半径为<span class="math inline">\(c_n\)</span>的模长</li>
+<li>另一个点初始在<span class="math inline">\(c_{-n}\)</span>处，顺时针做圆周运动，角速度是<span class="math inline">\(\omega=\frac{2\pi n}{T}\)</span>，半径为<span class="math inline">\(c_{-n}\)</span>的模长</li>
+<li>两个点的圆周运动，看做向量（圆心与点连接）的转动，二者的加和就是向量的加和，<span class="math inline">\(f(t)\)</span>就是加和后的向量随时间变化</li>
+</ul>
+<p>考虑到<span class="math inline">\(c_n\)</span>与<span class="math inline">\(c_{-n}\)</span>共轭，因此模长相等，即它们运动半径相同；初始位置关于实轴对称，又做反方向运动，因此二者的加和会将虚数部分抵消，所以加和后的向量可以用一个实数表示。实数部分其实就是考虑<span class="math inline">\(\cos\)</span>，因此圆周运动过程中，记录下余弦值，画出余弦值与时间的关系，就得到了一个波。这里与上一节对应一下</p>
+<ul>
+<li>因为是两个点的运动过程叠加，所以该频率下的振幅是模长的2倍</li>
+<li>因为这里记录的是<span class="math inline">\(\cos\)</span>，所以与上文使用的<span class="math inline">\(\sin\)</span>相位有个加和为<span class="math inline">\(\frac{\pi}{2}\)</span>的关系</li>
+</ul>
+<p>每个<span class="math inline">\(n\)</span>可以得到一个波，叠加后可得到<span class="math inline">\(f(t)\)</span>。或者这样做：每个<span class="math inline">\(n\)</span>下都有2个点，分别用向量表示，所有<span class="math inline">\(2n\)</span>个向量相加；每个时间<span class="math inline">\(t\)</span>下相加得到的总是一个在实轴上的向量，记录下这个向量的值就能勾勒出<span class="math inline">\(f(t)\)</span>的曲线。向量相加的过程就像下面这张图，图片来自<a href="https://en.wikipedia.org/wiki/Phasor" target="_blank" rel="noopener">wiki</a>，这张图中两个向量频率相同，频率不同的动图可以见<a href="https://www.matongxue.com/madocs/619.html" target="_blank" rel="noopener">马同学</a></p>
+<img src="http://static.wzbtech.com/static/images/fourier_euler.gif">
+<p>其实仔细想一想，向量相加和大圆套小圆的过程其实是一样的，二者分别对应傅里叶级数复数形式与实数形式的圆周运动解释。</p>
+<p>其实大圆套小圆不仅可以画波，而且可以画出许多复杂的图像，比如<a href="https://www.youtube.com/watch?v=QVuU2YCwHjw" target="_blank" rel="noopener">画辛普森</a>。画波与画图像的区别在于，波是时间的函数，一个时间对应一个值；而图像是一个时间对应一个二维坐标，将画纸看做复平面的话，图像也可以是时间的函数，只不过函数值是复数，由实部和虚部两部分构成；更进一步，波其实是虚部为0，如果看做点在复平面内的运动，就是在实数轴上来回摆动，我们只是加了一个时间轴，它画出的结果才是波的形式。因此，任意给定一个图形，如何计算它是由什么样的圆、如何运动绘制而成呢？只要取一些点，写出<span class="math inline">\(f(t)\)</span>的形式，然后用公式<span class="math inline">\((7 )\)</span>计算<span class="math inline">\(c_n\)</span>，再转化为相位和振幅即可；<span class="math inline">\(f(t)\)</span>是一个周期函数，或者是一个定义在有限区间的非周期函数。用套圆画图可以在<a href="http://www.jezzamon.com/fourier/index.html" target="_blank" rel="noopener">这个网站</a>中体验，你绘制一个图形，它会自动为你转化为大圆套小圆的形式。</p>
+<h2 id="傅里叶变换">傅里叶变换</h2>
+<h3 id="非周期函数">非周期函数</h3>
+<p>非周期函数可以看做周期为无穷大的函数，下面我们考虑傅里叶级数周期增大，直至无穷会发生什么。</p>
+<p>首先回顾周期函数的傅里叶级数展开 <span class="math display">\[
+f(x)=\sum_{n=-\infty}^\infty c_n e^{i\frac{2n\pi x}{T}} \tag{6}
+\]</span></p>
+<p><span class="math display">\[
+c_n=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{-i\frac{2n\pi t}{T}} \mathrm{d}t
+, \quad n=0, \pm 1, \pm 2, \cdots \tag{7}
+\]</span></p>
+<p>式<span class="math inline">\((6)\)</span>是时域下的表示，式<span class="math inline">\((7)\)</span>是频域下的表示，傅里叶级数分解是时域向频域的转化；频域中以频率为自变量，此时频率取离散值，<span class="math inline">\(\frac{n}{T},n=0,1,2,\cdots\)</span>。可以看到，随着周期<span class="math inline">\(T\)</span>的增大，频率的取值逐渐密集，可以想象，当周期趋近于无穷，频率将取连续值，此时式<span class="math inline">\((6)\)</span>将不再是求和而是积分，这就是非周期函数的情形。将非周期函数时域向频域的转化，就对应傅里叶变换，下面我们写出傅里叶变换相关公式 <span class="math display">\[
+\begin{align}
+\text{傅里叶逆变换：}\qquad&amp;f(x)=\int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w\tag{9}\\
+\text{傅里叶变换：}\qquad&amp;F(w)=\frac{1}{2\pi}\int_{-\infty}^\infty  f(t)e^{-iwt}\mathrm{d}t\tag{10}
+\end{align}
+\]</span> 注意如下几点</p>
+<ol type="1">
+<li><strong>公式形式</strong></li>
+</ol>
+<ul>
+<li>这里频域中自变量<span class="math inline">\(w\)</span>是角频率，使用频率也可以，只不过公式会稍微有一点常数上的差异，如下所示</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\text{傅里叶逆变换：}\qquad&amp;f(x)= \int_{-\infty}^\infty F(v)e^{i2\pi vx} \mathrm{d}v\tag{11}\\
+\text{傅里叶变换：}\qquad&amp;F(v)=\int_{-\infty}^\infty  f(t)e^{-i2\pi vt}\mathrm{d}t\tag{12}
+\end{align}
+\]</span></p>
+<ul>
+<li>有一些版本的常数会和这里有些出入，如下所示</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\text{傅里叶逆变换：}\qquad&amp;f(x)=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w\\
+\text{傅里叶变换：}\qquad&amp;F(w)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty  f(t)e^{-iwt}\mathrm{d}t
+\end{align}
+\]</span></p>
+<p>对比后会发现如果给定<span class="math inline">\(f(t)\)</span>，单独看傅里叶变换，<span class="math inline">\(F(w)\)</span>的结果是差一个常数项的；这不影响本质，只是傅里叶变换与逆变换公式是成对出现的，变换后如果想通过逆变换还原原来的<span class="math inline">\(f(t)\)</span>，必须使用相应的逆变换形式。</p>
+<ol start="2" type="1">
+<li><strong>离散与连续</strong></li>
+</ol>
+<p>从频域图像的角度，非周期函数的频域图像，并不是将周期函数的图像不断密集取点，最后变成连续。从公式来说，式<span class="math inline">\((10)\)</span>并不是由式<span class="math inline">\((7)\)</span>简单取极限就可以得到。周期函数对应离散谱，非周期函数对应连续谱，二者有本质的区别。这有点像离散随机变量的概率分布，与连续随机变量密度函数的区别。离散谱取离散值，看柱子高度；而连续谱取连续值，看区域面积，而对于每个具体的点，面积都是0。</p>
+<p>下面举一个例子，将矩形波从周期变换到非周期，对比公式直接取极限，与傅里叶变换之间的区别。</p>
+<p>先以简单的方波为例，<span class="math inline">\(f(x)\)</span>周期为<span class="math inline">\(T\)</span>，一个周期内的函数形式如下所示</p>
+<p><span class="math display">\[
+f(x)=\left\{
+\begin{array}{cl}
+1,&amp; \quad -\frac{T}{4}\leq x\leq \frac{T}{4}\\
+0,&amp; \quad \frac{T}{4} &lt; x\leq  \frac{3T}{4}\\
+\end{array}
+\right.
+\]</span></p>
+<p>由式<span class="math inline">\((7)\)</span>可以计算出</p>
+<p><span class="math display">\[
+c_n=\frac12 \frac{\sin(n\pi/2)}{n\pi/2}
+\]</span></p>
+<p>由于<span class="math inline">\(f(x)\)</span>是偶函数，所以<span class="math inline">\(c_n\)</span>的虚部为0。下面我们要将周期增大到无穷，注意，如果我们直接令<span class="math inline">\(T \rightarrow \infty\)</span>，可以看到<span class="math inline">\(c_n\)</span>的结果并没有发生改变，因为这样增大周期结果还是一个方波，一直都还是周期函数；方波就是一个周期中取<span class="math inline">\(1\)</span>的部分占比为<span class="math inline">\(50\%\)</span>。我们增加周期要只增加<span class="math inline">\(0\)</span>的部分，这样不断增加下去的结果是，只有<span class="math inline">\([-\frac{T}{4},\frac{T}{4}]\)</span>区间内取值为<span class="math inline">\(1\)</span>，其他区间为<span class="math inline">\(0\)</span>，这就是一个非周期函数。一个周期为<span class="math inline">\(kT\)</span>的函数定义如下 <span class="math display">\[
+f(x)=\left\{
+\begin{array}{cl}
+1,&amp; \quad -\frac{T}{4}\leq x\leq \frac{T}{4}\\
+0,&amp; \quad \frac{T}{4} &lt; x\leq  \frac{3T}{4}+(k-1)T\\
+\end{array}
+\right.
+\]</span> 由式<span class="math inline">\((7)\)</span>可以计算出 <span class="math display">\[
+c_n=\frac{1}{2k} \frac{\sin(\frac{n\pi}{2k})}{\frac{n\pi}{2k}}=\frac{1}{2k} \mathrm{sinc}(\frac{n}{2k})
+\]</span> 已知<span class="math inline">\(x\rightarrow 0\)</span>时，<span class="math inline">\(\mathrm{sinc}(x)\rightarrow 1\)</span>，因此随着<span class="math inline">\(k\)</span>的不断增大，柱子高度整体是逐渐减小的，当<span class="math inline">\(k\rightarrow \infty\)</span>，柱子高度将趋近于0。下面这张图展示了随着周期不断增大，<span class="math inline">\(c_n\)</span>随频率变化的图像</p>
+<img src="http://static.wzbtech.com/static/images/freq.png">
+<p>这种趋于0的效果，就像离散随机变量，随着定义域的扩大，可取的点原来越多，但每个点的取到的概率也会越来越小，取值为连续区间时，具体每个点的概率都为0；此时衡量单个点的概率就没有意义了，需要衡量的是区间的概率，画图也不画概率分布图了，而是画概率密度图。上面的离散谱（又称线谱）与概率分布类似，而傅里叶变换对应的连续谱（又称密度频谱）与概率密度类似。</p>
+<p>对于只有<span class="math inline">\([-\frac{T}{4},\frac{T}{4}]\)</span>区间内取值为<span class="math inline">\(1\)</span>，其他区间为<span class="math inline">\(0\)</span>的非周期函数，我们可以由式<span class="math inline">\((12)\)</span>推导出频域下的密度表达 <span class="math display">\[
+F(v)=\frac{T}{2} \mathrm{sinc}(\frac{vT}{2})
+\]</span></p>
+<p>傅里叶变换后的结果一般是虚数，这里因为<span class="math inline">\(f(x)\)</span>是偶函数，所以虚部为0。</p>
+<ol start="3" type="1">
+<li><strong>由傅里叶级数到傅里叶变换的推导</strong></li>
+</ol>
+<p>从式<span class="math inline">\((6,7)\)</span>出发，将<span class="math inline">\(c_n\)</span>形式带入式<span class="math inline">\((6)\)</span>，对周期取极限得 <span class="math display">\[
+\begin{align}
+f(x)&amp;=\lim_{T\rightarrow\infty} \sum_{n=-\infty}^\infty 
+\left[\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{-i\frac{2n\pi t}{T}} \mathrm{d}t\right]
+e^{i\frac{2n\pi x}{T}} \\
+&amp;=\lim_{T\rightarrow\infty} \sum_{n=-\infty}^\infty 
+\left[\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{i\frac{2n\pi }{T}(x-t)} \mathrm{d}t\right]
+\end{align}
+\]</span> 令<span class="math inline">\(w_n=\frac{2n\pi}{T}\)</span>，则<span class="math inline">\(\Delta w=w_n-w_{n-1}=\frac{2\pi}{T}\)</span> <span class="math display">\[
+\begin{align}
+f(x)&amp;=\lim_{T\rightarrow\infty} \sum_{n=-\infty}^\infty 
+\left[\frac{1}{2\pi}\Delta w \int_{-\frac T2}^{\frac T2} f(t) e^{iw_n(x-t)} \mathrm{d}t\right] \\
+&amp;=\lim_{T\rightarrow\infty} \sum_{n=-\infty}^\infty 
+\left[\frac{1}{2\pi} \int_{-\infty}^{\infty} f(t) e^{iw_n(x-t)} \mathrm{d}t\right]\Delta w
+\end{align}
+\]</span> 当<span class="math inline">\(T\rightarrow\infty\)</span>，<span class="math inline">\(\Delta w \rightarrow 0\)</span>，所以有 <span class="math display">\[
+\begin{align}
+f(x)&amp;=\int_{-\infty}^\infty 
+\left[\frac{1}{2\pi} \int_{-\infty}^{\infty} f(t) e^{iw(x-t)} \mathrm{d}t\right]\mathrm{d} w \\
+&amp;=\int_{-\infty}^\infty 
+\left[\frac{1}{2\pi} \int_{-\infty}^{\infty} f(t) e^{-iwt} \mathrm{d}t\right]
+e^{iwx}\mathrm{d} w
+\end{align}
+\]</span> 令<span class="math inline">\(F(w)=\frac{1}{2\pi}\int_{-\infty}^\infty f(t)e^{-iwt}\mathrm{d}t\)</span>，则有 <span class="math display">\[
+f(x)=\int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w
+\]</span></p>
+<h3 id="周期函数">周期函数</h3>
+<p>将傅里叶变换扩展到周期函数，则统一了周期函数与非周期函数的变换方式，之后傅里叶变换的性质可以对任意函数都成立。周期函数的频谱是离散的，只在特定的一些频率点不为0；而傅里叶变换是在求频谱密度，关注的是面积；所以需要定义一个冲激函数<span class="math inline">\(\delta(x)\)</span>，定义如下</p>
+<p><span class="math display">\[
+\delta(x)=0, t\neq 0\\
+\int_{-\infty}^{\infty} \delta(x)\mathrm{d}x = 1
+\]</span></p>
+<p>周期函数的傅里叶变换就是多个冲激函数的加和（其实就是将离散的位置变成冲激函数）。公式如下所示，其中<span class="math inline">\(f(x)\)</span>是一个周期函数</p>
+<p><span class="math display">\[
+F(v)=\sum_{-\infty}^{\infty} c_n \delta(v-nv_0)
+\]</span></p>
+<p>其中<span class="math inline">\(c_n=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{-i2n\pi v_0 t } \mathrm{d}t, \quad n=0, \pm 1, \pm 2, \cdots\)</span>，<span class="math inline">\(v_0=\frac{1}{T}\)</span>。</p>
+<p>上面公式的推导只是将式<span class="math inline">\((6)\)</span>带入式<span class="math inline">\((12)\)</span>，然后利用冲激函数的一个计算性质 <span class="math display">\[
+\int_{-\infty}^{\infty} e^{-i2\pi t(v-nv_0)}\mathrm{d}t =\delta(v-nv_0)
+\]</span> 因为这个式子相当于对<span class="math inline">\(f(t)=e^{i2n\pi v_0t}\)</span>做傅里叶变换，这是个周期函数，它的傅里叶级数展开就是在离散的<span class="math inline">\(nv_0\)</span>处有<span class="math inline">\(c_n=1\)</span>，用冲激函数表达相同的含义就如右式。所有周期函数用傅里叶级数展开都可以表示成<span class="math inline">\(f(t)=e^{i2n\pi v_0t}\)</span>的加和，因此傅里叶变换都就是冲激函数的加和。</p>
+<p>冲激函数的另一性质：任何函数与冲激函数做卷积，得到本身 <span class="math display">\[
+f(t)* \delta(t)=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau=f(t)
+\]</span> 因为<span class="math inline">\(\delta(t-\tau)\)</span>只有在<span class="math inline">\(\tau=t\)</span>时不为0，所以 <span class="math display">\[
+\begin{align}
+f(t)* \delta(t)&amp;=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau\\
+&amp;= f(t)\int_{-\infty}^{+\infty} \delta(t-\tau) d \tau\\
+&amp;=f(t)
+\end{align}
+\]</span></p>
+<p>傅里叶变换的性质、离散傅里叶、应用、参考资料请见<a href="/tech/fourier2.html">下一篇</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/manual/" rel="tag"># 速查手册</a>
+          
+            <a href="/tags/傅里叶分析/" rel="tag"># 傅里叶分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/tech/matrix-derivatives2.html" rel="next" title="矩阵求导总结（二）">
+                <i class="fa fa-chevron-left"></i> 矩阵求导总结（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tech/fourier2.html" rel="prev" title="傅里叶级数与傅里叶变换（二）">
+                傅里叶级数与傅里叶变换（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">时间轴</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="诗文摘录">诗文摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="速查手册">速查手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="资源收集">资源收集</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶级数"><span class="nav-number">1.</span> <span class="nav-text">傅里叶级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶级数的复数形式"><span class="nav-number">2.</span> <span class="nav-text">傅里叶级数的复数形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶级数与圆周运动"><span class="nav-number">3.</span> <span class="nav-text">傅里叶级数与圆周运动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">4.</span> <span class="nav-text">傅里叶变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非周期函数"><span class="nav-number">4.1.</span> <span class="nav-text">非周期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#周期函数"><span class="nav-number">4.2.</span> <span class="nav-text">周期函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miit.gov.cn/">&nbsp;闽ICP备18026322号-1</a>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

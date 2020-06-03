@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学,速查手册,傅里叶分析," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文承接上一篇 傅里叶变换的性质 首先列出傅里叶变换公式 \[ \begin{align} \text{傅里叶逆变换：}\qquad&amp;amp;f(x)=\int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w\tag{9}\\ \text{傅里叶变换：}\qquad&amp;amp;F(w)=\frac{1}{2\pi}\int_{-\infty}^\infty">
+<meta name="keywords" content="数学,速查手册,傅里叶分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="傅里叶级数与傅里叶变换（二）">
+<meta property="og:url" content="http://yoursite.com/tech/fourier2.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="本文承接上一篇 傅里叶变换的性质 首先列出傅里叶变换公式 \[ \begin{align} \text{傅里叶逆变换：}\qquad&amp;amp;f(x)=\int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w\tag{9}\\ \text{傅里叶变换：}\qquad&amp;amp;F(w)=\frac{1}{2\pi}\int_{-\infty}^\infty">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.wzbtech.com/static/images/fourier_image.png">
+<meta property="og:updated_time" content="2020-06-03T15:43:48.339Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="傅里叶级数与傅里叶变换（二）">
+<meta name="twitter:description" content="本文承接上一篇 傅里叶变换的性质 首先列出傅里叶变换公式 \[ \begin{align} \text{傅里叶逆变换：}\qquad&amp;amp;f(x)=\int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w\tag{9}\\ \text{傅里叶变换：}\qquad&amp;amp;F(w)=\frac{1}{2\pi}\int_{-\infty}^\infty">
+<meta name="twitter:image" content="http://static.wzbtech.com/static/images/fourier_image.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/tech/fourier2.html"/>
+
+
+
+
+
+  <title>傅里叶级数与傅里叶变换（二） | My World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning & Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            
+              <b>技术分享</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            
+              <b>生活随笔</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-诗文摘录">
+          <a href="/tags/excerpt/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
+            
+            
+              诗文摘录
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-速查手册">
+          <a href="/tags/manual/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
+            
+            
+              速查手册
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-资源收集">
+          <a href="/tags/collections/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              资源收集
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/fourier2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王智博">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">傅里叶级数与傅里叶变换（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-21T00:00:00+08:00">
+                2020-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文承接<a href="/tech/fourier1.html">上一篇</a></p>
+<h2 id="傅里叶变换的性质">傅里叶变换的性质</h2>
+<p>首先列出傅里叶变换公式 <span class="math display">\[
+\begin{align}
+\text{傅里叶逆变换：}\qquad&amp;f(x)=\int_{-\infty}^\infty F(w)e^{iwx} \mathrm{d}w\tag{9}\\
+\text{傅里叶变换：}\qquad&amp;F(w)=\frac{1}{2\pi}\int_{-\infty}^\infty  f(t)e^{-iwt}\mathrm{d}t\tag{10}
+\end{align}
+\]</span></p>
+<h3 id="简单性质">简单性质</h3>
+<p><strong>1. 线性</strong></p>
+<p>傅里叶变换及其逆变换都是线性算子。对任意常数<span class="math inline">\(c\)</span>都有下列式子成立，其中<span class="math inline">\(f\)</span>和<span class="math inline">\(g\)</span>是两个函数，<span class="math inline">\(\mathcal{F}\)</span>表示进行傅里叶变换 <span class="math display">\[
+\mathcal{F}[f+g]=\mathcal{F}[f]+\mathcal{F}[g]\\
+\mathcal{F}[cf]=c\mathcal{F}[f]
+\]</span> <span class="math inline">\(\mathcal{F}^{-1}\)</span>是傅里叶逆变换 <span class="math display">\[
+\mathcal{F}^{-1}[f+g]=\mathcal{F}^{-1}[f]+\mathcal{F}^{-1}[g]\\
+\mathcal{F}^{-1}[cf]=c\mathcal{F}^{-1}[f]
+\]</span></p>
+<p><strong>2. 时移性</strong></p>
+<p>若<span class="math inline">\(\mathcal{F}[f(x)]=F(w)\)</span>，则<span class="math inline">\(\mathcal{F}[f(x-x_0)]=F(w)e^{-iwx_0}\)</span>。</p>
+<p>这个性质表明，信号在时间上的位移只是引入了相移。</p>
+<p>证明：要计算这个式子 <span class="math display">\[
+\mathcal{F}[f(x-x_0)]=\frac{1}{2\pi}\int_{-\infty}^\infty  f(x-x_0)e^{-iwx}\mathrm{d}x
+\]</span></p>
+<p>令<span class="math inline">\(y=x-x_0\)</span>，则有</p>
+<p><span class="math display">\[
+\begin{align}
+\mathcal{F}[f(x-x_0)]&amp;=\frac{1}{2\pi}\int_{-\infty}^\infty  f(y)e^{-iw(y+x_0)}\mathrm{d}y\\
+&amp;=e^{-iwx_0}\frac{1}{2\pi}\int_{-\infty}^\infty  f(y)e^{-iwy}\mathrm{d}y\\
+&amp;=F(w)e^{-iwx_0}\\
+\end{align}
+\]</span></p>
+<p><strong>3. 尺度变换</strong></p>
+<p>若<span class="math inline">\(\mathcal{F}[f(x)]=F(w)\)</span>，则<span class="math inline">\(\mathcal{F}[f(ax)]=\frac{1}{|a|}F(\frac{w}{a})\)</span>。</p>
+<p>证明：要计算这个式子 <span class="math display">\[
+\mathcal{F}[f(ax)]=\frac{1}{2\pi}\int_{-\infty}^\infty  f(ax)e^{-iwx}\mathrm{d}x
+\]</span></p>
+<p>令<span class="math inline">\(y=ax\)</span>，则有</p>
+<p><span class="math display">\[
+\begin{align}
+\mathcal{F}[f(ax)]&amp;=\frac{1}{2\pi}\int_{-\infty}^\infty  f(y)e^{-iw(\frac{y}{a})}\frac{1}{|a|}\mathrm{d}y\\
+&amp;=\frac{1}{|a|}\frac{1}{2\pi}\int_{-\infty}^\infty  f(y)e^{-i\frac{w}{a}y}\mathrm{d}y\\
+&amp;=\frac{1}{|a|}F(\frac{w}{a})\\
+\end{align}
+\]</span></p>
+<p>其中，<span class="math inline">\(|a|\)</span>有个绝对值是因为当<span class="math inline">\(a&lt;0\)</span>时，积分会变成<span class="math inline">\(\int_{\infty}^{-\infty}\)</span>。</p>
+<h3 id="对称性">对称性</h3>
+<ul>
+<li><span class="math inline">\(f(x)\)</span>经傅里叶变换得到<span class="math inline">\(F(v)\)</span>，则<span class="math inline">\(F(x)\)</span>经过傅里叶变换得到<span class="math inline">\(f(-v)\)</span></li>
+<li>如果<span class="math inline">\(f(x)\)</span>是个偶函数，则<span class="math inline">\(F(x)\)</span>经过傅里叶变换得到<span class="math inline">\(f(v)\)</span>，即两个函数通过傅里叶变换可以推导出对方。</li>
+</ul>
+<p>证明：已知<span class="math inline">\(f(x)\)</span>经傅里叶变换得到<span class="math inline">\(F(v)\)</span>，则<span class="math inline">\(F(v)\)</span>可通过逆变换计算出<span class="math inline">\(f(x)\)</span></p>
+<p><span class="math display">\[
+f(x)=\int_{-\infty}^\infty F(w)e^{i2\pi vx} \mathrm{d}v
+\]</span></p>
+<p>将上式中的<span class="math inline">\(w\)</span>和<span class="math inline">\(x\)</span>符号互换一下得到</p>
+<p><span class="math display">\[
+f(v)=\int_{-\infty}^\infty F(x)e^{i2\pi vx} \mathrm{d}x
+\]</span></p>
+<p>则有</p>
+<p><span class="math display">\[
+f(-v)=\int_{-\infty}^\infty F(x)e^{-i2\pi vx} \mathrm{d}x
+\]</span></p>
+<p>可以看到右式就是<span class="math inline">\(F(x)\)</span>做傅里叶变换的过程，证明结束。</p>
+<p>上文举的一个例子，下面两个式子就有这种对称的关系 <span class="math display">\[
+f(x)=\left\{
+\begin{array}{cl}
+1,&amp; \quad -\frac{T}{4}\leq x\leq \frac{T}{4}\\
+0,&amp; \quad \frac{T}{4} &lt; x\leq  \frac{3T}{4}+(k-1)T\\
+\end{array}
+\right.
+\]</span></p>
+<p><span class="math display">\[
+F(v)=\frac{T}{2} \mathrm{sinc}(\frac{vT}{2})
+\]</span></p>
+<p>如果第二个式子直接进行傅里叶变换，想推出第一个式子的形式，将非常困难，技巧就是利用已有的这个关系 <span class="math display">\[
+f(x)= \int_{-\infty}^\infty F(v)e^{i2\pi vx}\mathrm{d}v
+\]</span></p>
+<p>此外<span class="math inline">\(f(t)=1\)</span>与<span class="math inline">\(\delta(t)\)</span>也有这种对称关系。</p>
+<h3 id="卷积性质">卷积性质</h3>
+<ul>
+<li>时域卷积对应频域乘法
+<ul>
+<li>公式表达：已知<span class="math inline">\(y(t)=x(t)*h(t)\)</span>，可推出<span class="math inline">\(Y(v)=X(v)H(v)\)</span></li>
+</ul></li>
+<li>时域乘法对应频域卷积
+<ul>
+<li>公式表达：已知<span class="math inline">\(y(t)=x(t)h(t)\)</span>，可推出<span class="math inline">\(Y(v)=X(v)*H(v)\)</span></li>
+</ul></li>
+<li>注意：这里频域关注频率则有这样规整的结论，如果是角频率则还会差一个常数项，比如<span class="math inline">\(Y(w)=2\pi X(w)H(w)\)</span></li>
+</ul>
+<p><strong>时域卷积对应频域乘法的证明</strong> <span class="math display">\[
+\begin{align}
+Y(v)=\mathcal{F}[y(t)]&amp;=
+\int_{-\infty}^{\infty} x(t)*h(t)e^{-i2\pi vt}\mathrm{d}t&amp;\\
+&amp;=\int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty} x(\tau)h(t-\tau)\mathrm{d}\tau \right] e^{-i2\pi vt}\mathrm{d}t&amp;\\
+&amp;=\int_{-\infty}^{\infty}x(\tau)\left[\int_{-\infty}^{\infty} h(t-\tau) e^{-iwt}\mathrm{d}t \right]\mathrm{d}\tau &amp;(\text{积分换序})\\
+&amp;=\int_{-\infty}^{\infty}x(\tau)\left[\int_{-\infty}^{\infty} h(s) e^{-i2\pi v(s+\tau)}\mathrm{d}s \right]\mathrm{d}\tau
+&amp;(\text{令 } s=t-\tau)\\
+&amp;=\int_{-\infty}^{\infty}x(\tau)e^{-i2\pi v\tau}\left[\int_{-\infty}^{\infty} h(s) e^{-i2\pi vs}\mathrm{d}s \right]\mathrm{d}\tau
+&amp;\\
+&amp;=\left[\int_{-\infty}^{\infty}x(\tau)e^{-i2\pi v\tau}\mathrm{d}\tau\right]
+\left[\int_{-\infty}^{\infty} h(s) e^{-i2\pi vs}\mathrm{d}s \right]
+&amp;\\
+&amp;=X(v)H(v)
+\end{align}
+\]</span> <strong>时域乘法对应频域卷积证明</strong>：利用对称性和刚刚证出的结论。</p>
+<ul>
+<li>已知<span class="math inline">\(y(t)=x(t)*h(t)\)</span>，则<span class="math inline">\(\mathcal{F}[x(t)*h(t)]=X(v)H(v)=Y(v)\)</span></li>
+<li><span class="math inline">\(\mathcal{F}[Y(t)]=y(-v)\)</span>，<span class="math inline">\(\mathcal{F}[X(t)]=x(-v)\)</span>，<span class="math inline">\(\mathcal{F}[H(t)]=h(-v)\)</span></li>
+</ul>
+<p>所以有 <span class="math display">\[
+\mathcal{F}[X(t)H(t)]=\mathcal{F}[Y(t)]=y(-v)=x(-v)*h(-v)
+=\mathcal{F}[X(t)]*\mathcal{F}[H(t)]
+\]</span></p>
+<h2 id="离散傅里叶变换">离散傅里叶变换</h2>
+<p>离散函数周期为<span class="math inline">\(T\)</span>，在一个周期内取<span class="math inline">\(n\)</span>个等距函数值<span class="math inline">\(x_j\)</span>，其中<span class="math inline">\(j=0,1,\cdots, n-1\)</span>，离散傅里叶变换公式如下 <span class="math display">\[
+y_k=\sum_{j=0}^{n-1} x_j e^{-i2\pi kj/n}
+\]</span> 其中<span class="math inline">\(k=0,1,\cdots, n-1\)</span>。输入的<span class="math inline">\(\mathbf{x}\)</span>和输出的<span class="math inline">\(\mathbf{y}\)</span>都是长度为<span class="math inline">\(n\)</span>的向量，注意到<span class="math inline">\(\mathbf{y}\)</span>是复数向量，频域也是周期函数，<span class="math inline">\(\mathbf{y}\)</span>只是一个周期内的取值。上述关系可以用矩阵表示<span class="math inline">\(\mathbf{y}=F\mathbf{x}\)</span> <span class="math display">\[
+\left[\begin{array}{c}
+{y_{0}} \\
+{y_{1}} \\
+{y_{2}} \\
+{\vdots} \\
+{y_{n-1}}
+\end{array}\right]=\left[\begin{array}{ccccc}
+{1} &amp; {1} &amp; {1} &amp; {\cdots} &amp; {1} \\
+{1} &amp; {w} &amp; {w^{2}} &amp; {\cdots} &amp; {w^{n-1}} \\
+{1} &amp; {w^{2}} &amp; {w^{4}} &amp; {\cdots} &amp; {w^{2(n-1)}} \\
+{\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \\
+{1} &amp; {w^{n-1}} &amp; {w^{2(n-1)}} &amp; {\cdots} &amp; {w^{(n-1)^{2}}}
+\end{array}\right]\left[\begin{array}{c}
+{x_{0}} \\
+{x_{1}} \\
+{x_{2}} \\
+{\vdots} \\
+{x_{n-1}}
+\end{array}\right]
+\]</span> 其中<span class="math inline">\(w=e^{-i2\pi / n}\)</span>，<span class="math inline">\(F\)</span>称为傅里叶矩阵，<span class="math inline">\(f_{pq}=w^{pq}\)</span>。</p>
+<p><strong>逆变换</strong>公式如下 <span class="math display">\[
+x_j=\frac1n \sum_{k=0}^{n-1} y_k e^{i2\pi kj/n}
+\]</span> 用矩阵表示为<span class="math inline">\(\mathbf{x}=F^{-1}\mathbf{y}\)</span> <span class="math display">\[
+\left[\begin{array}{c}
+{x_{0}} \\
+{x_{1}} \\
+{x_{2}} \\
+{\vdots} \\
+{x_{n-1}}
+\end{array}\right]
+=\frac{1}{n}\left[\begin{array}{ccccc}
+{1} &amp; {1} &amp; {1} &amp; {\cdots} &amp; {1} \\
+{1} &amp; {w^{-1}} &amp; {w^{-2}} &amp; {\cdots} &amp; {w^{-(n-1)}} \\
+{1} &amp; {w^{-2}} &amp; {w^{-4}} &amp; {\cdots} &amp; {w^{-2(n-1)}} \\
+{\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \\
+{1} &amp; {w^{-(n-1)}} &amp; {w^{-2(n-1)}} &amp; {\cdots} &amp; {w^{-(n-1)^{2}}}
+\end{array}\right]
+\left[\begin{array}{c}
+{y_{0}} \\
+{y_{1}} \\
+{y_{2}} \\
+{\vdots} \\
+{y_{n-1}}
+\end{array}\right]
+\]</span> 离散傅里叶变换有如下<strong>卷积性质</strong>，即两个函数在时域卷积，相当于频域哈达马乘积（对应位置相乘） <span class="math display">\[
+F(\mathbf{x} * \mathbf{h})=(F \hat{\mathbf{x}}) \circ(F \hat{\mathbf{h}})
+\]</span> 其中<span class="math inline">\(\mathbf{\hat x}\)</span>和<span class="math inline">\(\mathbf{\hat h}\)</span>是增广向量 <span class="math display">\[
+\hat{\mathbf{x}}=\left[\begin{array}{c}
+{x_{0}} \\
+{\vdots} \\
+{x_{n-1}} \\
+{0} \\
+{\vdots} \\
+{0}
+\end{array}\right]_{2 n \times 1} \quad, \quad \hat{\mathbf{h}}=\left[\begin{array}{c}
+{h_{0}} \\
+{\vdots} \\
+{h_{n-1}} \\
+{0} \\
+{\vdots} \\
+{0}
+\end{array}\right]_{2 n \times 1}
+\]</span> 这里的傅里叶矩阵是 <span class="math display">\[
+F=\left[\begin{array}{ccccc}
+{1} &amp; {1} &amp; {1} &amp; {\cdots} &amp; {1} \\
+{1} &amp; {w} &amp; {w^{2}} &amp; {\cdots} &amp; {w^{2 n-1}} \\
+{1} &amp; {w^{2}} &amp; {w^{4}} &amp; {\cdots} &amp; {w^{2(2 n-1)}} \\
+{\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \\
+{1} &amp; {w^{2 n-1}} &amp; {w^{2(2 n-1)}} &amp; {\cdots} &amp; {w^{(2 n-1)^{2}}}
+\end{array}\right]
+\]</span> <span class="math inline">\(\mathbf{x}\)</span>和<span class="math inline">\(\mathbf{h}\)</span>都是长度为<span class="math inline">\(n\)</span>的向量，而卷积<span class="math inline">\(\mathbf{x}*\mathbf{h}\)</span>长度为<span class="math inline">\(2n\)</span>，本来应该是<span class="math inline">\(2n-1\)</span>，最后填一个0凑成<span class="math inline">\(2n\)</span>。</p>
+<p>上述都是结论，相关证明可以参考文末教材，或者与离散傅里叶变换有关的参考资料。</p>
+<p>规律总结（注意到这个结论也满足傅里叶变换对称性）</p>
+<ul>
+<li>时域连续、非周期，则频域也连续、非周期</li>
+<li>时域离散、周期，则频域也离散、周期</li>
+<li>时域连续、周期，则频域离散、非周期</li>
+<li>时域离散、非周期，则频域连续、周期</li>
+<li>规律：时域周期性对应频域离散型，时域离散型对应频域周期性
+<ul>
+<li>时域采样等效于频域的周期延拓</li>
+<li>时域与频域的对偶性</li>
+</ul></li>
+</ul>
+<p>本节提到的离散傅里叶变换(DFT)中，时域和频域都是离散周期的。另外，经常被提及的还有离散时间傅里叶变换(DTFT)，这是对离散非周期函数的傅里叶变换。研究离散傅里叶变换是因为，连续的傅里叶变换无法被机器操作，如果将<span class="math inline">\(f(x)\)</span>的值域看做一个向量，则它有无穷多个取值，计算机无法处理，因此我们可以对时域采样，用得到的离散值组成向量作为输入，对一个非周期函数采样得到离散值，对应频域将是连续的周期函数，因此DTFT无法处理连续的频域，所以要对频域再采样，这时就变成了DFT，时域和频域都是离散的周期函数，DFT是计算机可以处理的。傅里叶级数、傅里叶变换、离散时间傅里叶变换更多地用于理论分析，离散傅里叶变换则在实践中有最重要的地位。另一个经常被提到的是快速傅里叶变换(FFT)，这其实就是DFT的加速计算版本，在计算上面那个矩阵相乘时，通过分块等方式加快计算速度。</p>
+<p>直观理解为什么离散周期傅里叶只需要<span class="math inline">\(n\)</span>项加和而不是无穷项：因为当自变量只能取整数时，基也是周期的，因此基的数量是有限的。</p>
+<h2 id="傅里叶变换在图像处理中的应用">傅里叶变换在图像处理中的应用</h2>
+<p>图像的频域有物理意义，因此可以通过操作频域对图像进行处理。一般来说，高频信号表示图像细节，低频信号表示图像整体。</p>
+<ul>
+<li>边缘是图像高频分量集中的部分，因此可以通过添加高频分量对图像进行边缘增强、通过提取边缘分量来提取边缘信息。</li>
+<li>不同纹理也对应不同频率，因此也可以针对特定的频率来处理相应纹理。</li>
+<li>噪声一般对应高频信号，因此也可以通过将图像变换到频域来实现图像降噪。</li>
+<li>JPEG有损压缩技术，就是通过离散傅里叶变换，然后在频域过滤来实现的压缩</li>
+</ul>
+<p>图像是二维离散数据，因此下面我们首先介绍二维离散傅里叶变换，然后介绍傅里叶变换在图像降噪和图片压缩上的应用。</p>
+<h3 id="二维离散傅里叶变换">二维离散傅里叶变换</h3>
+<p>对一个<span class="math inline">\(M\times N\)</span>的图像数组，二维离散傅里叶变换如下 <span class="math display">\[
+F(u, v)=\frac{1}{\sqrt{M N}} \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x, y) \exp \left[-i 2 \pi\left(\frac{u x}{M}+\frac{v y}{N}\right)\right]
+\]</span> 其中<span class="math inline">\(u=0, 1, \cdots, M-1, v=0,1,\cdots, N-1\)</span>。逆变换为 <span class="math display">\[
+f(x, y)=\frac{1}{\sqrt{M N}} \sum_{x=0}^{M-1} \sum_{y=0}^{N-1}F(u, v) \exp \left[i 2 \pi\left(\frac{u x}{M}+\frac{v y}{N}\right)\right]
+\]</span> 其中<span class="math inline">\(x=0, 1, \cdots, M-1, y=0,1,\cdots, N-1\)</span>。</p>
+<p>当<span class="math inline">\(M=N\)</span>时，二维离散傅里叶变换公式变为 <span class="math display">\[
+F(u, v)=\frac{1}{N} \sum_{x=0}^{N-1} \sum_{y=0}^{N-1} f(x, y) \exp \left[-i 2 \pi\left(\frac{u x}{N}+\frac{v y}{N}\right)\right]
+\]</span> 逆变换公式为 <span class="math display">\[
+f(x, y)=\frac{1}{N} \sum_{x=0}^{N-1} \sum_{y=0}^{N-1}F(u, v) \exp \left[i 2 \pi\left(\frac{u x}{N}+\frac{v y}{N}\right)\right]
+\]</span> 注意到<span class="math inline">\(F(u, v)\)</span>是复数，令<span class="math inline">\(R(u, v)\)</span>和<span class="math inline">\(I(u, v)\)</span>分别是它的实部和虚部；则幅度谱/傅里叶频谱为 <span class="math display">\[
+|F(u, v)|=\sqrt{R^2(u, v)+I^2(u, v)}
+\]</span> 相位谱 <span class="math display">\[
+\phi(u, v)=\arctan \frac{I(u, v)}{R(u, v)}
+\]</span> 功率谱/能量谱 <span class="math display">\[
+P(u, v)=|F(u, v)|^2 =R^2(u, v)+I^2(u, v)
+\]</span> 上述公式是离散周期函数的傅里叶变换，对于其他情况，可以参考<a href="http://fourier.eng.hmc.edu/e101/lectures/Image_Processing/node6.html" target="_blank" rel="noopener">这篇文章</a></p>
+<p>考虑单通道图像，数据就是一个二维矩阵，<span class="math inline">\(f(x, y)\)</span>就是<span class="math inline">\((x, y)\)</span>位置的像素值，可以进行二维离散傅里叶变换得到频域表示<span class="math inline">\(F(u, v)\)</span>，中心化后计算幅度谱<span class="math inline">\(|F(u, v)|\)</span>，也是一个二维矩阵，取对数后可以画出频谱图。使用python-numpy实现的代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># img = np.mgrid[:5, :5][0]</span></span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)</span><br><span class="line">fimg = np.log(np.abs(fshift))  <span class="comment"># abs 可对复数求模</span></span><br><span class="line"></span><br><span class="line">plt.subplot (<span class="number">121</span>)</span><br><span class="line">plt.imshow(img, <span class="string">'gray'</span>)</span><br><span class="line">plt.title (<span class="string">'Origin image'</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot (<span class="number">122</span>)</span><br><span class="line">plt.imshow(fimg, <span class="string">'gray'</span>)</span><br><span class="line">plt.title (<span class="string">'After Fourier'</span>)</span><br></pre></td></tr></table></figure>
+<p>从上面代码也可以看出，实际应用时使用的是快速傅里叶变换，主要思想是用两个连续的一维傅里叶变换来实现二维傅里叶变换或逆变换。</p>
+<h3 id="图像去噪">图像去噪</h3>
+<p>通过傅里叶变换进行图像降噪，首先要得到图像在频域中的表示。通过上述方式得到频谱图，可以进行一些滤波，如去掉高频信号、或其他转换函数，再逆变换回图像，输出结果就是降噪后的图像。注意这里只是在振幅图中去掉高频信号，而振幅图中没有包含图像的全部信息，所以在逆变换时还要结合相位谱的信息才能还原图像。</p>
+<p>一般通过傅里叶变换只能去掉一些有规则的花纹条纹之类的噪声，去噪后图像也会变得更加模糊；对于不规则的噪声，傅里叶变换无能为力。去噪效果如下所示（图片来自<a href="https://www.zhihu.com/question/20460630/answer/105888045" target="_blank" rel="noopener">凌晨晓骥的知乎回答</a>）</p>
+<img src="http://static.wzbtech.com/static/images/fourier_image.png">
+<p>振幅图中，越靠近中心位置频率越低，越亮表示振幅越大。</p>
+<h3 id="图像压缩">图像压缩</h3>
+<p>考虑到数据传输效率和数据存储成本，经常需要使用压缩算法对数据进行压缩。数据压缩算法可以分为有损压缩和无损压缩，通过无损压缩技术恢复的数据文件与原文件相同，应用于目标文件为可执行代码、列表号码等的情况；但有时数据无需保持理想状态，因为现实世界中测量的很多信号本身就带有噪声，有损方法压缩后损失信息就相当于附加了一些噪声；相比于无损压缩，有损压缩可以将数据压缩到更小。</p>
+<p>JPEG图像编码是一种变换压缩方式，属于有损压缩，现已成为行业标准的编码方法。它的主要思想是，将图像划分成多个<span class="math inline">\(8*8\)</span>的像素组，每一组分别进行傅里叶（或其他）变换，高频信号相对来说没那么重要，因此就可以将一些高频信号置0。具体操作更为复杂，可以参考《实用数字信号处理》一书。</p>
+<p>图像可以通过变换的方式进行压缩，是因为频域相对于时域更加稀疏。图像中大部分都是连续平滑的，这部分对应低频，边缘这些变化较大的地方则对应高频。这也很好理解，就想象一个连续的函数要分解成多个正弦余弦图像的叠加，如果这个函数非常平滑，那只要用周期较大的函数就能很好地拟合；但如果这个函数存在剧烈波动，那就需要用周期较小的函数来拟合，而周期较小就对应频率较高。</p>
+<p>其实图像压缩只要变换到稀疏域即可，处理频域以外，小波域、PCA域等都是可以的，而不同的域就对应了不同的变换，如小波变换、PCA变换等。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>教材
+<ul>
+<li>偏理论推导、理解
+<ul>
+<li>《高等数学》理工类第四版下册，吴赣昌主编</li>
+<li>《深入浅出通信原理》，作者陈爱军</li>
+<li>《信号与系统》，作者奥本海姆</li>
+<li>《小波与傅里叶分析基础》，作者博格斯</li>
+</ul></li>
+<li>偏应用
+<ul>
+<li>《实用数字信号处理》，作者Steven W. Smith</li>
+<li>《深入浅出数字信号处理》，作者江志红</li>
+</ul></li>
+</ul></li>
+<li>网页
+<ul>
+<li>入门系列
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/19763358" target="_blank" rel="noopener">知乎文章：傅里叶分析之掐死教程（完整版）更新于2014.06.06</a></li>
+<li><a href="https://www.zhihu.com/question/19714540" target="_blank" rel="noopener">知乎：如何理解傅里叶变换公式？</a></li>
+<li><a href="https://www.matongxue.com/columns/6/" target="_blank" rel="noopener">马同学的系列文章</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/38097040" target="_blank" rel="noopener">知乎文章：傅里叶变换理解上的几个难点</a></li>
+<li><a href="https://www.youtube.com/watch?v=1JnayXHhjlg" target="_blank" rel="noopener">youtube: Introduction to the Fourier Transform</a></li>
+</ul></li>
+<li>用套圆画图
+<ul>
+<li><a href="https://www.youtube.com/watch?v=r6sGWTCMz2k" target="_blank" rel="noopener">3blue1brown: But what is a Fourier series? From heat flow to circle drawings | DE4</a></li>
+<li><a href="http://www.jezzamon.com/fourier/index.html" target="_blank" rel="noopener">An Interactive Introduction to Fourier Transforms</a></li>
+</ul></li>
+<li>离散傅里叶变换
+<ul>
+<li><a href="https://ccjou.wordpress.com/專題探究/傅立葉分析專題/" target="_blank" rel="noopener">线代启示录系列文章</a></li>
+<li><a href="https://www.cnblogs.com/BitArt/archive/2012/11/24/2786390.html" target="_blank" rel="noopener">一幅图弄清DFT与DTFT,DFS的关系</a></li>
+<li><a href="https://www.zhihu.com/question/21314374" target="_blank" rel="noopener">知乎：如何通俗地解释什么是离散傅里叶变换？</a></li>
+</ul></li>
+<li>傅里叶变换的应用
+<ul>
+<li><a href="http://fourier.eng.hmc.edu/e101/lectures/Image_Processing/node6.html" target="_blank" rel="noopener">二维傅里叶变换</a></li>
+<li><a href="https://www.zhihu.com/question/20460630" target="_blank" rel="noopener">知乎：傅里叶变换有哪些具体的应用？</a></li>
+<li><a href="https://www.zhihu.com/question/39689253" target="_blank" rel="noopener">知乎：图像压缩中，为什么要将图像从空间域转换到频率域？</a></li>
+<li><a href="https://sighingnow.github.io/math/image_compress.html" target="_blank" rel="noopener">使用FFT和DCT进行图片压缩</a></li>
+<li>论文
+<ul>
+<li>张勇.傅里叶变换在数字图像处理中的应用[J].廊坊师范学院学报(自然科学版),2015,15(03):25-27.</li>
+<li>董健,邓国辉,李金武.基于二维傅里叶变换实现图像变换的研究[J].福建电脑,2015,31(09):102-103.</li>
+<li>刘七华. 高光谱图像中条带噪声去除方法研究[D].电子科技大学,2012.</li>
+<li>郭士龙.巧用傅里叶变换优化摄影图像[J].电脑与信息技术,2018,26(04):44-45.</li>
+<li>赵士林. 基于傅里叶变换域的图像质量客观评价方法的研究[D].山东财经大学,2014.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/manual/" rel="tag"># 速查手册</a>
+          
+            <a href="/tags/傅里叶分析/" rel="tag"># 傅里叶分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/tech/fourier1.html" rel="next" title="傅里叶级数与傅里叶变换（一）">
+                <i class="fa fa-chevron-left"></i> 傅里叶级数与傅里叶变换（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">时间轴</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="诗文摘录">诗文摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="速查手册">速查手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="资源收集">资源收集</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换的性质"><span class="nav-number">1.</span> <span class="nav-text">傅里叶变换的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单性质"><span class="nav-number">1.1.</span> <span class="nav-text">简单性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称性"><span class="nav-number">1.2.</span> <span class="nav-text">对称性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积性质"><span class="nav-number">1.3.</span> <span class="nav-text">卷积性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散傅里叶变换"><span class="nav-number">2.</span> <span class="nav-text">离散傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换在图像处理中的应用"><span class="nav-number">3.</span> <span class="nav-text">傅里叶变换在图像处理中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维离散傅里叶变换"><span class="nav-number">3.1.</span> <span class="nav-text">二维离散傅里叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像去噪"><span class="nav-number">3.2.</span> <span class="nav-text">图像去噪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像压缩"><span class="nav-number">3.3.</span> <span class="nav-text">图像压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miit.gov.cn/">&nbsp;闽ICP备18026322号-1</a>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

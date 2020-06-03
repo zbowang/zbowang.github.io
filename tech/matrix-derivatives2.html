@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学,线性代数,速查手册," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文承接上一篇。 链式法则 当目标函数有层级结构，用链式法则可能会比较方便。如\(l=f(Y), Y=g(X)\)，我们可以分别求\(\frac{\partial l}{\partial Y},\frac{\partial Y}{\partial X}\)，再用乘积之类的方式连接起来。但个人并不推荐使用链式法则，原因如下  注意到，我们要算\(\frac{\partial Y}{\part">
+<meta name="keywords" content="数学,线性代数,速查手册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矩阵求导总结（二）">
+<meta property="og:url" content="http://yoursite.com/tech/matrix-derivatives2.html">
+<meta property="og:site_name" content="My World">
+<meta property="og:description" content="本文承接上一篇。 链式法则 当目标函数有层级结构，用链式法则可能会比较方便。如\(l=f(Y), Y=g(X)\)，我们可以分别求\(\frac{\partial l}{\partial Y},\frac{\partial Y}{\partial X}\)，再用乘积之类的方式连接起来。但个人并不推荐使用链式法则，原因如下  注意到，我们要算\(\frac{\partial Y}{\part">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-03T15:43:57.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矩阵求导总结（二）">
+<meta name="twitter:description" content="本文承接上一篇。 链式法则 当目标函数有层级结构，用链式法则可能会比较方便。如\(l=f(Y), Y=g(X)\)，我们可以分别求\(\frac{\partial l}{\partial Y},\frac{\partial Y}{\partial X}\)，再用乘积之类的方式连接起来。但个人并不推荐使用链式法则，原因如下  注意到，我们要算\(\frac{\partial Y}{\part">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/tech/matrix-derivatives2.html"/>
+
+
+
+
+
+  <title>矩阵求导总结（二） | My World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning & Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/tech/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            
+              <b>技术分享</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活随笔">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            
+              <b>生活随笔</b><br/>
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-诗文摘录">
+          <a href="/tags/excerpt/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-copy"></i> <br />
+            
+            
+              诗文摘录
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-速查手册">
+          <a href="/tags/manual/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-align-justify"></i> <br />
+            
+            
+              速查手册
+            
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-资源收集">
+          <a href="/tags/collections/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-battery-half"></i> <br />
+            
+            
+              资源收集
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/matrix-derivatives2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王智博">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">矩阵求导总结（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T00:00:00+08:00">
+                2020-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文承接<a href="/tech/matrix-derivatives1.html">上一篇</a>。</p>
+<h2 id="链式法则">链式法则</h2>
+<p>当目标函数有层级结构，用链式法则可能会比较方便。如<span class="math inline">\(l=f(Y), Y=g(X)\)</span>，我们可以分别求<span class="math inline">\(\frac{\partial l}{\partial Y},\frac{\partial Y}{\partial X}\)</span>，再用乘积之类的方式连接起来。但个人并不推荐使用链式法则，原因如下</p>
+<ul>
+<li>注意到，我们要算<span class="math inline">\(\frac{\partial Y}{\partial X}\)</span>，这可能是矩阵对矩阵求导，或者向量对向量求导，这经常会将问题变得更加复杂</li>
+<li>链式法则公式受求导布局影响，容易记错</li>
+<li>即使有许多层级结构，也可以不用链式法则完成，我会在例题中给出方法</li>
+</ul>
+<h3 id="链式法则介绍">链式法则介绍</h3>
+<p>本节我们来介绍各种情况下的链式法则</p>
+<p><strong>1、向量对向量求导。</strong>比如三个向量存在这样的依赖关系<span class="math inline">\(\mathbf{x}\rightarrow \mathbf{y} \rightarrow\mathbf{z}\)</span>，三个向量长度分别为<span class="math inline">\(a, b, c\)</span>有链式法则如下</p>
+<ul>
+<li>分子布局：<span class="math inline">\(\frac{\partial \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{z}}{\partial \mathbf{y}}\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\)</span>，注意到维度关系：<span class="math inline">\((c\times a) : (c\times b)\times (b\times a)\)</span></li>
+<li>分母布局：<span class="math inline">\(\frac{\partial \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\frac{\partial \mathbf{z}}{\partial \mathbf{y}}\)</span>，注意到维度关系：<span class="math inline">\((a\times c) : (a\times b)\times (b\times c)\)</span></li>
+</ul>
+<p>这两个公式只适用于三个都是向量的情况。可以发现，两种布局方式的公式是不同的，分子布局形式更符合我们对链式法则公式的认知，但兼容性不好，就比如将<span class="math inline">\(\mathbf{z}\)</span>退化成标量，此时标量对向量求导一般用的是分母布局，而向量对向量求导则用分子布局，布局方式混用导致混乱不说，链式法则公式也会改变，详情可见下一部分。</p>
+<p><strong>2、标量对向量求导</strong></p>
+<ul>
+<li>分子布局：<span class="math inline">\(\frac{\partial z}{\partial \mathbf{x}}=\left(\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\right)^T \frac{\partial z}{\partial \mathbf{y}}\)</span>，注意到维度关系：<span class="math inline">\((a\times 1) : (a\times b)\times (b\times 1)\)</span></li>
+<li>分母布局：<span class="math inline">\(\frac{\partial z}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\frac{\partial z}{\partial \mathbf{y}}\)</span>，注意到维度关系：<span class="math inline">\((a\times 1) : (a\times b)\times (b\times 1)\)</span></li>
+</ul>
+<p>可以看到，使用分母布局时，公式比较统一，但顺序不符合我们对链式法则公式的认知，不太好记，大概就是从右往左写，顺序完全反过来。</p>
+<p>如果有更多变量，如<span class="math inline">\(\mathbf{y}_1\rightarrow \mathbf{y}_2 \rightarrow\cdots\rightarrow \mathbf{y}_n\rightarrow z\)</span>，则分母布局的链式法则公式如下 <span class="math display">\[
+\frac{\partial z}{\partial \mathbf{y}_1}
+=\frac{\partial \mathbf{y}_2}{\partial \mathbf{y}_1}
+\frac{\partial \mathbf{y}_3}{\partial \mathbf{y}_2}
+\cdots
+\frac{\partial \mathbf{y}_n}{\partial \mathbf{y}_{n-1}}
+\frac{\partial z}{\partial \mathbf{y}_n}\tag{1}
+\]</span> <strong>3、标量对矩阵求导。</strong>不太方便写链式法则，因为其中进行了向量化改变了矩阵的结构。</p>
+<p>假设依赖关系为<span class="math inline">\(X\rightarrow Y \rightarrow z\)</span>，两个矩阵维度分别为<span class="math inline">\(m\times n, p\times q\)</span>，那么导数的维度如下（这里只考虑分母布局）</p>
+<p><span class="math display">\[
+\frac{\partial z}{\partial X}: m\times n\qquad
+\frac{\partial z}{\partial Y}: p\times q\qquad
+\frac{\partial Y}{\partial X}: mn\times pq
+\]</span></p>
+<p>从矩阵维度来看，三者关系不会再是<span class="math inline">\(\frac{\partial z}{\partial X}=\frac{\partial Y}{\partial X}\frac{\partial z}{\partial Y}\)</span>，但可能是<span class="math inline">\(\mathrm{vec}(\frac{\partial z}{\partial X})=\frac{\partial Y}{\partial X}\mathrm{vec}(\frac{\partial z}{\partial Y})\)</span>，这个式子我没有查到资料证实，不过我试过几个例子都是对的，从下面的例题中可以看出。不过就算它是对的，计算过程也过于繁琐了。</p>
+<p><strong>4、总结</strong>：我个人并不推荐使用链式法则，如果要用，则只推荐公式<span class="math inline">\((1)\)</span>这个用法，使用分母布局，只涉及向量；但只用公式<span class="math inline">\((1)\)</span>则适用范围太小。下面我们来看两个例题，我会在例题中给出我推荐使用的方法。</p>
+<h3 id="例题">例题</h3>
+<p><strong>1、标量对向量求导。</strong>已知<span class="math inline">\(l=\mathbf{z}^T\mathbf{z}, \quad \mathbf{z} = A\mathbf{x}\)</span>，求<span class="math inline">\(\frac{\partial l}{\partial \mathbf{x}}\)</span>。</p>
+<ul>
+<li>使用链式法则。由于</li>
+</ul>
+<p><span class="math display">\[
+\frac{\partial l}{\partial \mathbf{x}} = 
+\frac{\partial \mathbf{z}}{\partial \mathbf{x}}
+\frac{\partial l}{\partial \mathbf{z}}
+\]</span></p>
+<p>所以接下来我们需要分别求出<span class="math inline">\(\frac{\partial \mathbf{z}}{\partial \mathbf{x}}, \frac{\partial l}{\partial \mathbf{z}}\)</span>。 <span class="math display">\[
+\mathrm{d}l = \mathrm{tr}[\mathrm{d}(\mathbf{z}^T\mathbf{z})]=
+\mathrm{tr}[\mathrm{d}\mathbf{z}^T\mathbf{z}+\mathbf{z}^T\mathrm{d}\mathbf{z}]=
+\mathrm{tr}[2\mathbf{z}^T\mathrm{d}\mathbf{z}]\\
+\mathrm{d}\mathbf{z}=\mathrm{d}(A\mathbf{x})=A\mathrm{d}\mathbf{x}
+\]</span> 所以 <span class="math display">\[
+\frac{\partial l}{\partial \mathbf{z}}=2\mathbf{z}, \quad
+\frac{\partial \mathbf{z}}{\partial \mathbf{x}}=A^T
+\]</span> 所以 <span class="math display">\[
+\frac{\partial l}{\partial \mathbf{x}} = 
+\frac{\partial \mathbf{z}}{\partial \mathbf{x}}
+\frac{\partial l}{\partial \mathbf{z}}=2A^T\mathbf{z}=2A^TA\mathbf{x}
+\]</span></p>
+<ul>
+<li>只算微分法（推荐）。首先对<span class="math inline">\(l\)</span>进行微分可得</li>
+</ul>
+<p><span class="math display">\[
+\mathrm{d}l = \mathrm{tr}[\mathrm{d}(\mathbf{z}^T\mathbf{z})]=
+\mathrm{tr}[\mathrm{d}\mathbf{z}^T\mathbf{z}+\mathbf{z}^T\mathrm{d}\mathbf{z}]=
+\mathrm{tr}[2\mathbf{z}^T\mathrm{d}\mathbf{z}]\tag{2}
+\]</span> 这里发现式子中带有<span class="math inline">\(\mathrm{d}\mathbf{z}\)</span>，于是我们把它求出来 <span class="math display">\[
+\mathrm{d}\mathbf{z}=\mathrm{d}(A\mathbf{x})=A\mathrm{d}\mathbf{x}
+\]</span> 将<span class="math inline">\(\mathrm{d}\mathbf{z}\)</span>替换入式<span class="math inline">\((2)\)</span>可得 <span class="math display">\[
+\mathrm{d}l =\mathrm{tr}[2\mathbf{z}^T\mathrm{d}\mathbf{z}]
+=\mathrm{tr}[2\mathbf{z}^TA\mathrm{d}\mathbf{x}]
+\]</span> 于是可以直接写出 <span class="math display">\[
+\frac{\partial l}{\partial \mathbf{x}} = 2A^T\mathbf{z}=2A^TA\mathbf{x}
+\]</span></p>
+<ul>
+<li><strong>总结</strong>：对比两种方法，要算的东西都差不多，都要对给出的两个式子取微分，差别就在于，第二种方法取完微分是直接带入使用，而不是求出中间步骤的导数。这种方法不需要额外记什么东西，也不会增加计算量。在“综合例题-神经网络”一节中，我们可以看到这种方法在复杂案例中的应用。</li>
+</ul>
+<p><strong>2、标量对矩阵求导。</strong>已知<span class="math inline">\(l=\mathbf{z}^T\mathbf{z}, \quad \mathbf{z} = X\boldsymbol{\beta}\)</span>，求<span class="math inline">\(\frac{\partial l}{\partial X}\)</span>。</p>
+<ul>
+<li>使用链式法则。由于</li>
+</ul>
+<p><span class="math display">\[
+\mathrm{d}l = \mathrm{tr}[\mathrm{d}(\mathbf{z}^T\mathbf{z})]=
+\mathrm{tr}[\mathrm{d}\mathbf{z}^T\mathbf{z}+\mathbf{z}^T\mathrm{d}\mathbf{z}]=
+\mathrm{tr}[2\mathbf{z}^T\mathrm{d}\mathbf{z}]\\
+\mathrm{d}\mathbf{z}=\mathrm{d}(X\boldsymbol{\beta})=
+\mathrm{d}X\boldsymbol{\beta}
+\]</span></p>
+<p>我们可以写出 <span class="math display">\[
+\frac{\partial l}{\partial \mathbf{z}}=2\mathbf{z}\qquad
+\frac{\partial \mathbf{z}}{\partial X}=\boldsymbol{\beta}\otimes I_n
+\]</span> 列出各个矩阵维度如下 <span class="math display">\[
+X: n\times p, \quad \boldsymbol{\beta}: p\times 1, \quad \mathbf{z}:n\times 1\\
+\frac{\partial l}{\partial \mathbf{z}}:n\times 1, \quad 
+\frac{\partial \mathbf{z}}{\partial X}: np\times n
+\]</span> 则 <span class="math display">\[
+\frac{\partial l}{\partial X} =
+\frac{\partial \mathbf{z}}{\partial X}\frac{\partial l}{\partial \mathbf{z}}=
+2[\boldsymbol{\beta}\otimes I_n]\mathbf{z}\qquad (\frac{\partial l}{\partial X}:np\times 1)
+\]</span> 这个结果如果做一个向量化的逆，可以得到 <span class="math display">\[
+\frac{\partial l}{\partial X}=2\mathbf{z}\boldsymbol{\beta}^T=
+2X\boldsymbol{\beta}\boldsymbol{\beta}^T \qquad (\frac{\partial l}{\partial X}:n\times p)
+\]</span> 注：可以看到这种方法比较麻烦，要对矩阵的结构进行各种调整。这里<span class="math inline">\(\mathbf{z}\)</span>是个向量还好一点，如果是个矩阵，两个导数都不能直接相乘，如<span class="math inline">\(z=f(Y), Y=AX+B\)</span>。这里多说一句，这个式子中<span class="math inline">\(Y\)</span>和<span class="math inline">\(X\)</span>的特定关系下，有<span class="math inline">\(\frac{\partial z}{\partial X}=A^{T} \frac{\partial z}{\partial Y}\)</span>，这个结果可以用上面的链式法则推导出（但很繁琐），也可以用下面的只算微分方法非常容易地得到；所以掌握下面这种方法，是不需要记这个特定关系的。</p>
+<ul>
+<li>只算微分法（推荐）。首先对<span class="math inline">\(l\)</span>进行微分可得</li>
+</ul>
+<p><span class="math display">\[
+\mathrm{d}l = \mathrm{tr}[\mathrm{d}(\mathbf{z}^T\mathbf{z})]=
+\mathrm{tr}[\mathrm{d}\mathbf{z}^T\mathbf{z}+\mathbf{z}^T\mathrm{d}\mathbf{z}]=
+\mathrm{tr}[2\mathbf{z}^T\mathrm{d}\mathbf{z}]\tag{3}
+\]</span></p>
+<p>然后计算<span class="math inline">\(\mathrm{d}\mathbf{z}\)</span>如下</p>
+<p><span class="math display">\[
+\mathrm{d}\mathbf{z}=\mathrm{d}(X\boldsymbol{\beta})=
+\mathrm{d}X\boldsymbol{\beta}
+\]</span></p>
+<p>将微分结果带入<span class="math inline">\((3)\)</span>式可得 <span class="math display">\[
+\mathrm{d}l = \mathrm{tr}[2\mathbf{z}^T\mathrm{d}\mathbf{z}]=
+\mathrm{tr}[2\mathbf{z}^T\mathrm{d}X\boldsymbol{\beta}]=
+\mathrm{tr}[2\boldsymbol{\beta}\mathbf{z}^T\mathrm{d}X]
+\]</span> 所以</p>
+<p><span class="math display">\[
+\frac{\partial l}{\partial X}=2\mathbf{z}\boldsymbol{\beta}^T=
+2X\boldsymbol{\beta}\boldsymbol{\beta}^T
+\]</span></p>
+<h2 id="综合例题">综合例题</h2>
+<h3 id="logistic二分类">logistic二分类</h3>
+<p>对数似然函数如下</p>
+<p><span class="math display">\[
+\begin{align}
+l &amp;= \sum_{i=1}^n y_i \log p_i + (1-y_i)\log(1-p_i)\\
+&amp;=\sum_{i=1}^n y_i \log \frac{e^{\mathbf{x}_i^T \boldsymbol{\beta}}}{1+e^{\mathbf{x}_i^T \boldsymbol{\beta}}} + (1-y_i)\log \frac{1}{1+e^{\mathbf{x}_i^T \boldsymbol{\beta}}} \\
+&amp;=\sum_{i=1}^n y_i\mathbf{x}_i^T \boldsymbol{\beta} - \log(1+\exp(\mathbf{x}_i^T \boldsymbol{\beta}))  \\
+&amp;=\mathbf{y}^T X\boldsymbol{\beta}-\mathbf{1}^T \log(1+\exp(X \boldsymbol{\beta})) 
+\end{align}
+\]</span> 最后一步整理成了矩阵形式，去掉了前面的求和符号，其实也可以带着求和符号算导数，最后再将导数整理成矩阵形式；整理成矩阵的技巧，是关注目标的维度、各个矩阵向量的维度。微分如下 <span class="math display">\[
+\begin{align}
+\mathrm{d}l
+&amp;=\mathbf{tr}\left[\mathbf{y}^T X\mathrm{d}\boldsymbol{\beta}-
+\mathbf{1}^T \left(\frac{1}{1+\exp(X \boldsymbol{\beta})} \odot \mathrm{d}\exp(X\boldsymbol{\beta})\right)
+\right] \\
+&amp;=\mathbf{tr}\left[\mathbf{y}^T X\mathrm{d}\boldsymbol{\beta}-
+\left(\mathbf{1}^T\odot \frac{1}{1+\exp(X \boldsymbol{\beta})}\right)^T\mathrm{d}\exp(X\boldsymbol{\beta})
+\right] \\
+&amp;=\mathbf{tr}\left[\mathbf{y}^T X\mathrm{d}\boldsymbol{\beta}-
+\left(\frac{1}{1+\exp(X \boldsymbol{\beta})}\right)^T
+\left(\exp(X\boldsymbol{\beta})\odot X\mathrm{d}\boldsymbol{\beta}\right)
+\right] \\
+&amp;=\mathbf{tr}\left[\mathbf{y}^T X\mathrm{d}\boldsymbol{\beta}-
+\left[\left(\frac{1}{1+\exp(X \boldsymbol{\beta})}\right)\odot \exp(X\boldsymbol{\beta})\right]^T
+X\mathrm{d}\boldsymbol{\beta}
+\right] \\
+&amp;=\mathbf{tr}\left[\mathbf{y}^T X\mathrm{d}\boldsymbol{\beta}-
+\sigma(X\boldsymbol{\beta})^T
+X\mathrm{d}\boldsymbol{\beta}
+\right] \\
+&amp;=\mathbf{tr}\left[(\mathbf{y}^T-
+\sigma(X\boldsymbol{\beta})^T)
+X\mathrm{d}\boldsymbol{\beta}
+\right]
+\end{align}
+\]</span> 因此<span class="math inline">\(\nabla_\boldsymbol{\beta} l = X^T(\mathbf{y}-\sigma(X\boldsymbol{\beta}))\)</span>。其中<span class="math inline">\(\sigma(x)=\frac{e^x}{1+e^x}\)</span>。</p>
+<p>求<span class="math inline">\(\nabla^2_\boldsymbol{\beta} l\)</span>的过程是向量对向量求导，两端同时取微分 <span class="math display">\[
+\begin{align}
+\mathrm{d}\nabla_\boldsymbol{\beta} l 
+&amp;= -X^T\mathrm{d}\sigma(X\boldsymbol{\beta})\\
+&amp;= -X^T[\sigma&#39;(X\boldsymbol{\beta})\odot X\mathrm{d}\boldsymbol{\beta}]\\
+&amp;= -X^T\mathrm{diag}[\sigma&#39;(X\boldsymbol{\beta})] X\mathrm{d}\boldsymbol{\beta}\\
+\end{align}
+\]</span> 因此<span class="math inline">\(\nabla^2_\boldsymbol{\beta} l=-X^T\mathrm{diag}[\sigma&#39;(X\boldsymbol{\beta})] X\)</span>。如果保留样本求和符号，可以写成 <span class="math display">\[
+\nabla^2_\boldsymbol{\beta} l=
+\frac{\partial^2 l(\boldsymbol{\beta})}{\partial \boldsymbol{\beta} \partial \boldsymbol{\beta}^T}
+=-\sum_{i=1}^n \mathbf{x}_i\mathbf{x}_i^T 
+\sigma(\mathbf{x}_i^T\boldsymbol{\beta})(1-\sigma(\mathbf{x}_i^T\boldsymbol{\beta}))
+\]</span></p>
+<h3 id="softmax多分类">softmax多分类</h3>
+<p>首先定义变量维度维度为 <span class="math display">\[
+\begin{align}
+&amp;Y: n\times c, \quad \mathbf{y}_i: c\times 1\\
+&amp;X: n\times d, \quad \mathbf{x}_i: d\times 1\\
+&amp;W: d\times c\\
+&amp;\mathbf{1}_c: c\times 1, \quad \mathbf{1}_n: n\times 1
+\end{align}
+\]</span> 对数似然函数如下 <span class="math display">\[
+\begin{align}
+l &amp;= \sum_{i=1}^n \mathbf{y}_i^T \log \frac{\exp(W^T \mathbf{x}_i)}{\mathbf{1}_c^T \exp(W^T \mathbf{x}_i)}
+&amp;(\text{注：}\log\frac{\mathbf{v}}{u}=\log(\mathbf{v})-\mathbf{1}\log(u))\\
+&amp;=\sum_{i=1}^n  \mathbf{y}_i^T W^T \mathbf{x}_i - 
+\mathbf{y}_i^T \mathbf{1}_c \log(\mathbf{1}_c^T \exp(W^T \mathbf{x}_i))
+&amp;(\text{注：}\mathbf{y}_i^T \mathbf{1}_c=1)\\
+&amp;= \sum_{i=1}^n  \mathbf{y}_i^T W^T \mathbf{x}_i - 
+\log(\mathbf{1}_c^T \exp(W^T \mathbf{x}_i))\\
+&amp;=\mathrm{tr}(XWY^T) - \mathbf{1}_n^T \log[\exp(XW)\mathbf{1}_c] 
+\end{align}
+\]</span> 最后一步整理成了矩阵形式，去掉了前面的求和符号，其实也可以带着求和符号算导数，最后再将导数整理成矩阵形式；整理成矩阵的技巧，是关注目标的维度、各个矩阵向量的维度。微分如下 <span class="math display">\[
+\begin{align}
+\mathrm{d}l &amp;= \mathrm{tr}(X\mathrm{d}WY^T)- \mathrm{tr}\left(
+\mathbf{1}_n^T \left[\frac{1}{\exp(XW)\mathbf{1}_c}\odot \mathrm{d}\exp(XW)\mathbf{1}_c \right]\right)\\
+&amp;= \mathrm{tr}(Y^TX\mathrm{d}W)-\mathrm{tr}\left(
+ \left[\mathbf{1}_n \odot\frac{1}{\exp(XW)\mathbf{1}_c}  \right]^T\mathrm{d}\exp(XW)\mathbf{1}_c\right)\\
+&amp;= \mathrm{tr}(Y^TX\mathrm{d}W)-\mathrm{tr}\left(
+ \left[\frac{1}{\exp(XW)\mathbf{1}_c}  \right]^T
+\left[ \exp(XW) \odot X\mathrm{d}W\right]\mathbf{1}_c\right)\\
+&amp;= \mathrm{tr}(Y^TX\mathrm{d}W)-\mathrm{tr}\left(
+ \left[\frac{1}{\exp(XW)\mathbf{1}_c}\mathbf{1}_c^T  \right]^T
+\left[ \exp(XW) \odot X\mathrm{d}W\right]\right)\\
+&amp;= \mathrm{tr}(Y^TX\mathrm{d}W)-\mathrm{tr}\left(
+ \left[\frac{1}{\exp(XW)\mathbf{1}_c}\mathbf{1}_c^T \odot\exp(XW) \right]^T
+X\mathrm{d}W\right)\\
+&amp;= \mathrm{tr}(Y^TX\mathrm{d}W)-\mathrm{tr}\left(
+\mathrm{Softmax}(XW)^T
+X\mathrm{d}W\right)\\
+&amp;= \mathrm{tr}((Y^T-\mathrm{Softmax}(XW)^T) X\mathrm{d}W)
+\end{align}
+\]</span> 因此<span class="math inline">\(\nabla_W l = X^T(Y-\mathrm{Softmax}(XW))\)</span>。其中<span class="math inline">\(\mathrm{Softmax}(XW)\)</span>是个<span class="math inline">\(n\times c\)</span>的矩阵，表示对<span class="math inline">\(XW\)</span>的每行都计算 <span class="math display">\[
+\mathrm{softmax}(\mathbf{x}) = \frac{\exp(\mathbf{x})}{\mathbf{1}^T\exp(\mathbf{x})}, \qquad (\mathbf{x}:c\times 1)
+\]</span> 如果保留样本求和符号，一阶导可以写成这样 <span class="math display">\[
+\nabla_W l = \sum_{i=1}^n \mathbf{x}_i(\mathbf{y}_i-\mathrm{softmax}(W^T\mathbf{x}_i))^T
+\]</span> 求<span class="math inline">\(\nabla^2_W l\)</span>的过程是向量对向量求导，两端同时取微分 <span class="math display">\[
+\begin{align}
+\mathrm{d}\nabla_W l 
+&amp;=-\sum_{i=1}^n \mathbf{x}_i\mathrm{d}\left[\mathrm{softmax}(W^T\mathbf{x}_i))^T\right]\\
+&amp;=-\sum_{i=1}^n \mathbf{x}_i\mathrm{d}\left[\frac{\exp(W^T\mathbf{x}_i)}{\mathbf{1}_c^T\exp(W^T\mathbf{x}_i)}\right]^T\\
+&amp;=-\sum_{i=1}^n \mathbf{x}_i\mathrm{d}\left[
+\frac{\exp(W^T\mathbf{x}_i) \odot \mathrm{d}W^T \mathbf{x}_i}{\mathbf{1}_c^T\exp(W^T\mathbf{x}_i)}-
+\frac{\exp(W^T\mathbf{x}_i)\mathbf{1}_c^T(\exp(W^T\mathbf{x}_i)\odot \mathrm{d}W^T\mathbf{x}_i)}{[\mathbf{1}_c^T\exp(W^T\mathbf{x}_i)]^2}
+\right]^T\\
+&amp;=-\sum_{i=1}^n \mathbf{x}_i\left[
+\frac{\mathrm{diag}[\exp(W^T\mathbf{x}_i)]\mathrm{d}W^T \mathbf{x}_i}{\mathbf{1}_c^T\exp(W^T\mathbf{x}_i)}-
+\frac{\exp(W^T\mathbf{x}_i)(\exp(W^T\mathbf{x}_i)^T \mathrm{d}W^T\mathbf{x}_i)}{[\mathbf{1}_c^T\exp(W^T\mathbf{x}_i)]^2}
+\right]^T\\
+&amp;=-\sum_{i=1}^n \mathbf{x}_i\mathbf{x}_i^T \mathrm{d}W\left[
+\mathrm{diag}(\mathrm{softmax}(W^T\mathbf{x}_i))-
+\mathrm{softmax}(W^T\mathbf{x}_i)\mathrm{softmax}(W^T\mathbf{x}_i)^T\right]^T\\
+&amp;=-\sum_{i=1}^n \mathbf{x}_i\mathbf{x}_i^T \mathrm{d}WD(W^T\mathbf{x}_i)^T
+\\
+\end{align}
+\]</span> 其中</p>
+<p><span class="math display">\[
+D(\mathbf{a})=\mathrm{diag}(\mathrm{softmax}(\mathbf{a}))-
+\mathrm{softmax}(\mathbf{a})\mathrm{softmax}(\mathbf{a})^T
+\]</span></p>
+<p>接下来进行向量化可得 <span class="math display">\[
+\mathrm{vec}(\mathrm{d}\nabla_W l)=-\sum_{i=1}^n (D(W^T\mathbf{x}_i)\otimes \mathbf{x}_i\mathbf{x}_i^T)\mathrm{vec}(\mathrm{d}W)
+\]</span> 因此<span class="math inline">\(\nabla^2_W l=-\sum_{i=1}^n D(W^T\mathbf{x}_i)^T \otimes \mathbf{x}_i\mathbf{x}_i^T\)</span>。</p>
+<h3 id="神经网络">神经网络</h3>
+<p>首先定义变量维度维度为 <span class="math display">\[
+\begin{align}
+Y: n\times c&amp;, \quad \mathbf{y}_i: c\times 1\\
+X: n\times p&amp;, \quad\mathbf{x}_i: p\times 1\\
+W_1: p\times d&amp;, \quad\mathbf{b}_1: d\times 1 \\
+W_2: d\times c&amp;,  \quad\mathbf{b}_2: c\times 1 \\
+\mathbf{1}_c: c\times 1&amp;,  \quad\mathbf{1}_n: n\times 1
+\end{align}
+\]</span></p>
+<p>对数似然函数如下 <span class="math display">\[
+l = \sum_{i=1}^n \mathbf{y}_i^T \log \mathrm{softmax}
+(W_2^T \sigma(W_1^T\mathbf{x}_i+\mathbf{b}_1)+\mathbf{b}_2)
+\]</span></p>
+<p>其中softmax函数定义如下 <span class="math display">\[
+\mathrm{softmax}(\mathbf{x}) = \frac{\exp(\mathbf{x})}{\mathbf{1}^T\exp(\mathbf{x})}, \qquad (\mathbf{x}:c\times 1)
+\]</span></p>
+<p>我们可以将似然函数拆解成多个式子</p>
+<p><span class="math display">\[
+\begin{align}
+l &amp;= \sum_{i=1}^n \mathbf{y}_i^T \log \mathrm{softmax}(\mathbf{a}_{2i})\\
+\mathbf{a}_{2i} &amp;= W_2^T \mathbf{h}_{1i}+\mathbf{b}_2\\
+ \mathbf{h}_{1i}&amp;=\sigma(\mathbf{a}_{1i})\\
+ \mathbf{a}_{1i} &amp;= W_1^T\mathbf{x}_i+\mathbf{b}_1
+ \end{align}
+\]</span></p>
+<p>下面我们要将样本的求和符号去掉，推导过程和上一节softmax多分类差不多，这里就不重复推导了，直接给出结果 <span class="math display">\[
+\begin{align}
+l &amp;= \mathrm{tr}(A_2Y^T) - \mathbf{1}_n^T \log[\exp(A_2)\mathbf{1}_c] \\
+A_2 &amp;= H_1W_2+\mathbf{1}_n\mathbf{b}_2^T\\
+H_1&amp;=\sigma(A_1)\\
+A_1 &amp;= XW_1+\mathbf{1}_n\mathbf{b}_1^T
+ \end{align}
+\]</span> 同时也可以得到 <span class="math display">\[
+\mathrm{d}l = \mathrm{tr}\left(\left[\frac{\partial l}{\partial A_2} \right]^T \mathrm{d}A_2 \right)\qquad (\text{其中}
+\frac{\partial l}{\partial A_2} = Y-\mathrm{Softmax}(A_2)) \tag{4}
+\]</span> 对<span class="math inline">\(A_2\)</span>求微分如下 <span class="math display">\[
+\mathrm{d}A_2 = \mathrm{d} H_1 W_2 + H_1 \mathrm{d}W_2+\mathbf{1}_n \mathrm{d} \mathbf{b}_2^T
+\]</span> 带入<span class="math inline">\((4)\)</span>式可得 <span class="math display">\[
+\begin{align}
+\mathrm{d}l &amp;= \mathrm{tr}\left(\left[\frac{\partial l}{\partial A_2} \right]^T 
+\left[ \mathrm{d} H_1 W_2 + H_1 \mathrm{d}W_2+\mathbf{1}_n \mathrm{d} \mathbf{b}_2^T
+\right]\right)\\
+&amp;= \mathrm{tr}\left(
+W_2\left[\frac{\partial l}{\partial A_2} \right]^T \mathrm{d} H_1 + 
+\left[\frac{\partial l}{\partial A_2} \right]^T  H_1 \mathrm{d}W_2+
+\mathbf{1}_n^T \left[\frac{\partial l}{\partial A_2} \right] \mathrm{d} \mathbf{b}_2
+\right)\\
+&amp;= \mathrm{tr}\left(
+\left[\frac{\partial l}{\partial H_1} \right]^T  \mathrm{d} H_1 + 
+\left[\frac{\partial l}{\partial W_2} \right]^T \mathrm{d}W_2+
+\left[\frac{\partial l}{\partial \mathbf{b}_2} \right]^T \mathrm{d} \mathbf{b}_2
+\right)\\
+\end{align}
+\]</span> 其中 <span class="math display">\[
+\frac{\partial l}{\partial H_1} = \frac{\partial l}{\partial A_2} W_2^T,\quad
+\frac{\partial l}{\partial W_2} = H_1^T \frac{\partial l}{\partial A_2},\quad
+\frac{\partial l}{\partial \mathbf{b}_2} = \left[\frac{\partial l}{\partial A_2}\right]^T \mathbf{1}_n
+\]</span> 接下来对<span class="math inline">\(H_1\)</span>求微分 <span class="math display">\[
+\mathrm{d}H_1 = \sigma(A_1) \odot \mathrm{d}A_1
+\]</span> 则<span class="math inline">\(l\)</span>微分的第一部分可以表示成 <span class="math display">\[
+\begin{align}
+\mathrm{d}l_1 &amp;= \mathrm{tr}\left(
+\left[\frac{\partial l}{\partial H_1} \right]^T [\sigma&#39;(A_1) \odot \mathrm{d}A_1]
+\right)\\
+&amp;= \mathrm{tr}\left(
+\left[\frac{\partial l}{\partial H_1} \odot \sigma&#39;(A_1) \right]^T \mathrm{d}A_1
+\right)\\
+&amp;= \mathrm{tr}\left(
+\left[\frac{\partial l}{\partial A_1}  \right]^T \mathrm{d}A_1
+\right) 
+\end{align}\tag{5}
+\]</span> 其中<span class="math inline">\(\frac{\partial l}{\partial A_1}=\frac{\partial l}{\partial H_1} \odot \sigma&#39;(A_1)\)</span>。下面计算<span class="math inline">\(A_1\)</span>的微分 <span class="math display">\[
+\mathrm{d}A_1 =X\mathrm{d}W_1+\mathbf{1}_n \mathrm{d} \mathbf{b}_1^T
+\]</span> 带入<span class="math inline">\((5)\)</span>式可得 <span class="math display">\[
+\begin{align}
+\mathrm{d}l_1 &amp;= \mathrm{tr}\left(\left[\frac{\partial l}{\partial A_1} \right]^T 
+\left[ X\mathrm{d}W_1+\mathbf{1}_n \mathrm{d} \mathbf{b}_1^T
+\right]\right)\\
+ &amp;= \mathrm{tr}\left(\left[\frac{\partial l}{\partial A_1} \right]^T X\mathrm{d}W_1+
+ \mathbf{1}_n^T \left[\frac{\partial l}{\partial A_1} \right]\mathrm{d} \mathbf{b}_1
+\right)\\
+ &amp;= \mathrm{tr}\left(\left[\frac{\partial l}{\partial W_1} \right]^T \mathrm{d}W_1+
+\left[\frac{\partial l}{\partial \mathbf{b}_1} \right]^T\mathrm{d} \mathbf{b}_1
+\right)\\
+\end{align}
+\]</span> 其中 <span class="math display">\[
+\frac{\partial l}{\partial W_1}=X^T \frac{\partial l}{\partial A_1}, \qquad
+\frac{\partial l}{\partial \mathbf{b}_1} = 
+\left[\frac{\partial l}{\partial A_1}\right]^T \mathbf{1}_n
+\]</span> 推导已完成，再一层一层带回去，即可得到<span class="math inline">\(l\)</span>对<span class="math inline">\(W_1, W_2, \mathbf{b}_1, \mathbf{b}_2\)</span>的导数。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>知乎-矩阵求导术：<a href="https://zhuanlan.zhihu.com/p/24709748" target="_blank" rel="noopener">上篇</a>和<a href="https://zhuanlan.zhihu.com/p/24863977" target="_blank" rel="noopener">下篇</a>。本文基本上是这两篇文章内容的重新整理。</li>
+<li><a href="https://www.cnblogs.com/pinard/p/10750718.html" target="_blank" rel="noopener">刘建平Pinard系列博客</a>，这个博客主要用于查缺补漏</li>
+<li>教材：《矩阵分析与应用》，作者张贤达</li>
+<li>查询手册：<a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" target="_blank" rel="noopener">The Matrix Cookbook</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/线性代数/" rel="tag"># 线性代数</a>
+          
+            <a href="/tags/manual/" rel="tag"># 速查手册</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/tech/matrix-derivatives1.html" rel="next" title="矩阵求导总结（一）">
+                <i class="fa fa-chevron-left"></i> 矩阵求导总结（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tech/fourier1.html" rel="prev" title="傅里叶级数与傅里叶变换（一）">
+                傅里叶级数与傅里叶变换（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">时间轴</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wang-da-shan-68" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zbowang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tech/" title="技术分享">技术分享</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/life/" title="生活随笔">生活随笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/excerpt" title="诗文摘录">诗文摘录</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/manual" title="速查手册">速查手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/tags/collections" title="资源收集">资源收集</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链式法则"><span class="nav-number">1.</span> <span class="nav-text">链式法则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链式法则介绍"><span class="nav-number">1.1.</span> <span class="nav-text">链式法则介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">1.2.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合例题"><span class="nav-number">2.</span> <span class="nav-text">综合例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic二分类"><span class="nav-number">2.1.</span> <span class="nav-text">logistic二分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softmax多分类"><span class="nav-number">2.2.</span> <span class="nav-text">softmax多分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络"><span class="nav-number">2.3.</span> <span class="nav-text">神经网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <a href="http://www.miit.gov.cn/">&nbsp;闽ICP备18026322号-1</a>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

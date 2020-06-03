@@ -1816,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff04ff;
+  background: #218594;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3143,13 +3143,13 @@ pre .javascript .function {
   background: #f8f8f5;
 }
 .site-meta {
-  background: #23363a;
+  background: #373c38;
 }
 .headband {
-  background: #143155;
+  background: #373c38;
 }
 ::selection {
-  background: #23363a;
+  background: #373c38;
   color: #f7f7f7;
 }
 .post-body p a {
@@ -3164,13 +3164,17 @@ pre .javascript .function {
   border-bottom: none;
 }
 .open {
-  border-color: #222;
+  border-color: #373c38;
   color: #fff;
-  background: #222;
+  background: #373c38;
 }
 .hider_title {
   font-family: "Microsoft Yahei";
   cursor: pointer;
+}
+.hider_title:hover {
+  background-color: #373c38;
+  color: #fff;
 }
 .close:after {
   content: "▼";
@@ -3183,7 +3187,69 @@ pre .javascript .function {
 }
 .fold {
   display: none;
-  border: 2px solid #23363a;
+  border: 2px solid #373c38;
   margin: 20px 30px;
   padding: 25px;
+}
+:target {
+  -webkit-animation: target-fade 1s;
+  -moz-animation: target-fade 1s;
+  -o-animation: target-fade 1s;
+  animation: target-fade 1s;
+}
+@-webkit-keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-moz-keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-o-keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-moz-keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-webkit-keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@-o-keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@keyframes target-fade {
+  from {
+    background-color: #373c38;
+  }
+  to {
+    background-color: transparent;
+  }
 }
