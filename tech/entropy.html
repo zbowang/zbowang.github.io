@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="统计,速查手册," />
+  <meta name="keywords" content="信息论," />
 
 
 
@@ -77,18 +77,20 @@
 
 
 
-<meta name="description" content="离散分布 Bernoulli-伯努利分布 \[ \begin{align} X&amp;amp;\sim Bernoulli(p)\\ &amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\ &amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\ &amp;amp;M_x(t)=pe^t+1-p\\ &amp;amp;\phi_x(t)=pe^{it}+1-p">
-<meta name="keywords" content="统计,速查手册">
+<meta name="description" content="自信息 自信息(self-information)表示一个事件发生所蕴含的信息量，定义如下 \[ \mathrm{I}_{X}(x)=-\log \left[p_{X}(x)\right]=\log\frac{1}{p_{X}(x)} \] 自信息有三条性质  一个事件以概率1发生，则信息量为0 事件发生概率越小，所含信息量越多 两个独立事件同时发生，信息量应为两个自信息之和">
+<meta name="keywords" content="信息论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统计分布总结">
-<meta property="og:url" content="http://yoursite.com/tech/distributions.html">
+<meta property="og:title" content="熵总结">
+<meta property="og:url" content="http://yoursite.com/tech/entropy.html">
 <meta property="og:site_name" content="My World">
-<meta property="og:description" content="离散分布 Bernoulli-伯努利分布 \[ \begin{align} X&amp;amp;\sim Bernoulli(p)\\ &amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\ &amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\ &amp;amp;M_x(t)=pe^t+1-p\\ &amp;amp;\phi_x(t)=pe^{it}+1-p">
+<meta property="og:description" content="自信息 自信息(self-information)表示一个事件发生所蕴含的信息量，定义如下 \[ \mathrm{I}_{X}(x)=-\log \left[p_{X}(x)\right]=\log\frac{1}{p_{X}(x)} \] 自信息有三条性质  一个事件以概率1发生，则信息量为0 事件发生概率越小，所含信息量越多 两个独立事件同时发生，信息量应为两个自信息之和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-29T14:31:11.147Z">
+<meta property="og:image" content="http://yoursite.com/tech/images/entropy.png">
+<meta property="og:updated_time" content="2020-06-04T01:26:51.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="统计分布总结">
-<meta name="twitter:description" content="离散分布 Bernoulli-伯努利分布 \[ \begin{align} X&amp;amp;\sim Bernoulli(p)\\ &amp;amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\ &amp;amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\ &amp;amp;M_x(t)=pe^t+1-p\\ &amp;amp;\phi_x(t)=pe^{it}+1-p">
+<meta name="twitter:title" content="熵总结">
+<meta name="twitter:description" content="自信息 自信息(self-information)表示一个事件发生所蕴含的信息量，定义如下 \[ \mathrm{I}_{X}(x)=-\log \left[p_{X}(x)\right]=\log\frac{1}{p_{X}(x)} \] 自信息有三条性质  一个事件以概率1发生，则信息量为0 事件发生概率越小，所含信息量越多 两个独立事件同时发生，信息量应为两个自信息之和">
+<meta name="twitter:image" content="http://yoursite.com/tech/images/entropy.png">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tech/distributions.html"/>
+  <link rel="canonical" href="http://yoursite.com/tech/entropy.html"/>
 
 
 
 
 
-  <title>统计分布总结 | My World</title>
+  <title>熵总结 | My World</title>
   
 
 
@@ -271,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/distributions.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/entropy.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王智博">
@@ -288,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">统计分布总结</h1>
+          <h1 class="post-title" itemprop="name headline">熵总结</h1>
         
 
         <div class="post-meta">
@@ -298,8 +300,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T21:57:23+08:00">
-                2018-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-04T00:00:00+08:00">
+                2020-06-04
               </time>
             
 
@@ -336,213 +338,178 @@
       
 
       
-        <h2 id="离散分布">离散分布</h2>
-<h3 id="bernoulli-伯努利分布">Bernoulli-伯努利分布</h3>
+        <h2 id="自信息">自信息</h2>
+<p>自信息(self-information)表示一个事件发生所蕴含的信息量，定义如下</p>
 <p><span class="math display">\[
-\begin{align}
-X&amp;\sim Bernoulli(p)\\
-&amp;P(x)=p^x(1-p)^{1-x},\quad x=0,1\\
-&amp;\mu_x=p,\quad \sigma_x^2=p(1-p)\\
-&amp;M_x(t)=pe^t+1-p\\
-&amp;\phi_x(t)=pe^{it}+1-p
-\end{align}
+\mathrm{I}_{X}(x)=-\log \left[p_{X}(x)\right]=\log\frac{1}{p_{X}(x)}
 \]</span></p>
-<h3 id="binomial-二项分布">Binomial-二项分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Bin(n,p)\\
-&amp;P(x)=\bigl( \begin{smallmatrix}n \\ x \end{smallmatrix}\bigr)
-p^x(1-p)^{n-x},\quad x=0,1,...,n\\
-&amp;\mu_x=np,\quad \sigma_x^2=np(1-p)\\
-&amp;M_x(t)=(pe^t+1-p)^n\\
-&amp;\phi_x(t)=(pe^{it}+1-p)^n
-\end{align}
-\]</span></p>
-<h3 id="poisson-泊松分布">Poisson-泊松分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Poisson (\lambda)\\
-&amp;P(x)=\frac{e^{-\lambda}\lambda^x}{x!},\quad x=0,1,2,...\\
-&amp;\mu_x=\lambda,\quad \sigma_x^2=\lambda\\
-&amp;M_x(t)=e^{\lambda(e^t-1)}\\
-&amp;\phi_x(t)=e^{\lambda(e^{it}-1)}
-\end{align}
-\]</span></p>
-<p>一段时间内出现的次数</p>
-<h3 id="negative-binomial-负二项分布">Negative Binomial-负二项分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim NB(r,p)\\
-&amp;P(x)=\bigl( \begin{smallmatrix}x+r-1 \\ r-1 \end{smallmatrix}\bigr)
-p^r(1-p)^x,\quad x=0,1,2,...\\
-&amp;\mu_x=\frac{r(1-p)}{p},\quad \sigma_x^2=\frac{r(1-p)}{p^2}\\
-&amp;M_x(t)=(\frac{p}{1-(1-p)e^t})^r\\
-\end{align}
-\]</span></p>
-<p>成功概率是<span class="math inline">\(p\)</span>，<span class="math inline">\(r\)</span>次成功会出现多少次失败</p>
-<h3 id="geometry-几何分布">Geometry-几何分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Geometry(p)\\
-&amp;P(x)=p(1-p)^{x-1},\quad x=1,2,...\\
-&amp;\mu_x=\frac1{p},\quad \sigma_x^2=\frac{1-p}{p^2}\\
-&amp;M_x(t)=\frac{pe^t}{1-(1-p)e^t},\quad t &lt; -\ln(1-p)\\
-\end{align}
-\]</span></p>
-<p>成功概率是<span class="math inline">\(p\)</span>，出现一次成功总共要多少次</p>
-<h3 id="hypergeometric-超几何分布">Hypergeometric-超几何分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Hyper(M,N,n)\\
-&amp;P(x)=\frac{
-    \bigl( \begin{smallmatrix}M \\ x \end{smallmatrix}\bigr)
-    \bigl( \begin{smallmatrix}N-M \\ n-x \end{smallmatrix}\bigr)
-}
-{\bigl( \begin{smallmatrix}N \\ n \end{smallmatrix}\bigr)}\\
-&amp;\mu_x=\frac{nM}{N},\quad \sigma_x^2=\frac{nM}{N}\frac{N-M}{N}\frac{N-n}{N-1}
-\end{align}
-\]</span></p>
-<p>总共有<span class="math inline">\(N\)</span>条鱼，<span class="math inline">\(M\)</span>条带标记，某一次捞<span class="math inline">\(n\)</span>条，带标记的有几条</p>
-<h3 id="multinomial-多项分布">Multinomial-多项分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X_1,&amp;X_2,...,X_k\sim MultiNomial(p_1,...,p_k,n)\\
-&amp;P(x)=\frac{n!}{x_1!x_2!...x_k!}p_1^{x_1}p_2^{x_2}...p_k^{x_k}\\
-&amp;x_i\in\{0,...,n\},i\in\{1,...,k\},\sum x_i=n\\
-&amp;E(X_i)=np_i,\quad Var(X_i)=np_i(1-p_i)
-\end{align}
-\]</span></p>
-<p><span class="math inline">\(k\)</span>种取值，掷n次，<span class="math inline">\(x_i\)</span>表示每种发生几次</p>
-<p><span class="math inline">\(n=1\)</span>时，<span class="math inline">\(x\)</span>可以取<span class="math inline">\(1,...,k\)</span>这几个值，<span class="math inline">\(P(x)\)</span>表示取这些值的概率</p>
-<p><span class="math inline">\(n=1\)</span>时,<span class="math inline">\(P(x)=p_1^{1\{x=1\}}p_2^{1\{x=2\}}...p_k^{1\{x=k\}}\)</span></p>
-<h2 id="连续分布">连续分布</h2>
-<h3 id="uniform分布">Uniform分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Uniform(a, b)\\
-&amp;f_x(x)=\frac1{b-a},\quad x\in[a,b]\\
-&amp;\mu_x=\frac{a+b}{2},\quad \sigma_x^2=\frac{(b-a)^2}{12}\\
-&amp;M_x(t)=\frac{e^{tb}-e^{ta}}{t(b-a)}\\
-&amp;\phi_x(t)=\frac{e^{itb}-e^{ita}}{it(b-a)}\\
-U(0,1)&amp;\rightarrow a=0,b=1
-\end{align}
-\]</span></p>
-<h3 id="normal-正态分布">Normal-正态分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim N(\mu, \sigma^2)\\
-&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty&lt; x&lt;+\infty\\
-&amp;\mu_x=\mu,\quad \sigma_x^2=\sigma^2\\
-&amp;M_x(t)=e^{\mu t+\frac12\sigma^2t^2}\\
-&amp;\phi_x(t)=e^{i\mu t-\frac12\sigma^2t^2}\\
-\int_{-\infty}^{\infty}&amp;e^{-\frac{x^2}{2}}dx=\sqrt{2\pi}
-\end{align}
-\]</span></p>
-<h3 id="gamma分布">Gamma分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Gamma(\alpha, \beta)\\
-&amp;f_x(x)=\frac{x^{\alpha-1}e^{-\frac{x}{\beta}}}
-{\Gamma(\alpha)\beta^\alpha}
-,\quad x&gt;0\\
-&amp;\mu_x=\alpha\beta,\quad \sigma_x^2=\alpha\beta^2\\
-&amp;M_x(t)=(1-\beta t)^{-\alpha}, \quad t&lt;\frac1\beta\\
-&amp;\phi_x(t)=(1-\beta it)^{-\alpha}\\
-\Gamma(\alpha)&amp;=\int_0^\infty t^{\alpha-1}e^{-t}dt=(\alpha-1)\Gamma(\alpha-1)=(\alpha-1)!\\
-\Gamma(\frac12)&amp;=\sqrt{\pi}
-\end{align}
-\]</span></p>
-<p>再出现<span class="math inline">\(\alpha\)</span>个要等多久。</p>
-<h3 id="chi-square-卡方分布">Chi-square-卡方分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim \chi^2_v\\
-&amp;f_x(x)=\frac{x^{\frac v2-1}e^{-\frac{x}{2}}}
-{\Gamma(\frac v2)\sqrt{2^v}}
-,\quad x&gt;0\\
-&amp;\mu_x=v,\quad \sigma_x^2=2v\\
-&amp;M_x(t)=(1-2 t)^{-\frac v2}, \quad t&lt;\frac12\\
-&amp;\phi_x(t)=(1-2 it)^{-\frac v2}\\
-Gamma&amp;特例\rightarrow \alpha=\frac v2,\beta=2
-\end{align}
-\]</span></p>
-<h3 id="exponential-指数分布">Exponential-指数分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim exp(\beta)\\
-&amp;f_x(x)=\frac1\beta e^{-\frac x\beta},\quad x&gt;0\\
-&amp;\mu_x=\beta,\quad \sigma_x^2=\beta^2\\
-&amp;M_x(t)=\frac1{1-\beta t},t&lt;\frac1\beta\\
-&amp;\phi_x(t)=\frac1{1-\beta it}\\
-Gamma&amp;特例\rightarrow \alpha=1\\
-Poisson&amp;\rightarrow \lambda=\frac1\beta
-\end{align}
-\]</span></p>
-<p>出现下一个要等多久。</p>
-<h3 id="beta分布">Beta分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Beta(\alpha,\beta)\\
-&amp;f_x(x)=\frac1{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}
-,\quad 0\leq x\leq 1,\alpha&gt;0,\beta&gt;0\\
-&amp;\mu_x=\frac{\alpha}{\alpha+\beta},\quad \sigma_x^2=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\\
-&amp;M_x(t)=1+\sum_{j=1}^n(\prod_{i=0}^{j-1}\frac{\alpha+i}{\alpha+\beta+i})\frac{t^j}{j!}, \quad t&lt;\frac12\\
-B&amp;(\alpha, \beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\\
-U&amp;(0,1)\rightarrow \alpha=1,\beta=1\\
-\int_0^1&amp;x^{\alpha-1}(1-x)^{\beta-1}=B(\alpha, \beta)
-\end{align}
-\]</span></p>
-<p><span class="math inline">\(X_1, X_2, ..., X_n\)</span>是均匀分布<span class="math inline">\(U(0,1)\)</span>产生的随机数，其中第<span class="math inline">\(k\)</span>小的数<span class="math inline">\(X^{(k)}\)</span>服从<span class="math inline">\(Beta(k, n-k+1)\)</span>的Beta分布。</p>
-<h3 id="log-normal分布">Log-normal分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim LogN(\mu,\sigma^2)\\
-&amp;f_x(x)=\frac1{\sqrt{2\pi}\sigma}\frac1x exp\{-\frac1{2\sigma^2}(\log x-\mu)^2\}
-,\quad x&gt;0\\
-Normal&amp;\rightarrow Y\sim N(\mu,\sigma^2),\quad X=e^Y\sim LogN(\mu,\sigma^2)\\
-E(X^k)=&amp;E(e^{kY})=M_Y(k)=exp\{\frac{\sigma^2k^2}{2}+\mu k\}
-\end{align}
-\]</span></p>
-<h3 id="doublelaplace-exponential-拉普拉斯分布">Double/Laplace exponential-拉普拉斯分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Laplace(\alpha,\beta)\\
-&amp;f_x(x)=\frac1{2\beta}exp\{-\frac{|x-\alpha|}{\beta}\}
-,\quad -\infty &lt; x &lt; +\infty\\
-&amp;\mu_x=\alpha,\quad \sigma_x^2=2\beta^2\\
-&amp;M_x(t)=\frac{e^{\alpha t}}{1-\beta^2 t^2}, \quad |t|&lt;\frac1\beta\\
-厚尾&amp;，关于\alpha对称
-\end{align}
-\]</span></p>
-<h3 id="cauchy-柯西分布">Cauchy-柯西分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim Cauchy(\mu,\sigma)\\
-&amp;f_x(x)=\frac1{\pi\sigma}\frac1{1+(\frac{x-\mu}{\sigma})^2}
-,\quad -\infty &lt; x &lt; +\infty\\
-E(x^k)&amp;不存在,k\geq 1，MGF不存在\\
-\phi_x(t)&amp;=e^{iut-\sigma|t|},对t不可导
-\end{align}
-\]</span></p>
-<h3 id="igamma-逆gamma分布">IGamma-逆Gamma分布</h3>
-<p><span class="math display">\[
-\begin{align}
-X&amp;\sim IGamma(\alpha, \beta)\\
-&amp;f_x(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}(\frac1y)^{\alpha+1}e^{-\frac\beta y},\quad x&gt;0\\
-Gamma&amp;\rightarrow Y\sim Gamma(\alpha, \beta),\quad X=Y^{-1}\sim IGamma(\alpha, \beta)\\
-\end{align}
-\]</span></p>
-<h2 id="其他">其他</h2>
-<h3 id="exponential-family-指数族">exponential family-指数族</h3>
-<p><span class="math display">\[
-p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
-\]</span></p>
-<h3 id="共轭先验分布">共轭先验分布</h3>
+<p>自信息有三条性质</p>
 <ul>
-<li><span class="math inline">\(Poisson(\lambda)\rightarrow\lambda\Rightarrow Gamma(\alpha, \beta)\rightarrow Gamma(\alpha+n\bar X, \beta+n)\)</span></li>
-<li><span class="math inline">\(exp(\beta)\rightarrow\lambda\Rightarrow IGamma(\alpha, \beta)\rightarrow Gamma(\alpha+n, \beta+n\bar X)\)</span></li>
-<li><span class="math inline">\(Bin(n,p)\rightarrow p\Rightarrow Beta\)</span></li>
-<li><span class="math inline">\(Normal\)</span>方差已知时<span class="math inline">\(\mu\Rightarrow Normal\)</span>，均值已知时<span class="math inline">\(\sigma^2\Rightarrow IGamma\)</span>，都未知<span class="math inline">\(\mu,\sigma^2\Rightarrow N-IGamma\)</span></li>
+<li>一个事件以概率1发生，则信息量为0</li>
+<li>事件发生概率越小，所含信息量越多</li>
+<li>两个独立事件同时发生，信息量应为两个自信息之和</li>
+</ul>
+<p>满足这三条性质的只有上面这个公式（常数项系数省略），因此有上面的定义。其中<span class="math inline">\(\log\)</span>的底数通常取<span class="math inline">\(2\)</span>，使用<span class="math inline">\(e\)</span>或<span class="math inline">\(10\)</span>也可以。</p>
+<p>理解：比如2016年美国大选，大家原本预计希拉里赢面更大。如果最后希拉里赢了，我们会认为没什么信息量，大家都知道的事情；但如果最后特朗普赢了，我们会很吃惊，这就包含了更大的信息量。</p>
+<h2 id="信息熵的定义">信息熵的定义</h2>
+<p>随机变量的熵是自信息的期望值。当随机变量<span class="math inline">\(X\)</span>离散时，熵(Entropy)定义如下</p>
+<p><span class="math display">\[
+H(X)=E_x \left[\log \frac{1}{p_{X}(x)}\right] =
+\sum_{x\in \mathrm{support}(X)} p_{X}(x)\log \frac{1}{p_{X}(x)}
+\]</span></p>
+<p><strong>熵<span class="math inline">\(H(X)\)</span>的特点</strong></p>
+<ul>
+<li>熵衡量的是混乱程度，不确定性；或者说为消除不确定性所需要的统计信息量</li>
+<li><span class="math inline">\(H(X)\geq 0\)</span></li>
+<li>当<span class="math inline">\(X\)</span>只能取一个值时，概率为1，此时<span class="math inline">\(H(X)=0\)</span>。表示没有不确定性，熵最小</li>
+<li>当<span class="math inline">\(X\)</span>在所有(<span class="math inline">\(n\)</span>个)取值上概率相等时，熵最大，因为所有事件都有可能发生，不确定性最大。此时熵值为<span class="math inline">\(\log n\)</span></li>
+</ul>
+<p>注意：个人不认为熵能衡量随机变量所蕴含的信息量，即使它是信息量的期望，因为这种认识比较违背直观。对比：(1)三个事件概率为<span class="math inline">\((\frac13, \frac13, \frac13)\)</span>；(2)三个事件概率为<span class="math inline">\((\frac23, \frac19, \frac29)\)</span>。感觉第二个蕴含的信息量更多，因为比如有人告诉你三个事件等可能，就和没说一样，没包含什么信息量；而第二种你就知道哪个事件更可能发生，因此第二种包含了更大的信息量。</p>
+<h2 id="联合熵和条件熵">联合熵和条件熵</h2>
+<p>两个随机变量的联合熵(Joint entropy)定义如下</p>
+<p><span class="math display">\[
+H(X, Y)=\sum_{x, y} p(x, y)\log \frac{1}{p(x, y)}
+\]</span></p>
+<p>条件熵(Conditional entropy)定义如下</p>
+<p><span class="math display">\[
+H(Y|X)=E_x [H(Y|X=x)]=
+\sum_{x, y} p(x, y)\log \frac{1}{p(y|x)}
+\]</span></p>
+<p>注意：条件熵的结果不依赖<span class="math inline">\(X\)</span>取值，是<span class="math inline">\(\sum_{y} p(y|x)\log \frac{1}{p(y|x)}\)</span>又对<span class="math inline">\(X\)</span>取了期望的结果。这个条件熵表示知道<span class="math inline">\(X\)</span>后<span class="math inline">\(Y\)</span>的不确定性，推导如下</p>
+<p><span class="math display">\[
+\begin{aligned}
+H(Y|X)&amp;=E_x [H(Y|X=x)]\\
+&amp;=\sum_{x} p(x) \sum_{y} p(y|x)\log \frac{1}{p(y|x)}\\
+&amp;=\sum_{x} \sum_{y} p(x)p(y|x)\log \frac{1}{p(y|x)}\\
+&amp;=\sum_{x, y} p(x, y)\log \frac{1}{p(y|x)}
+\end{aligned}
+\]</span></p>
+<p>下面给出一些<strong>性质</strong></p>
+<p>1、当<span class="math inline">\(X\)</span>与<span class="math inline">\(Y\)</span>独立时有</p>
+<p><span class="math display">\[
+H(Y|X)=H(Y)
+\]</span></p>
+<p><span class="math display">\[
+H(X, Y)=H(X)+H(Y)
+\]</span></p>
+<p>2、一般情形下有</p>
+<p><span class="math display">\[
+H(X, Y)=H(X)+H(Y|X)
+\]</span></p>
+<p>3、更一般地有(Chain rule)</p>
+<p><span class="math display">\[
+H(X, Y, Z)=H(X)+H(Y|X)+H(Z|X, Y)
+\]</span></p>
+<p><span class="math display">\[
+H(X_1, X_2, \ldots, X_n)=H(X_1)+H(X_2|X_1)+\ldots +H(X_n |X_1, \ldots, X_{n-1})
+\]</span></p>
+<p>顺序都不影响，比如</p>
+<p><span class="math display">\[
+H(X, Y)=H(X)+H(Y|X)=H(Y)+H(X|Y)
+\]</span></p>
+<p>证明过程都类似下面这样</p>
+<p><span class="math display">\[
+H(X, Y)=\sum_{x, y} p(x) p(y)\left(\log \frac{1}{p(x)}+\log \frac{1}{p(y)}\right)=H(X)+H(Y)
+\]</span></p>
+<p>4、一般情形下有</p>
+<p><span class="math display">\[
+H(Y|X)\leq H(Y)
+\]</span></p>
+<p><span class="math display">\[
+H(X, Y)\leq H(X)+H(Y)
+\]</span></p>
+<p><span class="math display">\[
+H(X_1, \ldots, X_n)\leq \sum_{i=1}^n H(X_i)
+\]</span></p>
+<p>直观理解第一个式子：知道<span class="math inline">\(X\)</span>的信息可以降低<span class="math inline">\(Y\)</span>的不确定性（<span class="math inline">\(X\)</span>与<span class="math inline">\(Y\)</span>不独立时）。第二个式子把<span class="math inline">\(H(X)\)</span>移项过去，和第一个式子是一样的。证明如下</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;H(X, Y)- H(X)-H(Y) \\
+=&amp;\sum_{x, y} p(x, y)\log \frac{1}{p(x, y)}-
+\sum_{x} p(x)\log \frac{1}{p(x)}-
+\sum_{y} p(y)\log \frac{1}{p(y)} \\
+=&amp;\sum_{x, y} p(x, y)\log \frac{1}{p(x, y)}-
+\sum_{x,y} p(x,y)\log \frac{1}{p(x)}-
+\sum_{x,y} p(x,y)\log \frac{1}{p(y)} \\
+=&amp;\sum_{x, y} p(x, y)\log \frac{p(x)p(y)}{p(x, y)} \\
+\leq&amp;  \log \sum_{x, y}  p(x, y)\frac{p(x)p(y)}{p(x, y)} 
+\qquad \text{by Jensen’s Inequality}\\
+=&amp;\log 1 = 0
+\end{aligned}
+\]</span></p>
+<h2 id="互信息">互信息</h2>
+<p>随机变量<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>的互信息(Mutual information)定义如下</p>
+<p><span class="math display">\[
+\begin{aligned}
+I(X ; Y)&amp;=H(X)-H(X | Y) \\
+&amp;= H(X)+H(Y)-H(X, Y)\\
+&amp;=H(Y)-H(Y|X) \\
+&amp;= I(X; Y)\\
+&amp;=\sum_{x, y} p(x, y)\log \frac{p(x, y)}{p(x)p(y)} 
+\end{aligned}
+\]</span></p>
+<p>互信息表示两个随机变量，知道其中一个，对另一个的不确定性降低程度。</p>
+<p>根据上一节可知</p>
+<ul>
+<li><span class="math inline">\(I(X;Y)\geq 0\)</span></li>
+<li>当<span class="math inline">\(X\)</span>与<span class="math inline">\(Y\)</span>独立时，<span class="math inline">\(I(X;Y)= 0\)</span></li>
+</ul>
+<p>各种熵的关系如下所示</p>
+<p><img src="images/entropy.png"></p>
+<p>条件互信息(Conditional mutual information)定义如下</p>
+<p><span class="math display">\[
+\begin{aligned}
+I(X; Y | Z) &amp;=H(X | Z)-H(X | Y, Z) \\
+&amp;=H(Y | Z)-H(Y | X, Z)
+\end{aligned}
+\]</span></p>
+<h2 id="kl散度">KL散度</h2>
+<p>KL散度(KL-divergence)别名：相对熵(relative entropy)、信息散度(information divergence)，用于衡量两个分布的差异，定义如下</p>
+<p><span class="math display">\[
+D(p \| q)=\sum_{x \in U} p(x) \log \frac{p(x)}{q(x)}
+\]</span></p>
+<p>KL散度有如下性质</p>
+<ul>
+<li>不对称性，<span class="math inline">\(D(p \| q)\neq D(q \| p)\)</span></li>
+<li>只有当<span class="math inline">\(q\)</span>的定义域（非0区域）包括<span class="math inline">\(p\)</span>时，KL散度才不是无穷</li>
+<li><span class="math inline">\(D(p \| q)\neq D(q \| p)\geq 0\)</span>，当<span class="math inline">\(p=q\)</span>时取到0</li>
+<li>互信息是在衡量<span class="math inline">\(p(x, y)\)</span>与<span class="math inline">\(p(x)p(y)\)</span>的KL散度
+<ul>
+<li><span class="math inline">\(I(X ; Y)=D(p(x, y) \| p(x) p(y))\)</span></li>
+</ul></li>
+</ul>
+<p>第三条性质证明如下</p>
+<p><span class="math display">\[
+\begin{aligned}
+-D(p \| q)&amp;=\sum_{x} p(x) \log \frac{q(x)}{p(x)}\\
+&amp;\leq  \log \sum_{x}  p(x) \frac{q(x)}{p(x)}
+\qquad \text{by Jensen’s Inequality}\\
+&amp;= \log 1 = 0 
+\end{aligned}
+\]</span></p>
+<p>其中Jensen不等式取等号的条件是<span class="math inline">\(\frac{q(x)}{p(x)}\)</span>为常数。</p>
+<h2 id="交叉熵">交叉熵</h2>
+<p>两个分布<span class="math inline">\(p\)</span>和<span class="math inline">\(q\)</span>的交叉熵(Cross entropy)定义如下</p>
+<p><span class="math display">\[
+H_{\mathrm{cross}}(p, q) = \sum_x p(x)\log \frac{1}{q(x)}
+\]</span></p>
+<p>在分类问题中，用交叉熵做损失函数，此时<span class="math inline">\(p(x)\)</span>表示数据的真实分布，<span class="math inline">\(q(x)\)</span>表示模型估计出的分布。可以通过KL散度来理解这个式子</p>
+<p><span class="math display">\[
+\begin{aligned}
+D(p \| q)&amp;=\sum_{x} p(x) \log \frac{p(x)}{q(x)}\\
+&amp;= \sum_{x} p(x) \log \frac{1}{q(x)}-
+\sum_{x} p(x) \log \frac{1}{p(x)}\\
+&amp;= H_{\mathrm{cross}}(p, q)-H(p)
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(p(x)\)</span>对应已知的数据，则第二项是个常数，因此最小化交叉熵相当于最小化这个KL散度，也就是让模型的估计分布更接近数据的真实分布。</p>
+<p>从上面的推导也可以看出，交叉熵大于等于信息熵。</p>
+<p>另外，也可以用编码角度理解熵、交叉熵、KL散度：<a href="https://www.zhihu.com/question/41252833/answer/515095695" target="_blank" rel="noopener">知乎：如何通俗的解释交叉熵与相对熵?</a></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>各种熵的定义和关系参考<a href="http://www.cs.cmu.edu/~venkatg/teaching/ITCS-spr2013/notes/lect-jan17.pdf" target="_blank" rel="noopener">课件</a></li>
+<li>KL散度参考<a href="http://www.cs.cmu.edu/~venkatg/teaching/ITCS-spr2013/notes/lect-jan22.pdf" target="_blank" rel="noopener">课件</a></li>
+<li><a href="https://www.cnblogs.com/wkang/p/10068475.html" target="_blank" rel="noopener">博客：机器学习中各种熵的定义及理解</a></li>
 </ul>
 
       
@@ -561,9 +528,7 @@ p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
       
         <div class="post-tags">
           
-            <a href="/tags/统计/" rel="tag"># 统计</a>
-          
-            <a href="/tags/manual/" rel="tag"># 速查手册</a>
+            <a href="/tags/信息论/" rel="tag"># 信息论</a>
           
         </div>
       
@@ -576,8 +541,8 @@ p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/life/tianlong.html" rel="next" title="《天龙八部》回目词">
-                <i class="fa fa-chevron-left"></i> 《天龙八部》回目词
+              <a href="/tech/fourier2.html" rel="next" title="傅里叶级数与傅里叶变换（二）">
+                <i class="fa fa-chevron-left"></i> 傅里叶级数与傅里叶变换（二）
               </a>
             
           </div>
@@ -585,10 +550,6 @@ p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/life/jilei.html" rel="prev" title="鸡肋项目">
-                鸡肋项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -767,7 +728,7 @@ p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#离散分布"><span class="nav-number">1.</span> <span class="nav-text">离散分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-伯努利分布"><span class="nav-number">1.1.</span> <span class="nav-text">Bernoulli-伯努利分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binomial-二项分布"><span class="nav-number">1.2.</span> <span class="nav-text">Binomial-二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-泊松分布"><span class="nav-number">1.3.</span> <span class="nav-text">Poisson-泊松分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negative-binomial-负二项分布"><span class="nav-number">1.4.</span> <span class="nav-text">Negative Binomial-负二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geometry-几何分布"><span class="nav-number">1.5.</span> <span class="nav-text">Geometry-几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypergeometric-超几何分布"><span class="nav-number">1.6.</span> <span class="nav-text">Hypergeometric-超几何分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multinomial-多项分布"><span class="nav-number">1.7.</span> <span class="nav-text">Multinomial-多项分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续分布"><span class="nav-number">2.</span> <span class="nav-text">连续分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform分布"><span class="nav-number">2.1.</span> <span class="nav-text">Uniform分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-正态分布"><span class="nav-number">2.2.</span> <span class="nav-text">Normal-正态分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gamma分布"><span class="nav-number">2.3.</span> <span class="nav-text">Gamma分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-square-卡方分布"><span class="nav-number">2.4.</span> <span class="nav-text">Chi-square-卡方分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-指数分布"><span class="nav-number">2.5.</span> <span class="nav-text">Exponential-指数分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beta分布"><span class="nav-number">2.6.</span> <span class="nav-text">Beta分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-normal分布"><span class="nav-number">2.7.</span> <span class="nav-text">Log-normal分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doublelaplace-exponential-拉普拉斯分布"><span class="nav-number">2.8.</span> <span class="nav-text">Double/Laplace exponential-拉普拉斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cauchy-柯西分布"><span class="nav-number">2.9.</span> <span class="nav-text">Cauchy-柯西分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#igamma-逆gamma分布"><span class="nav-number">2.10.</span> <span class="nav-text">IGamma-逆Gamma分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-family-指数族"><span class="nav-number">3.1.</span> <span class="nav-text">exponential family-指数族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭先验分布"><span class="nav-number">3.2.</span> <span class="nav-text">共轭先验分布</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自信息"><span class="nav-number">1.</span> <span class="nav-text">自信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息熵的定义"><span class="nav-number">2.</span> <span class="nav-text">信息熵的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合熵和条件熵"><span class="nav-number">3.</span> <span class="nav-text">联合熵和条件熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互信息"><span class="nav-number">4.</span> <span class="nav-text">互信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kl散度"><span class="nav-number">5.</span> <span class="nav-text">KL散度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉熵"><span class="nav-number">6.</span> <span class="nav-text">交叉熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

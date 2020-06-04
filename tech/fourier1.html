@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="数学,速查手册,傅里叶分析," />
+  <meta name="keywords" content="数学,傅里叶分析," />
 
 
 
@@ -78,7 +78,7 @@
 
 
 <meta name="description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 傅里叶级数 在一定条件下，任意周期为\(T=\frac{2\pi}{w}\)的函数\(f(t)\)都可以用一系列正弦函数展开，此时需要满足\(T\)也要是这些正弦函数的周期（不要求正弦函数周期是\(T\)，只要能被\(T\)整除就行了），如下所示 一定条件 \[ f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\">
-<meta name="keywords" content="数学,速查手册,傅里叶分析">
+<meta name="keywords" content="数学,傅里叶分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="傅里叶级数与傅里叶变换（一）">
 <meta property="og:url" content="http://yoursite.com/tech/fourier1.html">
@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://static.wzbtech.com/static/images/Fourier_series_square_wave_circles_animation.gif">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/fourier_euler.gif">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/freq.png">
-<meta property="og:updated_time" content="2020-06-03T15:30:08.685Z">
+<meta property="og:updated_time" content="2020-06-04T01:27:53.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="傅里叶级数与傅里叶变换（一）">
 <meta name="twitter:description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 傅里叶级数 在一定条件下，任意周期为\(T=\frac{2\pi}{w}\)的函数\(f(t)\)都可以用一系列正弦函数展开，此时需要满足\(T\)也要是这些正弦函数的周期（不要求正弦函数周期是\(T\)，只要能被\(T\)整除就行了），如下所示 一定条件 \[ f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\">
@@ -375,13 +375,14 @@ f(t)&amp;=\frac{a_0}{2}+
 \sum_{n=1}^\infty \left[a_n \cos \frac{2\pi nt}{T}+b_n \sin\frac{2\pi nt}{T}\right] 
 \tag{3}
 \end{align}
-\]</span> 问题就转化为求<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>，利用三角函数系正交的性质，可以通过积分计算出<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>。 <span class="fold_hider" data-tag="fold_Trigonometric"><span class="close btn hider_title">三角函数系</span></span> <span class="fold_hider" data-tag="fold_solution"><span class="close btn hider_title">求解</span></span></p>
+\]</span> 问题就转化为求<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>，利用三角函数系正交的性质，可以通过积分计算出<span class="math inline">\(a_n\)</span>和<span class="math inline">\(b_n\)</span>。</p>
 <p><span class="math display">\[
 \begin{align}
 a_n = \frac{2}{T} \int_{-\frac T2}^{\frac T2} f(t) \cos \frac{2n\pi t}{T}\mathrm{d}t, \quad n=0, 1, 2, \cdots\\
 b_n = \frac{2}{T} \int_{-\frac T2}^{\frac T2} f(t) \sin \frac{2n\pi t}{T}\mathrm{d}t, \quad n=1, 2,3, \cdots\\
 \end{align}
 \]</span></p>
+<p>点击查看： <span class="fold_hider" data-tag="fold_Trigonometric"><span class="close btn hider_title">三角函数系</span></span> <span class="fold_hider" data-tag="fold_solution"><span class="close btn hider_title">求解</span></span></p>
 <div class="fold" id="fold_Trigonometric">
 <p><strong>三角函数系</strong></p>
 <p><span class="math display">\[
@@ -702,8 +703,6 @@ f(t)* \delta(t)&amp;=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau\\
           
             <a href="/tags/数学/" rel="tag"># 数学</a>
           
-            <a href="/tags/manual/" rel="tag"># 速查手册</a>
-          
             <a href="/tags/傅里叶分析/" rel="tag"># 傅里叶分析</a>
           
         </div>
@@ -808,7 +807,7 @@ f(t)* \delta(t)&amp;=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau\\
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
@@ -830,7 +829,7 @@ f(t)* \delta(t)&amp;=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau\\
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
