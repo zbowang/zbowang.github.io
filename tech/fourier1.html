@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://static.wzbtech.com/static/images/Fourier_series_square_wave_circles_animation.gif">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/fourier_euler.gif">
 <meta property="og:image" content="http://static.wzbtech.com/static/images/freq.png">
-<meta property="og:updated_time" content="2020-06-04T01:27:53.441Z">
+<meta property="og:updated_time" content="2020-06-11T10:16:42.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="傅里叶级数与傅里叶变换（一）">
 <meta name="twitter:description" content="本文由于篇幅原因拆成两篇，下一篇见这里。 傅里叶级数 在一定条件下，任意周期为\(T=\frac{2\pi}{w}\)的函数\(f(t)\)都可以用一系列正弦函数展开，此时需要满足\(T\)也要是这些正弦函数的周期（不要求正弦函数周期是\(T\)，只要能被\(T\)整除就行了），如下所示 一定条件 \[ f(t) = A_0 +\sum_{n=1}^\infty A_n\sin(nwt+\">
@@ -596,7 +596,7 @@ c_n=\frac{1}{T} \int_{-\frac T2}^{\frac T2} f(t) e^{-i\frac{2n\pi t}{T}} \mathrm
 \text{傅里叶变换：}\qquad&amp;F(w)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty  f(t)e^{-iwt}\mathrm{d}t
 \end{align}
 \]</span></p>
-<p>对比后会发现如果给定<span class="math inline">\(f(t)\)</span>，单独看傅里叶变换，<span class="math inline">\(F(w)\)</span>的结果是差一个常数项的；这不影响本质，只是傅里叶变换与逆变换公式是成对出现的，变换后如果想通过逆变换还原原来的<span class="math inline">\(f(t)\)</span>，必须使用相应的逆变换形式。</p>
+<p>对比后会发现如果给定<span class="math inline">\(f(t)\)</span>，按照上面不同公式进行傅里叶变换，<span class="math inline">\(F(w)\)</span>的结果不一致，差一个常数项；这不影响本质，因为傅里叶变换与逆变换公式是成对出现的，变换后如果想通过逆变换还原原来的<span class="math inline">\(f(t)\)</span>，必须使用相应的逆变换形式。</p>
 <ol start="2" type="1">
 <li><strong>离散与连续</strong></li>
 </ol>
@@ -807,7 +807,7 @@ f(t)* \delta(t)&amp;=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau\\
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
@@ -829,7 +829,7 @@ f(t)* \delta(t)&amp;=\int_{-\infty}^{+\infty} f(\tau) \delta(t-\tau) d \tau\\
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
