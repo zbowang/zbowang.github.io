@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="理解 首先，将矩阵看做一种运动、一种线性变换。例如\(\left[\begin{array}{rr} 0&amp;amp;-1\\1&amp;amp;0 \end{array}\right]\)表示逆时针旋转90度。  矩阵与向量相乘，就是将这个向量进行这种线性变换，例如\(\left[\begin{array}{rr} 0&amp;amp;-1\\1&amp;amp;0 \end{array}\right] \left[">
+<meta name="description" content="本文目标  看完“理解部分”可以对矩阵的各种操作有一种通透的感觉，一些性质无需证明即可直观感受对错 “性质与方法部分”便于做题和检验“理解部分” “概念总结部分”当做速查手册来使用，上面两部分中提到的一些易忘概念基本都可以在这里找到  本文内容不仅限于《线性代数》，还包括部分《矩阵论》的内容，主要服务于机器学习和深度学习所需。 理解 首先，将矩阵看做一种运动、一种线性变换。例如\(">
 <meta name="keywords" content="数学,线性代数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数总结">
 <meta property="og:url" content="http://yoursite.com/tech/Linear-algebra.html">
-<meta property="og:site_name" content="My World">
-<meta property="og:description" content="理解 首先，将矩阵看做一种运动、一种线性变换。例如\(\left[\begin{array}{rr} 0&amp;amp;-1\\1&amp;amp;0 \end{array}\right]\)表示逆时针旋转90度。  矩阵与向量相乘，就是将这个向量进行这种线性变换，例如\(\left[\begin{array}{rr} 0&amp;amp;-1\\1&amp;amp;0 \end{array}\right] \left[">
+<meta property="og:site_name" content="Dwzb&#39;s Blog">
+<meta property="og:description" content="本文目标  看完“理解部分”可以对矩阵的各种操作有一种通透的感觉，一些性质无需证明即可直观感受对错 “性质与方法部分”便于做题和检验“理解部分” “概念总结部分”当做速查手册来使用，上面两部分中提到的一些易忘概念基本都可以在这里找到  本文内容不仅限于《线性代数》，还包括部分《矩阵论》的内容，主要服务于机器学习和深度学习所需。 理解 首先，将矩阵看做一种运动、一种线性变换。例如\(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-04T01:28:03.781Z">
+<meta property="og:updated_time" content="2020-10-21T02:39:06.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性代数总结">
-<meta name="twitter:description" content="理解 首先，将矩阵看做一种运动、一种线性变换。例如\(\left[\begin{array}{rr} 0&amp;amp;-1\\1&amp;amp;0 \end{array}\right]\)表示逆时针旋转90度。  矩阵与向量相乘，就是将这个向量进行这种线性变换，例如\(\left[\begin{array}{rr} 0&amp;amp;-1\\1&amp;amp;0 \end{array}\right] \left[">
+<meta name="twitter:description" content="本文目标  看完“理解部分”可以对矩阵的各种操作有一种通透的感觉，一些性质无需证明即可直观感受对错 “性质与方法部分”便于做题和检验“理解部分” “概念总结部分”当做速查手册来使用，上面两部分中提到的一些易忘概念基本都可以在这里找到  本文内容不仅限于《线性代数》，还包括部分《矩阵论》的内容，主要服务于机器学习和深度学习所需。 理解 首先，将矩阵看做一种运动、一种线性变换。例如\(">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>线性代数总结 | My World</title>
+  <title>线性代数总结 | Dwzb's Blog</title>
   
 
 
@@ -154,7 +154,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">My World</span>
+        <span class="site-title">Dwzb's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -274,13 +274,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/tech/Linear-algebra.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王智博">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/triangle.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My World">
+      <meta itemprop="name" content="Dwzb's Blog">
     </span>
 
     
@@ -336,7 +336,14 @@
       
 
       
-        <h2 id="理解">理解</h2>
+        <p>本文目标</p>
+<ul>
+<li>看完“理解部分”可以对矩阵的各种操作有一种通透的感觉，一些性质无需证明即可直观感受对错</li>
+<li>“性质与方法部分”便于做题和检验“理解部分”</li>
+<li>“概念总结部分”当做速查手册来使用，上面两部分中提到的一些易忘概念基本都可以在这里找到</li>
+</ul>
+<p>本文内容不仅限于《线性代数》，还包括部分《矩阵论》的内容，主要服务于机器学习和深度学习所需。</p>
+<h2 id="理解">理解</h2>
 <p>首先，将<strong>矩阵</strong>看做一种运动、一种线性变换。例如<span class="math inline">\(\left[\begin{array}{rr} 0&amp;-1\\1&amp;0 \end{array}\right]\)</span>表示逆时针旋转90度。</p>
 <ul>
 <li>矩阵与向量相乘，就是将这个向量进行这种<strong>线性变换</strong>，例如<span class="math inline">\(\left[\begin{array}{rr} 0&amp;-1\\1&amp;0 \end{array}\right] \left[\begin{array}{r} 1\\1 \end{array}\right]=\left[\begin{array}{r} -1\\1 \end{array}\right]\)</span></li>
@@ -955,7 +962,11 @@ A^{-1}=\left(\begin{array}{lr}
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name"><a href='/'>王智博<a></p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/triangle.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"><a href='/'><a></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -966,7 +977,7 @@ A^{-1}=\left(\begin{array}{lr}
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">时间轴</span>
                 </a>
               </div>
@@ -1095,7 +1106,7 @@ A^{-1}=\left(\begin{array}{lr}
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">王智博</span>
+  <span class="author" itemprop="copyrightHolder"></span>
   <a href="http://www.miit.gov.cn/">&nbsp;闽ICP备18026322号-1</a>
 
   

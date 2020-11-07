@@ -1816,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b60f24;
+  background: #5cb516;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3139,17 +3139,42 @@ pre .javascript .function {
     margin: 8px 0 0;
   }
 }
+body,
+td,
+th,
+.post-toc ol a,
+.menu .menu-item a {
+  color: #333;
+}
+.site-title,
+.site-subtitle {
+  color: #eeeee6;
+}
 .main {
   background: #f8f8f5;
 }
+.post-block {
+  background: #f9f9f9;
+}
+.header-inner {
+  background: #f9f9f9;
+}
+.menu .menu-item a:hover,
+.menu-item-active a {
+  background: #ececec;
+  border-bottom-color: #ececec;
+}
+.sidebar-inner {
+  background: #f9f9f9;
+}
 .site-meta {
-  background: #373c38;
+  background: #3d3d3d;
 }
 .headband {
-  background: #373c38;
+  background: #3d3d3d;
 }
 ::selection {
-  background: #373c38;
+  background: #3d3d3d;
   color: #f7f7f7;
 }
 .post-body p a {
@@ -3163,18 +3188,19 @@ pre .javascript .function {
 .site-overview p a {
   border-bottom: none;
 }
-.open {
-  border-color: #373c38;
-  color: #fff;
-  background: #373c38;
-}
 .hider_title {
   font-family: "Microsoft Yahei";
   cursor: pointer;
+  background-color: #f9f9f9;
 }
 .hider_title:hover {
-  background-color: #373c38;
+  background-color: #3d3d3d;
   color: #fff;
+}
+.open {
+  border-color: #3d3d3d;
+  color: #fff;
+  background: #3d3d3d;
 }
 .close:after {
   content: "▼";
@@ -3187,7 +3213,7 @@ pre .javascript .function {
 }
 .fold {
   display: none;
-  border: 2px solid #373c38;
+  border: 2px solid #3d3d3d;
   margin: 20px 30px;
   padding: 25px;
 }
@@ -3199,7 +3225,7 @@ pre .javascript .function {
 }
 @-webkit-keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
@@ -3207,7 +3233,7 @@ pre .javascript .function {
 }
 @-moz-keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
@@ -3215,7 +3241,7 @@ pre .javascript .function {
 }
 @-o-keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
@@ -3223,7 +3249,7 @@ pre .javascript .function {
 }
 @-moz-keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
@@ -3231,7 +3257,7 @@ pre .javascript .function {
 }
 @-webkit-keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
@@ -3239,7 +3265,7 @@ pre .javascript .function {
 }
 @-o-keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
@@ -3247,7 +3273,7 @@ pre .javascript .function {
 }
 @keyframes target-fade {
   from {
-    background-color: #373c38;
+    background-color: #3d3d3d;
   }
   to {
     background-color: transparent;
